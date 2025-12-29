@@ -1,0 +1,359 @@
+/* src/App.css - Kompletter Code */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto:wght@300;500&display=swap');
+
+:root {
+  --gold: #D4AF37;
+  --bg-dark: #0a0a0a;
+  --glass: rgba(20, 20, 20, 0.7);
+  --red: #8B0000;
+}
+
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  /* Verhindert Scrollen der ganzen Seite */
+  user-select: none;
+  /* App-Feeling: Text nicht markierbar (außer man will es) */
+}
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- HINTERGRUND (Startseite) --- */
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/church_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  /* Dunkler Filter */
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+/* --- HEADER (Immer sichtbar) --- */
+.header {
+  position: relative;
+  z-index: 100;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background: #111;
+  /* Dunkler Balken */
+  border-bottom: 2px solid var(--gold);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+/* --- HAUPTINHALT --- */
+.content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  /* Füllt den restlichen Platz */
+  overflow: hidden;
+}
+
+/* --- MENÜS (Home & Auswahl) --- */
+.center-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  overflow-y: auto;
+  /* Falls Bildschirme sehr klein sind */
+}
+
+.logo-container {
+  margin-bottom: 25px;
+}
+
+.main-logo {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+/* Leucht-Effekt für Logo */
+.glow-effect {
+  filter: drop-shadow(0 0 10px var(--gold));
+  animation: holyGlow 3s infinite alternate;
+}
+
+@keyframes holyGlow {
+  from {
+    filter: drop-shadow(0 0 10px var(--gold));
+  }
+
+  to {
+    filter: drop-shadow(0 0 30px var(--gold));
+  }
+}
+
+.church-title {
+  font-family: 'Cairo', serif;
+  color: var(--gold);
+  font-size: 1.4rem;
+  margin-top: 15px;
+  text-shadow: 0 2px 4px black;
+  line-height: 1.3;
+}
+
+.small-logo {
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 85%;
+  max-width: 350px;
+  padding-bottom: 20px;
+}
+
+.menu-btn {
+  padding: 18px;
+  font-size: 1.2rem;
+  background: var(--glass);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.1s;
+}
+
+.menu-btn:active {
+  transform: scale(0.98);
+}
+
+.menu-btn.highlight {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--gold);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+}
+
+/* --- GEBET ANSICHT (Weißer Hintergrund) --- */
+.prayer-container {
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  padding-bottom: 50px;
+}
+
+.liturgy-header {
+  text-align: center;
+  color: #B8860B;
+  /* Dunkles Gold */
+  font-family: 'Cairo';
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #B8860B;
+  padding-bottom: 10px;
+}
+
+.prayer-row {
+  background: #f8f8f8;
+  /* Sehr helles Grau */
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-left: 5px solid #B8860B;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.speaker {
+  color: #8B0000;
+  /* Dunkelrot */
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.text-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.text-line {
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Sprachanpassung für hellen Hintergrund */
+.lang-de {
+  font-size: 1rem;
+  color: #111;
+  /* Fast Schwarz */
+  font-weight: 500;
+}
+
+.lang-ar {
+  font-family: 'Cairo';
+  font-size: 1.3rem;
+  text-align: right;
+  color: #000;
+}
+
+.lang-cop_ar {
+  font-family: 'Cairo';
+  font-size: 1.1rem;
+  text-align: right;
+  color: #444;
+  font-style: italic;
+}
+
+.lang-cop_cop {
+  font-family: sans-serif;
+  color: #0044aa;
+  /* Blau für Koptisch */
+  letter-spacing: 1px;
+}
+
+/* --- EINSTELLUNGEN POPUP --- */
+.settings-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  border: 2px solid var(--gold);
+  padding: 20px;
+  border-radius: 15px;
+  z-index: 200;
+  width: 280px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.settings-popup h3 {
+  color: black;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.lang-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.lang-btn {
+  padding: 10px;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  color: #333;
+  border-radius: 8px;
+  text-align: left;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.lang-btn.active {
+  background: var(--gold);
+  color: black;
+  border-color: var(--gold);
+}
+
+.lang-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.close-btn {
+  width: 100%;
+  padding: 12px;
+  background: #222;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* --- LOADING SCREEN (Zentriert & Fixiert) --- */
+.loading-screen {
+  position: fixed;
+  /* Fixiert über allem */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Horizontal zentriert */
+  justify-content: center;
+  /* Vertikal zentriert */
+  background: black;
+  color: var(--gold);
+  z-index: 9999;
+  /* Ganz oben drauf */
+}
+
+.loading-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
