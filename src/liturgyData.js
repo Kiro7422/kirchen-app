@@ -15,6 +15,7 @@ export const liturgies = {
         title: "Die Göttliche Liturgie des Hl. Basilius",
         content: [
             {
+                type: "صلاه الصلح",
                 id: 1,
                 speaker: "Priester",
                 cop_ar: "Eporo...",
