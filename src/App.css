@@ -176,7 +176,17 @@ body {
 
 /* --- GEBET ANSICHT --- */
 .prayer-container {
-  background-color: #ffffff;
+  /* Altes Weiß entfernen wir bzw. überschreiben es */
+  background-color: #fdfbf7;
+  /* Fallback: Ein helles Beige, falls Bild nicht lädt */
+
+  /* HIER DAS NEUE BILD: */
+  background-image: url('/background.png');
+  background-repeat: repeat;
+  /* Das Muster soll sich wiederholen */
+  background-size: 400px;
+  /* Größe des Musters anpassen (probier mal 300px oder 500px wenn es zu klein/groß ist) */
+
   width: 100%;
   height: 100%;
   display: flex;
@@ -184,6 +194,16 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.prayer-row {
+  background: rgba(255, 255, 255, 0.95);
+  /* Fast weiß, aber lässt Hintergrund minimal durchahnen */
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-left: 5px solid #B8860B;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .scroll-area {
