@@ -1,4 +1,4 @@
-/* src/App.css - Kompletter Code ohne Mobile-Stacking */
+/* src/App.css - Box ist wieder da + Spalten auf Handy + Text-Fix */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto:wght@300;500&display=swap');
 
 :root {
@@ -176,14 +176,10 @@ body {
 
 /* --- GEBET ANSICHT --- */
 .prayer-container {
-  /* Altes Weiß entfernen */
   background-color: #fdfbf7;
-  /* HIER DAS NEUE BILD: */
   background-image: url('/background.png');
-  /* Achte auf den Dateinamen (jpg/png) */
   background-repeat: repeat;
   background-size: 400px;
-  /* Muster-Größe */
 
   width: 100%;
   height: 100%;
@@ -211,7 +207,6 @@ body {
   padding-bottom: 10px;
 }
 
-/* Rote Abschnittsüberschriften */
 .section-title {
   color: var(--red);
   text-align: center;
@@ -225,14 +220,18 @@ body {
   padding-bottom: 5px;
 }
 
+/* --- DIE BOX IST WIEDER DA --- */
 .prayer-row {
+  /* Weißer Hintergrund, leicht transparent (95%) */
   background: rgba(255, 255, 255, 0.95);
-  /* Leicht durchsichtig für den Hintergrund */
-  padding: 15px;
+
+  /* Schatten und runde Ecken */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
+
+  padding: 15px;
   margin-bottom: 15px;
   border-left: 5px solid #B8860B;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .speaker {
@@ -247,18 +246,21 @@ body {
 /* --- GRID LAYOUT (SPALTEN) --- */
 .text-grid {
   display: grid;
-  gap: 15px;
-  /* Etwas weniger Abstand auf Handy */
+  gap: 10px;
   width: 100%;
   align-items: start;
-  /* HIER WURDE DER MOBILE-BLOCK ENTFERNT */
 }
 
 .text-line {
   line-height: 1.6;
   margin: 0;
   padding: 0 5px;
-  /* Weniger Padding für Platz sparen */
+
+  /* WICHTIG: Damit Text in der Box bleibt */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  min-width: 0;
 }
 
 /* Goldene Trennlinie rechts (außer beim letzten Element) */
