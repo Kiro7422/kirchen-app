@@ -1,50 +1,71 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, ArrowLeft, BookOpen } from 'lucide-react';
-import { liturgies, languages } from './liturgyData';
+import { Settings, ArrowLeft, BookOpen, Globe } from 'lucide-react'; // Globe Icon für Sprache
+import { liturgies, languages, uiTranslations } from './liturgyData';
 import './App.css';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
-  const [view, setView] = useState('home'); // home, liturgyMenu, prayer, bible, agpeya
+  const [view, setView] = useState('home');
   const [selectedLiturgy, setSelectedLiturgy] = useState(null);
 
-  // Standard-Sprachen: Deutsch, Arabisch, Koptisch-Arabisch
+  // App Sprache (UI & Titel): Standard Deutsch
+  const [appLang, setAppLang] = useState('de');
+
+  // Gebetssprachen (Die Zeilen im Gebet): Standard DE, AR, COP
   const [activeLangs, setActiveLangs] = useState(['de', 'ar', 'cop_ar']);
+
+  // Das Settings-Popup brauchen wir jetzt NUR noch für die Text-Zeilen, nicht mehr für App-Sprache
   const [showSettings, setShowSettings] = useState(false);
 
-  // Loading Screen Timer (3.5 Sekunden für die Animation)
   useEffect(() => {
     setTimeout(() => setLoading(false), 3500);
   }, []);
 
-  // Logik: Maximal 3 Sprachen gleichzeitig
   const toggleLanguage = (langKey) => {
     if (activeLangs.includes(langKey)) {
-      // Sprache entfernen (aber mind. 1 muss bleiben)
       if (activeLangs.length > 1) setActiveLangs(activeLangs.filter(l => l !== langKey));
     } else {
-      // Sprache hinzufügen (nur wenn weniger als 3)
       if (activeLangs.length < 3) setActiveLangs([...activeLangs, langKey]);
     }
   };
 
-  if (loading) return <LoadingScreen />;
+  // Hilfsfunktion für Übersetzungen
+  const t = (key, subKey) => {
+    if (subKey) return uiTranslations[key][subKey][appLang];
+    return uiTranslations.titles[key][appLang];
+  };
+
+  if (loading) return <LoadingScreen appLang={appLang} />;
 
   return (
     <div className="app-container">
-      {/* Hintergrundbild */}
       <div className="bg-image"></div>
       <div className="overlay"></div>
 
-      {/* Kopfzeile */}
       <header className="header">
         {view !== 'home' ? (
           <button onClick={() => setView(view === 'prayer' ? 'liturgyMenu' : 'home')} className="icon-btn">
             <ArrowLeft color="#D4AF37" size={32} />
           </button>
-        ) : <div />}
+        ) : (
+          // HIER: Sprachumschalter direkt im Header auf der Startseite
+          <div style={{ display: 'flex', gap: '10px', marginLeft: 'auto' }}>
+            <button
+              onClick={() => setAppLang('de')}
+              style={{ opacity: appLang === 'de' ? 1 : 0.5, cursor: 'pointer', background: 'none', border: 'none', fontSize: '1.5rem' }}
+            >
+              🇩🇪
+            </button>
+            <button
+              onClick={() => setAppLang('ar')}
+              style={{ opacity: appLang === 'ar' ? 1 : 0.5, cursor: 'pointer', background: 'none', border: 'none', fontSize: '1.5rem' }}
+            >
+              🇪🇬
+            </button>
+          </div>
+        )}
 
         {view === 'prayer' && (
           <button onClick={() => setShowSettings(!showSettings)} className="icon-btn">
@@ -67,13 +88,15 @@ export default function App() {
             >
               <div className="logo-container">
                 <img src="/logo.png" alt="Logo" className="main-logo glow-effect" />
-                <h1 className="church-title">Koptisch-Orthodoxes<br />Patriarchat Unna-Massen</h1>
+                <h1 className="church-title">
+                  {t('homeSubtitle')}
+                </h1>
               </div>
 
               <div className="btn-group">
-                <MenuButton onClick={() => setView('agpeya')} text="Agpeya" icon={<BookOpen size={20} />} />
-                <MenuButton onClick={() => setView('liturgyMenu')} text="Liturgie" highlight />
-                <MenuButton onClick={() => setView('bible')} text="Bibel" />
+                <MenuButton onClick={() => setView('agpeya')} text={t('buttons', 'agpeya')} icon={<BookOpen size={20} />} />
+                <MenuButton onClick={() => setView('liturgyMenu')} text={t('buttons', 'liturgy')} highlight />
+                <MenuButton onClick={() => setView('bible')} text={t('buttons', 'bible')} />
               </div>
             </motion.div>
           )}
@@ -88,24 +111,23 @@ export default function App() {
               className="center-view"
             >
               <img src="/logo.png" alt="Logo" className="small-logo" />
-              <h2 className="page-title">Wähle die Liturgie</h2>
+              <h2 className="page-title">{t('chooseLiturgy')}</h2>
               <div className="btn-group">
-                <MenuButton onClick={() => openLiturgy('basily')} text="Basilius (Basily)" />
-                <MenuButton onClick={() => openLiturgy('kerollosy')} text="Cyrillus (Kerollosy)" />
-                <MenuButton onClick={() => openLiturgy('gregorios')} text="Gregorios (8ere8orios)" />
-                <MenuButton onClick={() => openLiturgy('habashy')} text="Äthiopisch (Habashy)" />
+                <MenuButton onClick={() => openLiturgy('basily')} text={t('buttons', 'basily')} />
+                <MenuButton onClick={() => openLiturgy('kerollosy')} text={t('buttons', 'kerollosy')} />
+                <MenuButton onClick={() => openLiturgy('gregorios')} text={t('buttons', 'gregorios')} />
+                <MenuButton onClick={() => openLiturgy('habashy')} text={t('buttons', 'habashy')} />
               </div>
             </motion.div>
           )}
 
-          {/* GEBET ANSICHT (LIVE) */}
+          {/* GEBET ANSICHT */}
           {view === 'prayer' && selectedLiturgy && (
             <motion.div key="prayer" className="prayer-container" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
 
-              {/* EINSTELLUNGEN POPUP */}
               {showSettings && (
                 <div className="settings-popup">
-                  <h3>Sprachen wählen (Max 3)</h3>
+                  <h3>{t('prayerLanguages')}</h3>
                   <div className="lang-grid">
                     {Object.entries(languages).map(([key, info]) => (
                       <button
@@ -118,24 +140,36 @@ export default function App() {
                       </button>
                     ))}
                   </div>
-                  <button className="close-btn" onClick={() => setShowSettings(false)}>Fertig</button>
+                  <button className="close-btn" onClick={() => setShowSettings(false)}>{t('done')}</button>
                 </div>
               )}
 
-              {/* DER TEXT */}
               <div className="scroll-area">
-                <h3 className="liturgy-header">{liturgies[selectedLiturgy].title}</h3>
+                {/* HIER WURDE GEÄNDERT: Title ist jetzt sprachabhängig */}
+                <h3 className="liturgy-header">
+                  {liturgies[selectedLiturgy].title[appLang]}
+                </h3>
+
                 {liturgies[selectedLiturgy].content.map((row, index) => (
-                  <div key={index} className="prayer-row">
-                    <span className="speaker">{row.speaker}</span>
-                    <div className="text-grid">
-                      {activeLangs.map(lang => (
-                        <p key={lang} className={`text-line lang-${lang}`}>
-                          {row[lang] || "-"}
-                        </p>
-                      ))}
+                  <React.Fragment key={index}>
+                    {/* Roter Abschnitts-Titel */}
+                    {row.sectionTitle && (
+                      <h4 className="section-title">
+                        {row.sectionTitle[appLang]}
+                      </h4>
+                    )}
+
+                    <div className="prayer-row">
+                      <span className="speaker">{row.speaker}</span>
+                      <div className="text-grid">
+                        {activeLangs.map(lang => (
+                          <p key={lang} className={`text-line lang-${lang}`}>
+                            {row[lang] || "-"}
+                          </p>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  </React.Fragment>
                 ))}
               </div>
             </motion.div>
@@ -152,7 +186,7 @@ export default function App() {
   }
 }
 
-// Kleine Hilfs-Komponenten
+// ... MenuButton und LoadingScreen bleiben gleich ...
 function MenuButton({ text, onClick, highlight, icon }) {
   return (
     <motion.button
@@ -166,7 +200,7 @@ function MenuButton({ text, onClick, highlight, icon }) {
   );
 }
 
-function LoadingScreen() {
+function LoadingScreen({ appLang }) {
   return (
     <div className="loading-screen">
       <motion.img
@@ -179,7 +213,7 @@ function LoadingScreen() {
         className="loading-logo"
       />
       <motion.h2 animate={{ opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 1.5 }}>
-        Wird geladen...
+        {appLang === 'ar' ? '...جار التحميل' : 'Wird geladen...'}
       </motion.h2>
     </div>
   );
