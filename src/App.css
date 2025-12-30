@@ -1,4 +1,4 @@
-/* src/App.css - Kompletter Code */
+/* src/App.css - Kompletter Code ohne Mobile-Stacking */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto:wght@300;500&display=swap');
 
 :root {
@@ -176,16 +176,14 @@ body {
 
 /* --- GEBET ANSICHT --- */
 .prayer-container {
-  /* Altes Weiß entfernen wir bzw. überschreiben es */
+  /* Altes Weiß entfernen */
   background-color: #fdfbf7;
-  /* Fallback: Ein helles Beige, falls Bild nicht lädt */
-
   /* HIER DAS NEUE BILD: */
   background-image: url('/background.png');
+  /* Achte auf den Dateinamen (jpg/png) */
   background-repeat: repeat;
-  /* Das Muster soll sich wiederholen */
   background-size: 400px;
-  /* Größe des Musters anpassen (probier mal 300px oder 500px wenn es zu klein/groß ist) */
+  /* Muster-Größe */
 
   width: 100%;
   height: 100%;
@@ -194,16 +192,6 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.prayer-row {
-  background: rgba(255, 255, 255, 0.95);
-  /* Fast weiß, aber lässt Hintergrund minimal durchahnen */
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  border-left: 5px solid #B8860B;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .scroll-area {
@@ -238,7 +226,8 @@ body {
 }
 
 .prayer-row {
-  background: #f8f8f8;
+  background: rgba(255, 255, 255, 0.95);
+  /* Leicht durchsichtig für den Hintergrund */
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -255,44 +244,27 @@ body {
   margin-bottom: 8px;
 }
 
-/* --- NEU: GRID LAYOUT (SPALTEN) --- */
+/* --- GRID LAYOUT (SPALTEN) --- */
 .text-grid {
   display: grid;
-  gap: 20px;
-  /* Platz zwischen den Spalten */
+  gap: 15px;
+  /* Etwas weniger Abstand auf Handy */
   width: 100%;
   align-items: start;
+  /* HIER WURDE DER MOBILE-BLOCK ENTFERNT */
 }
 
 .text-line {
   line-height: 1.6;
   margin: 0;
-  padding: 0 10px;
+  padding: 0 5px;
+  /* Weniger Padding für Platz sparen */
 }
 
 /* Goldene Trennlinie rechts (außer beim letzten Element) */
 .text-line:not(:last-child) {
   border-right: 1px solid rgba(184, 134, 11, 0.3);
 }
-
-/* RESPONSIVE: Auf Handy untereinander */
-@media (max-width: 768px) {
-  .text-grid {
-    grid-template-columns: 1fr !important;
-    /* Erzwingt 1 Spalte */
-    gap: 15px;
-  }
-
-  .text-line:not(:last-child) {
-    border-right: none;
-    border-bottom: 1px solid rgba(184, 134, 11, 0.2);
-    /* Linie unten */
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-  }
-}
-
-/* ---------------------------------- */
 
 .lang-de {
   font-size: 1rem;
@@ -333,7 +305,7 @@ body {
   padding: 20px;
   border-radius: 15px;
   z-index: 200;
-  width: 300px;
+  width: 280px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   max-height: 80vh;
   overflow-y: auto;
