@@ -1,7 +1,7 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, ArrowLeft, BookOpen, Globe } from 'lucide-react'; // Globe Icon für Sprache
+import { Settings, ArrowLeft, BookOpen, Globe } from 'lucide-react';
 import { liturgies, languages, uiTranslations } from './liturgyData';
 import './App.css';
 
@@ -10,13 +10,11 @@ export default function App() {
   const [view, setView] = useState('home');
   const [selectedLiturgy, setSelectedLiturgy] = useState(null);
 
-  // App Sprache (UI & Titel): Standard Deutsch
+  // App Sprache (UI & Titel)
   const [appLang, setAppLang] = useState('de');
 
-  // Gebetssprachen (Die Zeilen im Gebet): Standard DE, AR, COP
+  // Gebetssprachen (Inhalt)
   const [activeLangs, setActiveLangs] = useState(['de', 'ar', 'cop_ar']);
-
-  // Das Settings-Popup brauchen wir jetzt NUR noch für die Text-Zeilen, nicht mehr für App-Sprache
   const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
@@ -31,7 +29,6 @@ export default function App() {
     }
   };
 
-  // Hilfsfunktion für Übersetzungen
   const t = (key, subKey) => {
     if (subKey) return uiTranslations[key][subKey][appLang];
     return uiTranslations.titles[key][appLang];
@@ -50,7 +47,6 @@ export default function App() {
             <ArrowLeft color="#D4AF37" size={32} />
           </button>
         ) : (
-          // HIER: Sprachumschalter direkt im Header auf der Startseite
           <div style={{ display: 'flex', gap: '10px', marginLeft: 'auto' }}>
             <button
               onClick={() => setAppLang('de')}
@@ -145,14 +141,12 @@ export default function App() {
               )}
 
               <div className="scroll-area">
-                {/* HIER WURDE GEÄNDERT: Title ist jetzt sprachabhängig */}
                 <h3 className="liturgy-header">
                   {liturgies[selectedLiturgy].title[appLang]}
                 </h3>
 
                 {liturgies[selectedLiturgy].content.map((row, index) => (
                   <React.Fragment key={index}>
-                    {/* Roter Abschnitts-Titel */}
                     {row.sectionTitle && (
                       <h4 className="section-title">
                         {row.sectionTitle[appLang]}
@@ -161,8 +155,20 @@ export default function App() {
 
                     <div className="prayer-row">
                       <span className="speaker">{row.speaker}</span>
-                      <div className="text-grid">
-                        {activeLangs.map(lang => (
+
+                      <div
+                        className="text-grid"
+                        style={{ gridTemplateColumns: `repeat(${activeLangs.length}, 1fr)` }}
+                      >
+                        {/* HIER IST DIE KORRIGIERTE SORTIERUNG */}
+                        {[...activeLangs].sort((a, b) => {
+                          // Diese Liste bestimmt die Reihenfolge von LINKS nach RECHTS
+                          // ar (Arabisch) ist ganz am Ende -> also ganz Rechts
+                          const order = ['de', 'cop_de', 'ar_de', 'cop_cop', 'cop_ar', 'ar'];
+
+                          // Sortieren basierend auf der Position in der Liste
+                          return order.indexOf(a) - order.indexOf(b);
+                        }).map(lang => (
                           <p key={lang} className={`text-line lang-${lang}`}>
                             {row[lang] || "-"}
                           </p>
@@ -186,7 +192,7 @@ export default function App() {
   }
 }
 
-// ... MenuButton und LoadingScreen bleiben gleich ...
+// Komponenten
 function MenuButton({ text, onClick, highlight, icon }) {
   return (
     <motion.button
