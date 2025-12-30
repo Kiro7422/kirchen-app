@@ -77,7 +77,7 @@ export const liturgies = {
         cop_ar: "",
         de: "Betet",
         ar: "صلوا",
-        cop_cop: "",
+        cop_cop: "; Sl/l",
         ar_de: "",
         cop_de: "إشلـــــــيل",
       },
