@@ -38,28 +38,22 @@ export const uiTranslations = {
         liturgy: { de: "Liturgie", ar: "القداسات" },
         bible: { de: "Bibel", ar: "الكتاب المقدس" },
         offering: { de: "Auswahl des Lammbrotes", ar: "الحمل" },
-        basily: { de: "Basilius ", ar: "القداس الباسيلي" },
-        kerollosy: { de: "Cyrillus ", ar: "القداس الكيرلسي" },
-        gregorios: { de: "Gregorios ", ar: "القداس الغريغوري" },
-        habashy: { de: "Äthiopisch ", ar: "القداس الحبشي" }
+        basily: { de: "Basilius (Basily)", ar: "القداس الباسيلي" },
+        kerollosy: { de: "Cyrillus (Kerollosy)", ar: "القداس الكيرلسي" },
+        gregorios: { de: "Gregorios (8ere8orios)", ar: "القداس الغريغوري" },
+        habashy: { de: "Äthiopisch (Habashy)", ar: "القداس الحبشي" }
     }
 };
-// src/liturgyData.js
-
-/* ... (uiTranslations bleiben gleich) ... */
-
 export const languages = {
-    de: { label: "Deutsch", default: true },
-    ar: { label: "عربي / Arabisch", default: true },
+    de: { label: "🇩🇪 Deutsch", default: true },
+    ar: { label: "🇪🇬 Arabisch", default: true },
 
-    // Deine anderen Sprachen 
+    // Deine neuen Bezeichnungen:
     ar_de: { label: "Franco / فرانكو", default: false },
     cop_ar: { label: "Koptisch (Arabisch) / قبطي معرب", default: true },
     cop_de: { label: "Koptisch Franco / قبطي فرانكو", default: false },
     cop_cop: { label: "Koptisch / قبطي", default: false },
 };
-
-
 
 export const liturgies = {
     offering: {
@@ -587,21 +581,21 @@ export const liturgies = {
             {
                 id: 1,
                 speaker: "Priester",
-                cop_de: "",
+                cop_de: "eSchliel",
                 de: "Betet",
                 ar: "صلوا",
                 cop_cop: "; Sl/l",
-                ar_de: "",
+                ar_de: "sallu",
                 cop_ar: "إشلـــــــيل",
             },
             {
                 id: 2,
                 speaker: "Diakon",
-                cop_de: "",
+                cop_de: "Epi pros-evkie es-tathiete.",
                 de: "Erhebt euch zum Gebet",
                 ar: "للصلاة قفوا",
                 cop_cop: "",
-                ar_de: "",
+                ar_de: "Lel-salah kefu",
                 cop_ar: "إيه بى إبروس إفشى إسطاثى تيه",
             },
             {
@@ -611,29 +605,29 @@ export const liturgies = {
                     ar: "صلاة الصلح"
                 },
                 speaker: "Priester",
-                cop_de: "",
+                cop_de: "Irienie pasi.",
                 de: "Der Friede seit mit allen",
                 ar: "السلام لجميعكم",
                 cop_cop: "",
-                ar_de: "",
+                ar_de: "Al-salam le gamy3ekom",
                 cop_ar: "إيرينى باسى",
             },
             {
                 id: 4,
                 speaker: "Volk",
-                cop_de: "",
+                cop_de: "Ke too epnewmati sou.",
                 de: "Und mit deinem Geiste",
                 ar: "ولروحك أيضا",
                 cop_cop: "",
-                ar_de: "",
+                ar_de: "Ua lero7eka aidan.",
                 cop_ar: "كيه طو إبنفماتى سو",
             },
             {
                 id: 5,
                 speaker: "priester",
-                cop_de: "",
+                cop_de: "Fie-etschop fie-enafschop fie-ethmien ewol scha eneh : pi-aidios ouoh en-omo-ousios ouoh ensen-ethronos ouoh eneschfier en-diemi-ourghos nem eFjoot. Fie-ete ethwe ou-metaghathos emmaw-ats : ewol-khen fie-ete nafschop an ak-ethrefschoopi enġe efroomi : ouoh ak-kaf khen piparadisos ente ep-ounof.Khen epġin-ethref-hei ze ewol hiten ti-apatie ente pi-gaġi nem ti-met-atsootem ensa teken-tolie ethouab ouoh e-ak-ouoosch e-aif em-weri ouoh e-enf ekhoun epiaxiooma ente schorp.Angelos an : ouze archieangelos: ouze patriarchies : ouze eprofieties empek-ten-houtou epenougai.Alla enthok khen oumet-atfoonh aktschisarx: ouoh ak-schoopi en-roomi : ouoh ak-ini emmon khen hoob niwen schaten ef-nowi emmaw-atf. Ak-schoopi nan emmesi-ties nem eFjoot ouoh ti-gin-ethmieti ente pi-thoom ak-bols ewol : ouoh ti-met-gaģi en-apas ak-scher-schoors. Ak-hootp enna-ep-kahi en-ani-fie-oui ouoh aker pi-esnaf en-ouai : e-ak-gook ewol entioikonomia khen et-sarx. Ouoh ek-nasche-nak e-eni-fie-oui sooma-tikoos : e-akmoh em-ep-tierf khen tek-meth-nouti. Nak-goo ennek-mathie-ties ethouab ouoh en-apos-tolos. Ge ta-hirienie titi emmos nooten : ta-hirienie anok ti-koo emmos nemooten. epschooi emmos pe Thai on ti-nou ari-ehmot emmos nan pen-nieb. ",
                 de: "Der Du bist,der Du warst und der Du sein Wirst bis in Ewigkeit ,der Wesensgleiche,Mitthorneden und Gefährte des Schöpfers und Vaters Der Du aus alleiniger Güte den Menschen aus dem Nichts geschaffen hast und ihn ins Paradies der Freude gesetzt hast. Als er aber durch die Täuschung des Feindes und den Ungehorsam gegen Dein heiliges Gebot fiel  und Du ihn in die frühere Würde bringen wolltest hast Du weder einem Engel ,noch einem Erzengel,noch einem propheten unsere Erlösung  anvertraut. Sondern du hast selber ohne Veränderung Fleisch angenommen und bist Mensch geworden, und bist uns in allem gleich geworden außer allein in der Sünde Du wurdest uns ein Mittler bei dem Vater, du hast die trennende Wand niedergerissen und die alte Feindschaft aufgehoben.Du hast  die Irdischen mit den Himmlischen versöhnt und die zwei eins gemacht, nachdem du die Heilsordnung im Fleisch vollendet hast. Als du empor Himmel leiblich aufgefahren bist ,hast du alles mit deiner Gottheit erfüllt. Du hast zu deinen heiligen Jüngern und Aposteln gesagt Meinen Frieden gebe ich euch ,meinen Frieden hinterlasse ich euch. Gewähre ihn uns , unser Herr. Reinige uns von aller Befleckung, allem Betrug, aller Heuchelei, jeder listigen Tat und vom Denken an das Böse, das den Tod nach sich zieht.",
-                ar: "أيها الكائن الذى كان الدائم إلي الأبد، الذاتي والمساوي والجليس والخالق الشريك مع الآأيها الكائن الذى كان الدائم إلي الأبد، الذاتي والمساوي والجليس والخالق الشريك مع الآب، الذى من أجل الصلاح وحده مما لم يكن كونت الانسان وجعلته في فردوس النعيم وعندما سقط بغواية العدو ومخالفة وصيتك المقدسة وأردت أن تجدده وترده إلي رتبته الأولى لا ملاك ولا رئيس ملائكة ولا رئيس آباء ولا نبياً ائتمنته على خلاصنا . بل أنت بغير استحالة تجسدت وتأنست وشابهتنا في كل شيء ما خلا الخطيئة وحدها وصرت لنا وسيطاً لدى الآب، والحاجز المتوسط نقضته والعداوة القديمة هدمتها وأصلحت الأرضيين مع السمائيين، وجعلت الأثنين واحداً، وأكملت التدبير بالجسد وعند صعودك إلي السموات جسدياً إذ ملأت الكل بلاهوتك قلت لتلاميذك ورسلك القديسين سلامى أعطيكم سلامى أنا أترك لكم، هذا أيضاً الآن أنعم به علينا يا سيدنا طهرنا من كل دنس، ومن كل غش، ومن كل رياء، ومن كل شر، ومن كل مكيدة، ومن تذكار الشر الملبس الموت.",
+                ar: "أيها الكائن الذى كان الدائم إلي الأبد، الذاتي والمساوي والجليس والخالق الشريك مع الآب، الذى من أجل الصلاح وحده مما لم يكن كونت الانسان وجعلته في فردوس النعيم وعندما سقط بغواية العدو ومخالفة وصيتك المقدسة وأردت أن تجدده وترده إلي رتبته الأولى لا ملاك ولا رئيس ملائكة ولا رئيس آباء ولا نبياً ائتمنته على خلاصنا . بل أنت بغير استحالة تجسدت وتأنست وشابهتنا في كل شيء ما خلا الخطيئة وحدها وصرت لنا وسيطاً لدى الآب، والحاجز المتوسط نقضته والعداوة القديمة هدمتها وأصلحت الأرضيين مع السمائيين، وجعلت الأثنين واحداً، وأكملت التدبير بالجسد وعند صعودك إلي السموات جسدياً إذ ملأت الكل بلاهوتك قلت لتلاميذك ورسلك القديسين سلامى أعطيكم سلامى أنا أترك لكم، هذا أيضاً الآن أنعم به علينا يا سيدنا طهرنا من كل دنس، ومن كل غش، ومن كل رياء، ومن كل شر، ومن كل مكيدة، ومن تذكار الشر الملبس الموت.",
                 cop_cop: "",
                 ar_de: "",
                 cop_ar: "",
