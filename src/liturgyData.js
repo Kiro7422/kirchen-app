@@ -519,7 +519,7 @@ export const liturgies = {
                 },
                 de: "Das Wort Gottes möge wachsen, sich ausbreiten, stark werden und fest bleiben in der heiligen Kirche Gottes. Amen. ",
                 ar: "لم تزل كلمة الرب تنمو وتكثر وتعتز وتثبت ، في بيعة الله المقدسة. آمين",
-            }
+            },
 
 
 
