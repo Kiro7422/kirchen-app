@@ -6,9 +6,7 @@
   --bg-dark: #0a0a0a;
   --paper-bg: #fdfbf7;
   --red: #8B0000;
-  /* Die Farbe für den Textmarker */
-  --selection-bg: #fff176;
-  --selection-color: #000;
+  --marker-yellow: #ffeb3b;
 }
 
 body {
@@ -16,9 +14,8 @@ body {
   background: black;
   color: white;
   font-family: 'Roboto', sans-serif;
-  /* Standardmäßig KEINE Textauswahl im Body, um UI sauber zu halten */
+  overflow: hidden;
   user-select: none;
-  -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -31,7 +28,7 @@ body {
   overflow: hidden;
 }
 
-/* --- HINTERGRUND --- */
+/* HINTERGRUND */
 .bg-image {
   position: absolute;
   top: 0;
@@ -66,7 +63,7 @@ body {
   z-index: 1;
 }
 
-/* --- HEADER --- */
+/* HEADER */
 .header {
   position: relative;
   z-index: 100;
@@ -102,15 +99,14 @@ body {
 }
 
 .icon-btn.active-pen {
-  background: rgba(255, 235, 59, 0.2);
-  box-shadow: 0 0 15px rgba(255, 235, 59, 0.4);
+  background: rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
   transform: scale(1.1);
-  color: #fff176;
-  /* Helles Gelb für das Icon */
-  border: 1px solid rgba(255, 235, 59, 0.5);
+  border: 1px solid var(--gold);
+  color: var(--marker-yellow);
 }
 
-/* --- INHALT --- */
+/* --- INHALT & MENÜS --- */
 .content {
   position: relative;
   z-index: 10;
@@ -120,7 +116,6 @@ body {
   flex-direction: column;
 }
 
-/* MENÜS */
 .center-view {
   flex: 1;
   display: flex;
@@ -205,10 +200,9 @@ body {
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
 }
 
-/* src/App.css ... (der obere Teil bleibt gleich) */
-
-/* --- GEBET ANSICHT --- */
+/* --- GEBET ANSICHT (HINTERGRUND FIX) --- */
 .prayer-mode {
+  /* Absolute Positionierung + z-index + Deckkraft verhindert Überlappen */
   position: absolute;
   top: 0;
   left: 0;
@@ -233,9 +227,10 @@ body {
   scrollbar-color: var(--gold) transparent;
 }
 
-/* --- HIGHLIGHTER, RADIERER & TEXT SELECTION --- */
+/* --- TEXT SELECTION STYLING (HACK) --- */
+/* Dies überschreibt das System-Blau mit unserem Marker-Gelb */
 
-/* Standard: Textzeilen sind NICHT auswählbar */
+/* Standard (ohne Stift): Keine Auswahl möglich */
 .text-line {
   line-height: 1.6;
   margin: 0;
@@ -249,71 +244,48 @@ body {
   -webkit-user-select: none;
 }
 
-/* ECHTER TEXTMARKER STIL (Das Gelbe) */
-.highlight-marker {
-  background-color: #ffeb3b;
-  /* Leuchtendes Gelb */
-  color: black;
-  border-radius: 2px;
-  box-shadow: 0 0 2px #ffeb3b;
-  padding: 2px 0;
-  cursor: inherit;
-  /* Erbt den Cursor des Modus */
-}
-
-/* MODUS 1: STIFT AKTIV */
+/* Wenn Stift AKTIV ist: */
 .prayer-mode.mode-pen-active .text-line {
   user-select: text;
   -webkit-user-select: text;
-  /* Textauswahl erlauben */
   cursor: text;
+
+  /* Deaktiviert das Kontextmenü (Kopieren/Einfügen) auf iOS! */
+  -webkit-touch-callout: none;
 }
 
-.prayer-mode.mode-pen-active .prayer-row {
-  cursor: text;
-}
-
-/* WICHTIG FÜR HANDY: Wenn Stift an ist, Auswahlfarbe transparent machen beim Ziehen */
-.prayer-mode.mode-pen-active ::selection {
-  background: rgba(255, 235, 59, 0.3);
+/* Das hier macht die blaue Box GELB beim Ziehen */
+.prayer-mode.mode-pen-active *::selection {
+  background-color: rgba(255, 235, 59, 0.6);
+  /* Halbtransparentes Gelb */
   color: inherit;
 }
 
-.prayer-mode.mode-pen-active ::-webkit-selection {
-  background: rgba(255, 235, 59, 0.3);
+/* Für iOS Safari speziell */
+.prayer-mode.mode-pen-active *::-webkit-selection {
+  background-color: rgba(255, 235, 59, 0.6);
   color: inherit;
+  /* Versteckt teilweise die Greifer (Systemabhängig) */
+  -webkit-background-clip: text;
 }
 
-
-/* MODUS 2: RADIERER AKTIV */
-.prayer-mode.mode-eraser-active .prayer-row {
-  /* Cursor zeigt an, dass man etwas tun kann (Fadenkreuz oder Pointer) */
-  cursor: crosshair;
+/* Der dauerhafte Marker */
+.highlight-marker {
+  background-color: var(--marker-yellow);
+  color: black;
+  border-radius: 3px;
+  box-shadow: 0 0 4px var(--marker-yellow);
+  padding: 1px 0;
 }
 
-/* Wenn Radierer an ist, soll man NICHTS markieren können */
-.prayer-mode.mode-eraser-active .text-line {
-  user-select: none;
-  -webkit-user-select: none;
-  pointer-events: auto;
-  /* Wichtig, damit Klicks registriert werden */
-}
-
-/* Aber das gelb Markierte muss klickbar sein und einen Pointer zeigen */
+/* RADIERER MODUS */
 .prayer-mode.mode-eraser-active .highlight-marker {
-  cursor: pointer;
-  transition: background-color 0.2s;
+  cursor: crosshair;
+  outline: 2px dashed red;
+  /* Zeigt an, was löschbar ist */
 }
 
-/* Hover-Effekt beim Radieren auf dem Desktop */
-.prayer-mode.mode-eraser-active .highlight-marker:hover {
-  background-color: #ffc107;
-  /* Dunkleres Gelb/Orange beim Drüberfahren */
-  box-shadow: 0 0 4px red;
-}
-
-
-/* --- GEBETS BOXEN & REST --- */
+/* --- GEBETS BOXEN --- */
 .prayer-row {
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
@@ -324,7 +296,6 @@ body {
   transform: translateZ(0);
 }
 
-/* (Der Rest der CSS Datei bleibt wie vorher...) */
 .liturgy-header {
   text-align: center;
   color: #B8860B;
@@ -388,6 +359,7 @@ body {
   font-size: 1rem;
 }
 
+/* POPUP */
 .settings-popup {
   position: absolute;
   top: 70px;
