@@ -1,10 +1,12 @@
 // src/App.jsx
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, ArrowLeft, BookOpen, PenTool } from 'lucide-react';
+// WICHTIG: 'Eraser' Icon importieren
+import { Settings, ArrowLeft, BookOpen, PenTool, Eraser } from 'lucide-react';
 import { liturgies, languages, uiTranslations } from './liturgyData';
 import './App.css';
 
+// Animationen (bleiben gleich)
 const pageVariants = { initial: { opacity: 0, scale: 0.98 }, in: { opacity: 1, scale: 1 }, out: { opacity: 0, scale: 1.02 } };
 const pageTransition = { type: "tween", ease: "easeOut", duration: 0.3 };
 const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.05 } } };
@@ -14,18 +16,17 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState('home');
   const [selectedLiturgy, setSelectedLiturgy] = useState(null);
-
   const [appLang, setAppLang] = useState('de');
   const [activeLangs, setActiveLangs] = useState(['de', 'ar', 'cop_ar']);
   const [showSettings, setShowSettings] = useState(false);
 
-  // --- HIGHLIGHTER MODUS ---
-  const [isHighlightMode, setIsHighlightMode] = useState(false);
+  // --- MODI ---
+  const [isHighlightMode, setIsHighlightMode] = useState(false); // Stift an?
+  const [isEraserMode, setIsEraserMode] = useState(false);    // Radierer an?
 
-  // --- SCROLL FIX LOGIC ---
+  // --- SCROLL FIX LOGIC (bleibt gleich) ---
   const scrollContainerRef = useRef(null);
   const topVisibleId = useRef(null);
-
   const captureScroll = () => {
     if (!scrollContainerRef.current) return;
     const rows = scrollContainerRef.current.querySelectorAll('.prayer-row');
@@ -37,7 +38,6 @@ export default function App() {
       }
     }
   };
-
   const toggleLanguage = (langKey) => {
     captureScroll();
     if (activeLangs.includes(langKey)) {
@@ -46,6 +46,64 @@ export default function App() {
       if (activeLangs.length < 3) setActiveLangs([...activeLangs, langKey]);
     }
   };
+
+  // --- FUNKTION: TEXT MARKIEREN (Stift) ---
+  const handleTextSelection = () => {
+    // Nur ausführen, wenn Stift an ist UND Radierer aus
+    if (!isHighlightMode || isEraserMode) return;
+
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+    const text = selection.toString();
+    if (text.length === 0) return;
+
+    const range = selection.getRangeAt(0);
+    try {
+      // Checken, ob wir bereits innerhalb eines Markers markieren (verhindert doppeltes Gelb)
+      if (range.commonAncestorContainer.parentElement.classList.contains('highlight-marker')) {
+        selection.removeAllRanges();
+        return;
+      }
+      const span = document.createElement('span');
+      span.className = 'highlight-marker';
+      range.surroundContents(span);
+      selection.removeAllRanges(); // Handy-Menü verhindern
+    } catch (e) {
+      console.log("Komplexe Markierung nicht möglich", e);
+      selection.removeAllRanges();
+    }
+  };
+
+  // --- FUNKTION: RADIEREN (Klick) ---
+  // Diese Funktion wird ausgeführt, wenn man im Gebet irgendwo hinklickt
+  const handlePrayerClick = (e) => {
+    // Nur ausführen, wenn Radierer an ist
+    if (!isEraserMode) return;
+
+    // Prüfen: Wurde auf etwas geklickt, das die Klasse 'highlight-marker' hat?
+    // .closest() sucht vom angeklickten Element aufwärts nach der Klasse.
+    const targetSpan = e.target.closest('.highlight-marker');
+
+    if (targetSpan) {
+      // JA, es ist ein Marker.
+      // "Auspacken": Ersetze das <span> durch seinen eigenen Inhalt (den Text).
+      // Dadurch verschwindet das Gelbe, aber der Text bleibt.
+      targetSpan.replaceWith(...targetSpan.childNodes);
+    }
+  };
+
+
+  // --- HELPER FÜR HEADER KNÖPFE ---
+  const togglePen = () => {
+    if (isHighlightMode) { setIsHighlightMode(false); } // Aus, wenn schon an
+    else { setIsHighlightMode(true); setIsEraserMode(false); } // An, und Radierer aus
+  };
+
+  const toggleEraser = () => {
+    if (isEraserMode) { setIsEraserMode(false); } // Aus, wenn schon an
+    else { setIsEraserMode(true); setIsHighlightMode(false); } // An, und Stift aus
+  };
+
 
   useLayoutEffect(() => {
     if (view === 'prayer' && topVisibleId.current && scrollContainerRef.current) {
@@ -64,6 +122,12 @@ export default function App() {
   };
 
   if (loading) return <LoadingScreen appLang={appLang} />;
+
+  // Bestimme die aktuelle CSS Klasse basierend auf dem Modus
+  let prayerModeClass = "prayer-mode";
+  if (isHighlightMode) prayerModeClass += " mode-pen-active";
+  if (isEraserMode) prayerModeClass += " mode-eraser-active";
+
 
   return (
     <div className="app-container">
@@ -92,21 +156,37 @@ export default function App() {
 
         {view === 'prayer' && (
           <div className="header-actions">
-            {/* STIFT KNOPF: Schaltet nur den Modus um */}
+            {/* KNOPF 1: STIFT */}
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={() => setIsHighlightMode(!isHighlightMode)}
+              onClick={togglePen} // Neue Toggle Funktion
               className={`icon-btn ${isHighlightMode ? 'active-pen' : ''}`}
               title="Text markieren"
             >
-              {/* Fill ist jetzt vollflächig gelb, wenn aktiv */}
               <PenTool
                 color={isHighlightMode ? "#fff176" : "#D4AF37"}
-                size={24}
+                size={22}
                 fill={isHighlightMode ? "#fff176" : "transparent"}
               />
             </motion.button>
 
+            {/* KNOPF 2: RADIERER (NEU) */}
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleEraser} // Neue Toggle Funktion
+              // Nutzt den gleichen aktiven Stil wie der Stift (gelb leuchtend)
+              className={`icon-btn ${isEraserMode ? 'active-pen' : ''}`}
+              title="Markierung löschen"
+            >
+              {/* Eraser Icon, leuchtet weiß/gelb wenn aktiv */}
+              <Eraser
+                color={isEraserMode ? "#fff176" : "#D4AF37"}
+                size={22}
+                fill={isEraserMode ? "#fff176" : "transparent"}
+              />
+            </motion.button>
+
+            {/* KNOPF 3: SETTINGS */}
             <motion.button
               whileTap={{ rotate: 90 }}
               onClick={() => setShowSettings(!showSettings)}
@@ -120,8 +200,7 @@ export default function App() {
 
       <main className="content">
         <AnimatePresence mode='wait'>
-
-          {/* HOME */}
+          {/* HOME & MENÜ (unverändert...) */}
           {view === 'home' && (
             <motion.div key="home" initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition} className="center-view">
               <div className="center-content-wrapper">
@@ -138,7 +217,6 @@ export default function App() {
             </motion.div>
           )}
 
-          {/* MENÜ */}
           {view === 'liturgyMenu' && (
             <motion.div key="menu" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -100, opacity: 0 }} transition={pageTransition} className="center-view">
               <div className="center-content-wrapper">
@@ -157,9 +235,14 @@ export default function App() {
           {view === 'prayer' && selectedLiturgy && (
             <motion.div
               key="prayer"
-              /* HIER WIRD DER MODUS GESETZT: Wenn aktiv, erlaubt CSS das Markieren */
-              className={`prayer-mode ${isHighlightMode ? 'highlight-mode-active' : ''}`}
+              /* Dynamische CSS Klasse je nach Modus */
+              className={prayerModeClass}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              // Handler für Stift (Loslassen nach Ziehen)
+              onMouseUp={handleTextSelection}
+              onTouchEnd={handleTextSelection}
+              // Handler für Radierer (Klicken/Tippen)
+              onClick={handlePrayerClick}
             >
               <AnimatePresence>
                 {showSettings && (
@@ -235,11 +318,13 @@ export default function App() {
   function openLiturgy(type) {
     setSelectedLiturgy(type);
     setView('prayer');
-    setIsHighlightMode(false); // Stift standardmäßig aus beim Start
+    // Beim Öffnen eines neuen Gebets alles zurücksetzen
+    setIsHighlightMode(false);
+    setIsEraserMode(false);
   }
 }
 
-// SUB COMPONENTS
+// SUB COMPONENTS (unverändert)
 function LanguageToggle({ current, lang, setLang, flag }) {
   return (
     <motion.button
@@ -254,7 +339,6 @@ function LanguageToggle({ current, lang, setLang, flag }) {
     </motion.button>
   )
 }
-
 function MenuButton({ text, onClick, highlight, icon, index = 0 }) {
   return (
     <motion.button
@@ -267,7 +351,6 @@ function MenuButton({ text, onClick, highlight, icon, index = 0 }) {
     </motion.button>
   );
 }
-
 function LoadingScreen({ appLang }) {
   return (
     <div className="loading-screen">

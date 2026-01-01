@@ -205,6 +205,8 @@ body {
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
 }
 
+/* src/App.css ... (der obere Teil bleibt gleich) */
+
 /* --- GEBET ANSICHT --- */
 .prayer-mode {
   position: absolute;
@@ -231,9 +233,9 @@ body {
   scrollbar-color: var(--gold) transparent;
 }
 
-/* --- HIGHLIGHTER & TEXT SELECTION (DAS IST NEU) --- */
+/* --- HIGHLIGHTER, RADIERER & TEXT SELECTION --- */
 
-/* Standard: Textzeilen sind NICHT auswählbar (verhindert versehentliches Markieren beim Scrollen) */
+/* Standard: Textzeilen sind NICHT auswählbar */
 .text-line {
   line-height: 1.6;
   margin: 0;
@@ -243,41 +245,75 @@ body {
   color: #1a1a1a !important;
   font-weight: 500;
   white-space: pre-wrap;
-
   user-select: none;
-  /* Deaktiviert */
   -webkit-user-select: none;
 }
 
-/* Wenn Stift-Modus AKTIV ist: Text wird auswählbar */
-.prayer-mode.highlight-mode-active .text-line {
+/* ECHTER TEXTMARKER STIL (Das Gelbe) */
+.highlight-marker {
+  background-color: #ffeb3b;
+  /* Leuchtendes Gelb */
+  color: black;
+  border-radius: 2px;
+  box-shadow: 0 0 2px #ffeb3b;
+  padding: 2px 0;
+  cursor: inherit;
+  /* Erbt den Cursor des Modus */
+}
+
+/* MODUS 1: STIFT AKTIV */
+.prayer-mode.mode-pen-active .text-line {
   user-select: text;
-  /* Aktiviert */
   -webkit-user-select: text;
+  /* Textauswahl erlauben */
   cursor: text;
 }
 
-/* Wenn Stift-Modus AKTIV ist: Cursor über der ganzen Box ändern */
-.prayer-mode.highlight-mode-active .prayer-row {
+.prayer-mode.mode-pen-active .prayer-row {
   cursor: text;
 }
 
-/* Design der Markierung (Das Gelbe) */
-::selection {
-  background: var(--selection-bg);
-  /* Gelber Hintergrund */
-  color: var(--selection-color);
-  /* Schwarzer Text */
-  text-shadow: none;
+/* WICHTIG FÜR HANDY: Wenn Stift an ist, Auswahlfarbe transparent machen beim Ziehen */
+.prayer-mode.mode-pen-active ::selection {
+  background: rgba(255, 235, 59, 0.3);
+  color: inherit;
 }
 
-/* Für Firefox */
-::-moz-selection {
-  background: var(--selection-bg);
-  color: var(--selection-color);
+.prayer-mode.mode-pen-active ::-webkit-selection {
+  background: rgba(255, 235, 59, 0.3);
+  color: inherit;
 }
 
-/* --- GEBETS BOXEN --- */
+
+/* MODUS 2: RADIERER AKTIV */
+.prayer-mode.mode-eraser-active .prayer-row {
+  /* Cursor zeigt an, dass man etwas tun kann (Fadenkreuz oder Pointer) */
+  cursor: crosshair;
+}
+
+/* Wenn Radierer an ist, soll man NICHTS markieren können */
+.prayer-mode.mode-eraser-active .text-line {
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: auto;
+  /* Wichtig, damit Klicks registriert werden */
+}
+
+/* Aber das gelb Markierte muss klickbar sein und einen Pointer zeigen */
+.prayer-mode.mode-eraser-active .highlight-marker {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Hover-Effekt beim Radieren auf dem Desktop */
+.prayer-mode.mode-eraser-active .highlight-marker:hover {
+  background-color: #ffc107;
+  /* Dunkleres Gelb/Orange beim Drüberfahren */
+  box-shadow: 0 0 4px red;
+}
+
+
+/* --- GEBETS BOXEN & REST --- */
 .prayer-row {
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
@@ -288,6 +324,7 @@ body {
   transform: translateZ(0);
 }
 
+/* (Der Rest der CSS Datei bleibt wie vorher...) */
 .liturgy-header {
   text-align: center;
   color: #B8860B;
@@ -351,7 +388,6 @@ body {
   font-size: 1rem;
 }
 
-/* POPUP */
 .settings-popup {
   position: absolute;
   top: 70px;
