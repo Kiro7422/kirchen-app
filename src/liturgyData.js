@@ -5,7 +5,7 @@ import { title } from "framer-motion/client";
 export const uiTranslations = {
     titles: {
         homeSubtitle: {
-            de: "Kirche der Hl. Maria & Hl.Philopater Mercurius subscribersUnna-Massen",
+            de: "Kirche der Hl. Maria & Hl.Philopater Mercurius Unna-Massen",
             ar: "كنيسه العدرا و الشهيد ابي سيفين القبطيه الارثذوكسيه باونا ماسن"
         },
         chooseLiturgy: {
