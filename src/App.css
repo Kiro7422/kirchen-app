@@ -1,11 +1,14 @@
-/* src/App.css - Box ist wieder da + Spalten auf Handy + Text-Fix */
+/* src/App.css */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto:wght@300;500&display=swap');
 
 :root {
   --gold: #D4AF37;
   --bg-dark: #0a0a0a;
-  --glass: rgba(20, 20, 20, 0.7);
+  --paper-bg: #fdfbf7;
   --red: #8B0000;
+  /* Die Farbe für den Textmarker */
+  --selection-bg: #fff176;
+  --selection-color: #000;
 }
 
 body {
@@ -13,8 +16,10 @@ body {
   background: black;
   color: white;
   font-family: 'Roboto', sans-serif;
-  overflow: hidden;
+  /* Standardmäßig KEINE Textauswahl im Body, um UI sauber zu halten */
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .app-container {
@@ -23,6 +28,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* --- HINTERGRUND --- */
@@ -36,6 +42,17 @@ body {
   background-size: cover;
   background-position: center;
   z-index: 0;
+  animation: slowZoom 60s infinite alternate ease-in-out;
+}
+
+@keyframes slowZoom {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
 }
 
 .overlay {
@@ -44,8 +61,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 100%);
+  backdrop-filter: blur(3px);
   z-index: 1;
 }
 
@@ -53,14 +70,22 @@ body {
 .header {
   position: relative;
   z-index: 100;
-  padding: 0 20px;
+  padding: 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 70px;
-  background: #111;
-  border-bottom: 2px solid var(--gold);
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.4);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .icon-btn {
@@ -70,71 +95,80 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  color: var(--gold);
 }
 
-/* --- HAUPTINHALT --- */
+.icon-btn.active-pen {
+  background: rgba(255, 235, 59, 0.2);
+  box-shadow: 0 0 15px rgba(255, 235, 59, 0.4);
+  transform: scale(1.1);
+  color: #fff176;
+  /* Helles Gelb für das Icon */
+  border: 1px solid rgba(255, 235, 59, 0.5);
+}
+
+/* --- INHALT --- */
 .content {
   position: relative;
   z-index: 10;
   flex: 1;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-/* --- MENÜS --- */
+/* MENÜS */
 .center-view {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100%;
   text-align: center;
+  width: 100%;
+  padding: 20px 0;
   overflow-y: auto;
+}
+
+.center-content-wrapper {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 40px;
 }
 
 .logo-container {
   margin-bottom: 25px;
+  flex-shrink: 0;
 }
 
 .main-logo {
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
   object-fit: contain;
-}
-
-.glow-effect {
-  filter: drop-shadow(0 0 10px var(--gold));
-  animation: holyGlow 3s infinite alternate;
-}
-
-@keyframes holyGlow {
-  from {
-    filter: drop-shadow(0 0 10px var(--gold));
-  }
-
-  to {
-    filter: drop-shadow(0 0 30px var(--gold));
-  }
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
 }
 
 .church-title {
   font-family: 'Cairo', serif;
   color: var(--gold);
-  font-size: 1.4rem;
-  margin-top: 15px;
+  font-size: 1.3rem;
   text-shadow: 0 2px 4px black;
-  line-height: 1.3;
-}
-
-.small-logo {
-  width: 60px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  padding: 0 10px;
 }
 
 .page-title {
   color: var(--gold);
-  margin-bottom: 20px;
   font-family: 'Cairo', sans-serif;
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  flex-shrink: 0;
 }
 
 .btn-group {
@@ -143,58 +177,115 @@ body {
   gap: 15px;
   width: 85%;
   max-width: 350px;
-  padding-bottom: 20px;
+  flex-shrink: 0;
 }
 
 .menu-btn {
   padding: 18px;
-  font-size: 1.2rem;
-  background: var(--glass);
+  font-size: 1.1rem;
+  background: rgba(30, 30, 30, 0.75);
   border: 1px solid rgba(212, 175, 55, 0.3);
   color: white;
   border-radius: 12px;
   cursor: pointer;
   font-weight: bold;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  transition: transform 0.1s;
   font-family: 'Cairo', sans-serif;
-}
-
-.menu-btn:active {
-  transform: scale(0.98);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  touch-action: manipulation;
 }
 
 .menu-btn.highlight {
-  background: rgba(212, 175, 55, 0.2);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(40, 40, 40, 0.9));
   border-color: var(--gold);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
 }
 
 /* --- GEBET ANSICHT --- */
-.prayer-container {
-  background-color: #fdfbf7;
-  background-image: url('/background.png');
-  background-repeat: repeat;
-  background-size: 400px;
-
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+.prayer-mode {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  background-color: var(--paper-bg);
+  background-image: url('/background.png');
+  background-repeat: repeat;
+  background-size: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 .scroll-area {
   flex: 1;
   overflow-y: auto;
-  padding: 20px;
-  padding-bottom: 50px;
+  padding: 15px;
+  padding-bottom: 100px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+
+/* --- HIGHLIGHTER & TEXT SELECTION (DAS IST NEU) --- */
+
+/* Standard: Textzeilen sind NICHT auswählbar (verhindert versehentliches Markieren beim Scrollen) */
+.text-line {
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 6px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  color: #1a1a1a !important;
+  font-weight: 500;
+  white-space: pre-wrap;
+
+  user-select: none;
+  /* Deaktiviert */
+  -webkit-user-select: none;
+}
+
+/* Wenn Stift-Modus AKTIV ist: Text wird auswählbar */
+.prayer-mode.highlight-mode-active .text-line {
+  user-select: text;
+  /* Aktiviert */
+  -webkit-user-select: text;
+  cursor: text;
+}
+
+/* Wenn Stift-Modus AKTIV ist: Cursor über der ganzen Box ändern */
+.prayer-mode.highlight-mode-active .prayer-row {
+  cursor: text;
+}
+
+/* Design der Markierung (Das Gelbe) */
+::selection {
+  background: var(--selection-bg);
+  /* Gelber Hintergrund */
+  color: var(--selection-color);
+  /* Schwarzer Text */
+  text-shadow: none;
+}
+
+/* Für Firefox */
+::-moz-selection {
+  background: var(--selection-bg);
+  color: var(--selection-color);
+}
+
+/* --- GEBETS BOXEN --- */
+.prayer-row {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 15px;
+  border-left: 5px solid #B8860B;
+  transform: translateZ(0);
 }
 
 .liturgy-header {
@@ -202,255 +293,136 @@ body {
   color: #B8860B;
   font-family: 'Cairo';
   font-size: 1.8rem;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   border-bottom: 2px solid #B8860B;
   padding-bottom: 10px;
+  display: inline-block;
 }
 
 .section-title {
   color: var(--red);
   text-align: center;
   font-family: 'Cairo', serif;
-  font-size: 1.6rem;
-  font-weight: bold;
-  margin-top: 30px;
+  font-size: 1.5rem;
+  margin-top: 35px;
   margin-bottom: 15px;
-  width: 100%;
-  border-bottom: 1px dashed rgba(139, 0, 0, 0.2);
-  padding-bottom: 5px;
-}
-
-/* --- DIE BOX IST WIEDER DA --- */
-.prayer-row {
-  /* Weißer Hintergrund, leicht transparent (95%) */
-  background: rgba(255, 255, 255, 0.95);
-
-  /* Schatten und runde Ecken */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-
-  padding: 15px;
-  margin-bottom: 15px;
-  border-left: 5px solid #B8860B;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 1px dashed rgba(139, 0, 0, 0.2);
 }
 
 .speaker {
   color: #8B0000;
-  font-weight: bold;
+  font-weight: 800;
   font-size: 0.9rem;
   text-transform: uppercase;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-/* --- GRID LAYOUT (SPALTEN) --- */
-/* --- GRID LAYOUT (SPALTEN) --- */
 .text-grid {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
   align-items: start;
 }
 
-.text-line {
-  line-height: 1.6;
-  margin: 0;
-  padding: 0 5px;
-
-  /* WICHTIG: Damit Text in der Box bleibt */
-  overflow-wrap: break-word;
-  word-break: break-word;
-  hyphens: auto;
-  min-width: 0;
-
-  /* GRUNDEINSTELLUNG: Alles Schwarz (#000000) */
-  color: #000000 !important;
-}
-
-/* Goldene Trennlinie rechts (außer beim letzten Element) */
 .text-line:not(:last-child) {
-  border-right: 1px solid rgba(184, 134, 11, 0.3);
+  border-right: 1px solid rgba(184, 134, 11, 0.25);
 }
 
-/* 1. DEUTSCH */
-.lang-de {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #000000;
-  text-align: left;
-  direction: ltr;
-}
-
-/* 2. ARABISCH (Original) */
 .lang-ar {
   font-family: 'Cairo', sans-serif;
-  font-size: 1.3rem;
-  text-align: right;
-  color: #000000;
   direction: rtl;
+  font-size: 1.25rem;
   line-height: 1.8;
 }
 
-/* 3. KOPTISCH (Arabische Buchstaben) */
 .lang-cop_ar {
   font-family: 'Cairo', sans-serif;
-  font-size: 1.1rem;
-  text-align: right;
-  color: #000000;
-  font-style: italic;
   direction: rtl;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #333 !important;
 }
 
-/* 4. KOPTISCH (Original Buchstaben) */
-.lang-cop_cop {
-  font-family: sans-serif;
-  letter-spacing: 1px;
-  color: #000000;
-  /* War vorher blau, jetzt schwarz */
-  text-align: left;
-  direction: ltr;
-}
-
-/* 5. ARABISCH & KOPTISCH in DEUTSCHEN Buchstaben (Franco) */
-/* Diese Klassen heißen so, wie sie in deiner liturgyData.js stehen (ar_de, cop_de) */
-.lang-ar_de,
-.lang-cop_de {
-  font-family: 'Roboto', sans-serif;
+.lang-de {
   font-size: 1rem;
-  color: #000000;
-  font-weight: 500;
-  text-align: left;
-  direction: ltr;
 }
 
-/* --- EINSTELLUNGEN POPUP --- */
+/* POPUP */
 .settings-popup {
   position: absolute;
-  top: 10px;
+  top: 70px;
   right: 10px;
   background: #fff;
-  border: 2px solid var(--gold);
+  border: 1px solid #ddd;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 12px;
   z-index: 200;
-  width: 280px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  max-height: 80vh;
-  overflow-y: auto;
+  width: 260px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .settings-popup h3 {
   color: black;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-  font-family: 'Cairo', sans-serif;
+  margin-top: 0;
   border-bottom: 1px solid #eee;
-  padding-bottom: 5px;
-}
-
-.app-lang-toggle {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.app-lang-btn {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
-  background: #f9f9f9;
-  cursor: pointer;
-  border-radius: 6px;
-  font-weight: bold;
-  color: #333;
-}
-
-.app-lang-btn.active {
-  background: var(--red);
-  color: white;
-  border-color: var(--red);
+  padding-bottom: 10px;
+  font-family: 'Cairo';
 }
 
 .lang-grid {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 8px;
-  margin: 10px 0 20px 0;
+  margin: 15px 0;
 }
 
 .lang-btn {
-  padding: 10px;
-  background: #f0f0f0;
-  border: 1px solid #ccc;
-  color: #333;
+  padding: 12px;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
   border-radius: 8px;
   text-align: left;
-  font-weight: bold;
   cursor: pointer;
-  font-size: 0.9rem;
+  color: #333;
+  font-weight: bold;
 }
 
 .lang-btn.active {
   background: var(--gold);
-  color: black;
+  color: white;
   border-color: var(--gold);
-}
-
-.lang-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .close-btn {
   width: 100%;
   padding: 12px;
-  background: #222;
+  background: #333;
   color: white;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   font-weight: bold;
-  font-family: 'Cairo', sans-serif;
 }
 
-/* --- LOADING SCREEN --- */
 .loading-screen {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: black;
   color: var(--gold);
-  z-index: 9999;
-}
-
-.text-line {
-  line-height: 1.6;
-  margin: 0;
-  padding: 0 5px;
-
-  /* WICHTIG: Damit Text in der Box bleibt */
-  overflow-wrap: break-word;
-  word-break: break-word;
-  hyphens: auto;
-  min-width: 0;
-
-  /* NEU HINZUFÜGEN: Damit \n als Zeilenumbruch erkannt wird */
-  white-space: pre-wrap;
-
-  /* GRUNDEINSTELLUNG: Alles Schwarz */
-  color: #000000 !important;
 }
 
 .loading-logo {
-  width: 120px;
+  width: 100px;
   height: auto;
   margin-bottom: 20px;
-  object-fit: contain;
 }
