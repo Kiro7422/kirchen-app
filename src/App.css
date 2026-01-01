@@ -244,6 +244,7 @@ body {
 }
 
 /* --- GRID LAYOUT (SPALTEN) --- */
+/* --- GRID LAYOUT (SPALTEN) --- */
 .text-grid {
   display: grid;
   gap: 10px;
@@ -261,6 +262,9 @@ body {
   word-break: break-word;
   hyphens: auto;
   min-width: 0;
+
+  /* GRUNDEINSTELLUNG: Alles Schwarz (#000000) */
+  color: #000000 !important;
 }
 
 /* Goldene Trennlinie rechts (außer beim letzten Element) */
@@ -268,33 +272,55 @@ body {
   border-right: 1px solid rgba(184, 134, 11, 0.3);
 }
 
+/* 1. DEUTSCH */
 .lang-de {
   font-size: 1rem;
-  color: #111;
   font-weight: 500;
+  color: #000000;
+  text-align: left;
+  direction: ltr;
 }
 
+/* 2. ARABISCH (Original) */
 .lang-ar {
-  font-family: 'Cairo';
+  font-family: 'Cairo', sans-serif;
   font-size: 1.3rem;
   text-align: right;
-  color: #000;
+  color: #000000;
   direction: rtl;
+  line-height: 1.8;
 }
 
+/* 3. KOPTISCH (Arabische Buchstaben) */
 .lang-cop_ar {
-  font-family: 'Cairo';
+  font-family: 'Cairo', sans-serif;
   font-size: 1.1rem;
   text-align: right;
-  color: #444;
+  color: #000000;
   font-style: italic;
   direction: rtl;
 }
 
+/* 4. KOPTISCH (Original Buchstaben) */
 .lang-cop_cop {
   font-family: sans-serif;
-  color: #0044aa;
   letter-spacing: 1px;
+  color: #000000;
+  /* War vorher blau, jetzt schwarz */
+  text-align: left;
+  direction: ltr;
+}
+
+/* 5. ARABISCH & KOPTISCH in DEUTSCHEN Buchstaben (Franco) */
+/* Diese Klassen heißen so, wie sie in deiner liturgyData.js stehen (ar_de, cop_de) */
+.lang-ar_de,
+.lang-cop_de {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: #000000;
+  font-weight: 500;
+  text-align: left;
+  direction: ltr;
 }
 
 /* --- EINSTELLUNGEN POPUP --- */
