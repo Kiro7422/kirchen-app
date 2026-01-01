@@ -5,8 +5,8 @@ import { title } from "framer-motion/client";
 export const uiTranslations = {
     titles: {
         homeSubtitle: {
-            de: "Koptisch-Orthodoxes Patriarchat Unna-Massen",
-            ar: "بطريركية الأقباط الأرثوذكس أونا-ماسن"
+            de: "Kirche der Hl. Maria & Hl.Philopater Mercurius subscribersUnna-Massen",
+            ar: "كنيسه العدرا و الشهيد ابي سيفين القبطيه الارثذوكسيه باونا ماسن"
         },
         chooseLiturgy: {
             de: "Wähle die Liturgie",
