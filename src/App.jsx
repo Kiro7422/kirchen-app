@@ -124,6 +124,7 @@ export default function App() {
         </>
       )}
 
+
       <header className="header">
         {view !== 'home' ? (
           <motion.button
@@ -135,8 +136,9 @@ export default function App() {
           </motion.button>
         ) : (
           <div style={{ display: 'flex', gap: '15px' }}>
-            <LanguageToggle current={appLang} lang='de' setLang={setAppLang} flag="🇩🇪" />
-            <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} flag="🇪🇬" />
+            {/* HIER WURDE GEÄNDERT: Text statt Flagge */}
+            <LanguageToggle current={appLang} lang='de' setLang={setAppLang} label="De" />
+            <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} label="Ar" />
           </div>
         )}
 
@@ -293,20 +295,32 @@ export default function App() {
 }
 
 // SUB COMPONENTS
-function LanguageToggle({ current, lang, setLang, flag }) {
+// --- SUB COMPONENTS ---
+
+function LanguageToggle({ current, lang, setLang, label }) {
   return (
     <motion.button
-      whileTap={{ scale: 0.9 }} onClick={() => setLang(lang)}
+      whileTap={{ scale: 0.9 }}
+      onClick={() => setLang(lang)}
       style={{
-        opacity: current === lang ? 1 : 0.4, background: 'none', border: 'none',
-        fontSize: '1.8rem', cursor: 'pointer',
-        filter: current === lang ? 'drop-shadow(0 0 5px var(--gold))' : 'grayscale(0.8)'
+        // Logik für Text-Styling
+        opacity: current === lang ? 1 : 0.6,
+        color: current === lang ? 'var(--gold)' : 'white', // Gold wenn aktiv, sonst Weiß
+        background: 'none',
+        border: 'none',
+        fontSize: '1.2rem', // Schriftgröße für Text
+        fontWeight: 'bold', // Fettgedruckt
+        cursor: 'pointer',
+        fontFamily: 'Cairo, sans-serif', // Schöne Schriftart
+        textShadow: current === lang ? '0 0 10px rgba(212, 175, 55, 0.5)' : 'none' // Leuchten wenn aktiv
       }}
     >
-      {flag}
+      {label}
     </motion.button>
   )
 }
+
+/* ... (MenuButton und LoadingScreen bleiben gleich) ... */
 function MenuButton({ text, onClick, highlight, icon, index = 0 }) {
   return (
     <motion.button

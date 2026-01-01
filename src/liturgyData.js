@@ -38,22 +38,28 @@ export const uiTranslations = {
         liturgy: { de: "Liturgie", ar: "القداسات" },
         bible: { de: "Bibel", ar: "الكتاب المقدس" },
         offering: { de: "Auswahl des Lammbrotes", ar: "الحمل" },
-        basily: { de: "Basilius (Basily)", ar: "القداس الباسيلي" },
-        kerollosy: { de: "Cyrillus (Kerollosy)", ar: "القداس الكيرلسي" },
-        gregorios: { de: "Gregorios (8ere8orios)", ar: "القداس الغريغوري" },
-        habashy: { de: "Äthiopisch (Habashy)", ar: "القداس الحبشي" }
+        basily: { de: "Basilius ", ar: "القداس الباسيلي" },
+        kerollosy: { de: "Cyrillus ", ar: "القداس الكيرلسي" },
+        gregorios: { de: "Gregorios ", ar: "القداس الغريغوري" },
+        habashy: { de: "Äthiopisch ", ar: "القداس الحبشي" }
     }
 };
-export const languages = {
-    de: { label: "🇩🇪 Deutsch", default: true },
-    ar: { label: "🇪🇬 Arabisch", default: true },
+// src/liturgyData.js
 
-    // Deine neuen Bezeichnungen:
+/* ... (uiTranslations bleiben gleich) ... */
+
+export const languages = {
+    de: { label: "Deutsch", default: true },
+    ar: { label: "عربي / Arabisch", default: true },
+
+    // Deine anderen Sprachen 
     ar_de: { label: "Franco / فرانكو", default: false },
     cop_ar: { label: "Koptisch (Arabisch) / قبطي معرب", default: true },
     cop_de: { label: "Koptisch Franco / قبطي فرانكو", default: false },
     cop_cop: { label: "Koptisch / قبطي", default: false },
 };
+
+
 
 export const liturgies = {
     offering: {
