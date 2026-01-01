@@ -5,6 +5,7 @@ import { Settings, ArrowLeft, BookOpen, PenTool, Eraser } from 'lucide-react';
 import { liturgies, languages, uiTranslations } from './liturgyData';
 import './App.css';
 
+// --- ANIMATIONEN ---
 const pageVariants = { initial: { opacity: 0, scale: 0.98 }, in: { opacity: 1, scale: 1 }, out: { opacity: 0, scale: 1.02 } };
 const pageTransition = { type: "tween", ease: "easeOut", duration: 0.3 };
 const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.05 } } };
@@ -18,11 +19,11 @@ export default function App() {
   const [activeLangs, setActiveLangs] = useState(['de', 'ar', 'cop_ar']);
   const [showSettings, setShowSettings] = useState(false);
 
-  // --- MODI ---
+  // --- TOOLS STATE ---
   const [isHighlightMode, setIsHighlightMode] = useState(false);
   const [isEraserMode, setIsEraserMode] = useState(false);
 
-  // --- SCROLL FIX LOGIC ---
+  // --- SCROLL LOGIC ---
   const scrollContainerRef = useRef(null);
   const topVisibleId = useRef(null);
 
@@ -47,7 +48,24 @@ export default function App() {
     }
   };
 
-  // --- TEXT MARKIEREN (Stift) ---
+  useLayoutEffect(() => {
+    if (view === 'prayer' && topVisibleId.current && scrollContainerRef.current) {
+      const element = scrollContainerRef.current.querySelector(`[data-id="${topVisibleId.current}"]`);
+      if (element) {
+        element.scrollIntoView({ block: 'center', behavior: 'auto' });
+      }
+    }
+  }, [activeLangs, view]);
+
+  // --- MARKIER FUNKTIONEN ---
+
+  // 1. Kontextmenü (Rechtsklick/Long-Press) blockieren, damit man nicht "kopieren" kann
+  const handleContextMenu = (e) => {
+    e.preventDefault();
+    return false;
+  };
+
+  // 2. Text markieren (wenn Stift an)
   const handleTextSelection = () => {
     if (!isHighlightMode || isEraserMode) return;
 
@@ -58,7 +76,7 @@ export default function App() {
 
     try {
       const range = selection.getRangeAt(0);
-      // Wenn wir schon im Gelben sind, nicht nochmal markieren
+      // Nicht doppelt markieren
       if (range.commonAncestorContainer.parentElement.classList.contains('highlight-marker')) {
         selection.removeAllRanges();
         return;
@@ -66,23 +84,24 @@ export default function App() {
       const span = document.createElement('span');
       span.className = 'highlight-marker';
       range.surroundContents(span);
-      selection.removeAllRanges(); // Auswahl SOFORT löschen = Menü geht weg
+      selection.removeAllRanges(); // Auswahl SOFORT löschen = Menü weg
     } catch (e) {
-      console.log("Fehler beim Markieren:", e);
+      console.log("Fehler bei komplexer Markierung", e);
       selection.removeAllRanges();
     }
   };
 
-  // --- RADIEREN (Klick) ---
+  // 3. Radieren (Klick auf gelbes)
   const handlePrayerClick = (e) => {
     if (!isEraserMode) return;
     const targetSpan = e.target.closest('.highlight-marker');
     if (targetSpan) {
+      // Inhalt behalten, aber gelbes Span entfernen
       targetSpan.replaceWith(...targetSpan.childNodes);
     }
   };
 
-  // --- HEADER ACTIONS ---
+  // 4. Header Buttons
   const togglePen = () => {
     if (isHighlightMode) { setIsHighlightMode(false); }
     else { setIsHighlightMode(true); setIsEraserMode(false); }
@@ -91,15 +110,6 @@ export default function App() {
     if (isEraserMode) { setIsEraserMode(false); }
     else { setIsEraserMode(true); setIsHighlightMode(false); }
   };
-
-  useLayoutEffect(() => {
-    if (view === 'prayer' && topVisibleId.current && scrollContainerRef.current) {
-      const element = scrollContainerRef.current.querySelector(`[data-id="${topVisibleId.current}"]`);
-      if (element) {
-        element.scrollIntoView({ block: 'center', behavior: 'auto' });
-      }
-    }
-  }, [activeLangs, view]);
 
   useEffect(() => { setTimeout(() => setLoading(false), 2000); }, []);
 
@@ -110,7 +120,7 @@ export default function App() {
 
   if (loading) return <LoadingScreen appLang={appLang} />;
 
-  // CSS Klasse für den Container
+  // CSS Klasse berechnen
   let prayerModeClass = "prayer-mode";
   if (isHighlightMode) prayerModeClass += " mode-pen-active";
   if (isEraserMode) prayerModeClass += " mode-eraser-active";
@@ -124,7 +134,6 @@ export default function App() {
         </>
       )}
 
-
       <header className="header">
         {view !== 'home' ? (
           <motion.button
@@ -136,38 +145,32 @@ export default function App() {
           </motion.button>
         ) : (
           <div style={{ display: 'flex', gap: '15px' }}>
-            {/* HIER WURDE GEÄNDERT: Text statt Flagge */}
-            <LanguageToggle current={appLang} lang='de' setLang={setAppLang} label="De" />
-            <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} label="Ar" />
+            <LanguageToggle current={appLang} lang='de' setLang={setAppLang} label="DE" />
+            <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} label="EG" />
           </div>
         )}
 
         {view === 'prayer' && (
           <div className="header-actions">
             <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={togglePen}
+              whileTap={{ scale: 0.9 }} onClick={togglePen}
               className={`icon-btn ${isHighlightMode ? 'active-pen' : ''}`}
-              title="Markieren"
             >
               <PenTool color={isHighlightMode ? "#FFEB3B" : "#D4AF37"} size={22} fill={isHighlightMode ? "#FFEB3B" : "transparent"} />
             </motion.button>
 
             <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleEraser}
+              whileTap={{ scale: 0.9 }} onClick={toggleEraser}
               className={`icon-btn ${isEraserMode ? 'active-pen' : ''}`}
-              title="Löschen"
             >
               <Eraser color={isEraserMode ? "#FFEB3B" : "#D4AF37"} size={22} fill={isEraserMode ? "#FFEB3B" : "transparent"} />
             </motion.button>
 
             <motion.button
-              whileTap={{ rotate: 90 }}
-              onClick={() => setShowSettings(!showSettings)}
+              whileTap={{ rotate: 90 }} onClick={() => setShowSettings(!showSettings)}
               className="icon-btn"
             >
-              <Settings color="#D4AF37" size={28} />
+              <Settings color={view === 'prayer' ? "#B8860B" : "#D4AF37"} size={28} />
             </motion.button>
           </div>
         )}
@@ -176,6 +179,7 @@ export default function App() {
       <main className="content">
         <AnimatePresence mode='wait'>
 
+          {/* HOME */}
           {view === 'home' && (
             <motion.div key="home" initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition} className="center-view">
               <div className="center-content-wrapper">
@@ -192,6 +196,7 @@ export default function App() {
             </motion.div>
           )}
 
+          {/* MENÜ */}
           {view === 'liturgyMenu' && (
             <motion.div key="menu" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -100, opacity: 0 }} transition={pageTransition} className="center-view">
               <div className="center-content-wrapper">
@@ -206,11 +211,15 @@ export default function App() {
             </motion.div>
           )}
 
+          {/* GEBET */}
           {view === 'prayer' && selectedLiturgy && (
             <motion.div
               key="prayer"
               className={prayerModeClass}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+
+              /* EVENTS für Highlighter & Schutz */
+              onContextMenu={handleContextMenu}
               onMouseUp={handleTextSelection}
               onTouchEnd={handleTextSelection}
               onClick={handlePrayerClick}
@@ -295,32 +304,21 @@ export default function App() {
 }
 
 // SUB COMPONENTS
-// --- SUB COMPONENTS ---
-
 function LanguageToggle({ current, lang, setLang, label }) {
   return (
     <motion.button
-      whileTap={{ scale: 0.9 }}
-      onClick={() => setLang(lang)}
+      whileTap={{ scale: 0.9 }} onClick={() => setLang(lang)}
       style={{
-        // Logik für Text-Styling
-        opacity: current === lang ? 1 : 0.6,
-        color: current === lang ? 'var(--gold)' : 'white', // Gold wenn aktiv, sonst Weiß
-        background: 'none',
-        border: 'none',
-        fontSize: '1.2rem', // Schriftgröße für Text
-        fontWeight: 'bold', // Fettgedruckt
-        cursor: 'pointer',
-        fontFamily: 'Cairo, sans-serif', // Schöne Schriftart
-        textShadow: current === lang ? '0 0 10px rgba(212, 175, 55, 0.5)' : 'none' // Leuchten wenn aktiv
+        opacity: current === lang ? 1 : 0.6, background: 'none', border: 'none',
+        fontSize: '1.2rem', fontWeight: 'bold', cursor: 'pointer', fontFamily: 'Cairo',
+        color: current === lang ? 'var(--gold)' : 'white',
+        textShadow: current === lang ? '0 0 10px rgba(212, 175, 55, 0.5)' : 'none'
       }}
     >
       {label}
     </motion.button>
   )
 }
-
-/* ... (MenuButton und LoadingScreen bleiben gleich) ... */
 function MenuButton({ text, onClick, highlight, icon, index = 0 }) {
   return (
     <motion.button
