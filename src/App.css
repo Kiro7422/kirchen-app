@@ -430,6 +430,24 @@ body {
   z-index: 9999;
 }
 
+.text-line {
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 5px;
+
+  /* WICHTIG: Damit Text in der Box bleibt */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  min-width: 0;
+
+  /* NEU HINZUFÜGEN: Damit \n als Zeilenumbruch erkannt wird */
+  white-space: pre-wrap;
+
+  /* GRUNDEINSTELLUNG: Alles Schwarz */
+  color: #000000 !important;
+}
+
 .loading-logo {
   width: 120px;
   height: auto;

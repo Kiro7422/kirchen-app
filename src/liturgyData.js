@@ -72,11 +72,15 @@ export const liturgies = {
             },
             {
                 id: 2,
+                sectionTitle: {
+                    de: "Die Auswahl des Lammbrotes",
+                    ar: "تقديم الحمل"
+                },
                 speaker: "Volk",
                 cop_ar: "Ke to pnevmati so...",
                 de: "Und mit deinem Geiste.",
-                ar: "ولروحك أيضاً",
-                cop_cop: "Ⲕⲉ ⲧⲱ ⲡⲛⲉⲩⲙⲁⲧⲓ ⲥⲟⲩ",
+                ar: "كيريه ليسون كيريه ليسون يارب ارحم\nكيريه ليسون كيريه ليسون ارحمنا يا الله\nكيريه ليسون كيريه ليسون اسمعنا و ارحمنا",
+                cop_cop: "Kurie `ele`ycon.",
                 ar_de: "Wa li-ruhika aydan",
                 cop_de: "Ke to pnewmati su...",
             },
