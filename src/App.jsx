@@ -96,7 +96,6 @@ export default function App() {
               </div>
             </motion.div>
           )}
-
           {/* LITURGIE AUSWAHL */}
           {view === 'liturgyMenu' && (
             <motion.div
@@ -109,6 +108,11 @@ export default function App() {
               <img src="/logo.png" alt="Logo" className="small-logo" />
               <h2 className="page-title">{t('chooseLiturgy')}</h2>
               <div className="btn-group">
+
+                {/* --- NEUER KNOPF GANZ OBEN --- */}
+                <MenuButton onClick={() => openLiturgy('offering')} text={t('buttons', 'offering')} />
+                {/* ----------------------------- */}
+
                 <MenuButton onClick={() => openLiturgy('basily')} text={t('buttons', 'basily')} />
                 <MenuButton onClick={() => openLiturgy('kerollosy')} text={t('buttons', 'kerollosy')} />
                 <MenuButton onClick={() => openLiturgy('gregorios')} text={t('buttons', 'gregorios')} />
@@ -145,38 +149,45 @@ export default function App() {
                   {liturgies[selectedLiturgy].title[appLang]}
                 </h3>
 
-                {liturgies[selectedLiturgy].content.map((row, index) => (
-                  <React.Fragment key={index}>
-                    {row.sectionTitle && (
-                      <h4 className="section-title">
-                        {row.sectionTitle[appLang]}
-                      </h4>
-                    )}
+                {liturgies[selectedLiturgy].content.map((row, index) => {
+                  // 1. Prüfen: Welche der AKTIVEN Sprachen haben in dieser Zeile TATSÄCHLICH Text?
+                  // Wir filtern leere Einträge oder "-" raus.
+                  const dynamicLangs = activeLangs.filter(lang => row[lang] && row[lang].trim() !== "");
 
-                    <div className="prayer-row">
-                      <span className="speaker">{row.speaker}</span>
+                  // Falls gar keine der ausgewählten Sprachen Text hat (z.B. user will Deutsch, aber Zeile ist nur Arabisch),
+                  // zeigen wir nichts an oder optional fallback. Hier: Zeile wird ausgeblendet oder leer.
+                  if (dynamicLangs.length === 0) return null;
 
-                      <div
-                        className="text-grid"
-                        style={{ gridTemplateColumns: `repeat(${activeLangs.length}, 1fr)` }}
-                      >
-                        {/* HIER IST DIE KORRIGIERTE SORTIERUNG */}
-                        {[...activeLangs].sort((a, b) => {
-                          // Diese Liste bestimmt die Reihenfolge von LINKS nach RECHTS
-                          // ar (Arabisch) ist ganz am Ende -> also ganz Rechts
-                          const order = ['de', 'cop_de', 'ar_de', 'cop_cop', 'cop_ar', 'ar'];
+                  return (
+                    <React.Fragment key={index}>
+                      {row.sectionTitle && (
+                        <h4 className="section-title">
+                          {row.sectionTitle[appLang]}
+                        </h4>
+                      )}
 
-                          // Sortieren basierend auf der Position in der Liste
-                          return order.indexOf(a) - order.indexOf(b);
-                        }).map(lang => (
-                          <p key={lang} className={`text-line lang-${lang}`}>
-                            {row[lang] || "-"}
-                          </p>
-                        ))}
+                      <div className="prayer-row">
+                        <span className="speaker">{row.speaker}</span>
+
+                        <div
+                          className="text-grid"
+                          // 2. WICHTIG: Das Grid passt sich jetzt der Anzahl der VORHANDENEN Sprachen an
+                          style={{ gridTemplateColumns: `repeat(${dynamicLangs.length}, 1fr)` }}
+                        >
+                          {/* HIER IST DIE SORTIERUNG (bleibt gleich, damit Arabisch immer rechts ist etc.) */}
+                          {[...dynamicLangs].sort((a, b) => {
+                            const order = ['de', 'cop_de', 'ar_de', 'cop_cop', 'cop_ar', 'ar'];
+                            return order.indexOf(a) - order.indexOf(b);
+                          }).map(lang => (
+                            <p key={lang} className={`text-line lang-${lang}`}>
+                              {row[lang]}
+                            </p>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </React.Fragment>
-                ))}
+                    </React.Fragment>
+                  );
+                })}
               </div>
             </motion.div>
           )}

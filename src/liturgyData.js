@@ -37,6 +37,7 @@ export const uiTranslations = {
         agpeya: { de: "Agpeya", ar: "الأجبية" },
         liturgy: { de: "Liturgie", ar: "القداسات" },
         bible: { de: "Bibel", ar: "الكتاب المقدس" },
+        offering: { de: "Auswahl des Lammbrotes", ar: "الحمل" },
         basily: { de: "Basilius (Basily)", ar: "القداس الباسيلي" },
         kerollosy: { de: "Cyrillus (Kerollosy)", ar: "القداس الكيرلسي" },
         gregorios: { de: "Gregorios (8ere8orios)", ar: "القداس الغريغوري" },
@@ -46,13 +47,70 @@ export const uiTranslations = {
 export const languages = {
     de: { label: "🇩🇪 Deutsch", default: true },
     ar: { label: "🇪🇬 Arabisch", default: true },
-    cop_ar: { label: "Koptisch (Arabische Buchstaben)", default: true },
-    cop_cop: { label: "Koptisch (Original)", default: false },
-    ar_de: { label: "Arabisch (Deutsche Buchstaben)", default: false },
-    cop_de: { label: "Koptisch (Deutsche Buchstaben)", default: false },
+
+    // Deine neuen Bezeichnungen:
+    ar_de: { label: "Franco / فرانكو", default: false },
+    cop_ar: { label: "Koptisch (Arabisch) / قبطي معرب", default: true },
+    cop_de: { label: "Koptisch Franco / قبطي فرانكو", default: false },
+    cop_cop: { label: "Koptisch / قبطي", default: false },
 };
 
 export const liturgies = {
+    offering: {
+        title: {
+            de: "Auswahl des Lammbrotes",
+            ar: "تقديم الحمل"
+        },
+        content: [
+            // 1. GLAUBENSBEKENNTNIS
+            {
+                id: 1,
+                speaker: "Volk",
+                de: "Wir glauben an den einen Gott: Gott den Vater , den Allmächtigen, Schöpfer des Himmels und der Erde, alles Sichtbaren und Unsichtbaren.Wir glauben an den einen Herrn Jesus Christus , Gottes einzigen Sohn, geboren aus dem Vater vor aller Zeit Licht vom Lichte , wahrer Gott vom wahren Gott, gezeugt, nicht geschaffen, eines Wesens mit dem Vater; durch ihn ist alles geworden. , nicht geschaffen, eines Wesens mit dem Vater; durch ihn ist alles geworden.  Für uns Menschen und um unseres Heils willen ist er vom Himmel herabgestiegen. Er hat Fleisch angenommen durch den Heiligen Geist, von der Jungfrau Maria und ist Mensch geworden. Er wurde gekreuzigt unter Pontius Pilatus an unserer Statt,hat gelitten und ist begraben worden.Am dritten Tag auferstanden von den Toten gemäß der Schrift,aufgefahren in den Himmel, sitzt er zur Rechten seines Vaters Und so wird er wiederkommen in seiner Herrlichkeit, zu richten die Lebenden und die Toten, und seiner Herrschaft wird kein Ende sein.Ja, wir glauben an den Heiligen Geist, der Herr ist und lebendig macht, der aus dem Vater hervorgeht , der mit dem Vater und dem Sohn angebetet und verherrlicht wird. Er hat gesprochen durch die Propheten Wir glauben an die eine heilige, universale und apostolische Kirche. Wir bekennen die eine Taufe zur Vergebung der Sünden. Wir erwarten die Auferstehung der Toten und das Leben der kommenden Welt. Amen.",
+                ar: "بالحقيقة نؤمن بإله واحد الله الآب ضابط الكل خالق السماء والأرض ما يُرى وما لا يُرى نؤمن برب واحد يسوع المسيح ابن الله الوحيد المولود من الآب قبل كل الدهور نور من نور إله حق من إله حق مولود غير مخلوق ، مساوٍ للآب فى الجوهـر الذى به كان كل شيء هذا الذى من أجلنا نحن البشر ومن أجل خلاصنا نزل من السماء وتجسد من الروح القدس ومن مريم العذراء وتأنس وصلب عنا على عهد بيلاطس البنطي تألم وقبر وقام من بين الاموات فى اليوم الثالث كما فى الكتب وصعد الى السموات وجلس عن يمين أبيه وأيضاً يأتى فى مجده ليدين الاحياء والاموات الذى ليس لملكه انقضاء نعم نؤمن بالروح القدس الرب المحيي المنبثق من الآب. نسجد له ونمجده مع الآب والابن الناطق فى الأنبياء وبكنيسة واحدة مقدسة جامعة رسولية ونعترف بمعمودية واحدة لمغفرة الخطايا وننتظر قيامة الأموات وحياة الدهر الآتى .آمين",
+                ar_de: "Bel 7aqiqa no2men be elah wa7ed, Allah el Ab dabet el kol, 5aleq el sama wal ard, ma yora wa ma la yora. No2men be rab wa7ed Yassou3 el Massi7, Ebn Allah el wa7id, el mawloud men el Ab qabl kol el dohour. Nour men Nour, Elah 7aq men Elah 7aq, mawloud gheir ma5louq, mosawen lel Ab fel gawhar, allazy bihi kan kol shay2. Haza allazy men aglina na7n el bashar, wa men agl 5alasna, nazal men el sama, wa tagassad men el Ro7 el Qodos wa men Mariam el 3azra2 wa ta2anas. Wa soleb 3anna 3ala 3ahd Bilatos el Bonti, ta2alam wa qober wa qam men bein el amwat fel yom el thaleth kama fel kotob. Wa sa3ad ela el samawat, wa galas 3an yamin abih. Wa aydan ya2ti fi magdehi le yadin el a7ya2 wal amwat, allazy laysa le molkehi enqida2. Na3am no2men bel Ro7 el Qodos, el Rab el mo7yi, el monbathiq men el Ab. Nasgod lahu wa nomagedohu ma3 el Ab wal Ebn, el nateq fel anbya2. Wa be kanisa wa7da moqadasa game3a rasoulya. Wa na3taref be ma3moudia wa7da le maghferet el 5ataya. Wa nantazer qiyamat el amwat, wa 7ayat el dahr el aaty. Amin.",
+
+            },
+
+            // 2. KYRIE (MIT ÜBERSCHRIFT)
+            {
+                id: 2,
+                // Hier ist der Titel für den neuen Abschnitt
+                sectionTitle: {
+                    de: "Die Auswahl des Lammbrotes",
+                    ar: "تقديم الحمل"
+                },
+                speaker: "Volk",
+                // Das \n sorgt für neue Zeilen im Arabischen
+                ar: "كيريه ليسون كيريه ليسون يارب ارحم\nكيريه ليسون كيريه ليسون ارحمنا يا الله\nكيريه ليسون كيريه ليسون اسمعنا و ارحمنا",
+                cop_cop: "Kurie `ele`ycon.",
+
+
+            },
+            {
+                id: 3,
+                speaker: "Volk",
+
+                de: "Heilig, heilig, heilig ist der Herr der Heerscharen, der Himmel und die Erde sind erfüllt von deiner Herrlichkeit und Ehre. Gott, Vater, Allmächtiger, erbarme dich unser,Heiligste Dreifaltigkeit, erbarme dich unser,  Herr, Gott aller Mächte und Gewalten, sei mit uns, denn wir haben keinen anderen Beistand in unseren Nöten und Bedrängnissen außer dir. Tilge, vergib und verzeih uns unsere Missetaten, o Gott: die freiwilligen und unfreiwilligen, die bewussten und unbewussten, die sichtbaren und unsichtbaren. Herr, vergib sie uns um deines heiligen Namens willen, der über uns angerufen ist. Nach deinem Erbarmen, o Herr, und nicht nach unseren Sünden.  Unser Herr, mache uns würdig, in Dankbarkeit zu sprechen: Vater unser....",
+                ar: " ....قدوس، قدوس، قدوس، رب الصباؤوت. السماء والأرض مملوءتان من مجدك وكرامتك. ارحمنا يا الله الآب ضابط الكل. أيها الثالوث القدوس ارحمنا. أيها الرب إله القوات كن معنا، لأنه ليس لنا معين في شدائدنا وضيقاتنا سواك. حل واغفر واصفح لنا يا الله عن سيئاتنا، التي صنعناها بإرادتنا والتي صنعناها بغير إرادتنا، التي فعلناها بمعرفة والتي فعلناها بغير معرفة، يارب اغفرها لنا من اجل اسمك القدوس الذي دعي علينا. كرحمتك يا رب وليس كخطايانا. و اجعلنا مستحقين ان نقول لك بشكر ابانا الذي ",
+                ar_de: "Qoddos, Qoddos, Qoddos, Rab el Saba2out. El sama wal ard mamlou2atan men magdika wa karamatika. Er7amna ya Allah el Ab dabet el kol. Ayuha el thalouth el qoddos er7amna. Ayuha el Rab elah el qowat kon ma3ana, le annahu laysa lana mo3in fi shada2edina wa diqatina siwak. 7al wa eghfer wa esfa7 lana ya Allah 3an saye2atina, allati sana3naha be iradatina wa allati sana3naha be gheir iradatina, allati fa3alnaha be ma3rifa wa allati fa3alnaha be gheir ma3rifa, Ya Rab eghferha lana men agl esmika el qoddos allazy do3ya 3alayna. Ka ra7matika ya Rab wa laysa ka 5atayana. Wa eg3alna mosta7iqqin an naqoul laka be shokr Abana allazy..",
+
+
+
+            },
+            {
+                id: 4,
+                speaker: "P",
+                cop_ar: "",
+                de: "",
+                ar: "",
+                cop_cop: "",
+                ar_de: "",
+                cop_de: "",
+
+            }
+        ]
+    },
     // --- BASILIUS LITURGIE ---
     basily: {
         title: {
