@@ -1385,16 +1385,6 @@ export const liturgies = {
                 cop_de: "Amyn.",
             },
             {
-                id: 66,
-                speaker: "Volk",
-                cop_ar: "آمين.",
-                de: "Amen.",
-                ar: "حقاً",
-                cop_cop: "Ⲁ̀ⲙⲏⲛ.",
-                ar_de: "amyn.",
-                cop_de: "Amyn.",
-            },
-            {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
