@@ -1,15 +1,8 @@
-// src/App.jsx
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Settings, ArrowLeft, BookOpen, PenTool, Eraser } from 'lucide-react';
 import { liturgies, languages, uiTranslations } from './liturgyData';
 import './App.css';
-
-// --- ANIMATIONEN ---
-const pageVariants = { initial: { opacity: 0, scale: 0.98 }, in: { opacity: 1, scale: 1 }, out: { opacity: 0, scale: 1.02 } };
-const pageTransition = { type: "tween", ease: "easeOut", duration: 0.3 };
-const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.05 } } };
-const itemVariants = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 120, damping: 14 } } };
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -19,28 +12,119 @@ export default function App() {
   const [activeLangs, setActiveLangs] = useState(['de', 'ar', 'cop_ar']);
   const [showSettings, setShowSettings] = useState(false);
 
-  // --- TOOLS STATE ---
+  // --- ZIEL FÜR SPRUNG ---
+  const [targetScrollId, setTargetScrollId] = useState(null);
+
+  // --- TOOLS ---
   const [isHighlightMode, setIsHighlightMode] = useState(false);
   const [isEraserMode, setIsEraserMode] = useState(false);
 
-  // --- SCROLL LOGIC ---
   const scrollContainerRef = useRef(null);
-  const topVisibleId = useRef(null);
 
-  const captureScroll = () => {
-    if (!scrollContainerRef.current) return;
-    const rows = scrollContainerRef.current.querySelectorAll('.prayer-row');
-    for (let row of rows) {
-      const rect = row.getBoundingClientRect();
-      if (rect.top > 60 && rect.top < window.innerHeight) {
-        topVisibleId.current = row.getAttribute('data-id');
-        break;
+  // --- HILFSFUNKTION: Scrollen erzwingen ---
+  const scrollToElementById = (id) => {
+    let attempts = 0;
+    const maxAttempts = 50;
+
+    const checkAndScroll = () => {
+      if (!scrollContainerRef.current) return;
+
+      const element = scrollContainerRef.current.querySelector(`[data-id="${id}"]`);
+
+      if (element) {
+        element.scrollIntoView({ block: 'center', behavior: 'auto' });
+        console.log(`Erfolg: Gesprungen zu ID ${id}`);
+      } else {
+        attempts++;
+        if (attempts < maxAttempts) {
+          requestAnimationFrame(checkAndScroll);
+        } else {
+          console.log(`Fehler: ID ${id} nicht gefunden.`);
+        }
       }
+    };
+    requestAnimationFrame(checkAndScroll);
+  };
+
+  // --- EFFEKT: Reagiert auf Liturgie-Wechsel oder Ziel-ID ---
+  useLayoutEffect(() => {
+    if (view === 'prayer') {
+      if (targetScrollId) {
+        scrollToElementById(targetScrollId);
+        setTargetScrollId(null);
+      } else {
+        if (scrollContainerRef.current && scrollContainerRef.current.scrollTop > 0) {
+          // Optional: Nach oben scrollen, wenn kein Ziel da ist
+        }
+      }
+    }
+  }, [selectedLiturgy, targetScrollId, view]);
+
+
+  // --- MENU AKTIONEN ---
+  const handleMenuAction = (action) => {
+    if (!action) return;
+
+    if (scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0;
+
+    switch (action) {
+      // --- BASILIUS ---
+      case "goto_basily_start":
+        setTargetScrollId(null);
+        setSelectedLiturgy('basily');
+        break;
+
+      case "goto_basily_id_5":
+        // NEU: Sprung zu ID 5 im Basilius
+        setSelectedLiturgy('basily');
+        setTargetScrollId(5);
+        break;
+
+      // --- CYRILLUS ---
+      case "goto_cyrillus_start":
+        setTargetScrollId(null);
+        setSelectedLiturgy('kerollosy');
+        break;
+
+      case "goto_cyrillus_id_9":
+        // Sprung zu ID 9 im Cyrillus
+        setSelectedLiturgy('kerollosy');
+        setTargetScrollId(9);
+        break;
+
+      case "goto_cyrillus_love_prayer":
+        setTargetScrollId(null);
+        setSelectedLiturgy('kerollosy');
+        break;
+
+      // --- GREGORIOS ---
+      case "goto_gregorios_start":
+        setTargetScrollId(null);
+        setSelectedLiturgy('gregorios');
+        break;
+      case "goto_gregorios_christ_prayer":
+        setTargetScrollId(null);
+        setSelectedLiturgy('gregorios');
+        break;
+
+      // --- HYMNEN ---
+      case "goto_rejoice_mary":
+        setTargetScrollId(null);
+        setSelectedLiturgy('rejoice_mary');
+        break;
+      case "goto_aspasmos_adam":
+        setTargetScrollId(null);
+        setSelectedLiturgy('aspasmos_adam');
+        break;
+
+      default:
+        console.log("Aktion nicht gefunden:", action);
     }
   };
 
+  // --- HELPER (UNVERÄNDERT) ---
+  const captureScroll = () => { };
   const toggleLanguage = (langKey) => {
-    captureScroll();
     if (activeLangs.includes(langKey)) {
       if (activeLangs.length > 1) setActiveLangs(activeLangs.filter(l => l !== langKey));
     } else {
@@ -48,79 +132,35 @@ export default function App() {
     }
   };
 
-  useLayoutEffect(() => {
-    if (view === 'prayer' && topVisibleId.current && scrollContainerRef.current) {
-      const element = scrollContainerRef.current.querySelector(`[data-id="${topVisibleId.current}"]`);
-      if (element) {
-        element.scrollIntoView({ block: 'center', behavior: 'auto' });
-      }
-    }
-  }, [activeLangs, view]);
-
-  // --- MARKIER FUNKTIONEN ---
-
-  // 1. Kontextmenü (Rechtsklick/Long-Press) blockieren, damit man nicht "kopieren" kann
-  const handleContextMenu = (e) => {
-    e.preventDefault();
-    return false;
-  };
-
-  // 2. Text markieren (wenn Stift an)
+  const handleContextMenu = (e) => { e.preventDefault(); return false; };
   const handleTextSelection = () => {
     if (!isHighlightMode || isEraserMode) return;
-
     const selection = window.getSelection();
-    if (!selection || selection.rangeCount === 0) return;
-    const text = selection.toString();
-    if (text.length === 0) return;
-
-    try {
-      const range = selection.getRangeAt(0);
-      // Nicht doppelt markieren
-      if (range.commonAncestorContainer.parentElement.classList.contains('highlight-marker')) {
-        selection.removeAllRanges();
-        return;
-      }
-      const span = document.createElement('span');
-      span.className = 'highlight-marker';
-      range.surroundContents(span);
-      selection.removeAllRanges(); // Auswahl SOFORT löschen = Menü weg
-    } catch (e) {
-      console.log("Fehler bei komplexer Markierung", e);
-      selection.removeAllRanges();
+    if (selection.toString().length > 0) {
+      try {
+        const range = selection.getRangeAt(0);
+        if (!range.commonAncestorContainer.parentElement.classList.contains('highlight-marker')) {
+          const span = document.createElement('span');
+          span.className = 'highlight-marker';
+          range.surroundContents(span);
+          selection.removeAllRanges();
+        }
+      } catch (e) { selection.removeAllRanges(); }
     }
   };
-
-  // 3. Radieren (Klick auf gelbes)
   const handlePrayerClick = (e) => {
     if (!isEraserMode) return;
     const targetSpan = e.target.closest('.highlight-marker');
-    if (targetSpan) {
-      // Inhalt behalten, aber gelbes Span entfernen
-      targetSpan.replaceWith(...targetSpan.childNodes);
-    }
+    if (targetSpan) targetSpan.replaceWith(...targetSpan.childNodes);
   };
-
-  // 4. Header Buttons
-  const togglePen = () => {
-    if (isHighlightMode) { setIsHighlightMode(false); }
-    else { setIsHighlightMode(true); setIsEraserMode(false); }
-  };
-  const toggleEraser = () => {
-    if (isEraserMode) { setIsEraserMode(false); }
-    else { setIsEraserMode(true); setIsHighlightMode(false); }
-  };
+  const togglePen = () => { setIsHighlightMode(!isHighlightMode); if (!isHighlightMode) setIsEraserMode(false); };
+  const toggleEraser = () => { setIsEraserMode(!isEraserMode); if (!isEraserMode) setIsHighlightMode(false); };
 
   useEffect(() => { setTimeout(() => setLoading(false), 2000); }, []);
-
-  const t = (key, subKey) => {
-    if (subKey) return uiTranslations[key][subKey][appLang];
-    return uiTranslations.titles[key][appLang];
-  };
+  const t = (key, subKey) => subKey ? uiTranslations[key][subKey][appLang] : uiTranslations.titles[key][appLang];
 
   if (loading) return <LoadingScreen appLang={appLang} />;
 
-  // CSS Klasse berechnen
   let prayerModeClass = "prayer-mode";
   if (isHighlightMode) prayerModeClass += " mode-pen-active";
   if (isEraserMode) prayerModeClass += " mode-eraser-active";
@@ -136,11 +176,7 @@ export default function App() {
 
       <header className="header">
         {view !== 'home' ? (
-          <motion.button
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setView(view === 'prayer' ? 'liturgyMenu' : 'home')}
-            className="icon-btn"
-          >
+          <motion.button whileTap={{ scale: 0.9 }} onClick={() => setView(view === 'prayer' ? 'liturgyMenu' : 'home')} className="icon-btn">
             <ArrowLeft color="#D4AF37" size={28} />
           </motion.button>
         ) : (
@@ -149,27 +185,15 @@ export default function App() {
             <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} label="EG" />
           </div>
         )}
-
         {view === 'prayer' && (
           <div className="header-actions">
-            <motion.button
-              whileTap={{ scale: 0.9 }} onClick={togglePen}
-              className={`icon-btn ${isHighlightMode ? 'active-pen' : ''}`}
-            >
+            <motion.button whileTap={{ scale: 0.9 }} onClick={togglePen} className={`icon-btn ${isHighlightMode ? 'active-pen' : ''}`}>
               <PenTool color={isHighlightMode ? "#FFEB3B" : "#D4AF37"} size={22} fill={isHighlightMode ? "#FFEB3B" : "transparent"} />
             </motion.button>
-
-            <motion.button
-              whileTap={{ scale: 0.9 }} onClick={toggleEraser}
-              className={`icon-btn ${isEraserMode ? 'active-pen' : ''}`}
-            >
+            <motion.button whileTap={{ scale: 0.9 }} onClick={toggleEraser} className={`icon-btn ${isEraserMode ? 'active-pen' : ''}`}>
               <Eraser color={isEraserMode ? "#FFEB3B" : "#D4AF37"} size={22} fill={isEraserMode ? "#FFEB3B" : "transparent"} />
             </motion.button>
-
-            <motion.button
-              whileTap={{ rotate: 90 }} onClick={() => setShowSettings(!showSettings)}
-              className="icon-btn"
-            >
+            <motion.button whileTap={{ rotate: 90 }} onClick={() => setShowSettings(!showSettings)} className="icon-btn">
               <Settings color={view === 'prayer' ? "#B8860B" : "#D4AF37"} size={28} />
             </motion.button>
           </div>
@@ -178,10 +202,8 @@ export default function App() {
 
       <main className="content">
         <AnimatePresence mode='wait'>
-
-          {/* HOME */}
           {view === 'home' && (
-            <motion.div key="home" initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition} className="center-view">
+            <motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="center-view">
               <div className="center-content-wrapper">
                 <div className="logo-container">
                   <motion.img src="/logo.png" alt="Logo" className="main-logo" animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }} />
@@ -196,9 +218,8 @@ export default function App() {
             </motion.div>
           )}
 
-          {/* MENÜ */}
           {view === 'liturgyMenu' && (
-            <motion.div key="menu" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -100, opacity: 0 }} transition={pageTransition} className="center-view">
+            <motion.div key="menu" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -100, opacity: 0 }} className="center-view">
               <div className="center-content-wrapper">
                 <img src="/logo.png" alt="Logo" className="main-logo" style={{ width: '90px', height: '90px' }} />
                 <h2 className="page-title">{t('chooseLiturgy')}</h2>
@@ -211,34 +232,17 @@ export default function App() {
             </motion.div>
           )}
 
-          {/* GEBET */}
-          {view === 'prayer' && selectedLiturgy && (
-            <motion.div
-              key="prayer"
-              className={prayerModeClass}
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+          {view === 'prayer' && selectedLiturgy && liturgies[selectedLiturgy] && (
+            <div className={prayerModeClass}
+              onContextMenu={handleContextMenu} onMouseUp={handleTextSelection} onTouchEnd={handleTextSelection} onClick={handlePrayerClick}>
 
-              /* EVENTS für Highlighter & Schutz */
-              onContextMenu={handleContextMenu}
-              onMouseUp={handleTextSelection}
-              onTouchEnd={handleTextSelection}
-              onClick={handlePrayerClick}
-            >
               <AnimatePresence>
                 {showSettings && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8, y: -20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.8 }}
-                    className="settings-popup"
-                  >
+                  <motion.div initial={{ opacity: 0, scale: 0.8, y: -20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.8 }} className="settings-popup">
                     <h3>{t('prayerLanguages')}</h3>
                     <div className="lang-grid">
                       {Object.entries(languages).map(([key, info]) => (
-                        <button
-                          key={key}
-                          className={`lang-btn ${activeLangs.includes(key) ? 'active' : ''}`}
-                          onClick={() => toggleLanguage(key)}
-                          disabled={!activeLangs.includes(key) && activeLangs.length >= 3}
-                        >
+                        <button key={key} className={`lang-btn ${activeLangs.includes(key) ? 'active' : ''}`} onClick={() => toggleLanguage(key)} disabled={!activeLangs.includes(key) && activeLangs.length >= 3}>
                           {info.label}
                         </button>
                       ))}
@@ -249,31 +253,30 @@ export default function App() {
               </AnimatePresence>
 
               <div className="scroll-area" ref={scrollContainerRef}>
-                <div style={{ textAlign: 'center' }}>
+                <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                   <h3 className="liturgy-header">{liturgies[selectedLiturgy].title[appLang]}</h3>
                 </div>
 
-                <motion.div variants={containerVariants} initial="hidden" animate="visible">
+                <div className="prayer-content">
                   {liturgies[selectedLiturgy].content.map((row, index) => {
                     const dynamicLangs = activeLangs.filter(lang => row[lang] && row[lang].trim() !== "");
-                    if (dynamicLangs.length === 0) return null;
+                    const hasMenu = row.reconciliation_menu && row.reconciliation_menu.length > 0;
+
+                    if (dynamicLangs.length === 0 && !hasMenu && !row.sectionTitle) return null;
+
                     const rowID = row.id || index;
 
                     return (
                       <React.Fragment key={index}>
                         {row.sectionTitle && (
-                          <motion.div variants={itemVariants} style={{ textAlign: 'center' }}>
+                          <div style={{ textAlign: 'center', marginTop: '30px', marginBottom: '10px' }}>
                             <h4 className="section-title">{row.sectionTitle[appLang]}</h4>
-                          </motion.div>
+                          </div>
                         )}
 
-                        <motion.div
-                          variants={itemVariants}
-                          className="prayer-row"
-                          data-id={rowID}
-                        >
+                        <div className="prayer-row" data-id={rowID}>
                           <span className="speaker">{row.speaker}</span>
-                          <div className="text-grid" style={{ gridTemplateColumns: `repeat(${dynamicLangs.length}, 1fr)` }}>
+                          <div className="text-grid" style={{ gridTemplateColumns: `repeat(${dynamicLangs.length > 0 ? dynamicLangs.length : 1}, 1fr)` }}>
                             {[...dynamicLangs].sort((a, b) => {
                               const order = ['de', 'cop_de', 'ar_de', 'cop_cop', 'cop_ar', 'ar'];
                               return order.indexOf(a) - order.indexOf(b);
@@ -281,15 +284,26 @@ export default function App() {
                               <p key={lang} className={`text-line lang-${lang}`}>{row[lang]}</p>
                             ))}
                           </div>
-                        </motion.div>
+
+                          {hasMenu && (
+                            <div className="inline-menu-container">
+                              {row.reconciliation_menu.map((btn, btnIdx) => (
+                                <button key={btnIdx} className="inline-menu-btn" onClick={() => handleMenuAction(btn.action)}>
+                                  <span className="btn-label-ar">{btn.label_ar}</span>
+                                  <span className="btn-label-de">{btn.label_de}</span>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </React.Fragment>
                     );
                   })}
-                </motion.div>
+                </div>
+                <div style={{ height: '100px' }}></div>
               </div>
-            </motion.div>
+            </div>
           )}
-
         </AnimatePresence>
       </main>
     </div>
@@ -298,34 +312,24 @@ export default function App() {
   function openLiturgy(type) {
     setSelectedLiturgy(type);
     setView('prayer');
+    setTargetScrollId(null);
     setIsHighlightMode(false);
     setIsEraserMode(false);
   }
 }
 
-// SUB COMPONENTS
+// ... SUB COMPONENTS (Unverändert) ...
 function LanguageToggle({ current, lang, setLang, label }) {
   return (
-    <motion.button
-      whileTap={{ scale: 0.9 }} onClick={() => setLang(lang)}
-      style={{
-        opacity: current === lang ? 1 : 0.6, background: 'none', border: 'none',
-        fontSize: '1.2rem', fontWeight: 'bold', cursor: 'pointer', fontFamily: 'Cairo',
-        color: current === lang ? 'var(--gold)' : 'white',
-        textShadow: current === lang ? '0 0 10px rgba(212, 175, 55, 0.5)' : 'none'
-      }}
-    >
+    <motion.button whileTap={{ scale: 0.9 }} onClick={() => setLang(lang)}
+      style={{ opacity: current === lang ? 1 : 0.6, background: 'none', border: 'none', fontSize: '1.2rem', fontWeight: 'bold', cursor: 'pointer', fontFamily: 'Cairo', color: current === lang ? 'var(--gold)' : 'white', textShadow: current === lang ? '0 0 10px rgba(212, 175, 55, 0.5)' : 'none' }}>
       {label}
     </motion.button>
   )
 }
 function MenuButton({ text, onClick, highlight, icon, index = 0 }) {
   return (
-    <motion.button
-      initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: index * 0.05 }} whileTap={{ scale: 0.96 }}
-      onClick={onClick} className={`menu-btn ${highlight ? 'highlight' : ''}`}
-    >
+    <motion.button initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.05 }} whileTap={{ scale: 0.96 }} onClick={onClick} className={`menu-btn ${highlight ? 'highlight' : ''}`}>
       {icon && <span className="btn-icon">{icon}</span>}
       {text}
     </motion.button>

@@ -435,3 +435,54 @@ body {
   height: auto;
   margin-bottom: 20px;
 }
+
+/* --- INLINE MENÜ KNÖPFE (Innerhalb des Gebets) --- */
+.inline-menu-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Standard: 1 Spalte */
+  gap: 10px;
+  margin-top: 15px;
+  width: 100%;
+  padding: 5px;
+}
+
+@media (min-width: 600px) {
+  .inline-menu-container {
+    grid-template-columns: 1fr 1fr;
+    /* Ab Tablets: 2 Spalten */
+  }
+}
+
+.inline-menu-btn {
+  background: linear-gradient(135deg, #fdfbf7 0%, #fff 100%);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.inline-menu-btn:active {
+  transform: scale(0.98);
+  background: #f0f0f0;
+}
+
+.btn-label-ar {
+  font-family: 'Cairo', sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--red);
+  margin-bottom: 4px;
+}
+
+.btn-label-de {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  color: #333;
+}
