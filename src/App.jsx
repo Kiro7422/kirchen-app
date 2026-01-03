@@ -28,76 +28,54 @@ export default function App() {
 
     const checkAndScroll = () => {
       if (!scrollContainerRef.current) return;
-
       const element = scrollContainerRef.current.querySelector(`[data-id="${id}"]`);
-
       if (element) {
         element.scrollIntoView({ block: 'center', behavior: 'auto' });
-        console.log(`Erfolg: Gesprungen zu ID ${id}`);
       } else {
         attempts++;
         if (attempts < maxAttempts) {
           requestAnimationFrame(checkAndScroll);
-        } else {
-          console.log(`Fehler: ID ${id} nicht gefunden.`);
         }
       }
     };
     requestAnimationFrame(checkAndScroll);
   };
 
-  // --- EFFEKT: Reagiert auf Liturgie-Wechsel oder Ziel-ID ---
   useLayoutEffect(() => {
     if (view === 'prayer') {
       if (targetScrollId) {
         scrollToElementById(targetScrollId);
         setTargetScrollId(null);
-      } else {
-        if (scrollContainerRef.current && scrollContainerRef.current.scrollTop > 0) {
-          // Optional: Nach oben scrollen, wenn kein Ziel da ist
-        }
       }
     }
   }, [selectedLiturgy, targetScrollId, view]);
 
-
   // --- MENU AKTIONEN ---
   const handleMenuAction = (action) => {
     if (!action) return;
-
     if (scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0;
 
     switch (action) {
-      // --- BASILIUS ---
       case "goto_basily_start":
         setTargetScrollId(null);
         setSelectedLiturgy('basily');
         break;
-
       case "goto_basily_id_5":
-        // NEU: Sprung zu ID 5 im Basilius
         setSelectedLiturgy('basily');
         setTargetScrollId(5);
         break;
-
-      // --- CYRILLUS ---
       case "goto_cyrillus_start":
         setTargetScrollId(null);
         setSelectedLiturgy('kerollosy');
         break;
-
       case "goto_cyrillus_id_9":
-        // Sprung zu ID 9 im Cyrillus
         setSelectedLiturgy('kerollosy');
         setTargetScrollId(9);
         break;
-
       case "goto_cyrillus_love_prayer":
         setTargetScrollId(null);
         setSelectedLiturgy('kerollosy');
         break;
-
-      // --- GREGORIOS ---
       case "goto_gregorios_start":
         setTargetScrollId(null);
         setSelectedLiturgy('gregorios');
@@ -106,8 +84,6 @@ export default function App() {
         setTargetScrollId(null);
         setSelectedLiturgy('gregorios');
         break;
-
-      // --- HYMNEN ---
       case "goto_rejoice_mary":
         setTargetScrollId(null);
         setSelectedLiturgy('rejoice_mary');
@@ -116,14 +92,31 @@ export default function App() {
         setTargetScrollId(null);
         setSelectedLiturgy('aspasmos_adam');
         break;
-
+      case "goto_cyrillus_id_16":
+        setSelectedLiturgy('kerollosy');
+        setTargetScrollId(16);
+        break;
+      case "goto_gregorios_id_5":
+        setSelectedLiturgy('gregorios');
+        setTargetScrollId(5);
+        break;
+      case "goto_lord_of_hosts":
+        setTargetScrollId(null);
+        setSelectedLiturgy('lord_of_hosts');
+        break;
+      case "goto_aspasmos_watos_1":
+        setTargetScrollId(null);
+        setSelectedLiturgy('aspasmos_watos_1');
+        break;
+      case "goto_cyrillus_id_23":
+        setSelectedLiturgy('kerollosy');
+        setTargetScrollId(23);
+        break;
       default:
         console.log("Aktion nicht gefunden:", action);
     }
   };
 
-  // --- HELPER (UNVERÄNDERT) ---
-  const captureScroll = () => { };
   const toggleLanguage = (langKey) => {
     if (activeLangs.includes(langKey)) {
       if (activeLangs.length > 1) setActiveLangs(activeLangs.filter(l => l !== langKey));
@@ -148,16 +141,28 @@ export default function App() {
       } catch (e) { selection.removeAllRanges(); }
     }
   };
+
   const handlePrayerClick = (e) => {
     if (!isEraserMode) return;
     const targetSpan = e.target.closest('.highlight-marker');
     if (targetSpan) targetSpan.replaceWith(...targetSpan.childNodes);
   };
+
   const togglePen = () => { setIsHighlightMode(!isHighlightMode); if (!isHighlightMode) setIsEraserMode(false); };
   const toggleEraser = () => { setIsEraserMode(!isEraserMode); if (!isEraserMode) setIsHighlightMode(false); };
 
   useEffect(() => { setTimeout(() => setLoading(false), 2000); }, []);
   const t = (key, subKey) => subKey ? uiTranslations[key][subKey][appLang] : uiTranslations.titles[key][appLang];
+
+  // --- LOGIK FÜR DYNAMISCHE FARB-KLASSEN ---
+  const getSpeakerClass = (speaker) => {
+    if (!speaker) return "";
+    const s = speaker.toLowerCase().trim();
+    if (s.startsWith('p')) return "speaker-priester";
+    if (s.startsWith('d')) return "speaker-diakon";
+    if (s === "volk" || s === "v" || s === "congregation" || s === "vortragender") return "speaker-volk";
+    return "";
+  };
 
   if (loading) return <LoadingScreen appLang={appLang} />;
 
@@ -233,8 +238,7 @@ export default function App() {
           )}
 
           {view === 'prayer' && selectedLiturgy && liturgies[selectedLiturgy] && (
-            <div className={prayerModeClass}
-              onContextMenu={handleContextMenu} onMouseUp={handleTextSelection} onTouchEnd={handleTextSelection} onClick={handlePrayerClick}>
+            <div className={prayerModeClass} onContextMenu={handleContextMenu} onMouseUp={handleTextSelection} onTouchEnd={handleTextSelection} onClick={handlePrayerClick}>
 
               <AnimatePresence>
                 {showSettings && (
@@ -261,9 +265,7 @@ export default function App() {
                   {liturgies[selectedLiturgy].content.map((row, index) => {
                     const dynamicLangs = activeLangs.filter(lang => row[lang] && row[lang].trim() !== "");
                     const hasMenu = row.reconciliation_menu && row.reconciliation_menu.length > 0;
-
                     if (dynamicLangs.length === 0 && !hasMenu && !row.sectionTitle) return null;
-
                     const rowID = row.id || index;
 
                     return (
@@ -274,8 +276,8 @@ export default function App() {
                           </div>
                         )}
 
-                        <div className="prayer-row" data-id={rowID}>
-                          <span className="speaker">{row.speaker}</span>
+                        <div className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID}>
+                          {row.speaker && <span className="speaker">{row.speaker}</span>}
                           <div className="text-grid" style={{ gridTemplateColumns: `repeat(${dynamicLangs.length > 0 ? dynamicLangs.length : 1}, 1fr)` }}>
                             {[...dynamicLangs].sort((a, b) => {
                               const order = ['de', 'cop_de', 'ar_de', 'cop_cop', 'cop_ar', 'ar'];
@@ -318,7 +320,6 @@ export default function App() {
   }
 }
 
-// ... SUB COMPONENTS (Unverändert) ...
 function LanguageToggle({ current, lang, setLang, label }) {
   return (
     <motion.button whileTap={{ scale: 0.9 }} onClick={() => setLang(lang)}
@@ -327,6 +328,7 @@ function LanguageToggle({ current, lang, setLang, label }) {
     </motion.button>
   )
 }
+
 function MenuButton({ text, onClick, highlight, icon, index = 0 }) {
   return (
     <motion.button initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.05 }} whileTap={{ scale: 0.96 }} onClick={onClick} className={`menu-btn ${highlight ? 'highlight' : ''}`}>
@@ -335,6 +337,7 @@ function MenuButton({ text, onClick, highlight, icon, index = 0 }) {
     </motion.button>
   );
 }
+
 function LoadingScreen({ appLang }) {
   return (
     <div className="loading-screen">

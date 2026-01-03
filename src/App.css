@@ -5,10 +5,8 @@
   --gold: #D4AF37;
   --bg-dark: #0a0a0a;
   --paper-bg: #fdfbf7;
-  /* Heller Hintergrund für das Gebet */
   --red: #8B0000;
   --marker-yellow: #ffeb3b;
-  /* Leuchtendes Gelb */
 }
 
 body {
@@ -17,7 +15,6 @@ body {
   color: white;
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
-  /* Verhindert globales Scrollen */
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -119,7 +116,6 @@ body {
   flex-direction: column;
 }
 
-/* MENÜS */
 .center-view {
   flex: 1;
   display: flex;
@@ -230,60 +226,77 @@ body {
   scrollbar-color: var(--gold) transparent;
 }
 
-/* --- HIGHLIGHTER & TEXT SELECTION HACKS --- */
+/* --- TEXT COLORS BY SPEAKER --- */
 
-/* Standard: Kein Text auswählbar, kein Menü */
+/* Priester: Schwarz */
+.speaker-priester .text-line {
+  color: #1a1a1a !important;
+}
+
+.speaker-priester .speaker {
+  color: #1a1a1a;
+}
+
+/* Volk: Rot */
+.speaker-volk .text-line {
+  color: #B22222 !important;
+}
+
+.speaker-volk .speaker {
+  color: #B22222;
+}
+
+/* Diakon: Blau */
+.speaker-diakon .text-line {
+  color: #0047AB !important;
+}
+
+.speaker-diakon .speaker {
+  color: #0047AB;
+}
+
+/* Standard Text Line Style */
 .text-line {
   line-height: 1.6;
   margin: 0;
   padding: 0 6px;
   overflow-wrap: break-word;
   word-break: break-word;
-  color: #1a1a1a !important;
-  font-weight: 500;
+  font-weight: 600;
   white-space: pre-wrap;
-
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
-  /* Blockiert iOS/Android Menü bei langem Drücken */
 }
 
-/* Wenn Stift AN ist: Text wird wählbar */
+/* --- HIGHLIGHTER HACKS --- */
 .prayer-mode.mode-pen-active .text-line {
   user-select: text;
   -webkit-user-select: text;
   cursor: text;
 }
 
-/* Die Farbe beim Ziehen (Blau verstecken, Gelb anzeigen) */
 .prayer-mode.mode-pen-active *::selection {
   background-color: rgba(255, 235, 59, 0.5);
-  /* Transparentes Gelb */
   color: inherit;
 }
 
 .prayer-mode.mode-pen-active *::-webkit-selection {
   background-color: rgba(255, 235, 59, 0.5);
   color: inherit;
-  -webkit-background-clip: text;
-  /* Trick für iOS */
 }
 
-/* Der fertige Marker (Dauerhaft) */
 .highlight-marker {
-  background-color: var(--marker-yellow);
-  color: black;
+  background-color: var(--marker-yellow) !important;
+  color: black !important;
   border-radius: 3px;
   box-shadow: 0 0 3px var(--marker-yellow);
   padding: 1px 0;
 }
 
-/* RADIERER MODUS */
 .prayer-mode.mode-eraser-active .highlight-marker {
   cursor: crosshair;
   outline: 2px dashed red;
-  /* Zeigt an, dass man hier löschen kann */
 }
 
 /* --- GEBETS BOXEN --- */
@@ -322,7 +335,6 @@ body {
 }
 
 .speaker {
-  color: #8B0000;
   font-weight: 800;
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -353,7 +365,7 @@ body {
   direction: rtl;
   font-size: 1.15rem;
   font-style: italic;
-  color: #333 !important;
+  color: inherit !important;
 }
 
 .lang-de {
@@ -436,11 +448,10 @@ body {
   margin-bottom: 20px;
 }
 
-/* --- INLINE MENÜ KNÖPFE (Innerhalb des Gebets) --- */
+/* --- INLINE MENÜ KNÖPFE --- */
 .inline-menu-container {
   display: grid;
   grid-template-columns: 1fr;
-  /* Standard: 1 Spalte */
   gap: 10px;
   margin-top: 15px;
   width: 100%;
@@ -450,7 +461,6 @@ body {
 @media (min-width: 600px) {
   .inline-menu-container {
     grid-template-columns: 1fr 1fr;
-    /* Ab Tablets: 2 Spalten */
   }
 }
 
