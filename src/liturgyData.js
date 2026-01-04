@@ -1093,7 +1093,7 @@ export const liturgies = {
             },
 
             {
-                id: 19,
+                id: 222,
                 sectionTitle: {
                     de: "Heilig,Heilig",
                     ar: "اجيوس اجيوس"
@@ -1617,7 +1617,7 @@ export const liturgies = {
                 cop_cop: "(Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ.) ⲅ",
                 cop_de: "(Kyrie eleyson.) 3",
                 ar_de: "(Ya Rab erham.) 3"
-            },
+            }
         ],
     },
 
@@ -2707,7 +2707,7 @@ export const liturgies = {
 
                 // HIER SIND DIE NEUEN KNÖPFE:
                 reconciliation_menu: [
-                    { label_ar: "(ب) الباسيلي", label_de: "(B) Basilius", action: "goto_basily_id_5" },
+                    { label_ar: "(ب) الباسيلي", label_de: "(B) Basilius", action: "goto_basily_id_222" },
                     { label_ar: "(غ) الغريغوري", label_de: "(G) Gregorios", action: "goto_gregorios_start" },
                     { label_ar: "(ك) الكيرلسي", label_de: "(K) Cyrillus", action: "goto_cyrillus_id_23" } // Führt zu ID 21
                 ]

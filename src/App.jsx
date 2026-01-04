@@ -112,6 +112,10 @@ export default function App() {
         setSelectedLiturgy('kerollosy');
         setTargetScrollId(23);
         break;
+        case "goto_basily_id_222":
+        setSelectedLiturgy('basily');
+        setTargetScrollId(222);
+        break;
       default:
         console.log("Aktion nicht gefunden:", action);
     }
