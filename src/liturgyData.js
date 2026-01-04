@@ -2711,7 +2711,31 @@ export const liturgies = {
                     { label_ar: "(غ) الغريغوري", label_de: "(G) Gregorios", action: "goto_gregorios_start" },
                     { label_ar: "(ك) الكيرلسي", label_de: "(K) Cyrillus", action: "goto_cyrillus_id_23" } // Führt zu ID 21
                 ]
-            }
+            },
         ]
+    }
+    }
+    
+
+
+    
+
+export const liturgyHints = {
+    // Syntax: ID_NUMMER: { de: "Text", ar: "Text" }
+    
+    // Beispiel: Bei ID 27 (Absolution/Weihrauch)
+    27: {
+        de: "⚠️ Vergiss das Weihrauchgefäß nicht!",
+        ar: "⚠️ لا تنس المجمرة (الشورية)!"
     },
-}
+    // Beispiel: Bei ID 5
+    5: {
+        de: "🕯️ Zünde jetzt die Kerzen an!",
+        ar: "🕯️ أشعل الشموع الآن!"
+    },
+    // Beispiel: Basilius ID 1 (Versöhnung)
+    1: {
+        de: "✟ Bereite das Prospharin vor (Enthüllung).",
+        ar: "✟ استعد لرفع الإبروسفارين."
+    }
+};

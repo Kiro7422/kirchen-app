@@ -496,3 +496,166 @@ body {
   font-size: 0.9rem;
   color: #333;
 }
+/* --- ROLLEN AUSWAHL SCREEN --- */
+/* --- ROLLEN AUSWAHL SCREEN --- */
+.role-selection-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Zentriert vertikal */
+  height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2000; /* Sehr hoch, damit es über allem liegt */
+  text-align: center;
+}
+
+.role-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 90%;
+  max-width: 400px;
+  margin-top: 30px;
+}
+
+.role-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--gold);
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.role-card:active {
+  transform: scale(0.96);
+  background: rgba(212, 175, 55, 0.2);
+}
+
+.role-icon {
+  font-size: 1.8rem;
+}
+
+.role-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: bold;
+}
+
+/* --- LEUCHT-EFFEKTE (GLOW) --- */
+
+/* 1. Diakon Glow (Cyan) */
+.role-diakon-active .prayer-row.speaker-diakon {
+  border: 2px solid #00e5ff;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+  background: rgba(240, 255, 255, 0.95);
+  position: relative;
+  z-index: 5;
+}
+/* Diakon Icon */
+.role-diakon-active .prayer-row.speaker-diakon::after {
+  content: "🔔"; 
+  position: absolute;
+  top: -12px;
+  right: -5px;
+  font-size: 1.2rem;
+  animation: bounce 2s infinite;
+}
+
+/* 2. Priester Glow (Gold/Orange) - NEU */
+.role-priester-active .prayer-row.speaker-priester {
+  border: 2px solid #FFD700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  background: rgba(255, 253, 240, 0.95); /* Leicht gelblicher Hintergrund */
+  position: relative;
+  z-index: 5;
+}
+/* Priester Icon */
+.role-priester-active .prayer-row.speaker-priester::after {
+  content: "✝️"; 
+  position: absolute;
+  top: -12px;
+  right: -5px;
+  font-size: 1.2rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* --- HINWEIS ICON (!) --- */
+.hint-trigger-icon {
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  width: 32px;
+  height: 32px;
+  background: var(--red);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  cursor: pointer;
+  z-index: 20;
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(139, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(139, 0, 0, 0); }
+}
+
+/* Hinweis Popup (nur wenn geklickt) */
+.hint-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.hint-box {
+  background: white;
+  color: black;
+  width: 85%;
+  max-width: 350px;
+  padding: 25px;
+  border-radius: 12px;
+  border-top: 8px solid var(--red);
+  text-align: center;
+}
+
+.hint-title {
+  color: var(--red);
+  font-family: 'Cairo', sans-serif;
+  margin-top: 0;
+}
+
+.hint-btn {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  margin-top: 15px;
+  font-family: 'Cairo';
+}
