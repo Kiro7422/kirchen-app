@@ -40,24 +40,20 @@ const getCopticDate = (appLang) => {
     : `${cDay}. ${monthName} ${cYear} A.M.`;
 };
 
-// --- NEU: KYRIE COUNTER KOMPONENTE (Zählt -3) ---
+// --- KYRIE COUNTER (Zählt -3) ---
 const KyrieCounter = ({ initialCount }) => {
   const [count, setCount] = useState(initialCount);
   const [isFinished, setIsFinished] = useState(false);
 
   const handleClick = (e) => {
     e.stopPropagation();
-
     if (count > 0) {
-      if (navigator.vibrate) navigator.vibrate(40); // Kurzes Vibrieren
-
-      // HIER DIE ÄNDERUNG: Zieht 3 ab, aber nicht unter 0
+      if (navigator.vibrate) navigator.vibrate(40);
       const newCount = Math.max(0, count - 3);
       setCount(newCount);
-
       if (newCount === 0) {
         setIsFinished(true);
-        if (navigator.vibrate) navigator.vibrate([100, 50, 100]); // Erfolg!
+        if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
       }
     }
   };
@@ -75,9 +71,8 @@ const KyrieCounter = ({ initialCount }) => {
         className={`counter-btn ${isFinished ? 'finished' : ''}`}
         onClick={handleClick}
         onContextMenu={handleContextMenu}
-        whileTap={{ scale: 0.9 }}
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
+        whileTap={{ scale: 0.95 }}
+      // HIER GEÄNDERT: Keine "Initial" Animation mehr, damit es nicht flackert
       >
         {isFinished ? <Check size={40} /> : count}
         {!isFinished && <span className="counter-label">Kyrie Eleison</span>}
@@ -86,14 +81,14 @@ const KyrieCounter = ({ initialCount }) => {
   );
 };
 
-// --- SETTINGS KOMPONENTE ---
+// --- SETTINGS POPUP ---
 const SettingsPopup = memo(({ appLang, activeLangs, toggleLanguage, fontSize, changeFontSize, appTheme, setAppTheme, close, t }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.15 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
       className="settings-popup"
     >
       <div className="settings-section">
@@ -140,7 +135,7 @@ const SettingsPopup = memo(({ appLang, activeLangs, toggleLanguage, fontSize, ch
   );
 });
 
-// --- OPTIMIERTE ZEILE (MEMOIZED) ---
+// --- GEBETSZEILE (MEMOIZED) ---
 const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, getSpeakerClass, hints, triggeredHints, setTriggeredHints, openHint }) => {
   const rowRef = useRef(null);
   const hasHintData = hints && hints[rowID];
@@ -170,6 +165,7 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
           <h4 className="section-title">{row.sectionTitle[appLang]}</h4>
         </div>
       )}
+      {/* HIER GEÄNDERT: Keine Animationen für die Zeilen selbst, das verbessert die Performance enorm */}
       <div ref={rowRef} className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
 
         {showIcon && (
@@ -187,7 +183,6 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
           ))}
         </div>
 
-        {/* --- KYRIE COUNTER EINFÜGEN --- */}
         {row.counter && (
           <KyrieCounter initialCount={row.counter} />
         )}
@@ -466,13 +461,13 @@ export default function App() {
           )}
 
           {view === 'liturgyMenu' && (
-            <motion.div key="menu" initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -100, opacity: 0 }} className="center-view">
+            <motion.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="center-view">
               <div className="center-content-wrapper">
                 <img src="/logo.png" alt="Logo" className="main-logo" style={{ width: '90px', height: '90px' }} />
                 <h2 className="page-title">{t('chooseLiturgy')}</h2>
                 <div className="btn-group">
                   {['offering', 'basily', 'kerollosy', 'gregorios', 'habashy'].map((type, i) => (
-                    <MenuButton key={type} onClick={() => openLiturgy(type)} text={t('buttons', type)} index={i} />
+                    <MenuButton key={type} onClick={() => openLiturgy(type)} text={t('buttons', type)} />
                   ))}
                 </div>
               </div>
@@ -530,7 +525,7 @@ export default function App() {
   }
 }
 
-// --- ROLLEN SCREEN ---
+// --- ROLLEN SCREEN (ANIMATION ENTFERNT) ---
 function RoleSelectionScreen({ setRole, appLang, setAppLang }) {
   return (
     <div className="role-selection-container">
@@ -540,22 +535,29 @@ function RoleSelectionScreen({ setRole, appLang, setAppLang }) {
           <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} label="AR" />
         </div>
       </div>
-      <motion.img src="/logo.png" style={{ width: '120px', marginBottom: '20px' }} initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} />
-      <motion.h2 style={{ color: 'var(--gold)', fontFamily: 'Cairo', marginBottom: '40px' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
+      <motion.img src="/logo.png" style={{ width: '120px', marginBottom: '20px' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} />
+      <motion.h2 style={{ color: 'var(--gold)', fontFamily: 'Cairo', marginBottom: '40px' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         {appLang === 'ar' ? 'اختر دورك' : 'Wähle deine Rolle'}
       </motion.h2>
       <div className="role-grid">
-        <RoleCard labelDe="Priester" labelAr="كاهن" onClick={() => setRole('priester')} delay={0.3} />
-        <RoleCard labelDe="Diakon" labelAr="شماس" onClick={() => setRole('diakon')} delay={0.4} />
-        <RoleCard labelDe="Volk" labelAr="شعب" onClick={() => setRole('volk')} delay={0.5} />
+        <RoleCard labelDe="Priester" labelAr="كاهن" onClick={() => setRole('priester')} />
+        <RoleCard labelDe="Diakon" labelAr="شماس" onClick={() => setRole('diakon')} />
+        <RoleCard labelDe="Volk" labelAr="شعب" onClick={() => setRole('volk')} />
       </div>
     </div>
   );
 }
 
-function RoleCard({ labelDe, labelAr, onClick, delay }) {
+// --- HIER GEÄNDERT: KEINE "Initial/Animate" MEHR ---
+function RoleCard({ labelDe, labelAr, onClick }) {
   return (
-    <motion.div className="role-card" onClick={onClick} initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: delay }} whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }} whileTap={{ scale: 0.95 }} style={{ justifyContent: 'center' }}>
+    <motion.div
+      className="role-card"
+      onClick={onClick}
+      whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.05)' }}
+      whileTap={{ scale: 0.98 }}
+      style={{ justifyContent: 'center' }}
+    >
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <span className="role-title" style={{ color: 'var(--gold)' }}>{labelAr}</span>
         <span className="role-title" style={{ fontSize: '1rem', color: '#ccc' }}>{labelDe}</span>
@@ -572,9 +574,14 @@ function LanguageToggle({ current, lang, setLang, label }) {
   )
 }
 
-function MenuButton({ text, onClick, highlight, icon, index = 0 }) {
+// --- HIER GEÄNDERT: KEINE "Initial/Animate" MEHR ---
+function MenuButton({ text, onClick, highlight, icon }) {
   return (
-    <motion.button initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.05 }} whileTap={{ scale: 0.96 }} onClick={onClick} className={`menu-btn ${highlight ? 'highlight' : ''}`}>
+    <motion.button
+      whileTap={{ scale: 0.96 }}
+      onClick={onClick}
+      className={`menu-btn ${highlight ? 'highlight' : ''}`}
+    >
       {icon && <span className="btn-icon">{icon}</span>}
       {text}
     </motion.button>
