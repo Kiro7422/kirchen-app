@@ -9,39 +9,45 @@
   /* --- THEME VARIABLEN (Standard: DARK MODE) --- */
   --bg-main: #0a0a0a;
   --bg-paper: #0a0a0a;
-  --card-bg: rgba(20, 20, 20, 0.95);
 
-  /* HIER: Das Hintergrundbild für Dark Mode */
+  /* NEU: Modernes "Glas" Dark Background */
+  /* Ein leichter Verlauf von sehr dunkelgrau zu schwarz */
+  --card-bg: linear-gradient(145deg, rgba(30, 30, 30, 0.85), rgba(10, 10, 10, 0.95));
+
+  /* Hintergrundbild */
   --prayer-bg-image: url('/backgrounddark.png');
 
-  /* Section Title Dark Mode */
-  --section-bg: rgba(20, 20, 20, 0.95);
-  --section-text: #ff6b6b;
-  --section-border: rgba(255, 255, 255, 0.2);
+  /* NEU: Section Title "Glas" Style */
+  --section-bg: rgba(0, 0, 0, 0.6);
+  --section-text: #ff8a8a;
+  /* Helles Pastell-Rot für Modernität */
+  --section-border: rgba(255, 255, 255, 0.15);
 
   --text-main: white;
   --text-dim: #ccc;
-  --header-bg: rgba(15, 15, 15, 0.95);
-  --overlay-color: rgba(0, 0, 0, 0.5);
+  --header-bg: rgba(10, 10, 10, 0.8);
+  /* Auch Header etwas glasiger */
+  --overlay-color: rgba(0, 0, 0, 0.6);
 
   /* GEBET TEXT FARBEN (DARK MODE) */
-  --prayer-text-priester: #ffffff;
-  --prayer-text-volk: #ff4d4d;
+  --prayer-text-priester: #f0f0f0;
+  /* Helles Weiß-Grau ist angenehmer als hartes Weiß */
+  --prayer-text-volk: #ff5e5e;
+  /* Modernes Rot */
   --prayer-text-diakon: #FFD700;
+  /* Gold */
 
   --font-scale: 1;
 }
 
-/* --- LIGHT THEME --- */
+/* --- LIGHT THEME (Bleibt klassisch) --- */
 [data-theme='light'] {
   --bg-main: #ffffff;
   --bg-paper: #ffffff;
   --card-bg: rgba(255, 255, 255, 0.98);
 
-  /* HIER: Das Hintergrundbild für Light Mode */
   --prayer-bg-image: url('/background.png');
 
-  /* Section Title Light Mode */
   --section-bg: rgba(255, 255, 255, 0.7);
   --section-text: #8B0000;
   --section-border: rgba(139, 0, 0, 0.2);
@@ -53,7 +59,6 @@
 
   --gold: #B8860B;
 
-  /* GEBET TEXT FARBEN (LIGHT MODE) */
   --prayer-text-priester: #1a1a1a;
   --prayer-text-volk: #8B0000;
   --prayer-text-diakon: #0047AB;
@@ -65,10 +70,8 @@
   --bg-paper: #f4ecd8;
   --card-bg: rgba(253, 246, 227, 0.95);
 
-  /* HIER: Das Hintergrundbild für Sepia Mode */
   --prayer-bg-image: url('/background.png');
 
-  /* Section Title Sepia Mode */
   --section-bg: rgba(244, 236, 216, 0.6);
   --section-text: #8B4513;
   --section-border: rgba(139, 69, 19, 0.2);
@@ -80,7 +83,6 @@
 
   --gold: #8B4513;
 
-  /* GEBET TEXT FARBEN (SEPIA MODE) */
   --prayer-text-priester: #3e2723;
   --prayer-text-volk: #a52a2a;
   --prayer-text-diakon: #006064;
@@ -106,7 +108,7 @@ body {
   overflow: hidden;
 }
 
-/* --- HINTERGRUND (Startseite) --- */
+/* --- HINTERGRUND --- */
 .bg-image {
   position: absolute;
   top: 0;
@@ -138,7 +140,8 @@ body {
   width: 100%;
   height: 100%;
   background: radial-gradient(circle, var(--overlay-color) 0%, var(--bg-main) 100%);
-  backdrop-filter: blur(2px);
+  /* Glas-Effekt für Overlay im Dark Mode */
+  backdrop-filter: blur(3px);
   z-index: 1;
 }
 
@@ -152,9 +155,11 @@ body {
   align-items: center;
   height: 70px;
   background: var(--header-bg);
+  /* Glas-Header für Modernität */
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
 }
 
@@ -272,19 +277,20 @@ body {
 .menu-btn {
   padding: 18px;
   font-size: 1.1rem;
-  background: rgba(30, 30, 30, 0.75);
+  background: rgba(30, 30, 30, 0.6);
   border: 1px solid rgba(212, 175, 55, 0.3);
   color: white;
   border-radius: 12px;
   cursor: pointer;
   font-weight: bold;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   font-family: 'Cairo', sans-serif;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   transition: all 0.2s ease;
 }
 
@@ -296,7 +302,7 @@ body {
 }
 
 .menu-btn.highlight {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(40, 40, 40, 0.9));
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(40, 40, 40, 0.8));
   border-color: var(--gold);
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
 }
@@ -344,7 +350,7 @@ body {
 }
 
 .role-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--gold);
   padding: 20px;
   border-radius: 15px;
@@ -353,7 +359,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme='light'] .role-card {
@@ -383,7 +391,6 @@ body {
   bottom: 0;
   z-index: 50;
   background-color: var(--bg-paper);
-  /* HIER: Dynamischer Hintergrund je nach Theme */
   background-image: var(--prayer-bg-image);
   background-repeat: repeat;
   background-size: 400px;
@@ -399,18 +406,36 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+/* --- GLAS-EFFEKT GEBETSBLÖCKE --- */
 .prayer-row {
-  /* Dynamischer Karten-Hintergrund */
   background: var(--card-bg);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  /* Nutzt jetzt den Gradienten */
+
+  /* Glas-Effekt */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Feiner Rand für "Premium" Look */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* Tieferer Schatten */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  border-radius: 16px;
+  /* Etwas runder */
   padding: 16px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  /* Mehr Platz zwischen Blöcken */
+
+  /* Linker Rand bleibt Gold */
   border-left: 5px solid #B8860B;
-  /* Performance Boost */
-  content-visibility: auto;
+
+  overflow: visible;
+  position: relative;
+  z-index: 1;
 }
 
+/* --- GLAS-EFFEKT ÜBERSCHRIFTEN --- */
 .section-title {
   color: var(--section-text);
   text-align: center;
@@ -418,10 +443,17 @@ body {
   font-size: 1.5rem;
   margin-top: 35px;
   margin-bottom: 15px;
+
   background: var(--section-bg);
-  padding: 5px 15px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  padding: 8px 20px;
   border-radius: 20px;
-  border: 1px dashed var(--section-border);
+  border: 1px solid var(--section-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  /* Damit der Balken nur so breit ist wie der Text */
 }
 
 .speaker {
@@ -430,6 +462,8 @@ body {
   text-transform: uppercase;
   display: block;
   margin-bottom: 10px;
+  opacity: 0.9;
+  /* Leicht transparent für Style */
 }
 
 .text-grid {
@@ -439,48 +473,52 @@ body {
   align-items: start;
 }
 
-/* LEUCHTEFFEKTE FÜR AKTIVE ROLLE (Stärker & Animiert) */
+/* LEUCHTEFFEKTE (Diakon/Priester) - Angepasst an Glas */
 .role-diakon-active .prayer-row.speaker-diakon {
-  border: 2px solid #00e5ff;
-  box-shadow: 0 0 20px rgba(0, 229, 255, 0.6), inset 0 0 10px rgba(0, 229, 255, 0.1);
-  background: var(--card-bg);
+  border: 1px solid rgba(0, 229, 255, 0.5);
+  /* Dünner Rand */
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.25), inset 0 0 20px rgba(0, 229, 255, 0.05);
+  background: linear-gradient(145deg, rgba(0, 40, 50, 0.9), rgba(10, 10, 10, 0.95));
+  /* Leicht bläulicher Hintergrund */
   position: relative;
   z-index: 5;
-  animation: glow-pulse-cyan 2s infinite alternate;
+  animation: glow-pulse-cyan 3s infinite alternate ease-in-out;
 }
 
 .role-priester-active .prayer-row.speaker-priester {
-  border: 2px solid #FFD700;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), inset 0 0 10px rgba(255, 215, 0, 0.1);
-  background: var(--card-bg);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25), inset 0 0 20px rgba(255, 215, 0, 0.05);
+  background: linear-gradient(145deg, rgba(40, 35, 0, 0.9), rgba(10, 10, 10, 0.95));
+  /* Leicht goldener Hintergrund */
   position: relative;
   z-index: 5;
-  animation: glow-pulse-gold 2s infinite alternate;
+  animation: glow-pulse-gold 3s infinite alternate ease-in-out;
 }
 
 @keyframes glow-pulse-cyan {
   from {
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
   }
 
   to {
-    box-shadow: 0 0 25px rgba(0, 229, 255, 0.8);
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
   }
 }
 
 @keyframes glow-pulse-gold {
   from {
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
   }
 
   to {
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
   }
 }
 
 /* TEXT FARBEN DYNAMISCH */
 .speaker-priester .text-line {
   color: var(--prayer-text-priester) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .speaker-priester .speaker {
@@ -489,6 +527,7 @@ body {
 
 .speaker-volk .text-line {
   color: var(--prayer-text-volk) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .speaker-volk .speaker {
@@ -497,6 +536,7 @@ body {
 
 .speaker-diakon .text-line {
   color: var(--prayer-text-diakon) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .speaker-diakon .speaker {
@@ -504,12 +544,14 @@ body {
 }
 
 .text-line {
-  line-height: 1.6;
+  line-height: 1.7;
+  /* Etwas mehr Luft für Lesbarkeit */
   margin: 0;
   padding: 0 6px;
   overflow-wrap: break-word;
   word-break: break-word;
-  font-weight: 600;
+  font-weight: 500;
+  /* Etwas dünner für modernen Look */
   white-space: pre-wrap;
   font-size: calc(1rem * var(--font-scale));
 }
@@ -532,21 +574,28 @@ body {
   font-size: calc(1rem * var(--font-scale));
 }
 
-/* --- SETTINGS POPUP (FIXED) --- */
+/* --- SETTINGS POPUP --- */
 .settings-popup {
   position: fixed;
   top: 60px;
   right: 10px;
-  background: var(--bg-main);
+  background: rgba(15, 15, 15, 0.95);
+  /* Auch Glas-Effekt */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--gold);
   padding: 20px;
   border-radius: 12px;
   z-index: 2000;
   width: 280px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
   color: var(--text-main);
   max-height: 80vh;
   overflow-y: auto;
+}
+
+[data-theme='light'] .settings-popup {
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .settings-section {
@@ -576,7 +625,7 @@ input[type=range] {
 
 .lang-btn {
   padding: 10px;
-  background: rgba(128, 128, 128, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--gold);
   border-radius: 8px;
   cursor: pointer;
@@ -587,6 +636,7 @@ input[type=range] {
 .lang-btn.active {
   background: var(--gold);
   color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .theme-grid {
@@ -601,7 +651,7 @@ input[type=range] {
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.8rem;
-  background: rgba(128, 128, 128, 0.2);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--text-main);
   display: flex;
   align-items: center;
@@ -634,7 +684,8 @@ input[type=range] {
   border: 1px solid var(--gold);
   padding: 4px 10px;
   border-radius: 12px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   margin-right: 10px;
   cursor: default;
 }
@@ -648,6 +699,7 @@ input[type=range] {
   border-bottom: 2px solid #B8860B;
   padding-bottom: 10px;
   display: inline-block;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .inline-menu-container {
@@ -665,7 +717,7 @@ input[type=range] {
 }
 
 .inline-menu-btn {
-  background: linear-gradient(135deg, #fdfbf7 0%, #fff 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.1) 100%);
   border: 1px solid var(--gold);
   border-radius: 8px;
   padding: 12px;
@@ -674,7 +726,8 @@ input[type=range] {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
 }
 
 .btn-label-ar {
@@ -688,7 +741,7 @@ input[type=range] {
 .btn-label-de {
   font-family: 'Roboto', sans-serif;
   font-size: 0.9rem;
-  color: #333;
+  color: var(--text-dim);
 }
 
 .hint-trigger-icon {
