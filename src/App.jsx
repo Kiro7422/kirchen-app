@@ -40,8 +40,61 @@ const getCopticDate = (appLang) => {
     : `${cDay}. ${monthName} ${cYear} A.M.`;
 };
 
-// --- OPTIMIERTE ZEILEN KOMPONENTE (MEMOIZED) ---
-// Das verhindert, dass alle Zeilen neu laden, wenn man das Menü öffnet
+// --- EIGENE KOMPONENTE FÜR SETTINGS (OPTIMIERT) ---
+const SettingsPopup = memo(({ appLang, activeLangs, toggleLanguage, fontSize, changeFontSize, appTheme, setAppTheme, close, t }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.15 }}
+      className="settings-popup"
+    >
+      <div className="settings-section">
+        <label className="settings-label">{t('prayerLanguages')}</label>
+        <div className="lang-grid">
+          {Object.entries(languages).map(([key, info]) => (
+            <button key={key} className={`lang-btn ${activeLangs.includes(key) ? 'active' : ''}`} onClick={() => toggleLanguage(key)} disabled={!activeLangs.includes(key) && activeLangs.length >= 3}>
+              {info.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="settings-section">
+        <label className="settings-label">{appLang === 'ar' ? 'حجم الخط' : 'Schriftgröße'}</label>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span style={{ fontSize: '0.8rem' }}>A</span>
+          <input
+            type="range" min="0.8" max="1.8" step="0.1"
+            value={fontSize}
+            onChange={(e) => changeFontSize(parseFloat(e.target.value))}
+          />
+          <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>A</span>
+        </div>
+      </div>
+
+      <div className="settings-section">
+        <label className="settings-label">{appLang === 'ar' ? 'السمة' : 'Design'}</label>
+        <div className="theme-grid">
+          <button className={`theme-btn ${appTheme === 'dark' ? 'active' : ''}`} onClick={() => setAppTheme('dark')}>
+            <Moon size={16} />
+          </button>
+          <button className={`theme-btn ${appTheme === 'light' ? 'active' : ''}`} onClick={() => setAppTheme('light')}>
+            <Sun size={16} />
+          </button>
+          <button className={`theme-btn ${appTheme === 'sepia' ? 'active' : ''}`} onClick={() => setAppTheme('sepia')}>
+            <Coffee size={16} />
+          </button>
+        </div>
+      </div>
+
+      <button className="close-btn" onClick={close}>{t('done')}</button>
+    </motion.div>
+  );
+});
+
+// --- OPTIMIERTE ZEILE (MEMOIZED) ---
 const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, getSpeakerClass, hints, triggeredHints, setTriggeredHints, openHint }) => {
   const rowRef = useRef(null);
   const hasHintData = hints && hints[rowID];
@@ -49,12 +102,10 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
 
   useEffect(() => {
     if (!hasHintData || showIcon) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setTriggeredHints(prev => {
-            // Verhindert unnötige Updates, wenn ID schon drin ist
             if (prev.includes(rowID)) return prev;
             return [...prev, rowID];
           });
@@ -62,7 +113,6 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
         }
       }, { threshold: 0.6 }
     );
-
     if (rowRef.current) observer.observe(rowRef.current);
     return () => observer.disconnect();
   }, [hasHintData, showIcon, rowID, setTriggeredHints]);
@@ -114,25 +164,20 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [targetScrollId, setTargetScrollId] = useState(null);
 
-  // --- TOOLS ---
   const [isHighlightMode, setIsHighlightMode] = useState(false);
   const [isEraserMode, setIsEraserMode] = useState(false);
 
-  // --- FEATURE STATES ---
   const [fontSize, setFontSize] = useState(1);
   const [appTheme, setAppTheme] = useState('dark');
 
-  // --- HINWEIS STATE ---
   const [triggeredHints, setTriggeredHints] = useState([]);
   const [activeHintData, setActiveHintData] = useState(null);
 
   const scrollContainerRef = useRef(null);
   const scrollAnchorRef = useRef(null);
 
-  // Initialisierung
   useEffect(() => { setTimeout(() => setLoading(false), 2000); }, []);
 
-  // Theme anwenden
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', appTheme);
     document.documentElement.style.setProperty('--font-scale', fontSize);
@@ -140,13 +185,11 @@ export default function App() {
 
   const closeHintPopup = () => { setActiveHintData(null); };
 
-  // Optimiert mit useCallback
   const openHint = useCallback((id) => {
     const hint = liturgyHints[id];
     if (hint) setActiveHintData({ id, ...hint });
   }, []);
 
-  // Scroll Helfer
   const scrollToElementById = (id) => {
     let attempts = 0;
     const maxAttempts = 50;
@@ -170,7 +213,7 @@ export default function App() {
     }
   }, [selectedLiturgy, targetScrollId, view]);
 
-  // Scroll Stabilisierung
+  // Scroll Stabilisierung (Anker)
   useLayoutEffect(() => {
     if (scrollAnchorRef.current && scrollContainerRef.current) {
       const { id, offsetTop } = scrollAnchorRef.current;
@@ -201,7 +244,6 @@ export default function App() {
     }
   };
 
-  // Optimiert mit useCallback
   const handleMenuAction = useCallback((action) => {
     if (!action) return;
     if (scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0;
@@ -225,7 +267,6 @@ export default function App() {
     }
   }, []);
 
-  // Optimiert mit useCallback
   const toggleLanguage = useCallback((langKey) => {
     captureScrollAnchor();
     setActiveLangs(prev => {
@@ -239,10 +280,10 @@ export default function App() {
     });
   }, []);
 
-  const changeFontSize = (newSize) => {
+  const changeFontSize = useCallback((newSize) => {
     captureScrollAnchor();
     setFontSize(newSize);
-  };
+  }, []);
 
   const handleContextMenu = (e) => { e.preventDefault(); return false; };
   const handleTextSelection = () => { /* ... */ };
@@ -252,7 +293,6 @@ export default function App() {
 
   const t = (key, subKey) => subKey ? uiTranslations[key][subKey][appLang] : uiTranslations.titles[key][appLang];
 
-  // Optimiert
   const getSpeakerClass = useCallback((speaker) => {
     if (!speaker) return "";
     const s = speaker.toLowerCase().trim();
@@ -290,52 +330,19 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Settings Popup */}
       <AnimatePresence>
         {showSettings && (
-          <motion.div initial={{ opacity: 0, scale: 0.8, y: -20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.8 }} className="settings-popup">
-
-            <div className="settings-section">
-              <label className="settings-label">{t('prayerLanguages')}</label>
-              <div className="lang-grid">
-                {Object.entries(languages).map(([key, info]) => (
-                  <button key={key} className={`lang-btn ${activeLangs.includes(key) ? 'active' : ''}`} onClick={() => toggleLanguage(key)} disabled={!activeLangs.includes(key) && activeLangs.length >= 3}>
-                    {info.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="settings-section">
-              <label className="settings-label">{appLang === 'ar' ? 'حجم الخط' : 'Schriftgröße'}</label>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span style={{ fontSize: '0.8rem' }}>A</span>
-                <input
-                  type="range" min="0.8" max="1.8" step="0.1"
-                  value={fontSize}
-                  onChange={(e) => changeFontSize(parseFloat(e.target.value))}
-                />
-                <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>A</span>
-              </div>
-            </div>
-
-            <div className="settings-section">
-              <label className="settings-label">{appLang === 'ar' ? 'السمة' : 'Design'}</label>
-              <div className="theme-grid">
-                <button className={`theme-btn ${appTheme === 'dark' ? 'active' : ''}`} onClick={() => setAppTheme('dark')}>
-                  <Moon size={16} /> Dark
-                </button>
-                <button className={`theme-btn ${appTheme === 'light' ? 'active' : ''}`} onClick={() => setAppTheme('light')}>
-                  <Sun size={16} /> Light
-                </button>
-                <button className={`theme-btn ${appTheme === 'sepia' ? 'active' : ''}`} onClick={() => setAppTheme('sepia')}>
-                  <Coffee size={16} /> Sepia
-                </button>
-              </div>
-            </div>
-
-            <button className="close-btn" onClick={() => setShowSettings(false)}>{t('done')}</button>
-          </motion.div>
+          <SettingsPopup
+            appLang={appLang}
+            activeLangs={activeLangs}
+            toggleLanguage={toggleLanguage}
+            fontSize={fontSize}
+            changeFontSize={changeFontSize}
+            appTheme={appTheme}
+            setAppTheme={setAppTheme}
+            close={() => setShowSettings(false)}
+            t={t}
+          />
         )}
       </AnimatePresence>
 
@@ -353,9 +360,7 @@ export default function App() {
           </div>
         )}
 
-        {/* RECHTE SEITE HEADER */}
         <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', gap: '10px' }}>
-
           <div className="coptic-date-display">
             {getCopticDate(appLang)}
           </div>
@@ -494,7 +499,6 @@ function RoleSelectionScreen({ setRole, appLang, setAppLang }) {
   );
 }
 
-// Komponenten ohne Änderungen (aber notwendig für den Kontext)
 function RoleCard({ labelDe, labelAr, onClick, delay }) {
   return (
     <motion.div className="role-card" onClick={onClick} initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: delay }} whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }} whileTap={{ scale: 0.95 }} style={{ justifyContent: 'center' }}>
