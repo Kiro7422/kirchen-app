@@ -1,5 +1,5 @@
 /* src/App.js */
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Settings, ArrowLeft, BookOpen, PenTool, Eraser, User, Sun, Moon, Coffee } from 'lucide-react';
 import { liturgies, languages, uiTranslations, liturgyHints } from './liturgyData';
@@ -40,6 +40,68 @@ const getCopticDate = (appLang) => {
     : `${cDay}. ${monthName} ${cYear} A.M.`;
 };
 
+// --- OPTIMIERTE ZEILEN KOMPONENTE (MEMOIZED) ---
+// Das verhindert, dass alle Zeilen neu laden, wenn man das Menü öffnet
+const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, getSpeakerClass, hints, triggeredHints, setTriggeredHints, openHint }) => {
+  const rowRef = useRef(null);
+  const hasHintData = hints && hints[rowID];
+  const showIcon = triggeredHints.includes(rowID);
+
+  useEffect(() => {
+    if (!hasHintData || showIcon) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTriggeredHints(prev => {
+            // Verhindert unnötige Updates, wenn ID schon drin ist
+            if (prev.includes(rowID)) return prev;
+            return [...prev, rowID];
+          });
+          observer.disconnect();
+        }
+      }, { threshold: 0.6 }
+    );
+
+    if (rowRef.current) observer.observe(rowRef.current);
+    return () => observer.disconnect();
+  }, [hasHintData, showIcon, rowID, setTriggeredHints]);
+
+  return (
+    <>
+      {row.sectionTitle && (
+        <div style={{ textAlign: 'center', marginTop: '30px', marginBottom: '10px' }}>
+          <h4 className="section-title">{row.sectionTitle[appLang]}</h4>
+        </div>
+      )}
+      <div ref={rowRef} className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
+        {showIcon && (
+          <motion.div className="hint-trigger-icon" onClick={() => openHint(rowID)} whileTap={{ scale: 0.9 }} initial={{ scale: 0 }} animate={{ scale: 1 }}>!</motion.div>
+        )}
+        {row.speaker && <span className="speaker">{row.speaker}</span>}
+        <div className="text-grid" style={{ gridTemplateColumns: `repeat(${dynamicLangs.length > 0 ? dynamicLangs.length : 1}, 1fr)` }}>
+          {[...dynamicLangs].sort((a, b) => {
+            const order = ['de', 'cop_de', 'ar_de', 'cop_cop', 'cop_ar', 'ar'];
+            return order.indexOf(a) - order.indexOf(b);
+          }).map(lang => (
+            <p key={lang} className={`text-line lang-${lang}`}>{row[lang]}</p>
+          ))}
+        </div>
+        {hasMenu && (
+          <div className="inline-menu-container">
+            {row.reconciliation_menu.map((btn, btnIdx) => (
+              <button key={btnIdx} className="inline-menu-btn" onClick={() => handleMenuAction(btn.action)}>
+                <span className="btn-label-ar">{btn.label_ar}</span>
+                <span className="btn-label-de">{btn.label_de}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </>
+  );
+});
+
 export default function App() {
   const [loading, setLoading] = useState(true);
 
@@ -78,10 +140,11 @@ export default function App() {
 
   const closeHintPopup = () => { setActiveHintData(null); };
 
-  const openHint = (id) => {
+  // Optimiert mit useCallback
+  const openHint = useCallback((id) => {
     const hint = liturgyHints[id];
     if (hint) setActiveHintData({ id, ...hint });
-  };
+  }, []);
 
   // Scroll Helfer
   const scrollToElementById = (id) => {
@@ -138,7 +201,8 @@ export default function App() {
     }
   };
 
-  const handleMenuAction = (action) => {
+  // Optimiert mit useCallback
+  const handleMenuAction = useCallback((action) => {
     if (!action) return;
     if (scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0;
     switch (action) {
@@ -159,16 +223,21 @@ export default function App() {
       case "goto_aspasmos_watos_1": setTargetScrollId(null); setSelectedLiturgy('aspasmos_watos_1'); break;
       default: console.log("Aktion:", action);
     }
-  };
+  }, []);
 
-  const toggleLanguage = (langKey) => {
+  // Optimiert mit useCallback
+  const toggleLanguage = useCallback((langKey) => {
     captureScrollAnchor();
-    if (activeLangs.includes(langKey)) {
-      if (activeLangs.length > 1) setActiveLangs(activeLangs.filter(l => l !== langKey));
-    } else {
-      if (activeLangs.length < 3) setActiveLangs([...activeLangs, langKey]);
-    }
-  };
+    setActiveLangs(prev => {
+      if (prev.includes(langKey)) {
+        if (prev.length > 1) return prev.filter(l => l !== langKey);
+        return prev;
+      } else {
+        if (prev.length < 3) return [...prev, langKey];
+        return prev;
+      }
+    });
+  }, []);
 
   const changeFontSize = (newSize) => {
     captureScrollAnchor();
@@ -182,14 +251,16 @@ export default function App() {
   const toggleEraser = () => { setIsEraserMode(!isEraserMode); if (!isEraserMode) setIsHighlightMode(false); };
 
   const t = (key, subKey) => subKey ? uiTranslations[key][subKey][appLang] : uiTranslations.titles[key][appLang];
-  const getSpeakerClass = (speaker) => {
+
+  // Optimiert
+  const getSpeakerClass = useCallback((speaker) => {
     if (!speaker) return "";
     const s = speaker.toLowerCase().trim();
     if (s.startsWith('p')) return "speaker-priester";
     if (s.startsWith('d')) return "speaker-diakon";
     if (s === "volk" || s === "v" || s === "congregation") return "speaker-volk";
     return "";
-  };
+  }, []);
 
   if (loading) return <LoadingScreen appLang={appLang} />;
 
@@ -400,61 +471,6 @@ export default function App() {
   }
 }
 
-// --- LOGIK KOMPONENTE ---
-function PrayerRowWithLogic({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, getSpeakerClass, hints, triggeredHints, setTriggeredHints, openHint }) {
-  const rowRef = useRef(null);
-  const hasHintData = hints && hints[rowID];
-  const showIcon = triggeredHints.includes(rowID);
-
-  useEffect(() => {
-    if (!hasHintData || showIcon) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTriggeredHints(prev => [...prev, rowID]);
-          observer.disconnect();
-        }
-      }, { threshold: 0.6 }
-    );
-    if (rowRef.current) observer.observe(rowRef.current);
-    return () => observer.disconnect();
-  }, [hasHintData, showIcon, rowID, setTriggeredHints]);
-
-  return (
-    <>
-      {row.sectionTitle && (
-        <div style={{ textAlign: 'center', marginTop: '30px', marginBottom: '10px' }}>
-          <h4 className="section-title">{row.sectionTitle[appLang]}</h4>
-        </div>
-      )}
-      <div ref={rowRef} className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
-        {showIcon && (
-          <motion.div className="hint-trigger-icon" onClick={() => openHint(rowID)} whileTap={{ scale: 0.9 }} initial={{ scale: 0 }} animate={{ scale: 1 }}>!</motion.div>
-        )}
-        {row.speaker && <span className="speaker">{row.speaker}</span>}
-        <div className="text-grid" style={{ gridTemplateColumns: `repeat(${dynamicLangs.length > 0 ? dynamicLangs.length : 1}, 1fr)` }}>
-          {[...dynamicLangs].sort((a, b) => {
-            const order = ['de', 'cop_de', 'ar_de', 'cop_cop', 'cop_ar', 'ar'];
-            return order.indexOf(a) - order.indexOf(b);
-          }).map(lang => (
-            <p key={lang} className={`text-line lang-${lang}`}>{row[lang]}</p>
-          ))}
-        </div>
-        {hasMenu && (
-          <div className="inline-menu-container">
-            {row.reconciliation_menu.map((btn, btnIdx) => (
-              <button key={btnIdx} className="inline-menu-btn" onClick={() => handleMenuAction(btn.action)}>
-                <span className="btn-label-ar">{btn.label_ar}</span>
-                <span className="btn-label-de">{btn.label_de}</span>
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-    </>
-  );
-}
-
 // --- ROLLEN SCREEN ---
 function RoleSelectionScreen({ setRole, appLang, setAppLang }) {
   return (
@@ -478,6 +494,7 @@ function RoleSelectionScreen({ setRole, appLang, setAppLang }) {
   );
 }
 
+// Komponenten ohne Änderungen (aber notwendig für den Kontext)
 function RoleCard({ labelDe, labelAr, onClick, delay }) {
   return (
     <motion.div className="role-card" onClick={onClick} initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: delay }} whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }} whileTap={{ scale: 0.95 }} style={{ justifyContent: 'center' }}>
