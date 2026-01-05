@@ -1,7 +1,7 @@
 /* src/App.js */
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, ArrowLeft, BookOpen, PenTool, Eraser, User, Sun, Moon, Coffee } from 'lucide-react';
+import { Settings, ArrowLeft, BookOpen, PenTool, Eraser, User, Sun, Moon, Coffee, PlayCircle } from 'lucide-react';
 import { liturgies, languages, uiTranslations, liturgyHints } from './liturgyData';
 import './App.css';
 
@@ -15,39 +15,17 @@ const getCopticDate = (appLang) => {
     { ar: "بؤونة", de: "Paoni" }, { ar: "أبيب", de: "Epip" }, { ar: "مسرى", de: "Mesori" }, { ar: "نسيئ", de: "Pi Kogi Enavot" }
   ];
 
-  // Koptisches Neujahr ~ 11. Sept.
-  // Einfache Berechnung für den Zeitraum Jan - Sept (Rest des koptischen Jahres)
-  // 1. Jan = 22. Kiahk (normales Jahr) / 23. Kiahk (Schaltjahr vor 29. Feb)
-  // Wir nutzen eine Annäherung für heute (5. Jan = 27. Kiahk)
-
   let cDay, cMonthIndex, cYear;
   const day = today.getDate();
-  const month = today.getMonth(); // 0 = Jan
+  const month = today.getMonth();
   const year = today.getFullYear();
-  cYear = year - 284; // Märtyrer Jahr grob
+  cYear = year - 284;
 
-  // Sehr vereinfachte Logik für Jan/Feb (Kiahk/Tobi) damit es heute stimmt:
-  // Jan 1 = 23 Kiahk (Index 3).
-  // Jan 5 = 27 Kiahk.
-
-  if (month === 0) { // Januar
-    if (day <= 8) {
-      cMonthIndex = 3; // Kiahk
-      cDay = day + 22; // 5 + 22 = 27
-    } else {
-      cMonthIndex = 4; // Tobi
-      cDay = day - 8;
-    }
-  } else if (month === 1) { // Feb
-    if (day <= 7) {
-      cMonthIndex = 4; // Tobi
-      cDay = day + 23; // 31 Jan Tage - 8 = 23 offset
-    } else {
-      cMonthIndex = 5; // Meshir
-      cDay = day - 7;
-    }
+  if (month === 0) {
+    if (day <= 8) { cMonthIndex = 3; cDay = day + 22; } else { cMonthIndex = 4; cDay = day - 8; }
+  } else if (month === 1) {
+    if (day <= 7) { cMonthIndex = 4; cDay = day + 23; } else { cMonthIndex = 5; cDay = day - 7; }
   } else {
-    // Fallback für den Rest des Jahres (Näherung)
     const monthOffset = (month + 4) % 13;
     cMonthIndex = monthOffset;
     cDay = day;
@@ -82,15 +60,29 @@ export default function App() {
   const [fontSize, setFontSize] = useState(1);
   const [appTheme, setAppTheme] = useState('dark');
 
+  // --- AUTO-SAVE STATE ---
+  const [lastSession, setLastSession] = useState(null);
+
   // --- HINWEIS STATE ---
   const [triggeredHints, setTriggeredHints] = useState([]);
   const [activeHintData, setActiveHintData] = useState(null);
 
   const scrollContainerRef = useRef(null);
   const scrollAnchorRef = useRef(null);
+  const saveTimeoutRef = useRef(null); // Für Debouncing beim Scrollen
 
-  // Initialisierung
-  useEffect(() => { setTimeout(() => setLoading(false), 2000); }, []);
+  // Initialisierung & Session laden
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2000);
+
+    // Lade letzte Session aus LocalStorage
+    const saved = localStorage.getItem('last_prayer_session');
+    if (saved) {
+      try {
+        setLastSession(JSON.parse(saved));
+      } catch (e) { console.error("Error loading session", e); }
+    }
+  }, []);
 
   // Theme anwenden
   useEffect(() => {
@@ -142,6 +134,43 @@ export default function App() {
       scrollAnchorRef.current = null;
     }
   }, [activeLangs, fontSize]);
+
+  // --- AUTO SAVE FUNKTION ---
+  const handlePrayerScroll = () => {
+    if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+
+    // Speichere erst, wenn 500ms nicht gescrollt wurde (Performance)
+    saveTimeoutRef.current = setTimeout(() => {
+      if (!scrollContainerRef.current) return;
+
+      // Finde das oberste sichtbare Element
+      const rows = Array.from(scrollContainerRef.current.querySelectorAll('.prayer-row'));
+      for (let row of rows) {
+        const rect = row.getBoundingClientRect();
+        // Wenn das Element im oberen Drittel ist
+        if (rect.top >= 50 && rect.top < window.innerHeight / 2) {
+          const id = row.getAttribute('data-id');
+          const sessionData = {
+            liturgy: selectedLiturgy,
+            id: id,
+            timestamp: Date.now()
+          };
+          localStorage.setItem('last_prayer_session', JSON.stringify(sessionData));
+          setLastSession(sessionData);
+          break;
+        }
+      }
+    }, 500);
+  };
+
+  // --- RESUME FUNKTION ---
+  const resumeLastSession = () => {
+    if (lastSession) {
+      setSelectedLiturgy(lastSession.liturgy);
+      setTargetScrollId(lastSession.id);
+      setView('prayer');
+    }
+  };
 
   const captureScrollAnchor = () => {
     if (scrollContainerRef.current) {
@@ -241,7 +270,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Settings Popup jetzt global verfügbar (Home & Prayer) */}
+      {/* Settings Popup */}
       <AnimatePresence>
         {showSettings && (
           <motion.div initial={{ opacity: 0, scale: 0.8, y: -20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.8 }} className="settings-popup">
@@ -299,7 +328,6 @@ export default function App() {
           </motion.button>
         ) : (
           <div style={{ display: 'flex', gap: '15px' }}>
-            {/* Hier: label "DE" und "AR" */}
             <LanguageToggle current={appLang} lang='de' setLang={setAppLang} label="DE" />
             <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} label="AR" />
           </div>
@@ -308,17 +336,14 @@ export default function App() {
         {/* RECHTE SEITE HEADER */}
         <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', gap: '10px' }}>
 
-          {/* Datum */}
           <div className="coptic-date-display">
             {getCopticDate(appLang)}
           </div>
 
-          {/* SETTINGS BUTTON: JETZT AUCH AUF HOME SICHTBAR */}
           <motion.button whileTap={{ rotate: 90 }} onClick={() => setShowSettings(!showSettings)} className="icon-btn">
             <Settings size={28} />
           </motion.button>
 
-          {/* PROFIL BUTTON (Nur Home) */}
           {view === 'home' && (
             <motion.button whileTap={{ scale: 0.95 }} onClick={() => setUserRole(null)}
               style={{ color: 'var(--gold)', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.8rem', border: '1px solid var(--gold)', padding: '5px 10px', borderRadius: '15px', background: 'transparent', cursor: 'pointer' }}>
@@ -351,6 +376,20 @@ export default function App() {
                   <motion.img src="/logo.png" alt="Logo" className="main-logo" animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }} />
                   <h1 className="church-title">{t('homeSubtitle')}</h1>
                 </div>
+
+                {/* RESUME BUTTON (Falls Session gespeichert) */}
+                {lastSession && (
+                  <motion.button
+                    initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}
+                    onClick={resumeLastSession}
+                    className="menu-btn highlight"
+                    style={{ marginBottom: '20px', width: '85%', maxWidth: '350px', border: '2px solid var(--gold)' }}
+                  >
+                    <PlayCircle size={24} />
+                    {appLang === 'ar' ? `استئناف: ${uiTranslations.buttons[lastSession.liturgy]?.ar || lastSession.liturgy}` : `Weiterlesen: ${uiTranslations.buttons[lastSession.liturgy]?.de || lastSession.liturgy}`}
+                  </motion.button>
+                )}
+
                 <div className="btn-group">
                   <MenuButton onClick={() => setView('agpeya')} text={t('buttons', 'agpeya')} icon={<BookOpen size={20} />} />
                   <MenuButton onClick={() => setView('liturgyMenu')} text={t('buttons', 'liturgy')} highlight />
@@ -375,9 +414,10 @@ export default function App() {
           )}
 
           {view === 'prayer' && selectedLiturgy && liturgies[selectedLiturgy] && (
+            /* HIER: onScroll Event hinzugefügt */
             <div className={prayerModeClass} onContextMenu={handleContextMenu} onMouseUp={handleTextSelection} onTouchEnd={handleTextSelection} onClick={handlePrayerClick}>
 
-              <div className="scroll-area" ref={scrollContainerRef}>
+              <div className="scroll-area" ref={scrollContainerRef} onScroll={handlePrayerScroll}>
                 <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                   <h3 className="liturgy-header">{liturgies[selectedLiturgy].title[appLang]}</h3>
                 </div>
