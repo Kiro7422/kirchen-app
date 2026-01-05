@@ -1,48 +1,111 @@
 /* src/App.js */
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, ArrowLeft, BookOpen, PenTool, Eraser, User } from 'lucide-react';
+import { Settings, ArrowLeft, BookOpen, PenTool, Eraser, User, Sun, Moon, Coffee } from 'lucide-react';
 import { liturgies, languages, uiTranslations, liturgyHints } from './liturgyData';
 import './App.css';
+
+// --- HELPER: Koptisches Datum (Verbesserte Näherung) ---
+const getCopticDate = (appLang) => {
+  const today = new Date();
+  const copticMonths = [
+    { ar: "توت", de: "Thout" }, { ar: "بابه", de: "Paopi" }, { ar: "هاتور", de: "Hathor" },
+    { ar: "كيهك", de: "Kiahk" }, { ar: "طوبة", de: "Tobi" }, { ar: "أمشير", de: "Meshir" },
+    { ar: "برمهات", de: "Paremhotep" }, { ar: "برمودة", de: "Parmouti" }, { ar: "بشنس", de: "Pashons" },
+    { ar: "بؤونة", de: "Paoni" }, { ar: "أبيب", de: "Epip" }, { ar: "مسرى", de: "Mesori" }, { ar: "نسيئ", de: "Pi Kogi Enavot" }
+  ];
+
+  // Koptisches Neujahr ~ 11. Sept.
+  // Einfache Berechnung für den Zeitraum Jan - Sept (Rest des koptischen Jahres)
+  // 1. Jan = 22. Kiahk (normales Jahr) / 23. Kiahk (Schaltjahr vor 29. Feb)
+  // Wir nutzen eine Annäherung für heute (5. Jan = 27. Kiahk)
+
+  let cDay, cMonthIndex, cYear;
+  const day = today.getDate();
+  const month = today.getMonth(); // 0 = Jan
+  const year = today.getFullYear();
+  cYear = year - 284; // Märtyrer Jahr grob
+
+  // Sehr vereinfachte Logik für Jan/Feb (Kiahk/Tobi) damit es heute stimmt:
+  // Jan 1 = 23 Kiahk (Index 3).
+  // Jan 5 = 27 Kiahk.
+
+  if (month === 0) { // Januar
+    if (day <= 8) {
+      cMonthIndex = 3; // Kiahk
+      cDay = day + 22; // 5 + 22 = 27
+    } else {
+      cMonthIndex = 4; // Tobi
+      cDay = day - 8;
+    }
+  } else if (month === 1) { // Feb
+    if (day <= 7) {
+      cMonthIndex = 4; // Tobi
+      cDay = day + 23; // 31 Jan Tage - 8 = 23 offset
+    } else {
+      cMonthIndex = 5; // Meshir
+      cDay = day - 7;
+    }
+  } else {
+    // Fallback für den Rest des Jahres (Näherung)
+    const monthOffset = (month + 4) % 13;
+    cMonthIndex = monthOffset;
+    cDay = day;
+  }
+
+  const monthName = appLang === 'ar' ? copticMonths[cMonthIndex].ar : copticMonths[cMonthIndex].de;
+  const dayString = appLang === 'ar' ? cDay.toLocaleString('ar-EG') : cDay;
+  const yearString = appLang === 'ar' ? cYear.toLocaleString('ar-EG') : cYear;
+
+  return appLang === 'ar'
+    ? `${dayString} ${monthName} ${yearString} للشهداء`
+    : `${cDay}. ${monthName} ${cYear} A.M.`;
+};
 
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-  // --- STATE: ROLLE ---
-  const [userRole, setUserRole] = useState(null); // 'priester', 'diakon', 'volk'
-
+  // --- STATE ---
+  const [userRole, setUserRole] = useState(null);
   const [view, setView] = useState('home');
   const [selectedLiturgy, setSelectedLiturgy] = useState(null);
   const [appLang, setAppLang] = useState('de');
   const [activeLangs, setActiveLangs] = useState(['de', 'ar', 'cop_ar']);
   const [showSettings, setShowSettings] = useState(false);
   const [targetScrollId, setTargetScrollId] = useState(null);
+
+  // --- TOOLS ---
   const [isHighlightMode, setIsHighlightMode] = useState(false);
   const [isEraserMode, setIsEraserMode] = useState(false);
+
+  // --- FEATURE STATES ---
+  const [fontSize, setFontSize] = useState(1);
+  const [appTheme, setAppTheme] = useState('dark');
 
   // --- HINWEIS STATE ---
   const [triggeredHints, setTriggeredHints] = useState([]);
   const [activeHintData, setActiveHintData] = useState(null);
 
   const scrollContainerRef = useRef(null);
-
-  // --- REF für Scroll-Stabilisierung ---
   const scrollAnchorRef = useRef(null);
 
-  // Popup schließen
-  const closeHintPopup = () => {
-    setActiveHintData(null);
-  };
+  // Initialisierung
+  useEffect(() => { setTimeout(() => setLoading(false), 2000); }, []);
 
-  // Hinweis manuell öffnen (Klick auf Icon)
+  // Theme anwenden
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', appTheme);
+    document.documentElement.style.setProperty('--font-scale', fontSize);
+  }, [appTheme, fontSize]);
+
+  const closeHintPopup = () => { setActiveHintData(null); };
+
   const openHint = (id) => {
     const hint = liturgyHints[id];
-    if (hint) {
-      setActiveHintData({ id, ...hint });
-    }
+    if (hint) setActiveHintData({ id, ...hint });
   };
 
-  // Scroll Helfer (für Navigation durch Menü)
+  // Scroll Helfer
   const scrollToElementById = (id) => {
     let attempts = 0;
     const maxAttempts = 50;
@@ -59,7 +122,6 @@ export default function App() {
     requestAnimationFrame(checkAndScroll);
   };
 
-  // LayoutEffect für Navigation (Menü-Klicks)
   useLayoutEffect(() => {
     if (view === 'prayer' && targetScrollId) {
       scrollToElementById(targetScrollId);
@@ -67,12 +129,11 @@ export default function App() {
     }
   }, [selectedLiturgy, targetScrollId, view]);
 
-  // --- LayoutEffect für Scroll-Stabilisierung beim Sprachwechsel ---
+  // Scroll Stabilisierung
   useLayoutEffect(() => {
     if (scrollAnchorRef.current && scrollContainerRef.current) {
       const { id, offsetTop } = scrollAnchorRef.current;
       const element = scrollContainerRef.current.querySelector(`[data-id="${id}"]`);
-
       if (element) {
         const currentRect = element.getBoundingClientRect();
         const diff = currentRect.top - offsetTop;
@@ -80,13 +141,28 @@ export default function App() {
       }
       scrollAnchorRef.current = null;
     }
-  }, [activeLangs]);
+  }, [activeLangs, fontSize]);
 
-  // Menü Aktionen
+  const captureScrollAnchor = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const rows = Array.from(container.querySelectorAll('.prayer-row'));
+      for (let row of rows) {
+        const rect = row.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top < window.innerHeight) {
+          scrollAnchorRef.current = {
+            id: row.getAttribute('data-id'),
+            offsetTop: rect.top
+          };
+          break;
+        }
+      }
+    }
+  };
+
   const handleMenuAction = (action) => {
     if (!action) return;
     if (scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0;
-
     switch (action) {
       case "goto_basily_start": setTargetScrollId(null); setSelectedLiturgy('basily'); break;
       case "goto_basily_id_5": setSelectedLiturgy('basily'); setTargetScrollId(5); break;
@@ -107,28 +183,18 @@ export default function App() {
     }
   };
 
-  // --- toggleLanguage mit Anker-Logik ---
   const toggleLanguage = (langKey) => {
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const rows = Array.from(container.querySelectorAll('.prayer-row'));
-      for (let row of rows) {
-        const rect = row.getBoundingClientRect();
-        if (rect.top >= 0 && rect.top < window.innerHeight) {
-          scrollAnchorRef.current = {
-            id: row.getAttribute('data-id'),
-            offsetTop: rect.top
-          };
-          break;
-        }
-      }
-    }
-
+    captureScrollAnchor();
     if (activeLangs.includes(langKey)) {
       if (activeLangs.length > 1) setActiveLangs(activeLangs.filter(l => l !== langKey));
     } else {
       if (activeLangs.length < 3) setActiveLangs([...activeLangs, langKey]);
     }
+  };
+
+  const changeFontSize = (newSize) => {
+    captureScrollAnchor();
+    setFontSize(newSize);
   };
 
   const handleContextMenu = (e) => { e.preventDefault(); return false; };
@@ -137,9 +203,7 @@ export default function App() {
   const togglePen = () => { setIsHighlightMode(!isHighlightMode); if (!isHighlightMode) setIsEraserMode(false); };
   const toggleEraser = () => { setIsEraserMode(!isEraserMode); if (!isEraserMode) setIsHighlightMode(false); };
 
-  useEffect(() => { setTimeout(() => setLoading(false), 2000); }, []);
   const t = (key, subKey) => subKey ? uiTranslations[key][subKey][appLang] : uiTranslations.titles[key][appLang];
-
   const getSpeakerClass = (speaker) => {
     if (!speaker) return "";
     const s = speaker.toLowerCase().trim();
@@ -151,105 +215,128 @@ export default function App() {
 
   if (loading) return <LoadingScreen appLang={appLang} />;
 
-  // --- ROLLEN AUSWAHL ---
   if (!userRole) {
     return (
-      <RoleSelectionScreen
-        setRole={setUserRole}
-        appLang={appLang}
-        setAppLang={setAppLang}
-      />
+      <RoleSelectionScreen setRole={setUserRole} appLang={appLang} setAppLang={setAppLang} />
     );
   }
 
-  // --- KLASSEN FÜR ROLLEN ---
   let prayerModeClass = "prayer-mode";
   if (isHighlightMode) prayerModeClass += " mode-pen-active";
   if (isEraserMode) prayerModeClass += " mode-eraser-active";
-
-  // Diakon Modus
   if (userRole === 'diakon') prayerModeClass += " role-diakon-active";
-  // Priester Modus
   if (userRole === 'priester') prayerModeClass += " role-priester-active";
 
   return (
     <div className="app-container">
-      {/* --- POPUP --- */}
       <AnimatePresence>
         {activeHintData && (
-          <motion.div
-            className="hint-overlay"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            onClick={closeHintPopup}
-          >
+          <motion.div className="hint-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeHintPopup}>
             <div className="hint-box" onClick={(e) => e.stopPropagation()}>
               <h2 className="hint-title">{appLang === 'ar' ? 'تنبيه' : 'Hinweis'}</h2>
-              <div className="hint-text">
-                {activeHintData[appLang] || activeHintData['de']}
-              </div>
-              <button className="hint-btn" onClick={closeHintPopup}>
-                {appLang === 'ar' ? 'حسناً' : 'OK'}
-              </button>
+              <div className="hint-text">{activeHintData[appLang] || activeHintData['de']}</div>
+              <button className="hint-btn" onClick={closeHintPopup}>{appLang === 'ar' ? 'حسناً' : 'OK'}</button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {view !== 'prayer' && (
-        <>
-          <div className="bg-image"></div>
-          <div className="overlay"></div>
-        </>
-      )}
+      {/* Settings Popup jetzt global verfügbar (Home & Prayer) */}
+      <AnimatePresence>
+        {showSettings && (
+          <motion.div initial={{ opacity: 0, scale: 0.8, y: -20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.8 }} className="settings-popup">
+
+            <div className="settings-section">
+              <label className="settings-label">{t('prayerLanguages')}</label>
+              <div className="lang-grid">
+                {Object.entries(languages).map(([key, info]) => (
+                  <button key={key} className={`lang-btn ${activeLangs.includes(key) ? 'active' : ''}`} onClick={() => toggleLanguage(key)} disabled={!activeLangs.includes(key) && activeLangs.length >= 3}>
+                    {info.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="settings-section">
+              <label className="settings-label">{appLang === 'ar' ? 'حجم الخط' : 'Schriftgröße'}</label>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ fontSize: '0.8rem' }}>A</span>
+                <input
+                  type="range" min="0.8" max="1.8" step="0.1"
+                  value={fontSize}
+                  onChange={(e) => changeFontSize(parseFloat(e.target.value))}
+                />
+                <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>A</span>
+              </div>
+            </div>
+
+            <div className="settings-section">
+              <label className="settings-label">{appLang === 'ar' ? 'السمة' : 'Design'}</label>
+              <div className="theme-grid">
+                <button className={`theme-btn ${appTheme === 'dark' ? 'active' : ''}`} onClick={() => setAppTheme('dark')}>
+                  <Moon size={16} /> Dark
+                </button>
+                <button className={`theme-btn ${appTheme === 'light' ? 'active' : ''}`} onClick={() => setAppTheme('light')}>
+                  <Sun size={16} /> Light
+                </button>
+                <button className={`theme-btn ${appTheme === 'sepia' ? 'active' : ''}`} onClick={() => setAppTheme('sepia')}>
+                  <Coffee size={16} /> Sepia
+                </button>
+              </div>
+            </div>
+
+            <button className="close-btn" onClick={() => setShowSettings(false)}>{t('done')}</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {view !== 'prayer' && <><div className="bg-image"></div><div className="overlay"></div></>}
 
       <header className="header">
         {view !== 'home' ? (
           <motion.button whileTap={{ scale: 0.9 }} onClick={() => setView(view === 'prayer' ? 'liturgyMenu' : 'home')} className="icon-btn">
-            <ArrowLeft color="#D4AF37" size={28} />
+            <ArrowLeft size={28} />
           </motion.button>
         ) : (
           <div style={{ display: 'flex', gap: '15px' }}>
+            {/* Hier: label "DE" und "AR" */}
             <LanguageToggle current={appLang} lang='de' setLang={setAppLang} label="DE" />
-            <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} label="EG" />
+            <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} label="AR" />
           </div>
         )}
 
-        {/* --- NEU: Rolle wechseln durch Klick --- */}
-        {view === 'home' && (
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setUserRole(null)} // Setzt Rolle zurück -> Auswahl Screen
-            style={{
-              color: 'var(--gold)',
-              marginLeft: 'auto',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '5px',
-              fontSize: '0.8rem',
-              border: '1px solid var(--gold)',
-              padding: '5px 10px',
-              borderRadius: '15px',
-              background: 'transparent',
-              cursor: 'pointer'
-            }}
-          >
-            <User size={16} />
-            {userRole === 'diakon' ? (appLang === 'ar' ? 'شماس' : 'Diakon') :
-              userRole === 'priester' ? (appLang === 'ar' ? 'كاهن' : 'Priester') :
-                (appLang === 'ar' ? 'شعب' : 'Volk')}
+        {/* RECHTE SEITE HEADER */}
+        <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', gap: '10px' }}>
+
+          {/* Datum */}
+          <div className="coptic-date-display">
+            {getCopticDate(appLang)}
+          </div>
+
+          {/* SETTINGS BUTTON: JETZT AUCH AUF HOME SICHTBAR */}
+          <motion.button whileTap={{ rotate: 90 }} onClick={() => setShowSettings(!showSettings)} className="icon-btn">
+            <Settings size={28} />
           </motion.button>
-        )}
+
+          {/* PROFIL BUTTON (Nur Home) */}
+          {view === 'home' && (
+            <motion.button whileTap={{ scale: 0.95 }} onClick={() => setUserRole(null)}
+              style={{ color: 'var(--gold)', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.8rem', border: '1px solid var(--gold)', padding: '5px 10px', borderRadius: '15px', background: 'transparent', cursor: 'pointer' }}>
+              <User size={16} />
+              {userRole === 'diakon' ? (appLang === 'ar' ? 'شماس' : 'Diakon') :
+                userRole === 'priester' ? (appLang === 'ar' ? 'كاهن' : 'Priester') :
+                  (appLang === 'ar' ? 'شعب' : 'Volk')}
+            </motion.button>
+          )}
+        </div>
 
         {view === 'prayer' && (
-          <div className="header-actions">
+          <div className="header-actions" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
             <motion.button whileTap={{ scale: 0.9 }} onClick={togglePen} className={`icon-btn ${isHighlightMode ? 'active-pen' : ''}`}>
-              <PenTool color={isHighlightMode ? "#FFEB3B" : "#D4AF37"} size={22} fill={isHighlightMode ? "#FFEB3B" : "transparent"} />
+              <PenTool size={22} />
             </motion.button>
             <motion.button whileTap={{ scale: 0.9 }} onClick={toggleEraser} className={`icon-btn ${isEraserMode ? 'active-pen' : ''}`}>
-              <Eraser color={isEraserMode ? "#FFEB3B" : "#D4AF37"} size={22} fill={isEraserMode ? "#FFEB3B" : "transparent"} />
-            </motion.button>
-            <motion.button whileTap={{ rotate: 90 }} onClick={() => setShowSettings(!showSettings)} className="icon-btn">
-              <Settings color={view === 'prayer' ? "#B8860B" : "#D4AF37"} size={28} />
+              <Eraser size={22} />
             </motion.button>
           </div>
         )}
@@ -289,22 +376,6 @@ export default function App() {
 
           {view === 'prayer' && selectedLiturgy && liturgies[selectedLiturgy] && (
             <div className={prayerModeClass} onContextMenu={handleContextMenu} onMouseUp={handleTextSelection} onTouchEnd={handleTextSelection} onClick={handlePrayerClick}>
-
-              <AnimatePresence>
-                {showSettings && (
-                  <motion.div initial={{ opacity: 0, scale: 0.8, y: -20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.8 }} className="settings-popup">
-                    <h3>{t('prayerLanguages')}</h3>
-                    <div className="lang-grid">
-                      {Object.entries(languages).map(([key, info]) => (
-                        <button key={key} className={`lang-btn ${activeLangs.includes(key) ? 'active' : ''}`} onClick={() => toggleLanguage(key)} disabled={!activeLangs.includes(key) && activeLangs.length >= 3}>
-                          {info.label}
-                        </button>
-                      ))}
-                    </div>
-                    <button className="close-btn" onClick={() => setShowSettings(false)}>{t('done')}</button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
 
               <div className="scroll-area" ref={scrollContainerRef}>
                 <div style={{ textAlign: 'center', marginBottom: '20px' }}>
@@ -362,17 +433,14 @@ function PrayerRowWithLogic({ row, rowID, appLang, dynamicLangs, hasMenu, handle
 
   useEffect(() => {
     if (!hasHintData || showIcon) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setTriggeredHints(prev => [...prev, rowID]);
           observer.disconnect();
         }
-      },
-      { threshold: 0.6 }
+      }, { threshold: 0.6 }
     );
-
     if (rowRef.current) observer.observe(rowRef.current);
     return () => observer.disconnect();
   }, [hasHintData, showIcon, rowID, setTriggeredHints]);
@@ -384,20 +452,10 @@ function PrayerRowWithLogic({ row, rowID, appLang, dynamicLangs, hasMenu, handle
           <h4 className="section-title">{row.sectionTitle[appLang]}</h4>
         </div>
       )}
-
       <div ref={rowRef} className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
-
         {showIcon && (
-          <motion.div
-            className="hint-trigger-icon"
-            onClick={() => openHint(rowID)}
-            whileTap={{ scale: 0.9 }}
-            initial={{ scale: 0 }} animate={{ scale: 1 }}
-          >
-            !
-          </motion.div>
+          <motion.div className="hint-trigger-icon" onClick={() => openHint(rowID)} whileTap={{ scale: 0.9 }} initial={{ scale: 0 }} animate={{ scale: 1 }}>!</motion.div>
         )}
-
         {row.speaker && <span className="speaker">{row.speaker}</span>}
         <div className="text-grid" style={{ gridTemplateColumns: `repeat(${dynamicLangs.length > 0 ? dynamicLangs.length : 1}, 1fr)` }}>
           {[...dynamicLangs].sort((a, b) => {
@@ -407,7 +465,6 @@ function PrayerRowWithLogic({ row, rowID, appLang, dynamicLangs, hasMenu, handle
             <p key={lang} className={`text-line lang-${lang}`}>{row[lang]}</p>
           ))}
         </div>
-
         {hasMenu && (
           <div className="inline-menu-container">
             {row.reconciliation_menu.map((btn, btnIdx) => (
@@ -423,68 +480,32 @@ function PrayerRowWithLogic({ row, rowID, appLang, dynamicLangs, hasMenu, handle
   );
 }
 
-// --- ROLLEN SCREEN (Emojis entfernt!) ---
+// --- ROLLEN SCREEN ---
 function RoleSelectionScreen({ setRole, appLang, setAppLang }) {
   return (
     <div className="role-selection-container">
       <div style={{ position: 'absolute', top: 20, right: 20 }}>
         <div style={{ display: 'flex', gap: '15px' }}>
           <LanguageToggle current={appLang} lang='de' setLang={setAppLang} label="DE" />
-          <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} label="EG" />
+          <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} label="AR" />
         </div>
       </div>
-
-      <motion.img
-        src="/logo.png"
-        style={{ width: '120px', marginBottom: '20px' }}
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-      />
-
-      <motion.h2
-        style={{ color: 'var(--gold)', fontFamily: 'Cairo', marginBottom: '40px' }}
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-      >
+      <motion.img src="/logo.png" style={{ width: '120px', marginBottom: '20px' }} initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} />
+      <motion.h2 style={{ color: 'var(--gold)', fontFamily: 'Cairo', marginBottom: '40px' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
         {appLang === 'ar' ? 'اختر دورك' : 'Wähle deine Rolle'}
       </motion.h2>
-
       <div className="role-grid">
-        <RoleCard
-          labelDe="Priester"
-          labelAr="كاهن"
-          onClick={() => setRole('priester')}
-          delay={0.3}
-        />
-        <RoleCard
-          labelDe="Diakon"
-          labelAr="شماس"
-          onClick={() => setRole('diakon')}
-          delay={0.4}
-        />
-        <RoleCard
-          labelDe="Volk"
-          labelAr="شعب"
-          onClick={() => setRole('volk')}
-          delay={0.5}
-        />
+        <RoleCard labelDe="Priester" labelAr="كاهن" onClick={() => setRole('priester')} delay={0.3} />
+        <RoleCard labelDe="Diakon" labelAr="شماس" onClick={() => setRole('diakon')} delay={0.4} />
+        <RoleCard labelDe="Volk" labelAr="شعب" onClick={() => setRole('volk')} delay={0.5} />
       </div>
     </div>
   );
 }
 
-// --- Rolle Karte ohne Icons ---
 function RoleCard({ labelDe, labelAr, onClick, delay }) {
   return (
-    <motion.div
-      className="role-card"
-      onClick={onClick}
-      initial={{ x: -50, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ delay: delay }}
-      whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }}
-      whileTap={{ scale: 0.95 }}
-      style={{ justifyContent: 'center' }}
-    >
+    <motion.div className="role-card" onClick={onClick} initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: delay }} whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }} whileTap={{ scale: 0.95 }} style={{ justifyContent: 'center' }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <span className="role-title" style={{ color: 'var(--gold)' }}>{labelAr}</span>
         <span className="role-title" style={{ fontSize: '1rem', color: '#ccc' }}>{labelDe}</span>
@@ -495,8 +516,7 @@ function RoleCard({ labelDe, labelAr, onClick, delay }) {
 
 function LanguageToggle({ current, lang, setLang, label }) {
   return (
-    <motion.button whileTap={{ scale: 0.9 }} onClick={() => setLang(lang)}
-      style={{ opacity: current === lang ? 1 : 0.6, background: 'none', border: 'none', fontSize: '1.2rem', fontWeight: 'bold', cursor: 'pointer', fontFamily: 'Cairo', color: current === lang ? 'var(--gold)' : 'white', textShadow: current === lang ? '0 0 10px rgba(212, 175, 55, 0.5)' : 'none' }}>
+    <motion.button whileTap={{ scale: 0.9 }} onClick={() => setLang(lang)} style={{ opacity: current === lang ? 1 : 0.6, background: 'none', border: 'none', fontSize: '1.2rem', fontWeight: 'bold', cursor: 'pointer', fontFamily: 'Cairo', color: current === lang ? 'var(--gold)' : 'white', textShadow: current === lang ? '0 0 10px rgba(212, 175, 55, 0.5)' : 'none' }}>
       {label}
     </motion.button>
   )
