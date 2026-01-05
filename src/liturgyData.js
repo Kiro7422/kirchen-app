@@ -84,6 +84,7 @@ export const liturgies = {
                 // Das \n sorgt für neue Zeilen im Arabischen
                 ar: "كيريه ليسون كيريه ليسون يارب ارحم\nكيريه ليسون كيريه ليسون ارحمنا يا الله\nكيريه ليسون كيريه ليسون اسمعنا و ارحمنا",
                 cop_cop: "Kurie `ele`ycon.",
+                counter: 41
 
 
             },
@@ -2444,7 +2445,7 @@ export const liturgies = {
                 ar_de: "wa hazehi el ka2so ay-dan daman kariman lel 3ahdi el jadidi el-lazi laho.",
                 cop_de: "Owoh pai-afot de on en-snof ef-tayie-hout: ente ti-diathiki em-veri entaf.",
             },
-             {
+            {
                 id: 68,
                 speaker: "Volk",
                 cop_ar: "آمين.",
@@ -2593,7 +2594,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2602,7 +2603,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2611,7 +2612,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2620,7 +2621,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2629,7 +2630,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2638,7 +2639,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2647,7 +2648,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2656,7 +2657,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2665,7 +2666,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2674,7 +2675,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2683,7 +2684,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2692,7 +2693,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2701,7 +2702,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2710,7 +2711,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2719,7 +2720,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2728,7 +2729,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2737,7 +2738,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2746,7 +2747,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2755,7 +2756,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2764,7 +2765,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2773,7 +2774,7 @@ export const liturgies = {
                 cop_cop: "",
                 ar_de: "",
                 cop_de: "",
-            },{
+            }, {
                 id: 65,
                 speaker: "",
                 cop_ar: "",
@@ -2953,15 +2954,15 @@ export const liturgies = {
             },
         ]
     }
-    }
-    
+}
 
 
-    
+
+
 
 export const liturgyHints = {
     // Syntax: ID_NUMMER: { de: "Text", ar: "Text" }
-    
+
     // Beispiel: Bei ID 27 (Absolution/Weihrauch)
     27: {
         de: "⚠️ Vergiss das Weihrauchgefäß nicht!",

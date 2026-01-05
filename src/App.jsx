@@ -1,7 +1,7 @@
 /* src/App.js */
 import React, { useState, useEffect, useRef, useLayoutEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, ArrowLeft, BookOpen, PenTool, Eraser, User, Sun, Moon, Coffee } from 'lucide-react';
+import { Settings, ArrowLeft, BookOpen, PenTool, Eraser, User, Sun, Moon, Coffee, Check } from 'lucide-react';
 import { liturgies, languages, uiTranslations, liturgyHints } from './liturgyData';
 import './App.css';
 
@@ -40,7 +40,53 @@ const getCopticDate = (appLang) => {
     : `${cDay}. ${monthName} ${cYear} A.M.`;
 };
 
-// --- EIGENE KOMPONENTE FÜR SETTINGS (OPTIMIERT) ---
+// --- NEU: KYRIE COUNTER KOMPONENTE (Zählt -3) ---
+const KyrieCounter = ({ initialCount }) => {
+  const [count, setCount] = useState(initialCount);
+  const [isFinished, setIsFinished] = useState(false);
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+
+    if (count > 0) {
+      if (navigator.vibrate) navigator.vibrate(40); // Kurzes Vibrieren
+
+      // HIER DIE ÄNDERUNG: Zieht 3 ab, aber nicht unter 0
+      const newCount = Math.max(0, count - 3);
+      setCount(newCount);
+
+      if (newCount === 0) {
+        setIsFinished(true);
+        if (navigator.vibrate) navigator.vibrate([100, 50, 100]); // Erfolg!
+      }
+    }
+  };
+
+  const handleContextMenu = (e) => {
+    e.preventDefault();
+    setCount(initialCount);
+    setIsFinished(false);
+    if (navigator.vibrate) navigator.vibrate(100);
+  };
+
+  return (
+    <div className="counter-wrapper">
+      <motion.button
+        className={`counter-btn ${isFinished ? 'finished' : ''}`}
+        onClick={handleClick}
+        onContextMenu={handleContextMenu}
+        whileTap={{ scale: 0.9 }}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+      >
+        {isFinished ? <Check size={40} /> : count}
+        {!isFinished && <span className="counter-label">Kyrie Eleison</span>}
+      </motion.button>
+    </div>
+  );
+};
+
+// --- SETTINGS KOMPONENTE ---
 const SettingsPopup = memo(({ appLang, activeLangs, toggleLanguage, fontSize, changeFontSize, appTheme, setAppTheme, close, t }) => {
   return (
     <motion.div
@@ -125,10 +171,13 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
         </div>
       )}
       <div ref={rowRef} className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
+
         {showIcon && (
           <motion.div className="hint-trigger-icon" onClick={() => openHint(rowID)} whileTap={{ scale: 0.9 }} initial={{ scale: 0 }} animate={{ scale: 1 }}>!</motion.div>
         )}
+
         {row.speaker && <span className="speaker">{row.speaker}</span>}
+
         <div className="text-grid" style={{ gridTemplateColumns: `repeat(${dynamicLangs.length > 0 ? dynamicLangs.length : 1}, 1fr)` }}>
           {[...dynamicLangs].sort((a, b) => {
             const order = ['de', 'cop_de', 'ar_de', 'cop_cop', 'cop_ar', 'ar'];
@@ -137,6 +186,12 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
             <p key={lang} className={`text-line lang-${lang}`}>{row[lang]}</p>
           ))}
         </div>
+
+        {/* --- KYRIE COUNTER EINFÜGEN --- */}
+        {row.counter && (
+          <KyrieCounter initialCount={row.counter} />
+        )}
+
         {hasMenu && (
           <div className="inline-menu-container">
             {row.reconciliation_menu.map((btn, btnIdx) => (
@@ -213,7 +268,6 @@ export default function App() {
     }
   }, [selectedLiturgy, targetScrollId, view]);
 
-  // Scroll Stabilisierung (Anker)
   useLayoutEffect(() => {
     if (scrollAnchorRef.current && scrollContainerRef.current) {
       const { id, offsetTop } = scrollAnchorRef.current;

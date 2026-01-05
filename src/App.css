@@ -7,55 +7,49 @@
   --red: #8B0000;
 
   /* --- THEME VARIABLEN (Standard: DARK MODE) --- */
-  --bg-main: #0a0a0a;
-  --bg-paper: #0a0a0a;
+  --bg-main: #000000;
+  --bg-paper: #050505;
 
-  /* NEU: Modernes "Glas" Dark Background */
-  /* Ein leichter Verlauf von sehr dunkelgrau zu schwarz */
-  --card-bg: linear-gradient(145deg, rgba(30, 30, 30, 0.85), rgba(10, 10, 10, 0.95));
+  /* NEU: Gradient von Schwarz zu Dunkelgrau (DECKEND) */
+  --card-bg: linear-gradient(145deg, #000000 0%, #1a1a1a 100%);
 
-  /* Hintergrundbild */
   --prayer-bg-image: url('/backgrounddark.png');
 
-  /* NEU: Section Title "Glas" Style */
-  --section-bg: rgba(0, 0, 0, 0.6);
-  --section-text: #ff8a8a;
-  /* Helles Pastell-Rot für Modernität */
-  --section-border: rgba(255, 255, 255, 0.15);
+  /* Section Title */
+  --section-bg: #000000;
+  --section-text: #D4AF37;
+  --section-border: rgba(212, 175, 55, 0.5);
 
-  --text-main: white;
-  --text-dim: #ccc;
-  --header-bg: rgba(10, 10, 10, 0.8);
-  /* Auch Header etwas glasiger */
-  --overlay-color: rgba(0, 0, 0, 0.6);
+  --text-main: #eeeeee;
+  --text-dim: #888888;
+  --header-bg: #0a0a0a;
+  --overlay-color: rgba(0, 0, 0, 0.8);
 
   /* GEBET TEXT FARBEN (DARK MODE) */
-  --prayer-text-priester: #f0f0f0;
-  /* Helles Weiß-Grau ist angenehmer als hartes Weiß */
-  --prayer-text-volk: #ff5e5e;
-  /* Modernes Rot */
+  --prayer-text-priester: #ffffff;
+  --prayer-text-volk: #ff6666;
   --prayer-text-diakon: #FFD700;
-  /* Gold */
 
   --font-scale: 1;
 }
 
-/* --- LIGHT THEME (Bleibt klassisch) --- */
+/* --- LIGHT THEME --- */
 [data-theme='light'] {
-  --bg-main: #ffffff;
-  --bg-paper: #ffffff;
-  --card-bg: rgba(255, 255, 255, 0.98);
+  --bg-main: #fdfbf7;
+  --bg-paper: #fdfbf7;
+  --card-bg: #ffffff;
+  /* Kein Verlauf im Hellen, wirkt sauberer */
 
   --prayer-bg-image: url('/background.png');
 
-  --section-bg: rgba(255, 255, 255, 0.7);
+  --section-bg: #f4ecd8;
   --section-text: #8B0000;
   --section-border: rgba(139, 0, 0, 0.2);
 
   --text-main: #1a1a1a;
   --text-dim: #555;
-  --header-bg: rgba(245, 245, 245, 0.95);
-  --overlay-color: rgba(255, 255, 255, 0.4);
+  --header-bg: #f8f8f8;
+  --overlay-color: rgba(255, 255, 255, 0.5);
 
   --gold: #B8860B;
 
@@ -66,25 +60,25 @@
 
 /* --- SEPIA THEME --- */
 [data-theme='sepia'] {
-  --bg-main: #f4ecd8;
-  --bg-paper: #f4ecd8;
-  --card-bg: rgba(253, 246, 227, 0.95);
+  --bg-main: #e8e0c5;
+  --bg-paper: #e8e0c5;
+  --card-bg: #f4ecd8;
 
   --prayer-bg-image: url('/background.png');
 
-  --section-bg: rgba(244, 236, 216, 0.6);
-  --section-text: #8B4513;
-  --section-border: rgba(139, 69, 19, 0.2);
+  --section-bg: #dcd0b0;
+  --section-text: #5b4636;
+  --section-border: rgba(91, 70, 54, 0.2);
 
-  --text-main: #5b4636;
-  --text-dim: #8b7d6b;
-  --header-bg: rgba(235, 225, 205, 0.95);
-  --overlay-color: rgba(244, 236, 216, 0.4);
+  --text-main: #463428;
+  --text-dim: #7a6652;
+  --header-bg: #e0d6b6;
+  --overlay-color: rgba(232, 224, 197, 0.6);
 
   --gold: #8B4513;
 
-  --prayer-text-priester: #3e2723;
-  --prayer-text-volk: #a52a2a;
+  --prayer-text-priester: #2c1b0e;
+  --prayer-text-volk: #8a3324;
   --prayer-text-diakon: #006064;
 }
 
@@ -140,8 +134,6 @@ body {
   width: 100%;
   height: 100%;
   background: radial-gradient(circle, var(--overlay-color) 0%, var(--bg-main) 100%);
-  /* Glas-Effekt für Overlay im Dark Mode */
-  backdrop-filter: blur(3px);
   z-index: 1;
 }
 
@@ -155,11 +147,8 @@ body {
   align-items: center;
   height: 70px;
   background: var(--header-bg);
-  /* Glas-Header für Modernität */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
 }
 
@@ -177,9 +166,7 @@ body {
 }
 
 .icon-btn.active-pen {
-  background: rgba(255, 215, 0, 0.2);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-  transform: scale(1.1);
+  background: rgba(255, 215, 0, 0.1);
   border: 1px solid var(--gold);
   color: var(--marker-yellow);
 }
@@ -277,38 +264,31 @@ body {
 .menu-btn {
   padding: 18px;
   font-size: 1.1rem;
-  background: rgba(30, 30, 30, 0.6);
+  background: #111;
+  /* Fallback */
+  background: var(--card-bg);
   border: 1px solid rgba(212, 175, 55, 0.3);
-  color: white;
-  border-radius: 12px;
+  color: var(--text-main);
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   font-family: 'Cairo', sans-serif;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
 }
 
-[data-theme='light'] .menu-btn,
-[data-theme='sepia'] .menu-btn {
-  background: rgba(255, 255, 255, 0.7);
-  color: var(--text-main);
-  border-color: var(--gold);
-}
-
 .menu-btn.highlight {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(40, 40, 40, 0.8));
-  border-color: var(--gold);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0));
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
 }
 
 [data-theme='light'] .menu-btn.highlight {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(255, 255, 255, 0.9));
+  background: linear-gradient(135deg, #fff8e1, #ffffff);
 }
 
 /* --- ROLLE AUSWAHL --- */
@@ -319,25 +299,12 @@ body {
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  background: transparent;
-  background-color: var(--bg-main);
+  background: var(--bg-main);
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2000;
   text-align: center;
-  backdrop-filter: blur(5px);
-}
-
-.role-selection-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, var(--overlay-color) 0%, var(--bg-main) 100%);
-  z-index: -1;
 }
 
 .role-grid {
@@ -350,28 +317,22 @@ body {
 }
 
 .role-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: #111;
+  background: var(--card-bg);
   border: 1px solid var(--gold);
-  padding: 20px;
-  border-radius: 15px;
+  padding: 25px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme='light'] .role-card {
-  background: rgba(255, 255, 255, 0.6);
-  color: black;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .role-card:active {
-  transform: scale(0.96);
-  background: rgba(212, 175, 55, 0.3);
+  transform: scale(0.98);
+  border-color: white;
 }
 
 .role-title {
@@ -379,7 +340,6 @@ body {
   font-size: 1.3rem;
   color: var(--text-main);
   font-weight: bold;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* --- GEBET ANSICHT --- */
@@ -406,165 +366,134 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* --- GLAS-EFFEKT GEBETSBLÖCKE --- */
+/* --- MATTE SCHWARZ MIT VERLAUF (GEBETSBLÖCKE) --- */
 .prayer-row {
   background: var(--card-bg);
-  /* Nutzt jetzt den Gradienten */
+  /* Nutzt den Verlauf Schwarz->Grau */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  /* Etwas stärkerer Schatten */
 
-  /* Glas-Effekt */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  /* WICHTIG: Keine Transparenz mehr! */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 
-  /* Feiner Rand für "Premium" Look */
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
-  /* Tieferer Schatten */
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  [data-theme='light'] & {
+    border-color: rgba(0, 0, 0, 0.1);
+  }
 
-  border-radius: 16px;
-  /* Etwas runder */
-  padding: 16px;
-  margin-bottom: 20px;
-  /* Mehr Platz zwischen Blöcken */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
 
-  /* Linker Rand bleibt Gold */
-  border-left: 5px solid #B8860B;
+  border-left: 4px solid var(--gold);
 
   overflow: visible;
   position: relative;
   z-index: 1;
 }
 
-/* --- GLAS-EFFEKT ÜBERSCHRIFTEN --- */
 .section-title {
   color: var(--section-text);
   text-align: center;
   font-family: 'Cairo', serif;
-  font-size: 1.5rem;
-  margin-top: 35px;
-  margin-bottom: 15px;
-
+  font-size: 1.6rem;
+  margin-top: 40px;
+  margin-bottom: 20px;
   background: var(--section-bg);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-
+  /* Hintergrund jetzt schwarz */
   padding: 8px 20px;
-  border-radius: 20px;
-  border: 1px solid var(--section-border);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid var(--section-border);
+  border-bottom: 1px solid var(--section-border);
+  border-radius: 8px;
+  /* Leicht abgerundet */
   display: inline-block;
-  /* Damit der Balken nur so breit ist wie der Text */
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .speaker {
-  font-weight: 800;
-  font-size: 0.9rem;
+  font-weight: 900;
+  font-size: 0.85rem;
   text-transform: uppercase;
   display: block;
-  margin-bottom: 10px;
-  opacity: 0.9;
-  /* Leicht transparent für Style */
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  color: var(--gold);
 }
 
 .text-grid {
   display: grid;
-  gap: 12px;
+  gap: 15px;
   width: 100%;
   align-items: start;
 }
 
-/* LEUCHTEFFEKTE (Diakon/Priester) - Angepasst an Glas */
+/* LEUCHTEFFEKTE */
 .role-diakon-active .prayer-row.speaker-diakon {
-  border: 1px solid rgba(0, 229, 255, 0.5);
-  /* Dünner Rand */
-  box-shadow: 0 0 25px rgba(0, 229, 255, 0.25), inset 0 0 20px rgba(0, 229, 255, 0.05);
-  background: linear-gradient(145deg, rgba(0, 40, 50, 0.9), rgba(10, 10, 10, 0.95));
-  /* Leicht bläulicher Hintergrund */
+  border: 1px solid #00e5ff;
+  /* Ganz leichter Glow, aber Hintergrund bleibt dunkel */
+  background: linear-gradient(145deg, #001a1d 0%, #000000 100%);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
   position: relative;
   z-index: 5;
-  animation: glow-pulse-cyan 3s infinite alternate ease-in-out;
 }
 
 .role-priester-active .prayer-row.speaker-priester {
-  border: 1px solid rgba(255, 215, 0, 0.5);
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25), inset 0 0 20px rgba(255, 215, 0, 0.05);
-  background: linear-gradient(145deg, rgba(40, 35, 0, 0.9), rgba(10, 10, 10, 0.95));
-  /* Leicht goldener Hintergrund */
+  border: 1px solid #FFD700;
+  background: linear-gradient(145deg, #1a1600 0%, #000000 100%);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
   position: relative;
   z-index: 5;
-  animation: glow-pulse-gold 3s infinite alternate ease-in-out;
 }
 
-@keyframes glow-pulse-cyan {
-  from {
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
-  }
-
-  to {
-    box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
-  }
-}
-
-@keyframes glow-pulse-gold {
-  from {
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
-  }
-
-  to {
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-  }
-}
-
-/* TEXT FARBEN DYNAMISCH */
+/* TEXT FARBEN */
 .speaker-priester .text-line {
   color: var(--prayer-text-priester) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .speaker-priester .speaker {
   color: var(--prayer-text-priester);
+  opacity: 0.7;
 }
 
 .speaker-volk .text-line {
   color: var(--prayer-text-volk) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .speaker-volk .speaker {
   color: var(--prayer-text-volk);
+  opacity: 0.7;
 }
 
 .speaker-diakon .text-line {
   color: var(--prayer-text-diakon) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .speaker-diakon .speaker {
   color: var(--prayer-text-diakon);
+  opacity: 0.7;
 }
 
 .text-line {
-  line-height: 1.7;
-  /* Etwas mehr Luft für Lesbarkeit */
+  line-height: 1.8;
   margin: 0;
-  padding: 0 6px;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  padding: 0;
   font-weight: 500;
-  /* Etwas dünner für modernen Look */
   white-space: pre-wrap;
   font-size: calc(1rem * var(--font-scale));
 }
 
 .lang-ar {
   font-family: 'Cairo', sans-serif;
-  font-size: calc(1.25rem * var(--font-scale));
+  font-size: calc(1.3rem * var(--font-scale));
   direction: rtl;
 }
 
 .lang-cop_ar {
   font-family: 'Cairo', sans-serif;
-  font-size: calc(1.15rem * var(--font-scale));
+  font-size: calc(1.2rem * var(--font-scale));
   direction: rtl;
   font-style: italic;
   color: inherit !important;
@@ -579,38 +508,37 @@ body {
   position: fixed;
   top: 60px;
   right: 10px;
-  background: rgba(15, 15, 15, 0.95);
-  /* Auch Glas-Effekt */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: var(--card-bg);
+  /* Auch hier deckend */
   border: 1px solid var(--gold);
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 8px;
   z-index: 2000;
   width: 280px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   color: var(--text-main);
   max-height: 80vh;
   overflow-y: auto;
 }
 
-[data-theme='light'] .settings-popup {
-  background: rgba(255, 255, 255, 0.95);
+.settings-section {
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
 }
 
-.settings-section {
-  margin-bottom: 15px;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
-  padding-bottom: 10px;
+[data-theme='light'] .settings-section {
+  border-bottom-color: rgba(0, 0, 0, 0.1);
 }
 
 .settings-label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: bold;
   font-size: 0.9rem;
   color: var(--gold);
   font-family: 'Cairo', sans-serif;
+  text-transform: uppercase;
 }
 
 input[type=range] {
@@ -620,14 +548,14 @@ input[type=range] {
 
 .lang-grid {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
 .lang-btn {
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--gold);
-  border-radius: 8px;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 6px;
   cursor: pointer;
   color: var(--text-main);
   font-weight: bold;
@@ -635,23 +563,23 @@ input[type=range] {
 
 .lang-btn.active {
   background: var(--gold);
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: black;
+  border-color: var(--gold);
 }
 
 .theme-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
 }
 
 .theme-btn {
-  padding: 8px;
-  border: 1px solid #555;
+  padding: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.8rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: transparent;
   color: var(--text-main);
   display: flex;
   align-items: center;
@@ -667,46 +595,50 @@ input[type=range] {
 
 .close-btn {
   width: 100%;
-  padding: 12px;
-  background: #333;
+  padding: 15px;
+  background: #222;
   color: white;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid #444;
+  border-radius: 6px;
   font-weight: bold;
   margin-top: 10px;
+  text-transform: uppercase;
+}
+
+[data-theme='light'] .close-btn {
+  background: #eee;
+  color: black;
+  border-color: #ccc;
 }
 
 .coptic-date-display {
   font-family: 'Cairo', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--gold);
   text-align: center;
-  border: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
   padding: 4px 10px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
-  margin-right: 10px;
+  background: transparent;
+  margin-right: 15px;
   cursor: default;
 }
 
 .liturgy-header {
   text-align: center;
-  color: #B8860B;
+  color: var(--gold);
   font-family: 'Cairo';
-  font-size: 1.8rem;
-  margin-bottom: 25px;
-  border-bottom: 2px solid #B8860B;
-  padding-bottom: 10px;
-  display: inline-block;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 2rem;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  display: block;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 .inline-menu-container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  margin-top: 15px;
+  margin-top: 20px;
   width: 100%;
 }
 
@@ -717,24 +649,22 @@ input[type=range] {
 }
 
 .inline-menu-btn {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.1) 100%);
+  background: transparent;
   border: 1px solid var(--gold);
-  border-radius: 8px;
-  padding: 12px;
+  border-radius: 6px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
 }
 
 .btn-label-ar {
   font-family: 'Cairo', sans-serif;
   font-weight: bold;
   font-size: 1.1rem;
-  color: var(--red);
+  color: var(--gold);
   margin-bottom: 4px;
 }
 
@@ -794,14 +724,15 @@ input[type=range] {
 }
 
 .hint-box {
-  background: white;
-  color: black;
+  background: var(--card-bg);
+  color: var(--text-main);
   width: 85%;
   max-width: 350px;
   padding: 25px;
-  border-radius: 12px;
-  border-top: 8px solid var(--red);
+  border-radius: 8px;
+  border-top: 4px solid var(--red);
   text-align: center;
+  border: 1px solid var(--gold);
 }
 
 .hint-title {
@@ -811,12 +742,67 @@ input[type=range] {
 }
 
 .hint-btn {
-  background: #333;
-  color: white;
-  border: none;
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--gold);
   padding: 10px 25px;
   border-radius: 20px;
   margin-top: 15px;
   font-family: 'Cairo';
   cursor: pointer;
+}
+
+/* --- KYRIE ELEISON ZÄHLER --- */
+.counter-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.counter-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  /* Hoher Kontrast für Matte Black - KEIN VERLAUF MEHR */
+  background: #000000;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  font-size: 2rem;
+  font-family: 'Cairo', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+  transition: all 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+
+.counter-btn:active {
+  transform: scale(0.9);
+  background: var(--gold);
+  color: black;
+  box-shadow: 0 0 25px var(--gold);
+}
+
+.counter-btn.finished {
+  border-color: #4caf50;
+  color: #4caf50;
+  background: #0a0a0a;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+  font-size: 2.5rem;
+}
+
+.counter-label {
+  position: absolute;
+  bottom: -25px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  white-space: nowrap;
 }
