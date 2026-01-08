@@ -53,11 +53,9 @@
 
   --gold: #B8860B;
 
-  /* NEU: Hintergrund für aktive Rollen im LIGHT Mode (Hell!) */
+  /* NEU: Hintergrund für aktive Rollen im LIGHT Mode */
   --bg-diakon-active: linear-gradient(145deg, #e0f7fa 0%, #ffffff 100%);
-  /* Helles Cyan-Weiß */
   --bg-priester-active: linear-gradient(145deg, #fffde7 0%, #ffffff 100%);
-  /* Helles Gold-Weiß */
 
   --prayer-text-priester: #1a1a1a;
   --prayer-text-volk: #8B0000;
@@ -83,7 +81,7 @@
 
   --gold: #8B4513;
 
-  /* NEU: Hintergrund für aktive Rollen im SEPIA Mode (Beige!) */
+  /* NEU: Hintergrund für aktive Rollen im SEPIA Mode */
   --bg-diakon-active: linear-gradient(145deg, #e0f2f1 0%, #f4ecd8 100%);
   --bg-priester-active: linear-gradient(145deg, #fff8e1 0%, #f4ecd8 100%);
 
@@ -274,7 +272,6 @@ body {
 .menu-btn {
   padding: 18px;
   font-size: 1.1rem;
-  background: #111;
   background: var(--card-bg);
   border: 1px solid rgba(212, 175, 55, 0.3);
   color: var(--text-main);
@@ -378,25 +375,20 @@ body {
 .prayer-row {
   background: var(--card-bg);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-
   border: 1px solid rgba(255, 255, 255, 0.1);
-
-  [data-theme='light'] & {
-    border-color: rgba(0, 0, 0, 0.1);
-  }
-
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 16px;
-
   border-left: 4px solid var(--gold);
-
   overflow: visible;
   position: relative;
   z-index: 1;
+}
+
+[data-theme='light'] .prayer-row {
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .section-title {
@@ -435,10 +427,9 @@ body {
   max-width: 100%;
 }
 
-/* LEUCHTEFFEKTE - JETZT MIT VARIABLEN STATT HARDCODED */
+/* LEUCHTEFFEKTE */
 .role-diakon-active .prayer-row.speaker-diakon {
   border: 1px solid #00e5ff;
-  /* HIER IST DIE KORREKTUR: Nutzt jetzt die Theme-Variable */
   background: var(--bg-diakon-active);
   box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
   position: relative;
@@ -447,7 +438,6 @@ body {
 
 .role-priester-active .prayer-row.speaker-priester {
   border: 1px solid #FFD700;
-  /* HIER IST DIE KORREKTUR: Nutzt jetzt die Theme-Variable */
   background: var(--bg-priester-active);
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
   position: relative;
@@ -654,6 +644,7 @@ input[type=range] {
   border-bottom: 1px solid rgba(212, 175, 55, 0.3);
 }
 
+/* --- NAVIGATION / MENU KNÖPFE IM GEBET --- */
 .inline-menu-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -669,7 +660,8 @@ input[type=range] {
 }
 
 .inline-menu-btn {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.05);
+  /* Leichter Hintergrund für Sichtbarkeit */
   border: 1px solid var(--gold);
   border-radius: 6px;
   padding: 15px;
@@ -678,6 +670,21 @@ input[type=range] {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+[data-theme='light'] .inline-menu-btn {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.inline-menu-btn:active {
+  transform: scale(0.98);
+  background: var(--gold);
+}
+
+.inline-menu-btn:active .btn-label-ar,
+.inline-menu-btn:active .btn-label-de {
+  color: black !important;
 }
 
 .btn-label-ar {

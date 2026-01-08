@@ -56,6 +56,7 @@ export const languages = {
 };
 
 export const liturgies = {
+
     offering: {
         title: {
             de: "Auswahl des Lammbrotes",
@@ -1608,7 +1609,7 @@ export const liturgies = {
                 cop_de: "Ef-ti emmof e-ep-ko evol ente ni-novi: nem ou-onkh en-eneh en-ni-ethna-chi evol enkhetf.",
                 ar_de: "Yo3ta le-maghferat el khataya wa 7ayah abadiya leman yatanawalo menhou."
             },
-            // ID 59: Herr erbarme Dich (3) (Volk)
+
             {
                 id: 59,
                 speaker: "Volk",
@@ -1617,8 +1618,171 @@ export const liturgies = {
                 ar: "(يا رب ارحم.) 3",
                 cop_cop: "(Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ.) ⲅ",
                 cop_de: "(Kyrie eleyson.) 3",
-                ar_de: "(Ya Rab erham.) 3"
-            }
+                ar_de: "(Ya Rab erham.) 3",
+
+                navigationButtons: [
+                    {
+                        label_ar: "الاواشي (ك)",
+                        label_de: "Die Gebete für.. (k)",
+                        action: "jumpToId",
+                        targetId: 17.02,       // Stelle sicher, dass diese ID in der Kyrillos-Datei existiert!
+                        targetLiturgy: "kerollosy" // KORRIGIERT: Muss exakt so heißen wie in App.js
+                    },
+                    {
+                        label_ar: "الاواشي السبعه الصغار",
+                        label_de: "Die kleinen 7 Gebete",
+                        action: "navigatePage",
+                        targetPage: "seven_small_litanies"
+                    }
+                ]
+            },
+            // ID 60: Gebet für den Frieden der Kirche und Einheit (Priester)
+            {
+                id: 60,
+                speaker: "Priester",
+                ar: "اجعلنا مستحقين كلنا يا سيدنا ان نتناول من قدساتك طهارة لأنفسنا اجسادنا وأرواحنا.\nلكي نكون جسداً واحداً وروحاً واحداً ونجد نصيباً وميراثاً مع جمع القديسين الذين ارضوك منذ البدء.\nاذكر يارب سلام كنيستك الواحدة الوحيدة المقدسة الجامعة الرسولية.",
+                de: "Mache uns alle würdig, unser Herr, dass wir an dem Heiligen teilhaben, zur Reinigung unserer Seelen, unserer Leiber und unserer Geister,\ndamit wir ein einziger Leib und ein einziger Geist werden, und Anteil und Erbe mit allen Heiligen erlangen, die dir seit Anbeginn wohlgefallen haben.\nGedenke, o Herr, des Friedens Deiner einen, einzigen, heiligen, universalen und apostolischen Kirche.",
+                cop_ar: "أريتين إن إيم إبشاتيرين بين نيب إتشي إيفول خين نيثؤواب إنتاك إي أوطوفو إنتي نين إبسيشي نيم نين سوما نيم نين إبنيفما.\nأهينا إنتين شوبي إن أوسوما إن أوأوت نيم أو إبنيفما إن أوأوت إنتين جيمي إن أوميروس نيم أو إكليروس نيم نيثؤواب تيرو إيتافرانك يسجين إبئينيه.\nآري إفميفئي إبشويس إنتي هيريني إنتي تيك أوي إم مافتس إثؤواب إن كاثوليكي إن أبوستوليكي إن إككليسيا.",
+                cop_cop: "Ⲁ̀ⲣⲓⲧⲉⲛ ⲛ̀ⲉⲙⲡ̀ϣⲁ ⲧⲏⲣⲉⲛ Ⲡⲉⲛⲛⲏⲃ ⲉ̀ϭⲓ ⲉ̀ⲃⲟⲗ ϧⲉⲛ ⲛⲏⲉⲑⲟⲩⲁⲃ ⲛ̀ⲧⲁⲕ ⲉ̀ⲟⲩⲧⲟⲩⲃⲟ ⲛ̀ⲧⲉ ⲛⲉⲛⲯⲩⲭⲏ ⲛⲉⲙ ⲛⲉⲛⲥⲱⲙⲁ ⲛⲉⲙ ⲛⲉⲛⲡ̀ⲛⲉⲩⲙⲁ.\nϨⲓⲛⲁ ⲛ̀ⲧⲉⲛϣⲱⲡⲓ ⲛ̀ⲟⲩⲥⲱⲙⲁ ⲛ̀ⲟⲩⲱⲧ ⲛⲉⲙ ⲟⲩⲡ̀ⲛⲉⲩⲙⲁ ⲛ̀ⲟⲩⲱⲧ ⲛ̀ⲧⲉⲛϫⲓⲙⲓ ⲛ̀ⲟⲩⲙⲉⲣⲟⲥ ⲛⲉⲙ ⲟⲩⲕ̀ⲗⲏⲣⲟⲥ ⲛⲉⲙ ⲛⲏⲉⲑⲟⲩⲁⲃ ⲧⲏⲣⲟⲩ ⲉ̀ⲧⲁⲩⲣⲁⲛⲁⲕ ⲓⲥϫⲉⲛ ⲡⲓⲉ̀ⲛⲉϩ.\nⲀⲣⲓⲫ̀ⲙⲉⲩⲓ̀ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ϯϩⲓⲣⲏⲛⲏ ⲛ̀ⲧⲉ ⲧⲉⲕⲟⲩⲓ̀ ⲙ̀ⲙⲁⲩⲁⲧⲥ ⲉ̀ⲑⲟⲩⲁⲃ ⲛ̀ⲕⲁⲑⲟⲗⲓⲕⲏ ⲛ̀ⲁ̀ⲡⲟⲥⲧⲟⲗⲓⲕⲏ ⲛ̀ⲉⲕⲕⲗⲏⲥⲓⲁ̀.",
+                cop_de: "Ariten en-em-psha tiren Pen-nib e-chi evol khen ni-ethowab entak e-ou-touvo ente nen-psy-chi nem nen-soma nem nen-pnevma.\nHina enten-shopi en-ou-soma en-ouot nem ou-pnevma en-ouot enten-jimi en-ou-meros nem ou-kliros nem ni-ethowab tirou et-av-ranak is-jen pi-eneh.\nAri-phmevi Epchois en-ti-hirini ente tek-ou-i emmavats ethowab en-katholiki en-apostoliki en-ekklesia.",
+                ar_de: "Eg3alna mosta7iqqin kollana ya sayedana an natanawal men qodasatak tahara le-anfosena agsadena wa arwa7ena.\nLekay nakoun gasadan wa7edan wa rou7an wa7edan wa naged nasiban wa mirathan ma3a gam3 el-qadisin allazina ardouk monzo el-bad2.\nOzkor ya Rabb salam kanisatek el-wahida el-wahida el-moqadasa el-game3a el-rasoulya."
+            },
+            {
+                id: 61,
+                speaker: "Diakon",
+                ar: "صلوا من أجل سلام الواحدة الوحيدة المقدسة الجامعة الرسولية كنيسة الله الأرثوذكسية.",
+                de: "Betet für den Frieden der einen, heiligen, universalen, apostolischen und orthodoxen Kirche Gottes.",
+                cop_ar: "إبروس إفكصاستيه إيبر تيس إيري نيس تيس أجياس مونيس كاثوليكيس كيه آبسطوليكيس أرثوذكسو طوثيه أو إكليسياس.",
+                cop_cop: "Ⲡⲣⲟⲥⲉⲩⲝⲁⲥⲑⲉ ⲩ̀ⲡⲉⲣ ⲧⲏⲥ ⲓ̀ⲣⲏⲛⲏⲥ ⲧⲏⲥ ⲁ̀ⲅⲓⲁⲥ ⲙⲟⲛⲏⲥ ⲕⲁⲑⲟⲗⲓⲕⲏⲥ ⲕⲉ ⲁ̀ⲡⲟⲥⲧⲟⲗⲓⲕⲏⲥ ⲟ̀ⲣⲑⲟⲇⲟⲝⲟⲩ ⲧⲟⲩ Ⲑⲉⲟⲩ ⲉ̀ⲕⲕⲗⲏⲥⲓⲁⲥ.",
+                cop_de: "Pros evxasthe yper tis irinis tis agias monis katholikis ke apostolikis orthodoxou tou theou ekklesias.",
+                ar_de: "Sallou men agl salam el-wahida el-wahida el-moqadasa el-game3a el-rasoulya kanisat Allah el-orthodoxia."
+            },
+            {
+                id: 62,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            {
+                id: 63,
+                speaker: "Priester",
+
+                ar: "هذا التي إقتنيتها لك بالدم الكريم الذي لمسيحك. إحفظها بسلام وجميع الأساقفة الأرثوذكسيين الذين فيها\nوأولاً اذكر يا رب ابانا الطوباوي رئيس الأساقفة بطريركنا البابا أنبا تواضروس. و أخيه في الخدمة الرسوليه مار اغناطيوس أفرام الثاني\nوشركاءه في الخدمة الرسولية ابونا المطران المكرم الانبا دميان. و ابونا الاسقف المكرم الانبا ديسقورس",
+
+                de: "Diese, die du Dir durch das kostbare Blut deines Christus erworben hast . Bewahre Sie in Frieden und alle orthodoxen Bischöfe in ihr.\nBetet für unser Priesteroberhaupt, den Papst Anba Tawadros, Papst, Patriarch und für seinen Bruder im apostolischen Dienst Mor Ignatius Aphrem II\nund seine Teilhaber am apostolischen Dienst, unseren ehrwürdigen Vater, Erzbischof Anba Damian, und unseren ehrwürdigen Vater, Bischof Anba Dioskorus",
+
+                cop_ar: "ثاي إيطاك إجفوس ناك إيقول هيتين بي إسنوف إتطايوت إنتي بيك إخرستوس. آريه إيروس خين او هيريني نيم ني إبيسكوبوس تيرو إن اورثوذكسوس إيتي إنخيتس\nإنشورب مين آري إفميفئي إبشويس إمبين مكاريس إنيوت إتطايوت إن أرشي إبيسكوبوس بين بطريارشيس بابا آفا تواضروس نيم نيف سنيو بي مار اغناطيوس افرام بي ما اسناف\nنيم نيف كيه إشفير إن ليطورغوس بنيوت إن ميتروبوليتيس افا ديمان نيم بنيوت إبيسكوبوس افا ديسقوروس",
+
+                cop_cop: "Ⲑⲁⲓ ⲉ̀ⲧⲁⲕϫ̀ⲫⲟⲥ ⲛⲁⲕ ⲉ̀ⲃⲟⲗ ϩⲓⲧⲉⲛ ⲡⲓⲥ̀ⲛⲟϥ ⲉⲧⲧⲁⲓⲏⲟⲩⲧ ⲛ̀ⲧⲉ ⲡⲉⲕⲭ̀ⲣⲓⲥⲧⲟⲥ. Ⲁ̀ⲣⲉϩ ⲉ̀ⲣⲟⲥ ϧⲉⲛ ⲟⲩϩⲓⲣⲏⲛⲏ ⲛⲉⲙ ⲛⲓⲉ̀ⲡⲓⲥⲕⲟⲡⲟⲥ ⲧⲏⲣⲟⲩ ⲛ̀ⲟⲣⲑⲟⲇⲟⲝⲟⲥ ⲉⲧⲉⲛϧⲏⲧⲥ.\nⲚ̀ϣⲟⲣⲡ ⲙⲉⲛ ⲁ̀ⲣⲓⲫ̀ⲙⲉⲩⲓ̀ Ⲡ̀ϭⲟⲓⲥ ⲙ̀ⲡⲉⲛⲙⲁⲕⲁⲣⲓⲟⲥ ⲛ̀ⲓⲱⲧ ⲉⲧⲧⲁⲓⲏⲟⲩⲧ ⲛ̀ⲁⲣⲭⲏⲉ̀ⲡⲓⲥⲕⲟⲡⲟⲥ ⲡⲉⲛⲡⲁⲧⲣⲓⲁⲣⲭⲏⲥ Ⲡⲁⲡⲁ Ⲁⲃⲃⲁ Ⲑⲉⲟ́ⲇⲱⲣⲟⲥ ⲛⲉⲙ ⲛⲉϥⲥⲛⲏⲟⲩ ⲡⲓ ⲙⲁⲣ Ⲓⲅⲛⲁⲧⲓⲟⲥ Ⲁⲫⲣⲉⲙ ⲡⲓ ⲙⲁϩ ⲥ̀ⲛⲁⲩ.\nⲚⲉⲙ ⲛⲉϥⲕⲉϣ̀ⲫⲏⲣ ⲛ̀ⲗⲉⲓⲧⲟⲩⲣⲅⲟⲥ ⲡⲉⲛⲓⲱⲧ ⲛ̀ⲙⲏⲧⲣⲟⲡⲟⲗⲓⲧⲏⲥ Ⲁⲃⲃⲁ Ⲇⲁⲙⲓⲁⲛⲟⲥ ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲉ̀ⲡⲓⲥⲕⲟⲡⲟⲥ Ⲁⲃⲃⲁ Ⲇⲓⲟⲥⲕⲟⲣⲟⲥ.",
+
+                cop_de: "Thai et-ak-egfos nak evol hiten pi-esnof et-taiot ente pek-ekhristos. Areh eros khen ou-hirini nem ni-episkopos tiro en-orthodoxos eti-enkhits.\nEn-shorp men ari-phmevi P-chois em-pen-makarios en-iot et-taiot en-archi-episkopos pen-patriarchis Papa Ava Tawadros nem nef-sniou pi Mar Ignatius Aphrem pi mah-esnav.\nNem nef-ke-eshpher en-leitourgos pen-iot en-metropolitis Ava Damian nem pen-iot episkopos Ava Dioscorus.",
+
+                ar_de: "Hazihi allati eqtanaytaha laka bel-dam el-karim allazi li-masi7ek. E7fazha bi-salam wa gami3 el-asaqefa el-orthodoxiyin allazina fiha.\nWa awalan ozkor ya Rabb abana el-tobawi ra2is el-asaqefa batriyarkina el-Baba Anba Tawadros wa akhih fil khedma el-rasoulya Mar Ignatius Aphrem el-thani.\nWa shoraka2oh fil khedma el-rasoulya abouna el-motran el-mokaram el-Anba Damian wa abouna el-osqof el-mokaram el-Anba Dioscorus."
+            },
+            {
+                id: 64,
+                speaker: "Diakon",
+
+                // الترتيب: صلوا -> ورئيس -> وأخيه -> وشركاؤه -> وسائر
+                ar: "صلوا من أجل رئيس كهنتنا البابا أنبا (تواضروس الثاني) بابا وبطريرك.\nورئيس أساقفة المدينة العظمي الأسكندريه.\nو أخيه في الخدمة الرسوليه ابينا البطريرك الأنطاكي مار اغناطيوس أفرام الثاني.\nوشركاءه في الخدمة الرسولية ابونا المطران المكرم الانبا دميان. و ابونا الاسقف المكرم الانبا ديسقورس.\nوسائر أساقفتنا الأرثوذكسيين.",
+
+                de: "Betet für unser Priesteroberhaupt, den Papst Anba Tawadros, Papst, Patriarch.\nund Bischofoberhaupt der großen Stadt Alexandria.\nund für seinen Bruder im apostolischen Dienst den Patriarch Von antiochien Mor Ignatius Aphrem II.\nund seinen Teilhaber am apostolischen Dienst, unseren ehrwürdigen Vater, Erzbischof Anba Damian, und unseren ehrwürdigen Vater, Bischof Anba Dioskorus.\nund all unsere orthodoxen Bischöfe.",
+
+                cop_ar: "إبروس إفكصاستيه إيبرتو أرشي إيه ريه أوس إيمون بابا آفا (تواضروس) بابا كيه باطري أرخو.\nكيه أرشي إيه بيسكوبو تيس ميغا لوبو ليؤس أليكسان إدرياس.\nنيم نيف سنيو بي كيه إشفير إن ليطور غوس نيف بطريارشيس انطيكياس مار اغناطيوس افرام بي ما سناف.\nنيم نيف كيه إشفير إن ليطورغوس بنيوت إن ميتروبوليتيس افا دميان نيم بنيوت إبيسكوبوس افا ديسقوروس.\nكيه طون أورثوذكصون إيمون إيه بيسكوبون.",
+
+                cop_cop: "Ⲡⲣⲟⲥⲉⲩⲝⲁⲥⲑⲉ ⲩ̀ⲡⲉⲣ ⲧⲟⲩ ⲁ̀ⲣⲭⲓⲉ̀ⲣⲉⲱⲥ ⲏ̀ⲙⲱⲛ Ⲡⲁⲡⲁ Ⲁⲃⲃⲁ Ⲑⲉⲟ́ⲇⲱⲣⲟⲥ Ⲡⲁⲡⲁ ⲕⲉ Ⲡⲁⲧⲣⲓⲁⲣⲭⲟⲩ.\nⲔⲉ ⲁ̀ⲣⲭⲓⲉ̀ⲡⲓⲥⲕⲟⲡⲟⲩ ⲧⲏⲥ ⲙⲉⲅⲁⲗⲟⲡⲟⲗⲉⲱⲥ Ⲁ̀ⲗⲉⲝⲁⲛⲇⲣⲓⲁⲥ.\nⲚⲉⲙ ⲛⲉϥⲥⲛⲏⲟⲩ ⲡⲓ ⲕⲉϣ̀ⲫⲏⲣ ⲛ̀ⲗⲉⲓⲧⲟⲩⲣⲅⲟⲥ ⲛⲉϥ ⲡⲁⲧⲣⲓⲁⲣⲭⲏⲥ Ⲁⲛⲧⲓⲟⲭⲓⲁⲥ Ⲙⲁⲣ Ⲓⲅⲛⲁⲧⲓⲟⲥ Ⲁⲫⲣⲉⲙ ⲡⲓ ⲙⲁϩ ⲥ̀ⲛⲁⲩ.\nⲚⲉⲙ ⲛⲉϥⲕⲉϣ̀ⲫⲏⲣ ⲛ̀ⲗⲉⲓⲧⲟⲩⲣⲅⲟⲥ ⲡⲉⲛⲓⲱⲧ ⲛ̀ⲙⲏⲧⲣⲟⲡⲟⲗⲓⲧⲏⲥ Ⲁⲃⲃⲁ Ⲇⲁⲙⲓⲁⲛⲟⲥ ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲉ̀ⲡⲓⲥⲕⲟⲡⲟⲥ Ⲁⲃⲃⲁ Ⲇⲓⲟⲥⲕⲟⲣⲟⲥ.\nⲔⲉ ⲧⲱⲛ ⲟ̀ⲣⲑⲟⲇⲟⲝⲱⲛ ⲏ̀ⲙⲱⲛ ⲉ̀ⲡⲓⲥⲕⲟⲡⲱⲛ.",
+
+                cop_de: "Pros-evxasthe yper tou archi-ereos imon Papa Avva Tawadros Papa ke patri-archou.\nKe archi-episkopou tis mega-lo-poleos Alexandrias.\nNem nef-sniou pi ke-eshpher en-leitourgos nef patriarchis Antiochias Mar Ignatius Aphrem pi mah-esnav.\nNem nef-ke-eshpher en-leitourgos pen-iot en-metropolitis Ava Damian nem pen-iot episkopos Ava Dioscorus.\nKe ton orthodoxon imon episkopon.",
+
+                ar_de: "Sallou men agl ra2is kahantena el-Baba Anba Tawadros el-thani baba wa batriyark.\nWa ra2is asaqefat el-madina el-ozma el-alexandria.\nWa akhih fil khedma el-rasoulya abina el-batriyark el-antaki Mar Ignatius Aphrem el-thani.\nWa shoraka2oh fil khedma el-rasoulya abouna el-motran el-mokaram el-Anba Damian wa abouna el-osqof el-mokaram el-Anba Dioscorus.\nWa sa2er asaqefatna el-orthodoxiyin."
+            },
+            {
+                id: 65,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            {
+                id: 66,
+                speaker: "Priester",
+
+                ar: "والذين يفصلون معه كلمة الحق باستقامة انعم بهم علي كنيستك المقدسة\nليرعوا قطيعك بسلام. اذكر يارب القمامصة والقسوس الارثوذكسيين والشمامسة.",
+
+                de: "und alle, die mit ihm das Wort der Wahrheit aufrecht verkünden. Erhalte sie Deiner heiligen Kirche\num deine Herde in Frieden zu versorgen. Gedenke, o Herr, der orthodoxen Erzpriester, Priester und Diakone,",
+
+                cop_ar: "نيم نيئتثوت إيفول نيماف إم إيساجي إنتي تي ميثمي خين أو سوؤتين. آري خاريزيستي إمموؤو إنتيك إككليسيا إثؤواب\nإيف أموني إمبيك أوهي خين هيريني. آري إفميفئي إبشويس إن ني هيغومينوس نيم ني إبريسفيتيروس إن اورثوذكسوس نيم ني دياكون.",
+
+                cop_cop: "Ⲛⲉⲙ ⲛⲏⲉⲧϣⲱⲧ ⲉ̀ⲃⲟⲗ ⲛⲉⲙⲁϥ ⲙ̀ⲡⲓⲥⲁϫⲓ ⲛ̀ⲧⲉ ϯⲙⲉⲑⲙⲏⲓ ϧⲉⲛ ⲟⲩⲥⲱⲟⲩⲧⲉⲛ. Ⲁⲣⲓⲭⲁⲣⲓⲍⲉⲥⲑⲉ ⲙ̀ⲙⲱⲟⲩ ⲛ̀ⲧⲉⲕⲉⲕⲕⲗⲏⲥⲓⲁ ⲉⲑⲟⲩⲁⲃ.\nⲈⲩⲁ̀ⲙⲟⲛⲓ ⲙ̀ⲡⲉⲕⲟ̀ϩⲓ ϧⲉⲛ ⲟⲩϩⲓⲣⲏⲛⲏ. Ⲁⲣⲓⲫ̀ⲙⲉⲩⲓ̀ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲛⲓϩⲏⲅⲟⲩⲙⲉⲛⲟⲥ ⲛⲉⲙ ⲛⲓⲡ̀ⲣⲉⲥⲃⲩⲧⲉⲣⲟⲥ ⲛ̀ⲟⲣⲑⲟⲇⲟⲝⲟⲥ ⲛⲉⲙ ⲛⲓⲇⲓⲁⲕⲱⲛ.",
+
+                cop_de: "Nem ni-et-shot evol nemaf em-pi-saji ente ti-methmi khen ou-so-outin. Ari-kharizesthe em-mo-ou en-tek-ekklesia ethowab.\nEv-amoni em-pek-ohi khen ou-hirini. Ari-phmevi P-chois en-ni-higoumenos nem ni-presviteros en-orthodoxos nem ni-diakon.",
+
+                ar_de: "Wallazina yofasselouna ma3ahu kalimet el-haqq be-estiqama an3em bihim 3ala kanisatak el-moqadasa.\nLe-yar3ou qati3aka be-salam. Ozkor ya Rabb el-qamamisa wal-qosoos el-orthodoxiyin wal-shamamesa."
+            },
+            {
+                id: 67,
+                speaker: "Diakon",
+
+                // Reihenfolge: Betet für... (b7ea02) -> und die Subdiakone (b7ea5b)
+                ar: "صلوا من أجل آبائنا القمامصة وآبائنا القسوس واخوتنا الشمامسة\nوالإبوذياقونين وسبع طغمات كنيسة الله.",
+
+                de: "Betet für die Erzpriester, Priester, Diakone,\nSubdiakone und die sieben Weihstufen der Kirche Gottes.",
+
+                cop_ar: "إبروس إفكصاستيه إي بيرطون إي غومينون كيه إبريسفيتيه رون كيه ذياكونون\nكيه إيبو ذياكونون إبطا طغما طون طو ثيه أو تيس إكليسياس.",
+
+                cop_cop: "Ⲡⲣⲟⲥⲉⲩⲝⲁⲥⲑⲉ ⲩ̀ⲡⲉⲣ ⲧⲱⲛ ⲏ̀ⲅⲟⲩⲙⲉⲛⲱⲛ ⲕⲉ ⲡ̀ⲣⲉⲥⲃⲩⲧⲉⲣⲱⲛ ⲕⲉ ⲇⲓⲁⲕⲟⲛⲱⲛ\nⲕⲉ ⲩ̀ⲡⲟⲇⲓⲁⲕⲟⲛⲱⲛ ⲉ̀ⲡⲧⲁ ⲧⲁⲅⲙⲁⲧⲱⲛ ⲧⲟⲩ Ⲑⲉⲟⲩ ⲧⲏⲥ ⲉ̀ⲕⲕⲗⲏⲥⲓⲁⲥ.",
+
+                cop_de: "Pros-evxasthe yper ton hegoumenon ke pres-vi-teron ke diakonon.\nKe ipo-diakonon epta tagmaton tou theou tis ekklesias.",
+
+                ar_de: "Sallou men agl aba2ina el-qamamisa wa aba2ina el-qosoos wa ekhwatina el-shamamesa.\nWal-eboziakonin wa sab3 toghmat kanisat Allah."
+            },
+            {
+                id: 68,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            {
+                id: 69,
+                speaker: "Priester",
+                ar: "وكل الخدام وكل الذين في البتولية وطهارة شعبك المؤمن، اذكر يارب ان ترحمنا كلنا معاً.",
+                de: "und alle Diener, und all die, die in Jungfräulichkeit leben und der Reinheit deines ganzen gläubigen Volkes. Gedenke, o Herr, Dich unser aller zu erbarmen.",
+                cop_ar: "نيم ريف شمشي نيفين نيم ني تيرواتخين تي بارثي نيا نيم أوطوفو إمبيك لاؤس تيرف إمبستوس آري إفميفتي إبشويس إنتيك ناي نان تيرو إفسوب.",
+                cop_cop: "Ⲛⲉⲙ ⲣⲉϥϣⲉⲙϣⲓ ⲛⲓⲃⲉⲛ ⲛⲉⲙ ⲛⲏⲉⲧϧⲉⲛ ϯⲡⲁⲣⲑⲉⲛⲓⲁ ⲛⲉⲙ ⲟⲩⲧⲟⲩⲃⲟ ⲙ̀ⲡⲉⲕⲗⲁⲟⲥ ⲧⲏⲣϥ ⲙ̀ⲡⲓⲥⲧⲟⲥ ⲁ̀ⲣⲓⲫ̀ⲙⲉⲩⲓ̀ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲧⲉⲕⲛⲁⲓ ⲛⲁⲛ ⲧⲏⲣⲟⲩ ⲉⲩⲥⲟⲡ.",
+                cop_de: "Nem ref-shemshi niven nem ni-et-khen ti-parthenia nem ou-touvo em-pek-laos tirf em-pistos ari-phmevi P-chois entek-nai nan tirou ev-sop.",
+                ar_de: "Wa kol el-khoddam wa kol allazina fil batouliya wa taharat sha3baka el-mo'men, ozkor ya Rabb an tarhamna kollana ma3an."
+            },
+            {
+                id: 70,
+                speaker: "Volk",
+                ar: "ارحمنا يا الله الآب ضابط الكل.",
+                de: "Erbarme Dich unser, o Gott, o Vater, o Allmächtiger.",
+                cop_ar: "إيه ليسون إيماس أو ثيه أوس أو باتير أو بانطوكراطور",
+                cop_cop: "Ⲉⲗⲉⲏⲥⲟⲛ ⲏ̀ⲙⲁⲥ ⲟ̀ Ⲑⲉⲟⲥ ⲟ̀ Ⲡⲁⲧⲏⲣ ⲟ̀ Ⲡⲁⲛⲧⲟⲕⲣⲁⲧⲱⲣ",
+                cop_de: "Eleyson imas o Theos o Patir o Pantokrator",
+                ar_de: "Erhamna ya Allah el-Ab dabet el-koll."
+            },
+            {
+                id: 71,
+                speaker: "Priester",
+                ar: "اذكر يارب خلاص هذا الموضع المقدس الذي لك وكل المواضع وكل أديرة آبائنا الأرثوذكسيين.",
+                de: "Gedenke, o Herr, des Heils dieses Deines heiligen Ortes und aller Ortschaften und Klöster unserer rechtgläubigen Väter.",
+                cop_ar: "اري إفميفئي إبشويس إن إتسوتيريا إمباي توبوس إثؤواب إنتاك فاي نيم توبوس نيفين نيم مونا ستيريون نيفين إنتي نين يوتي إن أورثوذكسوس.",
+                cop_cop: "Ⲁⲣⲓⲫ̀ⲙⲉⲩⲓ̀ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲧ̀ⲥⲱⲧⲏⲣⲓⲁ ⲙ̀ⲡⲁⲓⲧⲟⲡⲟⲥ ⲉⲑⲟⲩⲁⲃ ⲛ̀ⲧⲁⲕ ⲫⲁⲓ ⲛⲉⲙ ⲧⲟⲡⲟⲥ ⲛⲓⲃⲉⲛ ⲛⲉⲙ ⲙⲟⲛⲁⲥⲧⲏⲣⲓⲟⲛ ⲛⲓⲃⲉⲛ ⲛ̀ⲧⲉ ⲛⲉⲛⲓⲟϯ ⲛ̀ⲟⲣⲑⲟⲇⲟⲝⲟⲥ.",
+                cop_de: "Ari-phmevi P-chois en-et-sotiria em-pai-topos ethowab entak fai nem topos niven nem monastirion niven ente nen-yoti en-orthodoxos.",
+                ar_de: "Ozkor ya Rabb khalas haza el-mawde3 el-moqadas allazi lak wa koll el-mawade3 wa koll adyret aba2ina el-orthodoxiyin."
+            },
         ],
     },
 
@@ -1975,7 +2139,7 @@ export const liturgies = {
                 ar_de: "",
                 cop_de: "",
             },
-             {
+            {
                 id: 17.01,
                 speaker: "Volk",
                 cop_de: "كيرياليسون.",
@@ -1985,7 +2149,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.02,
                 speaker: "Priester",
                 cop_de: "Ten-ti-ho owoh ten-tovh entek-met-agathos pi-mai-romi: ari-phmevi P-chois en-ti-hirini ente tek-oui emmavats etho-wab en-katholiki en-apostoliki en-ekklysia.",
@@ -1995,7 +2159,7 @@ export const liturgies = {
                 ar_de: "nas-alou wa nat-lobou min sal-ahika ya mo-hib el-bashar. ozkor ya rabbu salama kanisatika el-wahidati el-wahidati el-mo-qadasati el-jami-ati el-rasouliyati.",
                 cop_ar: "تين تي هو أووه تين توفه إنتيك ميت أغاتوس بي ماي رومي: آري افميفي إبشويس إنتي هيريني إنتيه تيك أوي إممافاتس إثؤواب إن كاثوليكي إن أبوسطوليكي إن إكليسيا.",
             },
-             {
+            {
                 id: 17.03,
                 speaker: "Diakon",
                 cop_de: "Tovh egen ti-hirini ente ti-oui emmavats etho-wab en-katholiki en-apostoliki: en-ekklysia: nem pou-gai em-Phnouti khen ni-laos: nem ou-semni khen mai niven: entef-kha nen-novi nan evol.",
@@ -2015,7 +2179,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.05,
                 speaker: "Priester",
                 cop_de: "Thai et-shop is-jen av-rix en-ti-iki-omeni sha av-rix. Ni-laos tirou nem ni-ohi tirou smou erou-ou: ti-hirini ti evol khen ni-phi-oui: anis e-khri e-nen-hit tirou. Alla nem ti-ke-hirini ente pai-vios phai: ari-kharizesthe emmos nan en-ehmot. Pi-ouro (Pi-pro-edros) ni-met-matoi ni-arkhon ni-sovni ni-mish nen-the-shev: nen-gin-moshi e-khoun nem nen-gin-moshi evol: selsolou khen hirini niven. Pouro ente ti-hirini moi nan entek-hirini: hob gar niven ak-ti-itou nan. Khpon nak Phnouti Pen-sotir: je ten-so-oun en-ke-ouai an evil erok: pek-ran etho-wab peten-go emmof. Maro-touno enje ni-etenoun en-ipsykhi: hiten Pek-pneuma etho-wab. Owoh empen-thref-gem-gom eron anon kha nek-eviaik: enje ph-mou ente ni-novi.",
@@ -2035,7 +2199,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.07,
                 speaker: "Priester",
                 cop_de: "Ni-et-shoni ente pek-laos.",
@@ -2045,7 +2209,7 @@ export const liturgies = {
                 ar_de: "marda sha3bik.",
                 cop_ar: "ني إيتشوني إنتيه بيك لاؤوس.",
             },
-             {
+            {
                 id: 17.08,
                 speaker: "Diakon",
                 cop_de: "Tovh egen nenioti nem nensniv etshoni khen ginshoni niven: ite khen paitopos ite khen mai niven: hina ente Pikhristos Pennouti er-ehmot nan nem-o-ou em-pi-ougai nem pitalcho: entef-kha nennovi nan evol.",
@@ -2065,7 +2229,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.10,
                 speaker: "Priester",
                 cop_de: "Sakhem-pot-oini khen hannai: nem hanmet-shenhit matal-cho-ou. Ali-oui evol haro-ou nem evol-haron en-shoni niven nem iavi niven. Pi-pneuma ente ni-shoni bog-f ensof. Ni-et-av-osk ev-it-out khen ni-iavi matounos-ou. Ar-ito-ou tirou en-remhe. P-chois ar-ito-ou tirou en-remhe owoh nai no-ou. Je enthok pet-vol en-ni-et-sonh evol. Ti-helpis ente ni-ete emmon tou helpis. Psy-khi niven et-heghogh: moi no-ou P-chois en-ou-nai. Anon de hon P-chois: ni-shoni ente nen-psy-khi matal-cho-ou. Pi-sini em-mi ente nen-psy-khi nem nen-soma.",
@@ -2085,7 +2249,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.12,
                 speaker: "Priester",
                 cop_de: "Nenioti nem nensniv et-avshe ep-shemmo.",
@@ -2095,7 +2259,7 @@ export const liturgies = {
                 ar_de: "aba2ina wa ikhwatina el-mosafirina.",
                 cop_ar: "نين يوتي نيم نين إسنِي إيتاف شي إيبشيمو.",
             },
-             {
+            {
                 id: 17.13,
                 speaker: "Diakon",
                 cop_de: "Tovh egen nenioti nem nensniv et-avshe ep-shemmo: ie ni-eth-me-vi e-she khen mai niven: souton nou-moit tirou: ite evol hiten phi-om: ie ni-ia-rou ie ni-limni ie ni-moit i-moshi (ie pi-a-ir): ie etiri en-nou-gin-moshi en-riti niven: hina ente Pi-khristos Pen-nouti tas-tho-ou e-ni-ete nou-ou em-man-shopi khen ou-hirini: entef-kha nennovi nan evol.",
@@ -2105,7 +2269,7 @@ export const liturgies = {
                 ar_de: "otlobou 3an aba2ina wa ikhwatina el-mosafirina, wal-lazina yodmirouna el-safara fi kolli mawdi3in, sahhil toroqahom ajma3ina, en kana fel-bahri aw el-anhari aw el-bohayrati aw el-toroqi el-masloukati, [aw el-jaw], likay el-Masi7 elahona yaroddahom ila masakinahom salimina, wa yaghfira lana khatayana.",
                 cop_ar: "توفه إيجين نين يوتي نيم نين إسنِي إيتاف شي إيبشيمو: إيه ني إيثميفي إيشي خين ماي نيفين: سوتون نو مويت تيرو: إيتيه إيفول هيتين في أوم: إيه ني يارو إيه ني ليمني إيه ني مويت إي موشي (إيه بي أير): إيه إتيري إن نو جين موشي إن ريتي نيفين: هينا إنتيه بي إخرستوس بين نوتي تاسثو أو إيه ني إيتيه نو أو إممان شوبي خين أو هيريني: إنتيف كا نين نوفي نان إيفول.",
             },
-             {
+            {
                 id: 17.14,
                 speaker: "Volk",
                 cop_de: "كيرياليسون.",
@@ -2115,7 +2279,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.15,
                 speaker: "Priester",
                 cop_de: "Thai etshop isgen avrikhs enti-oikomene sha avrikhs. Nenioti nem nensniv et-avshe ep-shemmo. Ie ni-ethmevi eshe khen mai niven: souton noumoit tirou: ite evol hiten phiom: ie ni-iarou: ie ni-limni: ie ni-moit imoshi: ie pia-ir: ie etiri ennou-ginmoshi enriti niven: ouon niven etven mai niven matasthoo e-khoun e-oulimin engamit e-oulimin ente piougai. Ari-kataxioin arish-phir en-sh-phir nem sh-phir moshi nemoo. Mas-thoo eni-ete nou-ou khen ourashi evrashi: khen ou-ougai ev-oug-nout. Arish-phir en-erhov nem nek-eviaik: khen hov niven en-agathon. Anon de hon P-chois ten-met-rem-eng-oili etkhen pai-vios phai: areh eros en-at-evlavi en-at-khimon en-at-shthorter sha evol.",
@@ -2125,7 +2289,7 @@ export const liturgies = {
                 ar_de: "hazihi el-ka2inato min aqsa el-maskounati ila aqsaha. aba2ina wa ikhwatina el-mosafirina. wal-lazina yodmirouna el-safara fi kolli makan, sahhil toroqahom ajma3in, en kana fel-bahri, aw el-anhari, aw el-bohayrati, aw el-toroqi el-masloukati, [aw el-jaw], aw el-salikina bi-kolli naw3in, kolla ahadin bi-kolli mawdi3in, roddahom ila mina2in hadi2in, mina2 el-khalas. tafaddal as-habhom fel-eqla3i, wa as-habhom fel-masiri. roddahom ila zawihim bel-farahi farihina, wal-3afiyati mo3afina. esh-tarik fel-3amali ma3a 3abidika fi kolli 3amalin salihin. wa nahnou aydan ya rabu ghorbatana fi haza el-3omri, ehfaz-ha be-ghayri madarratin wala 3asifin wala qalaqin ela el-enqida2i.",
                 cop_ar: "ثاي إتشوب إسجين أفريخس إنتي أويكوميني شا أفريخس. نين يوتي نيم نين إسنِي إيتاف شي إيبشيمو. إيه ني إيثميفي إيشي خين ماي نيفين: سوتون نو مويت تيرو: إيتيه إيفول هيتين فيوم: إيه ني يارو: إيه ني ليمني: إيه ني مويت إيموشي: إيه بِي أير: إيه إتيري إن نو جين موشي إن ريتي نيفين: أوون نيفين إتفين ماي نيفين ماتا ستو أو إيخون إي أوليمين إنجاميت إي أوليمين إنتيه بي أوجاي. آري كاتاكسيوين آري إشفير إن إشفير نيم إشفير موشي نيمو أو. ماسثو أو إينيه إيتيه نو أو خين أوراشي إفراشي: خين أو أوجاي إف أوج نوت. آري إشفير إن إيرهوف نيم نيك إيفيايك: خين هوف نيفين إن أغاثون. أنون ديه هون إبشويس تين ميت ريم إنجويلي إتخين باي فيوس فاي: آريه إيروس إن آت إيفلافي إن آت خيمون إن آت إشثورتير شا إيفول.",
             },
-             {
+            {
                 id: 17.16,
                 speaker: "Volk",
                 cop_de: "كيرياليسون.",
@@ -2135,7 +2299,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.17,
                 speaker: "Priester",
                 cop_de: "Ari-kataxioin P-chois ni-mo-ou ente phi-aro: etkhen tai-rompi thai: es-mou ero-ou.",
@@ -2145,7 +2309,7 @@ export const liturgies = {
                 ar_de: "tafaddal ya rabu miyaha el-nahri fi hazihi el-sanati, barik-ha.",
                 cop_ar: "آري كاتاكسيوين إبشويس ني مو أو إنتيه في آرو: إتخين تاي رومبي ثاي: إسمو إيرو أو.",
             },
-             {
+            {
                 id: 17.18,
                 speaker: "Diakon",
                 cop_de: "Tovh egen pi-gin-moshi epshoi ente ni-ia-rou em-mo-ou khen tai-rompi thai: hina ente Pi-khristos Pen-nouti es-mou ero-ou: entef-enou epshoi kata nou-shi: entef-ti em-pounof em-p-ho em-p-kahi: entef-shan-oushten kha ni-kiri ente ni-romi: entef-ti em-p-nohem en-ni-tev-no-ou-i: entef-kha nennovi nan evol.",
@@ -2155,7 +2319,7 @@ export const liturgies = {
                 ar_de: "otlobou 3an so3oudi miyahi el-anhari fi hazihi el-sanati, likay yobarikaha el-Masi7 elahona, wa yo3-edaha kamidariha, wa yofarrival wajha el-ardi, wa ya3oulana nahnou bani el-bashari, wa yo3ti el-najata lel-hayawani, wa yaghfira lana khatayana.",
                 cop_ar: "توفه إيجين بي جين موشي إيبشوي إنتيه ني يارو إممو أو خين تاي رومبي ثاي: هينا إنتيه بي إخرستوس بين نوتي إسمو إيرو أو: إنتيف إنو إيبشوي كاتا نوشي: إنتيف تي إمبونوف إمب هو إمب كاهي: إنتيف شانوشتين خا ني كيري إنتيه ني رومي: إنتيف تي إمب نو هيم إن ني تيف نو أوي: إنتيف كا نين نوفي نان إيفول.",
             },
-             {
+            {
                 id: 17.19,
                 speaker: "Volk",
                 cop_de: "(Kyrie eleison) 3x.",
@@ -2165,7 +2329,7 @@ export const liturgies = {
                 ar_de: "(ya rabu erham) 3",
                 cop_ar: "(كيريه لييسون) 3",
             },
-             {
+            {
                 id: 17.20,
                 speaker: "Priester",
                 cop_de: "Ari-kataxioin P-chois ni-siti nem ni-sim nem ni-rot ente t-koi: etkhen tai-rompi thai: es-mou ero-ou.",
@@ -2175,7 +2339,7 @@ export const liturgies = {
                 ar_de: "tafaddal ya rabu, el-zorou3a wal-3oshba, wa nabata el-haqli fi hazihi el-sanati, barik-ha.",
                 cop_ar: "آري كاتاكسيوين إبشويس ني سيتي نيم ني سيم نيم ني روت إنتيه إت كوي: إتخين تاي رومبي ثاي: إسمو إيرو أو.",
             },
-             {
+            {
                 id: 17.21,
                 speaker: "Diakon",
                 cop_de: "Tovh egen ni-siti nem ni-sim nem ni-rot ente t-koi khen tai-rompi thai: hina ente Pi-khristos Pen-nouti es-mou ero-ou entou-aiai owoh entou-ashai shantou-gok evol khen ou-nishti en-karpos: owoh entef-shenhit kha pef-plasma eta nef-gig thamiof: entef-kha nennovi nan evol.",
@@ -2195,7 +2359,7 @@ export const liturgies = {
                 ar_de: "(ya rabu erham) 3",
                 cop_ar: "(كيريه لييسون) 3",
             },
-             {
+            {
                 id: 17.23,
                 speaker: "Priester",
                 cop_de: "Ari-kataxioin P-chois ni-a-ir ente t-phe nem ni-karpos ente p-kahi khen tai-rompi thai: es-mou ero-ou.",
@@ -2205,7 +2369,7 @@ export const liturgies = {
                 ar_de: "tafaddal ya rabu ahwiyata el-sama2i, wa thamarat el-ardi, barik-ha fi hazihi el-sanati.",
                 cop_ar: "آري كاتاكسيوين إبشويس ني أير إنتيه إت فيه نيم ني كاربوس إنتيه إب كاهي خين تاي رومبي ثاي: إسمو إيرو أو.",
             },
-             {
+            {
                 id: 17.24,
                 speaker: "Diakon",
                 cop_de: "Tovh egen ni-a-ir ente t-phe nem ni-karpos ente p-kahi nem pha ni-sh-shin nem pha ni-man-aloli nem sh-shin niven en-refti-karpos etkhen ti-oikomene tirs: hina ente Pi-khristos Pen-nouti es-mou ero-ou entef-gokou evol khen ou-hirini avne emkah: entef-kha nennovi nan evol.",
@@ -2215,7 +2379,7 @@ export const liturgies = {
                 ar_de: "otlobou 3an ahwiyati el-sama2i, wa thamarat el-ardi, wal-shajari, wal-koroumi, wa kolli shajaratin mothmiratin fi kolli el-maskounati, likay yobarikaha el-Masi7 elahona, wa yokammilaha salimatan be-ghayri alamin, wa yaghfira lana khatayana.",
                 cop_ar: "توفه إيجين ني أير إنتيه إت فيه نيم ني كاربوس إنتيه إب كاهي نيم فا ني إششين نيم فا ني مان آلولي نيم إششين نيفين إن ريفتي كاربوس إتخين تي أويكوميني تيرس: هينا إنتيه بي إخرستوس بين نوتي إسمو إيرو أو إنتيف جوكو إيفول خين أو هيريني آفنيه إمكاه: إنتيف كا نين نوفي نان إيفول.",
             },
-             {
+            {
                 id: 17.25,
                 speaker: "Volk",
                 cop_de: "(Kyrie eleison) 3x.",
@@ -2225,7 +2389,7 @@ export const liturgies = {
                 ar_de: "(ya rabu erham) 3",
                 cop_ar: "(كيريه لييسون) 3",
             },
-             {
+            {
                 id: 17.26,
                 speaker: "Priester",
                 cop_de: "Ari-kataxioin P-chois ni-mo-ou ente phi-aro: ni-siti nem ni-sim nem ni-rot ente t-koi: ni-a-ir ente t-phe nem ni-karpos ente p-kahi: etkhen tai-rompi thai: es-mou ero-ou. Anitou epshoi kata noushi: kata phe-ete phok en-hmot: ma pounof em-p-ho em-p-kahi: maroteikhi enge nef-ethloh: marotashai enge nef-outah. Sevtotf e-ou-khrog nem ouoshkh: owoh ari-oikonomin em-pen-gin-onkh kata peter-nofri. Esmou e-pi-khlom ente ti-rompi hiten tek-met-khristos: ethve ni-hiki ente pek-laos: ethve ti-khira nem pi-orphanos nem pi-shemmo nem pi-rem-eng-oili: nem ethveten tiren kha ni eter-helpis erok: owoh et-tovh em-pek-ran ethouav. Ge nen-val en-ouon niven se-er-helpis erok: ge enthok et-ti en-tou-tre no-ou khen ou-se-ou e-nanef. Ari-ou-i neman kata tek-met-agathos: phe-et-ti khre en-sarx niven: moh en-nen-hit en-rashi nem ou-ounof: hina anon hon ere eph-roshi entoten khen hov niven en-se-ou niven: nenten-er-hou-o khen hov niven en-agathon.",
@@ -2245,7 +2409,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.28,
                 speaker: "Priester",
                 cop_de: "Pi-ouro [pi-pro-edros - pi-an-khokh] ente pen-kahi pek-vok.",
@@ -2255,7 +2419,7 @@ export const liturgies = {
                 ar_de: "malika (Ra2ees) ardina 3abdaka.",
                 cop_ar: "بي أورو [بي بروأيدروس - بي أنخوخ] إنتيه بين كاهي بيك فوك.",
             },
-             {
+            {
                 id: 17.29,
                 speaker: "Diakon",
                 cop_de: "Tovh hina ente Pi-khristos Pen-nouti ti-nan en-han-nai nem han-met-shen-hit em-pem-tho en-ni-ex-ou-sia et-amahi: entef-er-malakin em-pou-hit e-khoun eron epi-agathon en-sio niven: entef-kha nen-novi nan evol.",
@@ -2275,7 +2439,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.31,
                 speaker: "Priester",
                 cop_de: "Areh erof khen ou-hirini nem ou-methmi nem ou-met-gori: marou-thevi-o-ou naf tirou en-ge ni-varvaros ni-ethnos ni-eth-ouosh en-ni-vots: pros thi-ete thon tirou en-et-thenia. Sagi e-khri e-pef-hit ethve ti-hirini ente tek-oui mmavats eth-ou-av en-katholiki en-apostoliki en-ekklisia. Mais naf e-mevi en-han-hirinikon e-khoun eron nem e-khoun e-pek-ran eth-ou-av: hina anon hon enonkh khen ou-vios ef-hou-ro-ou ovoh ef-ork en-sekhemten en-shop khen met-ev-sevis niven nem met-semnos niven e-khoun erok.",
@@ -2295,7 +2459,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.33,
                 speaker: "Priester",
                 cop_de: "Nenioti nem nensniv etavenkot eakchi ennouyichi mamton noou. Ekiri on emphmevi enniethouav tirou etavranak isgen peneh. Nenioti ethouav nipatriarkhis niprophitis niapostolos nirefhiwish nievangelistis nimartyros niomologitis nem pneuma niven endikeos etavgok evol khen phnahti. Malista de ethouav ethmeh eno-ou: etoi emparthenos ensiou niven: ti-Theotokos ethouavt agia Maria. Nem pi-agios Ioannis pi-prodromos em-vaptistis owoh em-martyros. Nem pi-agios Stephanos pi-arkhidiakon owoh em-protomartyros. Nem pi-agios Markos pi-apostolos ethouav owoh em-martyros. Nem pi-patriarchis ethouav Severos : nem pi-agios Kyrillos : nem pi-agios Vasilios : nem pi-agios Grigorios. Nem peniot endikeos pi-nishti abba Antonios : nem pi-thmi abba Pavle : nem pi-shomt ethouav abba Makari. Nem peniot abba Ioannis : nem peniot abba Pishoi : nem nenioti ethouav en-romeos Maximos nem Dometios : nem pi-hme psit en-martyros : nem pi-gori ethouav abba Mosi. Nem peniot abba Pakhom pha ti-koinonia : nem peniot abba Shenouti pi-arkhimandritis : nem peniot abba Nofer pi-anachoritis : nem peniot abba Samouel pi-omologitis. Nem ep-choros tirf ente ni-ethouav ntak. Oukh oti ge anon ph-mip etemp-sha en-er-pres-vevin eh-rii egen th-met-makarios en-ni-ete mmav. Alla ge entho-ou et-ohi erato-ou nahren pi-vima ente pek-monogenis en-Shiri. Entou-shopi em-vevi-o en-er-pres-vevin : eh-rii egen ten-met-hiki nem ten-met-khov. Shopi en-ref-kho evol nnen-anomia : ethve nou-ti-ho ethouav : nem ethve pek-ran et-smaro-out : et-av-mouti emmof eh-rii egon.",
@@ -2305,7 +2469,7 @@ export const liturgies = {
                 ar_de: "aba2ona wa ekhwatona el-lazina raqadou, ellazina akhazta nofosahom nayye7-hom. zakiran ayzan gami3 el-qiddisina el-lazina ardoka monzo el-bad2. aba2ana el-athara ro2asa2 el-aba2, wal-anbeya2, wal-rosol, wal-mobashshirina, wal-ingiliyyina, wal-shohada2, wal-mo3tarifina, wa kolla arwa7 el-seddiqina el-lazina kamalou fil-iman. Wa bel-akthar el-qiddisa el-mamlou2a magdan, el-3azra2 kol 7in, walidat el-elah el-tahira el-qiddisa Maria. Wal-qiddis Youhanna el-sabiq el-ma3madan wal-shaheed. Wal-qiddis Estefanos awwal el-shamamisa wa awwal el-shohada2. Wal-qiddis Morqos el-rasoul el-tahir el-ingili wal-shaheed. Wel batriarka el qiddis Saweeros, wel qiddis Kyrillos, wel qiddis Basilios, wel qiddis Eghrighorios. Wa abana el seddiq el 3azim anba Antonios, wel barr anba Boula, wal salalata anba Maqarat el qiddisin. Wa abana anba Yo7annes, wa abouna anba Pishoy, el qiddisayn el romiyayn Maximos wa Domadios, wal tes3a wal arba3in shaheedan, wal qawi anba Moussa. Wa abana anba Pakhom aba el sherika, wa abana anba Shenouda ra2is el motawa7idin, wa abana anba Nofer el sa2e7, wa abana anba Samouel el mo3tarif. Wa kol masaff qiddisik. Ennana ya sayyedana lasna ahlan an natashaffa3a fi toubaweyyat ola2ik. Bal hom qeyam amam minbari ebnika el-wahid. Li-yakonou 3ewazan 3anna, yatashaffa3ouna fi maskanatina wa za3fina. Kon ghafiran li-athamina, min agli telbatihom el-moqaddasa, wa min agli esmeka el-mobarak ellathi do3eya 3alayna.",
                 cop_ar: "نين يوتي نيم نين إسنِي إيتاف إنكوت إي آك شي إن نو بـسيشي ما إمتون نو أو. إيك إيري أون إم إف ميفي إن ني إثؤواب تيرو إيتاف راناك إسجين بينيه. نين يوتي إثؤواب ني باتري آرخيس ني بروفيتيس ني أبوستولوس ني ريف هيويش ني إيفانجيليستيس ني مارتيروس ني أومولوجيتيس نيم بـنيفما نيفين إن ديكايوس إيتاف جوك إيفول خين إفنا هـتي. ماليستا دي إثؤواب إث ميه إن أو أو: إت أوي إم بارثينوس إن سيو نيفين: تي ثيؤطوكوس إثؤوابت آجيا ماريا. نيم بي آجيوس يوانيس بي برودروموس إم بابتستيس أوفوه إم مارتيروس. نيم بي آجيوس ستيفانوس بي آرشي دياكون أوفوه إم بروتو مارتيروس. نيم بي آجيوس ماركوس بي أبوسطولوس إثؤواب أوفوه إم مارتيروس. نيم بي باتري أرشيس إثؤواب سيفيروس : نيم بي آجيوس كيريللوس : نيم بي آجيوس فاسيليوس : نيم بي آجيوس غريغوريوس. نيم بين يوت إن ديكايوس بي نيشتي أببا أنطونيوس : نيم بي إثمي أببا بافلي : نيم بي شومت إثؤواب أببا ماكاري. نيم بين يوت أببا يوحنس : نيم بين يوت أببا بيشوي : نيم نين يوتي إثؤواب إن روميوس ماكسيموس نيم دوميتيوس : نيم بي همي بسيت إن مارتيروس : نيم بي جوري إثؤواب أببا موسى. نيم بين يوت أببا باخوم فا تي كوينونيا : نيم بين يوت أببا شنودي بي أرشي ماندريتيس : نيم بين يوت أببا نوفر بي أنا خوريتيس : نيم بين يوت أببا صموئيل بي أومولوجيتيس. نيم إبخوروس تيرف إنتيه ني إثؤواب إنتاك. أوخ أوتي جيه أنون إف ميب إيتيم إبشا إن إر بريس فيفين إهريي إيجين إث ميت ماكاريوس إن ني إيتيه إمماف.أللا جيه إنثو أو إت أوهي إيرات أو ناهرين بي فيما إنتيه بيك مونوجينيس إن شيري. إنتو شوبي إم فيفي أو إن إر بريس فيفين : إهريي إيجين تين ميت هيكِي نيم تين ميت خوب. شوبي إن ريف كو إيفول إن نين أنوميا : إثفي نو تي هو إثؤواب : نيم إثفي بيك ران إت سمارو أوت : إيتاف موتي إمموف إهريي إيجون.",
             },
-             {
+            {
                 id: 17.34,
                 speaker: "Diakon",
                 cop_de: "Ni-et-osh marou-ta-ou-o en-ni-ran ente nenioti ethouav em-patriarkhis et-av-enkot : Ep-chois ma-emton en-nou-yichi tirou ovoh entef-kha nennovi nan evol.",
@@ -2315,7 +2479,7 @@ export const liturgies = {
                 ar_de: "El qare2oun falyoqolou asma2 aba2ena el qiddisin el batarka ellazina raqadou, el rabb yunayye7 nofosahom agma3in, wa yaghfer lana khatayana.",
                 cop_ar: "ني إيت أوش مارو طاؤو إن ني ران إنتيه نين يوتي إثؤواب إم باتري أرشيس إيتاف إنكوت : إبشويس ما إمتون إن نو بـسيشي تيرو أوفوه إنتيف كا نين نوفي نان إيفول.",
             },
-             {
+            {
                 id: 17.35,
                 speaker: "Priester",
                 cop_de: "Ariphmevi Epchois nnenkeioti ethouav northodoxos ovoh narkhiepiskopos etaver-shorp nenkot: nai etav-osht evol empisagi ente timethmi khen ousowouten. Ovoh moi nan hon noumeros nem oukliros nem-o-ou. Ekiri on emphmevi nnai eteniri empoumevi: khen paiehoo ente pho-ou.",
@@ -2325,7 +2489,7 @@ export const liturgies = {
                 ar_de: "(Serran) ozkor ya rabb aba2ana el qiddisin el orthodoxiyyin ro2asa2 el asaqifa ellazina sabaqou faraqadou, ha2ola2 ellazina fassalou kalemat el haqq bastaqama. Wa a3tena nahnou ayzan hazzan wa nasiban ma3ahom, zakiran ayzan ha2ola2 ellazina nazkorohom fi yawmena haza.",
                 cop_ar: "أري إف ميفي إبشويس نين كيه يوتي إثؤواب إن أرثوذكسوس أوفوه إن أرشي إيبي سكوبوس إيتاف إر شيرب إنكوت: ناي إيتاف أوشت إيفول إم بي ساجي إنتيه تي ميثمي خين أو سو أوتين. أوفوه موي نان هون نو ميروس نيم أو إكليروس نيمو أو. إيك إيري أون إم إف ميفي إن ناي إيتين إيري إمبو ميفي: خين باي إيهوؤو إنتيه فوؤو.",
             },
-             {
+            {
                 id: 17.36,
                 speaker: "Diakon",
                 cop_de: "Tovh egen nenioti nem nens-ni-ou et-av-enkot: av-emton emmo-ou khen eph-nahti em-Pi-khristos is-gen peneh. Nenioti eth-ou-av en-arkhi-episkopos ke nenioti en-episkopos: nenioti en-higo-oumenos ke nenioti em-presvyteros: nem nens-ni-ou en-diakon. Nenioti em-monakhos ke nenioti en-laikos: nem eh-rii egen ti-anapavsis tirs ente ni-khristianos: hina ente Pi-khristos Pennouti ti-emton ennou-yichi tirou: khen pi-paradisos ente p-ou-nof: anon de hon entef-er pinai neman: entef-kha nennovi nan evol.",
@@ -2345,7 +2509,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.38,
                 speaker: "Priester",
                 cop_de: "Ovoh nai nem ouon niven Epchois ne-etantan-ou-o nouran: nem ne-ete empentan-ou-ou. Ne-et khen ph-mevi em-piouai piouai emmon: nem ne-ete ense-khi enkheten an. Etav-enkot av-emton emmo-ou khen ph-nahti em-Pi-khristos. Ari-kata-ksion Epchois ma-emton ennou-yichi tirou: khen kenf en-nenioti ethouav: Avra-am nem Isa-ak nem Iak-ov. Shano-ou-shou khen ouma en-kh-lo-i: higen ph-mo-ou ente pem-ton: khen pi-paradisos ente p-ounof. Pima etaf-phot evol enkhetf: enje pi-kah, en-hit nem ti-lypi nem pi-phi-ahom: khen ph-ou-oini ente ni-ethouav ntak. Ek-e-tounos entou-ke-sarx khen pi-ehoo etak-thashf: kata nek-ep-angelia em-mi ovoh nat-meth-n-oug. Ek-e-er-kharizesthe no-ou enni-agathon ente nek-ep-angelia: ne-ete empe val nav ero-ou: oude empe mash-g soth-mou: oude empou-i eh-rii egen ep-hit en-romi. Ni-et-ak-sevtoto-ou Phnouti en-ni-ethmei em-pek-ran ethouav. Ge emmon mou shop en-neke-eviaik alla ou-ot-o-tev evol pe. Is-ge de ouon ou-met-amelis chi ero-ou : ie ou-met-at-ti-h-thi-ou hos romi : e-av-er-phorin en-ou-sarx ovoh av-shopi khen pai-kosmos. Enthok de hos agathos ovoh em-mai-romi Phnouti ari-kata-ksion kho no-ou evol. Ge emmon h-li ef-ou-av e-tholev oude kan ou-ehoo en-ou-ot pe pef-onkh higen pi-kahi. Entho-ou men ham mi Epchois e-ak-chi en-nou-yichi ma-emton no-ou : ovoh marou-er-p-emp-sha en-ti-met-ouro ente ni-phe-ou-i. Anon de tiren ari-kharizesthe nan : em-pen-gok en-khristianos ef-ranak em-pek-emtho. Ovoh moi no-ou neman en-ou-meros : nem ou-k-li-ros nem ni-ethouav tirou ntak.",
@@ -2355,7 +2519,7 @@ export const liturgies = {
                 ar_de: "wa ha2ola2 wa kolla a7adin, ya rabb, ellazina zakarna asma2ahom, wallazina lam nazkorhom. ellazina fi fikr kolla wahidin minna wallazina laysou fi fikrena. ellazina raqadou wa tanayya7ou fel iman bel Masih. tafazzal ya rabb nayye7 nofosahom agma3in, fi hidn aba2ena el qiddisin, Ibrahim wa Ishaq wa Ya3qoub. 3ol-hom fi mawde3 khodra 3ala ma2 el raha fi firdaws el na3im. el mawde3 ellazi haraba menho el hozn wal ka2aba wal tanahod fi nour qiddisik. aqem agsadahom ayzan fel yawm ellazi rasamtaho, kamawa3ideka el haqiqqiyya ghayr el kaziba. hab lahom khayrat mawa3ideka, ma lam taraho 3ayn wa lam tasma3 behi ozon wa lam yakhtor 3ala qalb bashar, ma a3dadtaho ya Allah le-mohibbi esmeka el-moqaddas. li-annaho la yakon mowton le-3abidika bal houwa entiqal. wa in kana lahiqahom tawanin aw tafriton ka-basharin, wa qad labisou gasadan wa sakanou fi haza el-3alam. fa-anta ka-salihin wa mohibbi el-bashar, Allahomma tafazzal eghfer lahom. fa-innaho laysa ahadon tahiran min danasin, walow kanat hayataho yawman wahidan 3ala el-ard. amma hom ya rabb ellazina akhazta nofosahom fa-nayyeh-hom, wal-yastahiqqou malakout el-samawat. wa-amma nahnou kollana fa-hab lana kamalana el-masihi ellathi yordika amamaka. wa a3tehom wa iyyana nasiban wa mirasthan, ma3a kaffati qiddisika.",
                 cop_ar: "أوفوه ناي نيم أو أون نيفين إبشويس ني إي تان طاؤو نو ران: نيم ني إيتيه إمبين تان أو أو. ني إيت خين إف ميفي إم بي أواي بي أواي إممون: نيم ني إيتيه إن سيه خي إن خيتين آن. إيتاف إنكوت آف إمتون إممو أو خين إفنا هتي إم بي إخرستوس. أري كات أكسيون إبشويس ما إمتون إن نو بـسيشي تيرو: خين كينف إن نين يوتي إثؤواب: إبراهام نيم إيساك نيم ياكوب. شان أو شو خين أو ما إن إخلوي: هيجين إفمو أو إنتيه بيمتون: خين بي باراديسوس إنتيه بو نوف. بيما إيتاف فوت إيفول إن خيتف: إنجيه بي كاه، إن هيت نيم تي ليبي نيم بي فياهوم: خين إف أو أويني إنتيه ني إثؤواب إنتاك. إيكيه تونوس إن تو كيه ساركس خين بي إيهوؤو إيتاك ثاشف: كاتا نيك إيبانجليا إم مي أوفوه إن أت ميث نوج. إيكيه إر خاري زيستيه نو أو إن ني آغاثون إنتيه نيك إيبانجليا: ني إيتيه إمبيه فال ناف إيرو أو: أوديه إمبيه ماشج سوثم أو: أوديه إمبو إي إهريي إيجين إب هيت إن رومي. ني إيتاك سيف طوت أو إفنوتي إن ني إثمي إم بيك ران إثؤواب. جيه إممون مو شوب إن نيكيه إيفيا إيك أللا أو أوتو تيف إيفول بـيه. إس جيه ديه أو أون أو ميت أميليس شي إيرو أو : إيه أو ميت أت تي هيثيو هوس رومي : إي آف إر فورين إن أو ساركس أوفوه آف شوبي خين باي كوزموس. إنثوك ديه هوس آغاثوس أوفوه إم ماي رومي إفنوتي آري كات أكسيون كو نو أو إيفول. جيه إممون إهلي إيف أو آف إي ثوليف أوديه كان أو إيهوؤو إن أو أوت بـيه بيف أونخ هيجين بي كاهي. إنثو أو مين هام مي إبشويس إي آك شي إن نو بـسيشي ما إمتون نو أو : أوفوه مارو إر بـإيمبشا إن تي ميت أورو إنتيه ني في أو إي. أنون ديه تيرين آري خاري زيستيه نان : إم بين جوك إن إخرستيانوس إيف راناك إم بيك إم ثو. أوفوه موي نو أو نيمان إن أو ميروس : نيم أو إكليروس نيم ني إثؤواب تيرو إنتاك.",
             },
-             {
+            {
                 id: 17.39,
                 speaker: "Volk",
                 cop_de: "كيرياليسون.",
@@ -2365,7 +2529,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.40,
                 speaker: "Priester",
                 cop_de: "Nithysia niprosphora.",
@@ -2375,7 +2539,7 @@ export const liturgies = {
                 ar_de: "Otlobou 3an el sa3a2ed wal qarabinn wa 3an el-lazina qaddamouha.",
                 cop_ar: "ني ثيسيا ني بروسفورا.",
             },
-             {
+            {
                 id: 17.41,
                 speaker: "Diakon",
                 cop_de: "Tovh egen ni-et-fi em-ph-ro-oush : en-ni-thysia ni-prosphora : ni-aparkhi ni-neh : ni-stho-inou-phi ni-skep-asma ni-gom en-osh : ni-ky-allion ente pi-man-er-sho-oushi : hina ente Pi-khristos Pennouti ti-she-vi-o no-ou khen Ierousalim ente t-phe: entef-kha nennovi nan evol.",
@@ -2395,7 +2559,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.43,
                 speaker: "Priester",
                 cop_de: "Shopou erok egen pek-thysia-stirion ethouav : n-ellogimon ente t-phe : e-ou-sthoi en-sthoi-nouphi : e-khoun etek-met-nishti et-khen ni-phe-oui : evol hiten ep-shemshi ente nek-aggelos nem nek-arkhi-aggelos ethouav. M-ph-riti et-ak-shop erok en-ni-doron ente pi-th-mi Abel : nem ti-thysia ente pen-iot Avra-am : nem ti-levi es-nouti ente ti-khira. Pai-riti on ni-ev-khari-stirion ente nek-eviaik shopou erok : na pi-ou-o nem na pi-kougi : ni et-hip nem ni eth-ou-onh evol. Ni-eth-ou-osh e-ini nak e-khoun ovoh emmon en-to-ou : nem ni et-av-ini nak e-khoun khen pai-ehoo ente pho-ou en-nai-doron nai. Moi no-ou en-ni-at-tako en-t-she-vi-o en-ni eth-na-tako: na ni-phe-ou-i en-t-she-vi-o en-na pi-kahi: ni-sha-eneh en-t-she-vi-o en-ni-pros ou-si-ou. Mouhou nou-tamion mazou evol khen agathon niven. Matakto ero-ou Epchois en-t-gom ente nek-aggelos : nem nek-arkhi-aggelos ethouav. M-ph-riti et-av-er ph-mevi em-pek-ran ethouav higen pi-kahi : ari-ph-mevi en-o-ou Epchois khen tek-met-ouro: ovoh khen pai-ke-eon phai emper-khav en-sok.",
@@ -2415,7 +2579,7 @@ export const liturgies = {
                 ar_de: "ya rabbu arham",
                 cop_ar: "Kyrie eleyson",
             },
-             {
+            {
                 id: 17.45,
                 speaker: "Priester",
                 cop_de: "Penpatriarkhis : niot ettaiyout : enarkhieris papa ava Tawadros Pimah snav.",
@@ -2425,6 +2589,7 @@ export const liturgies = {
                 ar_de: "Batriyarkana el-ab el-mokarram anba Tawadros El-thani.",
                 cop_ar: "بين باتري أرشيس : نِيوت إت طاي هو أوت : إن أرشي إيريفس بابا أبڤا تاوادروس بي ماه اسناف",
             },
+<<<<<<< Updated upstream
              {
                 id: 17.46,
                 speaker: "Diakon",
@@ -2437,15 +2602,8 @@ export const liturgies = {
             },
              {
                 id: 17.47,
-                speaker: "",
-                cop_de: "",
-                de: "",
-                ar: "",
-                cop_cop: "",
-                ar_de: "",
-                cop_ar: "",
-            },
-             {
+=======
+            {
                 id: 17.33,
                 speaker: "",
                 cop_de: "",
@@ -2455,7 +2613,18 @@ export const liturgies = {
                 ar_de: "",
                 cop_ar: "",
             },
-             {
+            {
+                id: 17.33,
+>>>>>>> Stashed changes
+                speaker: "",
+                cop_de: "",
+                de: "",
+                ar: "",
+                cop_cop: "",
+                ar_de: "",
+                cop_ar: "",
+            },
+            {
                 id: 17.33,
                 speaker: "",
                 cop_de: "",
@@ -2465,7 +2634,7 @@ export const liturgies = {
                 ar_de: "",
                 cop_ar: "",
             },
-             {
+            {
                 id: 17.33,
                 speaker: "",
                 cop_de: "",
@@ -2475,7 +2644,17 @@ export const liturgies = {
                 ar_de: "",
                 cop_ar: "",
             },
-             {
+            {
+                id: 17.33,
+                speaker: "",
+                cop_de: "",
+                de: "",
+                ar: "",
+                cop_cop: "",
+                ar_de: "",
+                cop_ar: "",
+            },
+            {
                 id: 17.33,
                 speaker: "",
                 cop_de: "",
@@ -3511,11 +3690,295 @@ export const liturgies = {
                     { label_ar: "(غ) الغريغوري", label_de: "(G) Gregorios", action: "goto_gregorios_start" },
                     { label_ar: "(ك) الكيرلسي", label_de: "(K) Cyrillus", action: "goto_cyrillus_id_23" } // Führt zu ID 21
                 ]
-            },
-        ]
-    }
-}
 
+            }
+
+        ]
+
+    },
+
+    seven_small_litanies: {
+        title: {
+            ar: "الأواشي السبعة الصغار",
+            de: "Die 7 kleinen Gebete"
+        },
+        content: [
+            // ID 1: Bitte für die Kirche (Priester)
+            {
+                id: 700,
+                speaker: "Priester",
+                ar: "نعم نسألك أيها المسيح إلهنا ثبت أساس الكنيسة",
+                de: "Ja, wir bitten dich, o Christus, unser Gott befestige das Fundament der Kirche.",
+
+                ar_de: "Na3am nas2aloka ayoha el-masi7 elahona thabet asas el-kanisa."
+            },
+
+            // ID 2: Herr erbarme Dich (Volk)
+            {
+                id: 701,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            // ID 703: Herzenseintracht (Priester)
+            {
+                id: 703,
+                speaker: "Priester",
+                ar: "وحدانية القلب التي للمحبة فلتتأصل فينا.",
+                de: "Möge die Herzenseintracht in uns wurzeln fassen.",
+
+                ar_de: "Wahdaniat el-qalb allati lel-mahaba faltata'assal fina."
+            },
+
+            // ID 704: Herr erbarme Dich (Volk)
+            {
+                id: 704,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            {
+                id: 705,
+                speaker: "Priester",
+                ar: "لينمو بر الإيمان. سهل لنا يارب طريق التقوى.",
+                de: "Möge die Wahrheit des Glaubens wachsen. Ebne uns den Weg der Frömmigkeit.",
+
+                ar_de: "Liyanmu birr al-iman. Sahhil lana ya Rabb tariq al-taqwa."
+            },
+
+            // ID 706: Herr erbarme Dich (Volk)
+            {
+                id: 706,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            // ID 707: Für die Hirten (Priester)
+            {
+                id: 707,
+                speaker: "Priester",
+                ar: "الرعاة اضبطهم والذين يرعونهم ثبتهم.",
+                de: "Leite die Hirten und stärke die, die durch sie gehütet werden.",
+
+                ar_de: "El-ro3at odbothom wallazina yar3ounahom thabithom."
+            },
+
+            // ID 708: Herr erbarme Dich (Volk)
+            {
+                id: 708,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            // ID 709: Für den Klerus (Priester)
+            {
+                id: 709,
+                speaker: "Priester",
+                ar: "اعط بهاء للإكليروس. نسكاً للرهبان والراهبات.",
+                de: "Gib dem Klerus Glanz, den Mönchen und Nonnen Askese.",
+                ar_de: "A3ti baha2an lil-ekliros. Noskan lel-rohban wal-rahibat."
+            },
+
+            // ID 710: Herr erbarme Dich (Volk)
+            {
+                id: 710,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            // ID 711: Für Jungfräulichkeit und Ehe (Priester)
+            {
+                id: 711,
+                speaker: "Priester",
+                ar: "طهارة للذين في البتولية. حياة صالحة للذين في الزيجة.",
+                de: "Reinheit denen, die in die Jungfräulichkeit sind, eine gute Lebensführung denen, die in Ehe leben.",
+                ar_de: "Tahara lil-lazina fil batouliya. Hayah saliha lil-lazina fil ziga."
+            },
+
+            // ID 712: Herr erbarme Dich (Volk)
+            {
+                id: 712,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            // ID 713: Barmherzigkeit und Güte (Priester)
+            {
+                id: 713,
+                speaker: "Priester",
+                ar: "رحمة للتائبين، صلاحاً للأغنياء.",
+                de: "Erbarmen den Büßenden, Güte denen, die reich sind,",
+
+                ar_de: "Rahma lel-ta2ebin, salahan lel-aghnia2."
+            },
+
+            // ID 714: Herr erbarme Dich (Volk)
+            {
+                id: 714,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            // ID 715: Erfolg und Arbeit (Priester)
+            {
+                id: 715,
+                speaker: "Priester",
+                ar: "نجاحاً للطلبة، عملاً للمحتاجين.",
+                de: "Erfolg den Studenten, Arbeit für die Bedürftigen.",
+                ar_de: "Nagahan lil-talaba, 3amalan lil-mohtagin."
+            },
+
+            // ID 716: Herr erbarme Dich (Volk)
+            {
+                id: 716,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            // ID 717: Bescheidenheit und Hilfe (Priester)
+            {
+                id: 717,
+                speaker: "Priester",
+                ar: "وداعة للفضلاء ، معونة للمساكين.",
+                de: "Bescheidenheit den Frommen, Hilfe den Armen",
+
+                ar_de: "Wada3a lil-fodala2, ma3ouna lil-masakin."
+            },
+
+            // ID 718: Herr erbarme Dich (Volk)
+            {
+                id: 718,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            // ID 719: Für Alte und Junge (Priester)
+            {
+                id: 719,
+                speaker: "Priester",
+                ar: "الشيوخ قوهم، الذين في الحداثة أدبهم.",
+                de: "Stärke die Alten, zügle die Jungen.",
+                ar_de: "El-shoyoukh qawwehom, allazina fel hadatha addebhom."
+            },
+
+            // ID 720: Herr erbarme Dich (Volk)
+            {
+                id: 720,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            // ID 721: Für die Nichtgläubigen und Einheit (Priester)
+            {
+                id: 721,
+                speaker: "Priester",
+                ar: "غير المؤمنين ردهم، لتنقض انقسامات الكنيسة .",
+                de: "Bringe die Nichtgläubigen. Mögen die Trennungen der Kirche aufhören.",
+
+                ar_de: "Gheir el-mo'menin roddahom, le-tanqad enqisamat el-kanisa."
+            },
+
+            // ID 722: Herr erbarme Dich (Volk)
+            {
+                id: 722,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            // ID 723: Gegen Häresien (Priester)
+            {
+                id: 723,
+                speaker: "Priester",
+                ar: "حل تعاظم اهل البدع. ونحن كلنا احسبنا في وحدانية التقوى.",
+                de: "Reiße den Hochmut der Häretiker nieder; uns alle aber zähle zur Einheit der Frömmigkeit.",
+
+                ar_de: "Hal ta3azem ahl el-beda3. Wa nahnu kollana ahsebna fi wahdaniat el-taqwa."
+            },
+
+            // ID 724: Herr erbarme Dich 3x (Volk)
+            // ID 724: Herr erbarme Dich 3x (Volk) + Navigation
+            {
+                id: 724,
+                speaker: "Volk",
+                ar: "(يارب ارحم) 3",
+                de: "(Herr erbarme Dich) 3.",
+                cop_ar: "(كيريه ليسون) 3",
+                cop_cop: "(Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ) ⲅ",
+                cop_de: "(Kyrie eleyson) 3",
+                ar_de: "(Ya Rab erham) 3.",
+
+                navigationButtons: [
+                    {
+                        label_ar: "(ب) الباسيلي",
+                        label_de: "(B) Basilius",
+                        action: "jumpToId",
+                        targetLiturgy: "basily",
+                        targetId: 60
+                    },
+                    {
+                        label_ar: "(ك) الكيرلسي",
+                        label_de: "(K) Cyrillus",
+                        action: "jumpToId",
+                        targetLiturgy: "kerollosy",
+                        targetId: 17.03
+                    },
+                    {
+                        label_ar: "(غ) الغريغوري",
+                        label_de: "(G) Gregorios",
+                        action: "jumpToId",
+                        targetLiturgy: "gregorios",
+                        targetId: 1
+                    }
+                ] // Ende von navigationButtons
+            } // Ende von ID 724
+        ] // Ende von content (Array)
+    } // Ende von seven_small_litanies (Objekt)
+
+};
 
 
 
@@ -3537,5 +4000,5 @@ export const liturgyHints = {
     1: {
         de: "✟ Bereite das Prospharin vor (Enthüllung).",
         ar: "✟ استعد لرفع الإبروسفارين."
-    }
-};
+    },
+}

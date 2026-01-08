@@ -72,7 +72,6 @@ const KyrieCounter = ({ initialCount }) => {
         onClick={handleClick}
         onContextMenu={handleContextMenu}
         whileTap={{ scale: 0.95 }}
-      // HIER GEÄNDERT: Keine "Initial" Animation mehr, damit es nicht flackert
       >
         {isFinished ? <Check size={40} /> : count}
         {!isFinished && <span className="counter-label">Kyrie Eleison</span>}
@@ -136,7 +135,7 @@ const SettingsPopup = memo(({ appLang, activeLangs, toggleLanguage, fontSize, ch
 });
 
 // --- GEBETSZEILE (MEMOIZED) ---
-const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, getSpeakerClass, hints, triggeredHints, setTriggeredHints, openHint }) => {
+const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, hasNav, handleNavAction, getSpeakerClass, hints, triggeredHints, setTriggeredHints, openHint }) => {
   const rowRef = useRef(null);
   const hasHintData = hints && hints[rowID];
   const showIcon = triggeredHints.includes(rowID);
@@ -165,7 +164,7 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
           <h4 className="section-title">{row.sectionTitle[appLang]}</h4>
         </div>
       )}
-      {/* HIER GEÄNDERT: Keine Animationen für die Zeilen selbst, das verbessert die Performance enorm */}
+
       <div ref={rowRef} className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
 
         {showIcon && (
@@ -187,10 +186,23 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
           <KyrieCounter initialCount={row.counter} />
         )}
 
+        {/* --- MENU KNÖPFE (Alt: Reconciliation) --- */}
         {hasMenu && (
           <div className="inline-menu-container">
             {row.reconciliation_menu.map((btn, btnIdx) => (
               <button key={btnIdx} className="inline-menu-btn" onClick={() => handleMenuAction(btn.action)}>
+                <span className="btn-label-ar">{btn.label_ar}</span>
+                <span className="btn-label-de">{btn.label_de}</span>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* --- NEU: NAVIGATION KNÖPFE (ID 59) --- */}
+        {hasNav && (
+          <div className="inline-menu-container">
+            {row.navigationButtons.map((btn, btnIdx) => (
+              <button key={`nav-${btnIdx}`} className="inline-menu-btn" onClick={() => handleNavAction(btn)}>
                 <span className="btn-label-ar">{btn.label_ar}</span>
                 <span className="btn-label-de">{btn.label_de}</span>
               </button>
@@ -316,6 +328,29 @@ export default function App() {
     }
   }, []);
 
+  // --- NEU: Handler für die flexiblen Navigations-Knöpfe ---
+  // --- NEU: Handler für die flexiblen Navigations-Knöpfe ---
+  const handleNavAction = useCallback((btn) => {
+    if (!btn || !btn.action) return;
+    if (scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0;
+
+    if (btn.action === 'jumpToId') {
+      if (btn.targetLiturgy) {
+        setSelectedLiturgy(btn.targetLiturgy);
+      }
+      if (btn.targetId) {
+        setTargetScrollId(btn.targetId);
+      }
+      // WICHTIG: Wenn wir springen, müssen wir sicherstellen, dass wir im Gebetsmodus sind
+      setView('prayer');
+    } else if (btn.action === 'navigatePage') {
+      // ÄNDERUNG: Wir behandeln die "targetPage" (seven_small_litanies) 
+      // als eine Liturgie, damit die Gebete angezeigt werden.
+      setTargetScrollId(null);
+      setSelectedLiturgy(btn.targetPage); // Setzt 'seven_small_litanies' als aktive Liturgie
+      setView('prayer'); // Wechselt zur normalen Gebetsansicht
+    }
+  }, []);
   const toggleLanguage = useCallback((langKey) => {
     captureScrollAnchor();
     setActiveLangs(prev => {
@@ -395,11 +430,11 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {view !== 'prayer' && <><div className="bg-image"></div><div className="overlay"></div></>}
+      {view !== 'prayer' && view !== 'seven_small_litanies' && <><div className="bg-image"></div><div className="overlay"></div></>}
 
       <header className="header">
         {view !== 'home' ? (
-          <motion.button whileTap={{ scale: 0.9 }} onClick={() => setView(view === 'prayer' ? 'liturgyMenu' : 'home')} className="icon-btn">
+          <motion.button whileTap={{ scale: 0.9 }} onClick={() => setView(view === 'prayer' || view === 'seven_small_litanies' ? 'liturgyMenu' : 'home')} className="icon-btn">
             <ArrowLeft size={28} />
           </motion.button>
         ) : (
@@ -474,6 +509,8 @@ export default function App() {
             </motion.div>
           )}
 
+
+
           {view === 'prayer' && selectedLiturgy && liturgies[selectedLiturgy] && (
             <div className={prayerModeClass} onContextMenu={handleContextMenu} onMouseUp={handleTextSelection} onTouchEnd={handleTextSelection} onClick={handlePrayerClick}>
 
@@ -486,7 +523,11 @@ export default function App() {
                   {liturgies[selectedLiturgy].content.map((row, index) => {
                     const dynamicLangs = activeLangs.filter(lang => row[lang] && row[lang].trim() !== "");
                     const hasMenu = row.reconciliation_menu && row.reconciliation_menu.length > 0;
-                    if (dynamicLangs.length === 0 && !hasMenu && !row.sectionTitle) return null;
+
+                    // --- NEU: Prüfen auf navigationButtons ---
+                    const hasNav = row.navigationButtons && row.navigationButtons.length > 0;
+
+                    if (dynamicLangs.length === 0 && !hasMenu && !hasNav && !row.sectionTitle) return null;
                     const rowID = row.id || index;
 
                     return (
@@ -498,6 +539,9 @@ export default function App() {
                         dynamicLangs={dynamicLangs}
                         hasMenu={hasMenu}
                         handleMenuAction={handleMenuAction}
+                        // --- NEU: Props weitergeben ---
+                        hasNav={hasNav}
+                        handleNavAction={handleNavAction}
                         getSpeakerClass={getSpeakerClass}
                         hints={liturgyHints}
                         triggeredHints={triggeredHints}
