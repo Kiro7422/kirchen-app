@@ -1838,15 +1838,104 @@ export const liturgies = {
                         action: "navigatePage",
                         targetPage: "litany_combined"
                     },
-                    {
-                        label_ar: "اصعدها كمقدارها", // Oblations
-                        label_de: "Nach ihrem Maß",
-                        action: "navigatePage",
-                        targetPage: "litany_oblations"
-                    }
+
                 ]
             },
-            // ID 75: Die Gewässer - Priester (Start)
+            {
+                id: 75,
+                speaker: "Priester",
+
+                ar: "اصعدها كمقدارها كنعمتك. فرح وجه الأرض ليروا حرثها ولتكثر اثمارها. اعدها للزرع والحصاد ودبر حياتنا كما يليق. بارك اكليل السنة بصلاحك من اجل فقراء شعبك من أجل الأرملة واليتيم والغريب والضيف، ومن اجلنا كلنا نحن الذين نرجوك ونطلب اسمك القدوس لأن اعين الكل تترجاك. لأنك أنت الذي تعطيهم طعامهم في حينه اصنع معنا حسب حسن صلاحك يا معطياً طعاماً لكل جسد. إملأ قلوبنا فرحاً ونعيماً لكي نحن ايضاً اذ يكون لنا الكفاف في كل شيء كل حين نزداد في كل عمل صالح.",
+
+                de: "Lass sie ansteigen nach ihrem Maß und gemäß deiner Gnade. Gib dem Antlitz der Erde Freude, dass ihre Furchen bewässert werden und sich ihre Früchte mehren. Bereite den Boden zum Säen und Ernten. Regle unser Leben in geeigneter Weise. Segne den Kranz des Jahres mit deiner Güte, wegen der Armen deines Volkes, wegen der Witwen und Waisen, der Fremden und der Gäste, wegen uns allen, die wir auf dich hoffen und deinen heiligen Namen anrufen. Denn aller Augen hoffen auf dich, dass du ihnen ihre Speise zur rechten Zeit gibst. Handle mit uns nach deiner Güte, der du Nahrung allem Fleisch gibst. Erfülle unsere Herzen mit Freude und Wonne, damit wir in allem alle Zeit genug haben und in jedem guten Werk wachsen.",
+
+                cop_ar: "آنيتو إيبشوي كاطا نوشي: كاطا فيه إيتيه فوك إن إهموت: ما بونوف إم إبهو إم إبكاهي: مارو طيخي إنجيه نيف إيثلوه: مارو طاشاي إنجيه نيف أوتاه. سيفتوتف إي أو خروج نيم أو أوشخ: أووه آري أويكونومين إم بين جين أونخ كاطا بي تير نوفري. إزمو إي بي إكلوم إنتيه تي رومبي هيتين تيك ميت خريستوس: إثفيه ني هيكي إنتيه بيك لاؤس: إثفيه تي خيرا نيم بي أورفانوس نيم بي شيممو نيم بي ريم إنجويلي: نيم إثفيتين تيرين خا ني إت إير هيلبيس إيروك: أووه إت توفه إم بيك ران إثؤواب. جيه نين فال إن أو أون نيفين سيه إير هيلبيس إيروك: جيه إنثوك إت تي إن تو تري نو أو خين أو سيو إي نانيف. آري أوي نيمان كاطا تيك ميت آغاثوس: في إت تي إخري إن ساركس نيفين. موه إن نين هيت إن راشي نيم أو أونوف: هينا أنون هون إيريه إفروشي إنتوتين خين هوف نيفين إن سيو نيفين: إنتين إير هوؤ خين هوف نيفين إن آغاثون.",
+
+                cop_cop: "Ⲁ̀ⲛⲓⲧⲟⲩ ⲉ̀ⲡϣⲱⲓ ⲕⲁⲧⲁ ⲛⲟⲩϣⲓ: ⲕⲁⲧⲁ ⲫⲏⲉ̀ⲧⲉ ⲫⲱⲕ ⲛ̀ϩ̀ⲙⲟⲧ: ⲙⲁ ⲡⲟⲩⲛⲟϥ ⲙ̀ⲡϩⲟ ⲙ̀ⲡⲕⲁϩⲓ: ⲙⲁⲣⲟⲧⲉⲓϧⲓ ⲛ̀ϫⲉ ⲛⲉϥⲉ̀ⲑⲗⲱϩ: ⲙⲁⲣⲟⲧⲁϣⲁⲓ ⲛ̀ϫⲉ ⲛⲉϥⲟⲩⲧⲁϩ. Ⲥⲉⲃⲧⲱⲧϥ ⲉ̀ⲟⲩⲭ̀ⲣⲟϫ ⲛⲉⲙ ⲟⲩⲱⲥϧ: ⲟⲩⲟϩ ⲁ̀ⲣⲓⲟⲓⲕⲟⲛⲟⲙⲓⲛ ⲙ̀ⲡⲉⲛϫⲓⲛⲱⲛϧ ⲕⲁⲧⲁ ⲡⲉⲧⲉⲣⲛⲟϥⲣⲓ. Ⲥ̀ⲙⲟⲩ ⲉ̀ⲡⲓⲭ̀ⲗⲟⲙ ⲛ̀ⲧⲉ ϯⲣⲟⲙⲡⲓ ϩⲓⲧⲉⲛ ⲧⲉⲕⲙⲉⲧⲭ̀ⲣⲓⲥⲧⲟⲥ: ⲉⲑⲃⲉ ⲛⲓϩⲏⲕⲓ ⲛ̀ⲧⲉ ⲡⲉⲕⲗⲁⲟⲥ: ⲉⲑⲃⲉ ϯⲭⲏⲣⲁ ⲛⲉⲙ ⲡⲓⲟⲣⲫⲁⲛⲟⲥ ⲛⲉⲙ ⲡⲓϣⲉⲙⲙⲟ ⲛⲉⲙ ⲡⲓⲣⲉⲙⲛ̀ϫⲱⲓⲗⲓ: ⲛⲉⲙ ⲉⲑⲃⲏⲧⲉⲛ ⲧⲏⲣⲉⲛ ϧⲁ ⲛⲏ ⲉ̀ⲧⲉⲣϩⲉⲗⲡⲓⲥ ⲉ̀ⲣⲟⲕ: ⲟⲩⲟϩ ⲉⲧⲧⲱⲃϩ ⲙ̀ⲡⲉⲕⲣⲁⲛ ⲉⲑⲟⲩⲁⲃ. Ϫⲉ ⲛⲉⲛⲃⲁⲗ ⲛ̀ⲟⲩⲟⲛ ⲛⲓⲃⲉⲛ ⲥⲉⲉⲣϩⲉⲗⲡⲓⲥ ⲉ̀ⲣⲟⲕ: ϫⲉ ⲛ̀ⲑⲟⲕ ⲉⲧϯ ⲛ̀ⲧⲟⲩⲧ̀ⲣⲉ ⲛⲱⲟⲩ ϧⲉⲛ ⲟⲩⲥⲏⲟⲩ ⲉ̀ⲛⲁⲛⲉϥ. Ⲁ̀ⲣⲓⲟⲩⲓ̀ ⲛⲉⲙⲁⲛ ⲕⲁⲧⲁ ⲧⲉⲕⲙⲉⲧⲁ̀ⲅⲁⲑⲟⲥ: ⲫⲏⲉⲧϯ ϧ̀ⲣⲉ ⲛ̀ⲥⲁⲣⲝ ⲛⲓⲃⲉⲛ: ⲙⲟϩ ⲛ̀ⲛⲉⲛϩⲏⲧ ⲛ̀ⲣⲁϣⲓ ⲛⲉⲙ ⲟⲩⲟⲩⲛⲟϥ: ϩⲓⲛⲁ ⲁ̀ⲛⲟⲛ ϩⲱⲛ ⲉ̀ⲣⲉ ⲫ̀ⲣⲱϣⲓ ⲛ̀ⲧⲟⲧⲉⲛ ϧⲉⲛ ϩⲱⲃ ⲛⲓⲃⲉⲛ ⲛ̀ⲥⲏⲟⲩ ⲛⲓⲃⲉⲛ: ⲛ̀ⲧⲉⲛⲉⲣϩⲟⲩⲟ̀ ϧⲉⲛ ϩⲱⲃ ⲛⲓⲃⲉⲛ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲛ.",
+
+                cop_de: "Anitou epshoi kata noushi: kata phe-ete phok en-hmot: ma pounof em-p-ho em-p-kahi: maroteikhi enge nef-ethloh: marotashai enge nef-outah. Sevtotf e-ou-khrog nem ouoshkh: owoh ari-oikonomin em-pen-gin-onkh kata peter-nofri. Esmou e-pi-khlom ente ti-rompi hiten tek-met-khristos: ethve ni-hiki ente pek-laos: ethve ti-khira nem pi-orphanos nem pi-shemmo nem pi-rem-eng-oili: nem ethveten tiren kha ni eter-helpis erok: owoh et-tovh em-pek-ran ethouav. Ge nen-val en-ouon niven se-er-helpis erok: ge enthok et-ti en-tou-tre no-ou khen ou-se-ou e-nanef. Ari-ou-i neman kata tek-met-agathos: phe-et-ti khre en-sarx niven: moh en-nen-hit en-rashi nem ou-ounof: hina anon hon ere eph-roshi entoten khen hov niven en-se-ou niven: nenten-er-hou-o khen hov niven en-agathon.",
+
+                ar_de: "As3idha ka-miqdariha ka-ni3matik. Farreh wagha el-ard liyarwa harthoha wa litakthor athmaroha. A3iddaha lel-zar3 wal-hasad wa dabbir hayatana kama yaliq. Barek eklil el-sana bi-salahik men agl foqara2 sha3bik men agl el-armala wal-yatim wal-gharib wal-dayf, wa men aglina kollina nahnou allazina narjouk wa natlob esmaka el-qoddous le-anna a3yon el-kol tatarragak. Le-annaka anta allazi to3tihim ta3amahom fi hinih esna3 ma3ana hasab hosn salahik ya mo3tiyan ta3aman li-kol jasad. Emla2 qoloubana farahan wa na3iman lekay nahnou aydan ez yakoun lana el-kafaf fi kol shay2 kol hin nazdad fi kol 3amal saleh."
+            },
+            {
+                id: 76,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham.",
+            },
+            {
+                id: 77,
+                speaker: "Priester",
+                ar: "أذكر يارب الذين قدموا لك هذه القرابين والذين قدمت عنهم والذين قدمت بواسطتهم أعطهم كلهم الأجر السمائي.",
+                de: "Gedenke, o Herr, derer, die dir diese Gaben dargebracht haben derer, für die sie dargebracht werden und derer, durch die sie dargebracht werden. Gib ihnen allen den himmlischen Lohn.",
+                cop_ar: "أرى إفميفئي إبشويس إن نيئيتاف إينى ناك إيخون إن ناي ذورون نيم نيئيتاف إينو إيجوؤو نيم نيئيتاف إينو إيفول هيطوطو موى نوؤو تيرو إمبى فيكى بى إيفول خين نيفينؤوى.",
+                cop_cop: "Ⲁ̀ⲣⲓⲫ̀ⲙⲉⲩⲓ̀ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲛⲏⲉ̀ⲧⲁⲩⲓ̀ⲛⲓ ⲛⲁⲕ ⲉ̀ϧⲟⲩⲛ ⲛ̀ⲛⲁⲓⲇⲱⲣⲟⲛ ⲛⲉⲙ ⲛⲏⲉ̀ⲧⲁⲩⲉⲛⲟⲩ ⲉ̀ϫⲱⲟⲩ ⲛⲉⲙ ⲛⲏⲉ̀ⲧⲁⲩⲉⲛⲟⲩ ⲉ̀ⲃⲟⲗ ϩⲓⲧⲟⲧⲟⲩ ⲙⲟⲓ ⲛⲱⲟⲩ ⲧⲏⲣⲟⲩ ⲙ̀ⲡⲓⲃⲉⲭⲉ ⲡⲓⲉ̀ⲃⲟⲗ ϧⲉⲛ ⲛⲓⲫⲏⲟⲩⲓ̀.",
+                cop_de: "Ari-phmevi Epchois enni-etaf-ini nak ekhoun en-nai-doron nem ni-etaf-inou ejou nem ni-etaf-inou evol hitotou moi no-ou tirou empi-bekhi pi-evol khen ni-fi-oui.",
+                ar_de: "Ozkor ya Rabb allazina qadamou laka hazihi el-qarabin wallazina qoddimat 3anhom wallazina qoddimat be-wasitatihim a3tehom kolahom el-agr el-sama2i."
+            },
+            {
+                id: 78,
+                speaker: "Diakon",
+                ar: "صلوا من أجل هذه القرابين المقدسة الكريمة وتقدماتنا والذين قدموها",
+                de: "Betet für die heiligen und ehrwürdigen Gaben, für unsere Opfer und für diejenigen, die sie dargebracht haben.",
+                cop_ar: "إبروس إفكصاستيه إي بيرطون آجيون تيميون ذورون طوطون كيه سيون ايمون كيه إبروس فيرون طون.",
+                cop_cop: "Ⲡⲣⲟⲥⲉⲩⲝⲁⲥⲑⲉ ⲩ̀ⲡⲉⲣ ⲧⲱⲛ ⲁ̀ⲅⲓⲱⲛ ⲧⲓⲙⲓⲱⲛ ⲇⲱⲣⲱⲛ ⲧⲟⲩⲧⲱⲛ ⲕⲉ ⲑⲩⲥⲓⲱⲛ ⲏ̀ⲙⲱⲛ ⲕⲉ ⲡⲣⲟⲥⲫⲉⲣⲟⲛⲧⲱⲛ.",
+                cop_de: "Pros-evxasthe yper ton agion timion doron touton ke thision imon ke prosferonton.",
+                ar_de: "Sallou men agl hazihi el-qarabin el-moqadasa el-karima wa taqdomatina wallazina qadamouha."
+            },
+            {
+                id: 79,
+                speaker: "Volk",
+                ar: "يا رب ارحم.",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون.",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ.",
+                cop_de: "Kyrie eleyson.",
+                ar_de: "Ya Rab erham."
+            },
+            {
+                id: 80,
+                speaker: "Priester",
+                ar: "لأن هذا يا رب هو أمر ابنك الوحيد أن نشترك في تذكار قديسيك. تفضل يارب أن تذكر جميع القديسين الذين أرضوك منذ البدء آبائنا القديسين رؤساء الآباء والأنبياء والرسل والمبشرين والإنجيليين والشهداء والمعترفين وكل أرواح الصديقين الذين كملوا في الإيمان. وبالأكثر القديسة المملوءة مجداً العذراء كل حين والدة الإله القديسة الطاهرة مريم، التي ولدت الله الكلمة بالحقيقة والقديس يوحنا السابق الصابغ والشهيد والقديس استفانوس رئيس الشمامسة وأول الشهداء وناظر الإله الإنجيلي مرقس الرسول الطاهر والشهيد والبطريرك القديس ساويرس ومعلمنا ديوسقورس والقديس أثناسيوس الرسولي والقديس بطرس رئيس الكهنة وخاتم الشهداء والقديس يوحنا ذهبي الفم والقديس ثيؤدوسيوس والقديس ثيؤفيلوس والقديس ديمتريوس والقديس كيرلس والقديس باسيليوس والقديس اغريغوريوس الناطق بالإلهيات والقديس اغريغوريوس الصانع العجائب والقديس اغريغوريوس الأرمني والثلاثمائة والثمانية عشر المجتمعين بنقية والمئة والخمسين بالقسطنطينية والمائتين بأفسس وأبانا الصديق العظيم أنبا أنطونيوس والبار أنبا بولا والثلاثة أنبا مقارات القديسين وجميع أولادهم لباس الصليب وأبانا أنبا يحنس القمص وأبانا أنبا بيشوي البار الرجل الكامل حبيب مخلصنا الصالح وأبانا أنبا بولا الطموهي وحزقيال تلميذه وسيدي الأبوين القديسين الروميين مكسيموس ودوماديوس والتسعة والأربعين شهيداً شيوخ شيهيت والقوي القديس أنبا موسى ويحنس كاما القس وأبانا أنبا ايسيذورس القمص وأبانا أنبا دانيال وأبانا أنبا باخوم صاحب الشركة وتادرس تلميذه وأبانا أنبا شنودة رئيس المتوحدين وأنبا ويصا تلميذه والبطريرك البابا كيرلس السادس، الارشيدياكون حبيب جرجس وأبانا أنبا إبرآم أسقف الفيوم وأبانا القمص ميخائيل البحيري تلميذه وكل مصاف قديسيك هؤلاء الذين بسؤلاتهم وطلباتهم ارحمنا كلنا معاً وانقذنا من أجل اسمك القدوس الذي دعي علينا.",
+
+                de: "Denn dies, o Herr, ist das Gebot Deines eingeborenen Sohnes, dass wir am Gedächtnis Deiner heiligen teilnehmen. Gedenke gnädig, o Herr, all Deiner heiligen, die Dir von Anbeginn wohlgefallen haben: Unserer heiligen Väter, Patriarchen, Propheten, Apostel, Verkünder, Evangelisten, Märtyrer, Bekenner und der Seelen aller Rechtschaffenen, die im Glauben vollkommen geworden sind. Am meisten gedenke, o Herr, der heiligen, ehrenvollen, der immerwährenden Jungfrau, der Mutter Gottes, der reinen, heiligen Maria, die Gott, das Wort, in Wahrheit geboren hat und des heiligen Johannes, des Vorläufers, des Täufers und Märtyrers und des heiligen Stephanos, des Erzdiakon und Ersten der Märtyrer des Schauers Gottes, des Evangelisten Markus, des heiligen, des Apostels und Märtyrers und des Patriarchen, des heiligen Severos unseres Lehrers Dioskorus des heiligen Athanassios, des Apostelgleichen des heiligen Petrus, des letzten Märtyrers und Priesteroberhauptes des heiligen Johannes Chrisosthomos, des heiligen Theodosius, des Hl. Theophilos des Hl. Demetrius, des Hl. Kyrillus, des Hl. Basilius des Hl. Gregorius des Sprechers göttlicher Dinge, des Hl. Gregorius des Wundertäters und des Hl. Gregorius des Armeniers, der 318 Versammelten zu Nicea der 150 Versammelten zu Konstantinopel und der 200 zu Ephesus und unseres Vaters, des gerechten Großen Anba Antonius des Großen, des rechtschaffenen Anba Paul, der heiligen 3 Anba Makarios und all ihrer kreuztragender Kinder und unseres Vaters Abba Johannes des Igumen, unseres Vaters Abba Pischoi des Rechtschaffenen, des vollkommenen Menschen, des Geliebten unseres gütigen Erlösers unseres Vaters Abba Paul von Tammouh und seines Schülers Ezechiel meiner beiden Herren, der heiligen Maximus und Dometius der Römer der neunundvierzig Märtyrer, der Ältesten von Schiheet, des starken heiligen Abba Moses, des Priesters Johannes Kame unseres Vaters Abba Isidoros des Igumen, unseres Vaters Abba Daniel, unseres Vaters Abba Pachom, des Vaters der Koinobiten seines Schülers Theodorus, unseres Vaters Abba Schenuda des Archimandriten und seines Schülers Abba Wisa unseres Vaters Papstes Abba Kyrillus VI., des gesegneten Erzdiakons Habib Girgis unseres Vaters Abba Abraam, Bischof von Faijum und Giza, und Unseres Vaters Erzpriester Michael Albhari und seines Jüngers und aller Reihen Deiner heiligen. Durch ihre Gebete und Fürbitten für uns habe Erbarmen mit uns allen zusammen. Errette uns um Deines heiligen Namens willen, der über uns gerufen ist.",
+
+                cop_ar: "إبيذي إبشويس أووه ساهني بي إنتي بيك مونو جينيس إن شيري إيثرين إر آشفير إي إف ميفي إنتي ني إثؤواب إنتاك. آري كاطاكسين إبشويس إن تيك إر إف ميفي إن ني إثؤواب تيرو إيتاف راناك يسجين إب إينيه نين يوتي إثؤواب ني باتري آرشيس. نيم ني إبروفيتيس نيم ني أبوستولوس نيم نيف إر هي أويش نيم ني إف أنجيليستيس نيم ني مارتيروس. نيم ني أومولوجيتيس نيم إبنيفما نيفين إن إثمي إيتاف جوك إيفول خين إفنا هتي. ماليستا ذي تي إثؤواب إيث ميه إن أو أو إت أوي إم بارثينوس إن سيو نيفين تي ثيؤطوكوس إثؤوابت آجيا ماريا. ثي إيتا سميسي إم إفنوتي بي لوغوس خين أو ميثمي نيم بي آجيوس يوأنس بي برودروموس إم بابتستيس أووه إم مارتيروس. نيم بي آجيوس إستيفانوس بي أرشي دياكونوس أووه إم إبروتو مارتيروس نيم بي ثيؤريموس إن إف أنجيليستيس ماركوس. بي أبوستولوس إثؤواب أووه إم مارتيروس نيم بي باتري آرشيس إثؤواب سيفيروس نيم بين ساخ ديوسقورس. نيم بي آجيوس أثناسيوس بي أبوستوليكوس نيم بي آجيوس بيتروس بي هييرو مارتيروس بي أرشي إيريفس. نيم بي آجيوس يوأنس بي أخر زوستوموس نيم بي ثيؤدوسيوس نيم بي آجيوس ثيؤفيلوس. نيم بي آجيوس ديميتريوس نيم بي آجيوس كيريللوس نيم بي آجيوس فاسيليوس. نيم بي آجيوس إغريغوريوس بي ثيؤلوغوس نيم بي آجيوس إغريغوريوس بي ثافما طورغوس. نيم بي آجيوس إغريغوريوس بي أر مينيوس نيم بي شمت شي ميت إشمين إيتاف ثوؤوتي خين نيكيئا. نيم بي شي تيفي إنتي كوستانطينوبوليس نيم بي إيسناف شي إنتي إيفيسوس نيم بينيوت إن ذيكيئوس بين نيشتي أببا أنطونيوس نيم بي إثمي أببا بافلي نيم بي شومت إثؤواب أببا مقار نيم نوف شيري تيرو إن إسطافر وفوروس. نيم بينيوت أببا يوأنس بي هيغومينوس نيم بينيوت أببا بيشوي بي إثمي بي ميني ريت إنتي بين سوتير إن آغاثوس. نيم بينيوت أببا بافلي بيريم طموه نيم إيزاكييل بيف ماثيتيس. نيم ناشويس إنيوتي إثؤواب إن روميوس ماكسيموس نيم دوميتيوس. نيم بي إهمي إبسيت إم مارتيروس ني خيللوي إنتي شيهيت نيم بي جوري إثؤواب أببا موسى نيم يوأنس كامي بي إبريسفيتيروس. نيم بينيوت أببا إيسيذوروس بي هيغومينوس نيم بينيوت أببا دانيال نيم بينيوت أببا باخوم فاتي كوينونيا نيم ثيؤدورس بيف ماثيتيس نيم بينيوت آبا شينوتي بي أرشي ميني دريتيس نيم آفا ويصا بيف ماثيتيس. نيم بينيوت آفا كيرلس بي ماه سو نيم بي أرشي دياكون حبيب جرجس. نيم بينيوت آفا إفرام بي إبيسكوبو إنتي إفيوم نيم بنيوت ميخائيل بي هيغومينوس بيف ماثيتيس. نيم إبخوروس تيرف انتي نيثؤواب انطاك ناي هيتين نو تيهو نيم نو طوفه ناي نان تيرو افسوب. أوفوه ماطوجون اثفي بيكران اثؤواب ايطاف موت اى اهري ايجون.",
+
+                cop_cop: "Ⲉⲡⲓⲇⲏ Ⲡ̀ϭⲟⲓⲥ ⲟⲩⲟϩ ⲥⲁϩⲛⲓ ⲡⲉ ⲛ̀ⲧⲉ ⲡⲉⲕⲙⲟⲛⲟⲅⲉⲛⲏⲥ ⲛ̀Ϣⲏⲣⲓ ⲉ̀ⲑⲣⲉⲛⲉⲣⲁ̀ϣⲫⲏⲣ ⲉ̀ⲡⲓⲉⲣⲫ̀ⲙⲉⲩⲓ̀ ⲛ̀ⲧⲉ ⲛⲏⲉⲑⲟⲩⲁⲃ ⲛ̀ⲧⲁⲕ. Ⲁ̀ⲣⲓⲕⲁⲧⲁⲝⲓⲟⲓⲛ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲧⲉⲕⲉⲣⲫ̀ⲙⲉⲩⲓ̀ ⲛ̀ⲛⲏⲉⲑⲟⲩⲁⲃ ⲧⲏⲣⲟⲩ ⲉ̀ⲧⲁⲩⲣⲁⲛⲁⲕ ⲓⲥϫⲉⲛ ⲡⲓⲉ̀ⲛⲉϩ: ⲛⲉⲛⲓⲟϯ ⲉⲑⲟⲩⲁⲃ ⲛⲓⲡⲁⲧⲣⲓⲁⲣⲭⲏⲥ. Ⲛⲉⲙ ⲛⲓⲡⲣⲟⲫⲏⲧⲏⲥ ⲛⲉⲙ ⲛⲓⲁ̀ⲡⲟⲥⲧⲟⲗⲟⲥ ⲛⲉⲙ ⲛⲓⲣⲉϥϩⲓⲱⲓϣ ⲛⲉⲙ ⲓⲉⲩⲁⲅⲅⲉⲗⲓⲥⲧⲏⲥ ⲛⲉⲙ ⲛⲓⲙⲁⲣⲧⲩⲣⲟⲥ. Ⲛⲉⲙ ⲛⲓⲟ̀ⲙⲟⲗⲟⲅⲓⲧⲏⲥ ⲛⲉⲙ ⲡⲛⲉⲩⲙⲁ ⲛⲓⲃⲉⲛ ⲛ̀ⲑⲙⲏⲓ ⲉ̀ⲧⲁⲩϫⲱⲕ ⲉ̀ⲃⲟⲗ ϧⲉⲛ ⲫ̀ⲛⲁϩϯ. Ⲙⲁⲗⲓⲥⲧⲁ ⲇⲉ ϯⲉⲑⲟⲩⲁⲃ ⲉⲑⲙⲉϩ ⲛ̀ⲱⲟⲩ ⲉⲧⲟⲓ ⲙ̀ⲡⲁⲣⲑⲉⲛⲟⲥ ⲛ̀ⲥⲏⲟⲩ ⲛⲓⲃⲉⲛ ϯⲑⲉⲟⲧⲟⲕⲟⲥ ⲉⲑⲟⲩⲁⲃⲧ ⲁ̀ⲅⲓⲁ Ⲙⲁⲣⲓⲁ. Ⲑⲏⲉ̀ⲧⲁⲥⲙⲓⲥⲓ ⲙ̀Ⲫⲛⲟⲩϯ Ⲡⲓⲗⲟⲅⲟⲥ ϧⲉⲛ ⲟⲩⲙⲉⲑⲙⲏⲓ ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲓⲱⲁⲛⲛⲏⲥ ⲡⲓⲡⲣⲟⲇ̀ⲣⲟⲙⲟⲥ ⲙ̀ⲃⲁⲡⲧⲓⲥⲧⲏⲥ ⲟⲩⲟϩ ⲙ̀ⲙⲁⲣⲧⲩⲣⲟⲥ. Ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲥⲧⲉⲫⲁⲛⲟⲥ ⲡⲓⲁⲣⲭⲓⲇⲓⲁⲕⲱⲛⲟⲥ ⲟⲩⲟϩ ⲙ̀ⲡ̀ⲣⲱⲧⲟⲙⲁⲣⲧⲩⲣⲟⲥ ⲛⲉⲙ ⲡⲓⲑⲉⲱ̀ⲣⲓⲙⲟⲥ ⲛ̀ⲉⲩⲁⲅⲅⲉⲗⲓⲥⲧⲏⲥ Ⲙⲁⲣⲕⲟⲥ. Ⲡⲓⲁ̀ⲡⲟⲥⲧⲟⲗⲟⲥ ⲉⲑⲟⲩⲁⲃ ⲟⲩⲟϩ ⲙ̀ⲙⲁⲣⲧⲩⲣⲟⲥ ⲛⲉⲙ ⲡⲓⲡⲁⲧⲣⲓⲁⲣⲭⲏⲥ ⲉⲑⲟⲩⲁⲃ Ⲥⲉⲩⲏⲣⲟⲥ ⲛⲉⲙ ⲡⲉⲛⲥⲁϧ Ⲇⲓⲟⲥⲕⲟⲣⲟⲥ. Ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲁⲑⲁⲛⲁⲥⲓⲟⲥ ⲡⲓⲁ̀ⲡⲟⲥⲧⲟⲗⲓⲕⲟⲥ ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲡⲉⲧⲣⲟⲥ ⲡⲓⲓⲉⲣⲟⲙⲁⲣⲧⲩⲣⲟⲥ ⲡⲓⲁⲣⲭⲓⲉ̀ⲣⲉⲩⲥ. Ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲓⲱⲁⲛⲛⲏⲥ ⲡⲓⲭⲣⲩⲥⲟⲥⲧⲟⲙⲟⲥ ⲛⲉⲙ ⲡⲓⲑⲉⲟⲇⲟⲥⲓⲟⲥ ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲑⲉⲟⲫⲓⲗⲟⲥ. Ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲇⲏⲙⲏⲧⲓⲟⲥ ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲕⲩⲣⲓⲗⲗⲟⲥ ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲃⲁⲥⲓⲗⲓⲟⲥ. Ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲅⲣⲏⲅⲟⲣⲓⲟⲥ ⲡⲓⲑⲉⲟⲗⲟⲅⲟⲥ ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲅⲣⲏⲅⲟⲣⲓⲟⲥ ⲡⲓⲑⲁⲩⲙⲁⲧⲟⲩⲣⲅⲟⲥ. Ⲛⲉⲙ ⲡⲓⲁ̀ⲅⲓⲟⲥ Ⲅⲣⲏⲅⲟⲣⲓⲟⲥ ⲡⲓⲁⲣⲙⲉⲛⲓⲟⲥ ⲛⲉⲙ ⲡⲓ ⲧ̅ⲓ̅ⲏ̅ ⲉ̀ⲧⲁⲩⲑⲱⲟⲩϯ ϧⲉⲛ Ⲛⲓⲕⲉⲁ̀. Ⲛⲉⲙ ⲡⲓ ⲣ̅ⲛ̅ ⲛ̀ⲧⲉ Ⲕⲟⲥⲧⲁⲛⲧⲓⲛⲟⲩⲡⲟⲗⲓⲥ ⲛⲉⲙ ⲡⲓ ⲥ̅ ⲛ̀ⲧⲉ Ⲉⲫⲉⲥⲟⲥ ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲛ̀ⲇⲓⲕⲉⲟⲥ ⲡⲓⲛⲓϣϯ ⲁⲃⲃⲁ Ⲁⲛⲧⲱⲛⲓⲟⲥ ⲛⲉⲙ ⲡⲓⲑ̀ⲙⲏⲓ ⲁⲃⲃⲁ Ⲡⲁⲩⲗⲉ ⲛⲉⲙ ⲡⲓϣⲟⲙⲧ ⲉⲑⲟⲩⲁⲃ ⲁⲃⲃⲁ Ⲙⲁⲕⲁⲣⲓ ⲛⲉⲙ ⲛⲟⲩϣⲏⲣⲓ ⲧⲏⲣⲟⲩ ⲛ̀ⲥⲧⲁⲩⲣⲟⲫⲟⲣⲟⲥ. Ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲁⲃⲃⲁ Ⲓⲱⲁⲛⲛⲏⲥ ⲡⲓϩⲏⲅⲟⲩⲙⲉⲛⲟⲥ ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲁⲃⲃⲁ Ⲡⲓϣⲱⲓ ⲡⲓⲑ̀ⲙⲏⲓ ⲡⲓⲙⲉⲛⲓⲧ ⲛ̀ⲧⲉ ⲡⲉⲛⲥⲱⲧⲏⲣ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ. Ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲁⲃⲃⲁ Ⲡⲁⲩⲗⲉ ⲡⲓⲣⲉⲙⲧⲁⲙⲙⲟϩ ⲛⲉⲙ Ⲓⲉⲍⲉⲕⲓⲏⲗ ⲡⲉϥⲙⲁⲑⲏⲧⲏⲥ. Ⲛⲉⲙ ⲛⲁϣⲟⲓⲥ ⲛ̀ⲓⲟϯ ⲉⲑⲟⲩⲁⲃ ⲛ̀ⲣⲱⲙⲉⲟⲥ Ⲙⲁⲝⲓⲙⲟⲥ ⲛⲉⲙ Ⲇⲟⲙⲉⲧⲓⲟⲥ. Ⲛⲉⲙ ⲡⲓ ⲙ̅ⲑ̅ ⲙ̀ⲙⲁⲣⲧⲩⲣⲟⲥ ⲛⲓϧⲉⲗⲗⲟⲓ ⲛ̀ⲧⲉ Ϣⲓϩⲏⲧ ⲛⲉⲙ ⲡⲓϫⲱⲣⲓ ⲉⲑⲟⲩⲁⲃ ⲁⲃⲃⲁ Ⲙⲱⲥⲏ ⲛⲉⲙ Ⲓⲱⲁⲛⲛⲏⲥ Ⲕⲁⲙⲉ ⲡⲓⲡ̀ⲣⲉⲥⲃⲩⲧⲉⲣⲟⲥ. Ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲁⲃⲃⲁ Ⲓⲥⲓⲇⲱⲣⲟⲥ ⲡⲓϩⲏⲅⲟⲩⲙⲉⲛⲟⲥ ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲁⲃⲃⲁ Ⲇⲁⲛⲓⲏⲗ ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲁⲃⲃⲁ Ⲡⲁϧⲱⲙ ⲫⲁ ϯⲕⲟⲓⲛⲱⲛⲓⲁ̀ ⲛⲉⲙ Ⲑⲉⲟ́ⲇⲱⲣⲟⲥ ⲡⲉϥⲙⲁⲑⲏⲧⲏⲥ ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲁⲃⲃⲁ Ϣⲉⲛⲟⲩϯ ⲡⲓⲁⲣⲭⲓⲙⲁⲛⲇ̀ⲣⲓⲧⲏⲥ ⲛⲉⲙ ⲁⲃⲃⲁ Ⲟⲩⲓⲥⲁ ⲡⲉϥⲙⲁⲑⲏⲧⲏⲥ. Ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲁⲃⲃⲁ Ⲕⲩⲣⲓⲗⲗⲟⲥ ⲡⲓⲙⲁϩ ⲥⲟⲟⲩ ⲛⲉⲙ ⲡⲓⲁⲣⲭⲓⲇⲓⲁⲕⲱⲛ Ϩⲁⲃⲓⲃ Ⲅⲉⲱⲣⲅⲓⲟⲥ. Ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ ⲁⲃⲃⲁ Ⲁ̀ⲃⲣⲁⲁⲙ ⲡⲓⲉ̀ⲡⲓⲥⲕⲟⲡⲟⲥ ⲛ̀ⲧⲉ Ⲫⲓⲟⲙ ⲛⲉⲙ ⲡⲉⲛⲓⲱⲧ Ⲙⲓⲭⲁⲏⲗ ⲡⲓϩⲏⲅⲟⲩⲙⲉⲛⲟⲥ ⲡⲉϥⲙⲁⲑⲏⲧⲏⲥ. Ⲛⲉⲙ ⲡ̀ⲭⲟⲣⲟⲥ ⲧⲏⲣϥ ⲛ̀ⲧⲉ ⲛⲏⲉⲑⲟⲩⲁⲃ ⲛ̀ⲧⲁⲕ: ⲛⲁⲓ ϩⲓⲧⲉⲛ ⲛⲟⲩϯϩⲟ ⲛⲉⲙ ⲛⲟⲩⲧⲱⲃϩ ⲛⲁⲓ ⲛⲁⲛ ⲧⲏⲣⲟⲩ ⲉⲩⲥⲟⲡ. Ⲟⲩⲟϩ ⲙⲁⲧⲟⲩϫⲟⲛ ⲉⲑⲃⲉ ⲡⲉⲕⲣⲁⲛ ⲉⲑⲟⲩⲁⲃ ⲉ̀ⲧⲁⲩⲙⲟⲩϯ ⲙ̀ⲙⲟϥ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ.",
+
+                cop_de: "Epidi Epshois owoh sahni pe ente Pek-monogenis en-Shiri ethren-er-ashphir epi-erphmevi ente ni-ethowab ntak. Ari-kataxin Epshois entek-erphmevi en-ni-ethowab tirou etav-ranak is-jen pi-eneh: nenioti ethowab ni-patriarchis. Nem ni-profitis nem ni-apostolos nem ni-ref-hioish nem ni-evangelistis nem ni-martyros. Nem ni-omologitis nem pnevma niven en-thmi etav-jok evol khen eph-nahti. Malista de ti-ethowab eth-meh en-o-ou etoi em-parthenos en-siou niven ti-Theotokos ethowavt agia Maria. Thi-etas-misi em-Phnouti Pi-Logos khen ou-methmi nem pi-agios Ioannis pi-prodromos em-vaptistis owoh em-martyros. Nem pi-agios Stephanos pi-arkhidiakonos owoh em-protomartyros nem pi-theorimos en-evangelistis Markos. Pi-apostolos ethowab owoh em-martyros nem pi-patriarchis ethowab Severos nem pen-sakh Dioskoros. Nem pi-agios Athanasios pi-apostolikos nem pi-agios Petros pi-iero-martyros pi-arkhi-erevs. Nem pi-agios Ioannis pi-khrysostomos nem pi-theodosios nem pi-agios Theophilos. Nem pi-agios Demetrius nem pi-agios Kyrillus nem pi-agios Vasilios. Nem pi-agios Grigorios pi-theologos nem pi-agios Grigorios pi-thavmatorgos. Nem pi-agios Grigorios pi-armenios nem pi-shomt-she-m-ish et-av-tho-outi khen Nikia. Nem pi-she-tivi ente Konstantinopolis nem pi-esnav-she ente Ephesos nem peniot en-dikeos pi-nishti abba Antonios nem pi-thmi abba Pavle nem pi-shomt ethouab abba Makari nem nou-shiri tirou en-stafrophoros. Nem peniot abba Ioannis pi-higoumenos nem peniot abba Pishoi pi-thmi pi-men-rit ente pen-sotir en-agathos. Nem peniot abba Pavle perem-Tammouh nem Ezekiiel pef-mathitis. Nem na-shois en-ioti ethouav en-romeos Maximos nem Dometios. Nem pi-hme-psit em-martyros ni-khelloi ente Shi-hit nem pi-gori ethouav abba Mosi nem Ioannis Kame pi-presvyteros. Nem peniot abba Isidoros pi-higoumenos nem peniot abba Daniel nem peniot abba Pakhom pha ti-koinonia nem Theodoros pef-mathitis nem peniot ava Shenouti pi-archi-mandritis nem ava Wisa pef-mathitis. Nem peniot ava Kyrillos pi-mah-so nem pi-archi-diakon Habib Girgis. Nem peniot ava Abraam pi-episkopos ente Phiom nem peniot Michael pi-higoumenos pef-mathitis. Nem ep-choros tirf ente ni-ethowab ntak nai hiten no-tiho nem no-tovh nai nan tirou ev-sop. Owoh ma-tougon ethve Pek-ran etho-wab etaf-mouti eh-rii ejon.",
+
+                ar_de: "Epeedi ya Rabb howa amr ebnek el-wahid an nashtarek fi tethkar qiddisik. Tafaddal ya Rabb an tethkor gami3 el-qiddisin allazina ardouk monzo el-bad2: aba2ana el-qiddisin ro2asa2 el-aba2, wal-anbeya2 wal-rosol wal-mobashirin wal-ingiliyin wal-shohada2, wal-mo3tarifin wa kol arwa7 el-seddiqin allazina kamalou fil-iman. Wa bel-akthar el-qiddisa el-mamlou2a magdan, el-3azra2 kol 7in, walidat el-elah el-tahira el-qiddisa Maria, allati waladat Allah el-Kalima bel-haqiqa, wal-qiddis Youhanna el-sabiq el-sabigh wal-shaheed, wal-qiddis Estefanos ra2is el-shamamisa wa awwal el-shohada2 wa nather el-elah el-ingili Morqos el-rasoul el-tahir wal-shaheed wal-batriyark el-qiddis Sawiros wa mo3alimina Dioscoros wal-qiddis Athanasios el-rasouli wal-qiddis Botros ra2is el-kahana wa khatem el-shohada2 wal-qiddis Youhanna zahabi el-fam wal-qiddis Theodosios wal-qiddis Theofilos. Wal-qiddis Demetrius wal-qiddis Kyrillus wal-qiddis Basilios. Wal-qiddis Gregorios el-natiq bel-ilahiyat wal-qiddis Gregorios el-sane3 el-3aga2ib. Wal-qiddis Gregorios el-armani wal-thalathema2a wal-thamaniat 3ashar el-mogtame3in be-Niqia. Wal-me2a wal-khamsin be-Konstantinopol wal-me2atayn be-Afasos wa abana el-seddiq el-3azim anba Antonios wal-bar anba Boula wal-thalathat anba Maqarat el-qiddisin wa gami3 awladahom lebas el-salib. Wa abana anba Yo7anna el-qommos wa abana anba Bishoy el-bar el-ragol el-kamel habib mokhallesina el-sale7. Wa abana anba Boula el-Tamouhi wa Hazqial telmizoh. Wa sayedi el-abawayn el-qiddisayn el-romiyayn Maximos wa Domadios. Wal-tes3a wal-arba3in shaheedan shoyoukh Shiheet wal-qawi el-qiddis anba Moussa wa Yo7anna Kame el-qass. Wa abana anba Isidoros el-qommos wa abana anba Daniel wa abana anba Bakhom saheb el-sherika wa Tadros telmizoh wa abana anba Shenouda ra2is el-motawa7idin wa anba Wisa telmizoh. Wal-batriyark el-Baba Kyrillos el-sades, el-archidiakon Habib Girgis. Wa abana anba Abraam osqof el-Faiyoum wa abana el-qommos Michael el-Bahiri telmizoh. Wa kol masaff qiddisik ha2ola2 ellazina bes2olatihim wa telbatihim er7amna kollena ma3an. Wa anqethna min agli ismeka el-qoddous ellathi do3eya 3alayna.",
+                navigationButtons: [
+                    {
+                        label_ar: "بي نيشتي", // The Waters
+                        label_de: "Die großen Väter",
+                        action: "navigatePage",      // ÄNDERUNG: Neue Seite
+                        targetPage: "bi_nishti"  // Name der neuen Seite
+                    },
+                ]
+            },
+            {
+                id: 81,
+                speaker: "Diakon",
+                // Zusammengefügt aus den Bildern für die Vorleser und die Bitte um Ruhe
+                ar: "القارئون فليقولوا أسماء آبائنا البطاركة القديسين الذين رقدوا: الرب ينيح نفوسهم أجمعين، ويغفر لنا خطايانا.",
+
+                de: "Die Vorleser sprechen die Namen unserer heiligen Väter, die Patriarchen, die entschlafen sind. Der Herr möge ihren Seelen ewige Ruhe schenken und uns unsere Sünden vergeben.",
+
+                cop_ar: "ني إتؤش مارو طأو إن نيران إنتيه نين يوتي إثؤواب إم باتريارشيس إيتاف إنكوت: إبشويس مانون إنتو إبسيكي تيرو: أووه إنتيف كانين نوفي نان إيفول.",
+
+                cop_cop: "Ⲛⲏⲉⲧⲱϣ ⲙⲁⲣⲟⲩⲧⲁⲟ̀ ⲛ̀ⲛⲓⲣⲁⲛ ⲛ̀ⲧⲉ ⲛⲉⲛⲓⲟϯ ⲉⲑⲟⲩⲁⲃ ⲙ̀ⲡⲁⲧⲣⲓⲁⲣⲭⲏⲥ ⲉ̀ⲧⲁⲩⲉⲛⲕⲟⲧ: Ⲡ̀ϭⲟⲓⲥ ⲙⲁⲧⲟⲛ ⲛ̀ⲛⲟⲩⲯⲩⲭⲏ ⲧⲏⲣⲟⲩ: ⲟⲩⲟϩ ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+
+                cop_de: "Ni-etosh marou-ta-o en-niran ente nenioti ethowab em-patriarchis etav-enkot: Epchois ma-ton en-nou-pychi tirou: owoh entef-ka nen-novi nan evol.",
+
+                ar_de: "El-qari2oun faly qoulou asma2 aba2ina el-batarka el-qiddisin allazina raqadou: El-Rabb yonaye7 nofousahom agma3in, wa yaghfer lana khatayana."
+            },
 
         ],
     },
@@ -1993,24 +2082,24 @@ export const liturgies = {
                 cop_ar: "كيه ميه طا طو إبنفما طوسو",
             },
             {
-               id: 14,
-               speaker: "Priester",
-               cop_de: "Ano imon tas kardias.",
-               de: "Erhebt Eure Herzen !",
-               ar: "إرفعوا قلوبكم.",
-               cop_cop: "Ⲁⲛⲱ ⲏ̀ⲙⲱⲛ ⲧⲁⲥ ⲕⲁⲣⲇⲓⲁⲥ.",
-               ar_de: "Irfa3u kulubakum.",
-               cop_ar: "آنو إيمون طاذكارذِياس.",
+                id: 14,
+                speaker: "Priester",
+                cop_de: "Ano imon tas kardias.",
+                de: "Erhebt Eure Herzen !",
+                ar: "إرفعوا قلوبكم.",
+                cop_cop: "Ⲁⲛⲱ ⲏ̀ⲙⲱⲛ ⲧⲁⲥ ⲕⲁⲣⲇⲓⲁⲥ.",
+                ar_de: "Irfa3u kulubakum.",
+                cop_ar: "آنو إيمون طاذكارذِياس.",
             },
             {
-               id: 15,
-               speaker: "Volk",
-               cop_de: "Echomen pros ton Kirion.",
-               de: "Wir haben sie beim Herrn.",
-               ar: "هي عند الرب.",
-               cop_cop: "Ⲉⲭⲟⲙⲉⲛ ⲡⲣⲟⲥ ⲧⲟⲛ Ⲕⲩⲣⲓⲟⲛ.",
-               ar_de: "Hiya 3inda er-Rab.",
-               cop_ar: "إيه خومين إبروس طون كيريون.",
+                id: 15,
+                speaker: "Volk",
+                cop_de: "Echomen pros ton Kirion.",
+                de: "Wir haben sie beim Herrn.",
+                ar: "هي عند الرب.",
+                cop_cop: "Ⲉⲭⲟⲙⲉⲛ ⲡⲣⲟⲥ ⲧⲟⲛ Ⲕⲩⲣⲓⲟⲛ.",
+                ar_de: "Hiya 3inda er-Rab.",
+                cop_ar: "إيه خومين إبروس طون كيريون.",
             },
             {
                 id: 16,
@@ -4637,29 +4726,61 @@ export const liturgies = {
                         targetId: 17.26
                     }
                 ]
-            }
+            },
 
         ]
     },
-
     // ============================================================
-    // SEITE: Nach ihrem Maß (Oblations/Schluss)
+    // SEITE: Bi Nishti (Die großen Väter)
     // ============================================================
-    litany_oblations: {
+    bi_nishti: {
         title: {
-            de: "Erhebe sie nach ihrem Maß",
-            ar: "أصعدها كمقدارها"
+            de: "Die großen Väter (Bi Nishti)",
+            ar: "الآباء العظام (بي نيشتي)"
         },
         content: [
             {
-                id: 1,
-                speaker: "Info",
-                de: "Inhalt folgt...",
-                ar: "يتبع..."
+                id: 909,
+                speaker: "Diakon",
+                // Zusammenfassung aller gesendeten Heiligen-Bilder in korrekter Reihenfolge
+                ar: "العظيم أنبا أنطونيوس والبار أنبا بولا والقديسون الثلاثة مقارات. أنبا يحنس القصير أنبا بيشوي أنبا بولا أبوينا القديسان الروميان مكسيموس ودوماديوس. أنبا موسى أنبا يحنس كاما أنبا دانيال أنبا ايسيذوروس أنبا باخوم أنبا شنودة. أنبا بفنوتي أنبا برسوما أنبا رويس وجميع الذين علموا بكلمة الحق باستقامة الأساقفة الأرثوذكسيين والقسوس. والشمامسة والإكليروس والعلمانيون وهؤلاء وجميع الأرثوذكسيين آمين.",
+
+                de: "Des großen Abba Antonius, des rechtschaffenen Abba Paul, der drei heiligen Abba Makari. Abba Johannes des Kleinen, Abba Pischoi, Abba Paul, unsere heiligen Väter, die Römer Maximus und Domadius. Abba Mose, Abba Johannes Kamie, Abba Daniel, Abba Isidorus, Abba Pachom, Abba Schenouda. Abba Paphnotius, Abba Parsooma, Abba Rowes und all derer, die das Wort der Wahrheit aufrichtig lehrten, und all der orthodoxen Bischöfe, der Priester, der Diakone, der Kleriker, der Laien und aller Orthodoxen. Amen.",
+
+                cop_ar: "بي نيشتي آفا أنطوني: نيم بي إثمي آفا بافلي: نيم بي شومت إثؤواب ماكاريوس. آفا يوأنس بي كولوفوس: آفا بيشوي: آفا بافلي: نين يوتي إثؤواب إن روميه أوس: مكسيموس نيم دوميتيوس. آفا موسى: آفا يوأنس كامي: آفا دانيئيل: آفا إيسيذوروس: آفا باخوم: آفا شينوتي. كيه آفا بفنوتي: آفا برسوما آفا تيجي. كيه بان طون طون أورثو ذي ذاكسان طون طون لوغون تيس آليثياس: أورثو ذوكصون آيه بيسكو بون: إبريسفيتيه رون. ذياكونون إكليريكون كيه لا إيكون: كيه بان طون أورثو ذوكسون: آمين.",
+
+                cop_cop: "Ⲡⲓⲛⲓϣϯ ⲁⲃⲃⲁ Ⲁⲛⲧⲱⲛⲓ: ⲛⲉⲙ ⲡⲓⲑ̀ⲙⲏⲓ ⲁⲃⲃⲁ Ⲡⲁⲩⲗⲉ: ⲛⲉⲙ ⲡⲓϣⲟⲙⲧ ⲉⲑⲟⲩⲁⲃ Ⲙⲁⲕⲁⲣⲓⲟⲥ. Ⲁⲃⲃⲁ Ⲓⲱⲁⲛⲛⲏⲥ ⲡⲓⲕⲟⲗⲟⲃⲟⲥ: ⲁⲃⲃⲁ Ⲡⲓϣⲱⲓ: ⲁⲃⲃⲁ Ⲡⲁⲩⲗⲉ: ⲛⲉⲛⲓⲟϯ ⲉⲑⲟⲩⲁⲃ ⲛ̀ⲣⲱⲙⲉⲟⲥ: Ⲙⲁⲝⲓⲙⲟⲥ ⲛⲉⲙ Ⲇⲟⲙⲉⲧⲓⲟⲥ. Ⲁⲃⲃⲁ Ⲙⲱⲥⲏ: ⲁⲃⲃⲁ Ⲓⲱⲁⲛⲛⲏⲥ Ⲕⲁⲙⲉ: ⲁⲃⲃⲁ Ⲇⲁⲛⲓⲏⲗ: ⲁⲃⲃⲁ Ⲓⲥⲓⲇⲱⲣⲟⲥ: ⲁⲃⲃⲁ Ⲡⲁϧⲱⲙ: ⲁⲃⲃⲁ Ϣⲉⲛⲟⲩϯ. Ⲕⲉ ⲁⲃⲃⲁ Ⲡⲁⲫⲛⲟⲩⲧⲓ: ⲁⲃⲃⲁ Ⲃⲁⲣⲥⲟⲩⲙⲁ ⲁⲃⲃⲁ ⲣⲱⲉⲥ. Ⲕⲉ ⲡⲁⲛⲧⲱⲛ ⲧⲱⲛ ⲟⲣⲑⲟⲇⲟⲝⲁⲛⲧⲱⲛ ⲧⲟⲛ ⲗⲟⲅⲟⲛ ⲧⲏⲥ ⲁⲗⲏⲑⲓⲁⲥ: ⲟⲣⲑⲟⲇⲟⲝⲱⲛ ⲉⲡⲓⲥⲕⲟⲡⲱⲛ: ⲡⲣⲉⲥⲃⲩⲧⲉⲣⲱⲛ. Ⲇⲓⲁⲕⲟⲛⲱⲛ ⲉⲕⲕⲗⲏⲣⲓⲕⲱⲛ ⲕⲉ ⲗⲁⲓⲕⲱⲛ: ⲕⲉ ⲡⲁⲛⲧⲱⲛ ⲟⲣⲑⲟⲇⲟⲝⲱⲛ: Ⲁⲙⲏⲛ.",
+
+                cop_de: "Pi-nishti abba Antoni: nem pi-thmi abba Pavle: nem pi-shomt ethouab Makarios. Abba Ioannis pi-kolovos: abba Pishoi: abba Pavle: nenioti ethouab en-romeos: Maximos nem Dometios. Abba Mose: abba Ioannis Kamie: abba Daniel: abba Isidoros: abba Pachom: abba Schenouda. Ke abba Paphnotius: abba Parsooma abba Rowes. Ke pan-ton ton ortho-daxan-ton ton logon tis alithias: ortho-dokson episkopon: presvyteron. Diakonon eklikri-kon ke la-ikon: ke pan-ton ortho-dokson: Amen.",
+
+                ar_de: "El-3azim anba Antonios wal-bar anba Boula wal-qiddisoun el-thalatha Maqarat. Anba Yo7anna el-qasir anba Bishoy anba Boula abawayna el-qiddisayn el-romiyayn Maximos wa Domadios. Anba Moussa anba Yo7anna Kama anba Daniel anba Isidoros anba Bakhom anba Shenouda. Ke anba Paphnotius anba Parsoma anba Rowes. Ke pan-ton ton ortho-daxan-ton ton logon tis alithias: ortho-dokson episkopon: presvyteron. Diakonon eklikrikon ke la-ikon: ke pan-ton ortho-dokson: Amen.",
+
+                navigationButtons: [
+                    {
+                        label_ar: "(ب) الباسيلي",
+                        label_de: "(B) Basilius",
+                        action: "jumpToId",
+                        targetLiturgy: "basily",
+                        targetId: 81
+                    },
+                    {
+                        label_ar: "(غ) الغريغوري",
+                        label_de: "(G) Gregorios",
+                        action: "jumpToId",
+                        targetLiturgy: "gregorios",
+                        targetId: 1 // Platzhalter für Gregorios
+                    },
+                    {
+                        label_ar: "(ك) الكيرلسي",
+                        label_de: "(K) Cyrillus",
+                        action: "jumpToId",
+                        targetLiturgy: "kerollosy",
+                        targetId: 17.34 // Direkter Sprung zum Diakon-Teil im Cyrillus
+                    }
+                ]
             }
         ]
-    },
-
+    }
 };
 
 
