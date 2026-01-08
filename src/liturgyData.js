@@ -1783,6 +1783,7 @@ export const liturgies = {
                 cop_de: "Ari-phmevi P-chois en-et-sotiria em-pai-topos ethowab entak fai nem topos niven nem monastirion niven ente nen-yoti en-orthodoxos.",
                 ar_de: "Ozkor ya Rabb khalas haza el-mawde3 el-moqadas allazi lak wa koll el-mawade3 wa koll adyret aba2ina el-orthodoxiyin."
             },
+
         ],
     },
 
@@ -1888,14 +1889,14 @@ export const liturgies = {
                 cop_ar: "أسـپـاذسـتي ألليلوس إن فـيلـيـمـاتی  آجـيو. (كيريي إليسوس) * ۳ نای كيريي إيتي فای پي إيسـوس پي إخـرسـتـوس إبشير إم إفنوتى سوتيم إيرون أووه ناي نان. إبروسفرين كاطا إطربو إستـاثيتي كـاطـا إطرومـوايس أناطولاس إفليـبساتـي إبروس خـومين. ",
             },
             {
-              id: 10,
-              speaker: "Volk",
-              cop_de: "Hiten ni-presvia ente ti-theotokos eth-ouab Maria: Ep-schois ari-hmot nan em-pi-ko ewol ente nen-novi. Ten-u-oscht emmok o Pi-Christos: nem Pek-yot en-agathos: nem Pi-pnevma eth-ouab: dsche (ak-i / ak-tonk) ak-soti emmon. Eleos irinis thisia eneseos.",
-              de: "Durch die Fürsprachen der Mutter Gottes, der Heiligen Maria, vergib uns, o Herr, unsere Sünden durch Deine Gnade. Wir beten dich an, o Christus, zusammen mit deinem guten Vater, und dem Heiligen Geist, denn du bist (auferstanden/gekommen) und hast uns erlöst. Erbarmen des Friedens, Opfer des Lobes.",
-              ar: "بشفاعات والدة الإله القديسة مريم يارب انعم لنا بمغفرة خطايانا نسجد لك أيها المسيح مع أبيك الصالح والروح القدس لأنك (أتيت/قُمت) وخلصتنا رحمة السلام ذبيحة التسبيح",
-              cop_cop: "Ϩⲓⲧⲉⲛ ⲛⲓⲡⲣⲉⲥⲃⲓⲁ ⲛ̀ⲧⲉ ϯⲑⲉⲟⲧⲟⲕⲟⲥ ⲉⲑⲟⲩⲁⲃ Ⲙⲁⲣⲓⲁ: Ⲡϭⲟⲓⲥ ⲁⲣⲓϩⲙⲟⲧ ⲛⲁⲛ ⲙ̀ⲡⲓⲭⲱ ⲉ̀ⲃⲟⲗ ⲛ̀ⲧⲉ ⲛⲉⲛⲛⲟⲃⲓ. Ⲧⲉⲛⲟⲩⲱϣⲧ ⲙ̀ⲙⲟⲕ ⲱ Ⲡⲓⲭⲣⲓⲥⲧⲟⲥ: ⲛⲉⲙ Ⲡⲉⲕⲓⲱⲧ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ: ⲛⲉⲙ Ⲡⲓⲡⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ: ϫⲉ (ⲁⲕⲓ̀ / ⲁⲕⲧⲱⲛⲕ) ⲁⲕⲥⲱϯ ⲙ̀ⲙⲟⲛ. Ⲉⲗⲉⲟⲥ ⲓⲣⲓⲛⲏⲥ ⲑⲩⲥⲓⲁ ⲉⲛⲉⲥⲉⲱⲥ.",
-              ar_de: "Bi-schafa-at walidat el-ilah el-kiddisa Mariam, ya Rab anam lana bi-maghfiret chatayana. Nasgud laka ayuha el-Massih, ma abika el-saleh, wa-ruh el-kudus, lianaka (atayta / kumta) wa challastana. Rahmatu es-salam, sabichat et-tasbih.",
-              cop_ar: "هيتين نيه إبريسفيا إنتيه تى ثيه أوطوكوس إثؤواب ماريا: إبتشويس آرى إهموت نان إمبى كو إيفول إنتيه نين نوفي. تين أوأوشت إمموك أو بخرستوس: نيم بيك يوت إن آغاثوس: جيه (آك إي/أكطونك) أكسوتي إممون: إيه ليه أوس إيرينيس ثي سيا إيه نيه ثيه أوس",
+                id: 10,
+                speaker: "Volk",
+                cop_de: "Hiten ni-presvia ente ti-theotokos eth-ouab Maria: Ep-schois ari-hmot nan em-pi-ko ewol ente nen-novi. Ten-u-oscht emmok o Pi-Christos: nem Pek-yot en-agathos: nem Pi-pnevma eth-ouab: dsche (ak-i / ak-tonk) ak-soti emmon. Eleos irinis thisia eneseos.",
+                de: "Durch die Fürsprachen der Mutter Gottes, der Heiligen Maria, vergib uns, o Herr, unsere Sünden durch Deine Gnade. Wir beten dich an, o Christus, zusammen mit deinem guten Vater, und dem Heiligen Geist, denn du bist (auferstanden/gekommen) und hast uns erlöst. Erbarmen des Friedens, Opfer des Lobes.",
+                ar: "بشفاعات والدة الإله القديسة مريم يارب انعم لنا بمغفرة خطايانا نسجد لك أيها المسيح مع أبيك الصالح والروح القدس لأنك (أتيت/قُمت) وخلصتنا رحمة السلام ذبيحة التسبيح",
+                cop_cop: "Ϩⲓⲧⲉⲛ ⲛⲓⲡⲣⲉⲥⲃⲓⲁ ⲛ̀ⲧⲉ ϯⲑⲉⲟⲧⲟⲕⲟⲥ ⲉⲑⲟⲩⲁⲃ Ⲙⲁⲣⲓⲁ: Ⲡϭⲟⲓⲥ ⲁⲣⲓϩⲙⲟⲧ ⲛⲁⲛ ⲙ̀ⲡⲓⲭⲱ ⲉ̀ⲃⲟⲗ ⲛ̀ⲧⲉ ⲛⲉⲛⲛⲟⲃⲓ. Ⲧⲉⲛⲟⲩⲱϣⲧ ⲙ̀ⲙⲟⲕ ⲱ Ⲡⲓⲭⲣⲓⲥⲧⲟⲥ: ⲛⲉⲙ Ⲡⲉⲕⲓⲱⲧ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ: ⲛⲉⲙ Ⲡⲓⲡⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ: ϫⲉ (ⲁⲕⲓ̀ / ⲁⲕⲧⲱⲛⲕ) ⲁⲕⲥⲱϯ ⲙ̀ⲙⲟⲛ. Ⲉⲗⲉⲟⲥ ⲓⲣⲓⲛⲏⲥ ⲑⲩⲥⲓⲁ ⲉⲛⲉⲥⲉⲱⲥ.",
+                ar_de: "Bi-schafa-at walidat el-ilah el-kiddisa Mariam, ya Rab anam lana bi-maghfiret chatayana. Nasgud laka ayuha el-Massih, ma abika el-saleh, wa-ruh el-kudus, lianaka (atayta / kumta) wa challastana. Rahmatu es-salam, sabichat et-tasbih.",
+                cop_ar: "هيتين نيه إبريسفيا إنتيه تى ثيه أوطوكوس إثؤواب ماريا: إبتشويس آرى إهموت نان إمبى كو إيفول إنتيه نين نوفي. تين أوأوشت إمموك أو بخرستوس: نيم بيك يوت إن آغاثوس: جيه (آك إي/أكطونك) أكسوتي إممون: إيه ليه أوس إيرينيس ثي سيا إيه نيه ثيه أوس",
             },
             {
                 id: 11,
@@ -2589,20 +2590,6 @@ export const liturgies = {
                 ar_de: "Batriyarkana el-ab el-mokarram anba Tawadros El-thani.",
                 cop_ar: "بين باتري أرشيس : نِيوت إت طاي هو أوت : إن أرشي إيريفس بابا أبڤا تاوادروس بي ماه اسناف",
             },
-<<<<<<< Updated upstream
-             {
-                id: 17.46,
-                speaker: "Diakon",
-                cop_de: "Tovh egen ep-onkh nem ep-taho eratf em-pen-iot et-taiyout en-arkhi-erevs ava Tawadros Pimah snav. Hina ente Pi-khristos Pennouti areh epou-onkh nan en-han-mish en-rompi nem han-si-ou en-hirinikon: entef-kha nennovi nan evol.",
-                de: "Betet für das Leben und Beständigkeit unseres ehrwürdigen Vaters und Priesteroberhaupt, Papst Abba Tawadros II. Damit Christus, unser Gott sie sicher für uns bewahrt für viele Jahre und für friedliche Zeiten und uns unsere Sünden vergibt.",
-                ar: "أطْلُبُوا عَن حياةِ وقِيامِ أبِينا المُكَرَّمِ رئيسِ الكهنةِ البابا أنبا تواضروس الثاني. لِكَي المَسِيحُ إلهُنا يحفَظُ لنا حياتَهُمْ سِنِينَ كثيرةً وأزْمِنَةً سَلاميَّةً، ويغفِرَ لنا خطايانا.",
-                cop_cop: "Ⲧⲱⲃϩ ⲉ̀ϫⲉⲛ ⲡ̀ⲱⲛϧ ⲛⲉⲙ ⲡ̀ⲧⲁϩⲟ ⲉ̀ⲣⲁⲧϥ ⲙ̀ⲡⲉⲛⲓⲱⲧ ⲉⲧⲧⲁⲓⲏⲟⲩⲧ ⲛ̀ⲁⲣⲭⲏⲉ̀ⲣⲉⲩⲥ ⲡⲁⲡⲁ ⲁⲃⲃⲁ Ⲧⲁⲟⲩⲁⲇⲣⲟⲥ ⲡⲓⲙⲁϩ ⲥ̀ⲛⲁⲩ. Ϩⲓⲛⲁ ⲛ̀ⲧⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲛⲟⲩϯ ⲁ̀ⲣⲉϩ ⲉ̀ⲡⲟⲩⲱⲛϧ ⲛⲁⲛ ⲛ̀ϩⲁⲛⲙⲏϣ ⲛ̀ⲣⲟⲙⲡⲓ ⲛⲉⲙ ϩⲁⲛⲥⲏⲟⲩ ⲛ̀ϩⲓⲣⲏⲛⲓⲕⲟⲛ: ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
-                ar_de: "Otlobou 3an hayati wa qeyami abina el-mokarram ra2is el-kahanati el-papa anba Tawadros El-thani. Likay el-Masih elahona ya7fazo lana hayatahom sinina kathira wa azmina salamiyya, wa yaghfer lana khatayana.",
-                cop_ar: "توفه إيجين إب أونخ نيم إب طاهو إيرات إف إم بين يوت إت طاي هو أوت إن أرشي إيريفس بابا أبڤا تاوادروس بي ماه اسناف. هينا إنتيه بي إخرستوس بينوتي آريه إيبو أونخ نان إن هان ميش إن رومبي نيم هان سيو إن هيرينيكون: إنتيف كا نين نوفي نان إيفول.",
-            },
-             {
-                id: 17.47,
-=======
             {
                 id: 17.33,
                 speaker: "",
@@ -2615,7 +2602,6 @@ export const liturgies = {
             },
             {
                 id: 17.33,
->>>>>>> Stashed changes
                 speaker: "",
                 cop_de: "",
                 de: "",
