@@ -1783,6 +1783,70 @@ export const liturgies = {
                 cop_de: "Ari-phmevi P-chois en-et-sotiria em-pai-topos ethowab entak fai nem topos niven nem monastirion niven ente nen-yoti en-orthodoxos.",
                 ar_de: "Ozkor ya Rabb khalas haza el-mawde3 el-moqadas allazi lak wa koll el-mawade3 wa koll adyret aba2ina el-orthodoxiyin."
             },
+            {
+                id: 72,
+                speaker: "Diakon",
+                ar: "صلوا من أجل خلاص العالم ومدينتنا هذه وسائر المدن والأقاليم والجزائر والأديرة.",
+                de: "Betet für das Heil der Welt, dieser unserer Stadt, aller Städte, Dörfer, Inseln und Klöster.",
+                cop_ar: "إبروس إفكصاستيه إي بيرتيس سوتيرياس طو كوزمو كيه تيس بوليه أوس إيمون طافتيس\nكيه باصون بوليه أون كيه طون خورون كيه ني صون كيه موناس تيريون.",
+                cop_cop: "Ⲡⲣⲟⲥⲉⲩⲝⲁⲥⲑⲉ ⲩ̀ⲡⲉⲣ ⲧⲏⲥ ⲥⲱⲧⲏⲣⲓⲁⲥ ⲧⲟⲩ ⲕⲟⲥⲙⲟⲩ ⲕⲉ ⲧⲏⲥ ⲡⲟⲗⲉⲱⲥ ⲏ̀ⲙⲱⲛ ⲧⲁⲩⲧⲏⲥ\nⲕⲉ ⲡⲁⲥⲱⲛ ⲡⲟⲗⲉⲱⲛ ⲕⲉ ⲧⲱⲛ ⲭⲱⲣⲱⲛ ⲕⲉ ⲛⲏⲥⲱⲛ ⲕⲉ ⲙⲟⲛⲁⲥⲧⲏⲣⲓⲱⲛ.",
+                cop_de: "Pros-evxasthe yper tis sotirias tou kosmou ke tis poleos imon tavtis\nke pason poleon ke ton choron ke nison ke monastirion.",
+                ar_de: "Sallou men agl khalas el-3alam wa madinatana hazihi wa sa2er el-modon wal-aqalim wal-gaza2er wal-adyera."
+            },
+            {
+                id: 73,
+                speaker: "Volk",
+                ar: "يارب ارحم",
+                de: "Herr erbarme Dich.",
+                cop_ar: "كيريه ليسون",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ",
+                cop_de: "Kyrie eleyson",
+                ar_de: "Ya Rab erham."
+            },
+            {
+                id: 74,
+                speaker: "Priester",
+                ar: "والساكنين فيها بإيمان الله",
+                de: "und derer, die in ihnen leben im Glauben an Gott.",
+                cop_ar: "نيم نيئت شوب إنخيتو خين إفناهتي إم إفنوتي.",
+                cop_cop: "Ⲛⲉⲙ ⲛⲏⲉⲧϣⲟⲡ ⲛ̀ϧⲏⲧⲟⲩ ϧⲉⲛ ⲫ̀ⲛⲁϩϯ ⲙ̀ⲫ̀ⲛⲟⲩϯ.",
+                cop_de: "Nem ni-et-shop en-khitou khen eph-nahti em-eff-nouti.",
+                ar_de: "Wal-sakenin fiha be-iman Allah.",
+
+                navigationButtons: [
+                    {
+                        label_ar: "المياه", // The Waters
+                        label_de: "Die Gewässer",
+                        action: "navigatePage",      // ÄNDERUNG: Neue Seite
+                        targetPage: "litany_waters"  // Name der neuen Seite
+                    },
+                    {
+                        label_ar: "الزروع", // The Plants
+                        label_de: "Die Saat",
+                        action: "navigatePage",
+                        targetPage: "litany_plants"
+                    },
+                    {
+                        label_ar: "الأهوية", // The Airs
+                        label_de: "Die Lüfte",
+                        action: "navigatePage",
+                        targetPage: "litany_airs"
+                    },
+                    {
+                        label_ar: "شامله", // Combined
+                        label_de: "Zusammenfassung",
+                        action: "navigatePage",
+                        targetPage: "litany_combined"
+                    },
+                    {
+                        label_ar: "اصعدها كمقدارها", // Oblations
+                        label_de: "Nach ihrem Maß",
+                        action: "navigatePage",
+                        targetPage: "litany_oblations"
+                    }
+                ]
+            },
+            // ID 75: Die Gewässer - Priester (Start)
 
         ],
     },
@@ -1929,24 +1993,24 @@ export const liturgies = {
                 cop_ar: "كيه ميه طا طو إبنفما طوسو",
             },
             {
-               id: 14,
-               speaker: "Priester",
-               cop_de: "Ano imon tas kardias.",
-               de: "Erhebt Eure Herzen !",
-               ar: "إرفعوا قلوبكم.",
-               cop_cop: "Ⲁⲛⲱ ⲏ̀ⲙⲱⲛ ⲧⲁⲥ ⲕⲁⲣⲇⲓⲁⲥ.",
-               ar_de: "Irfa3u kulubakum.",
-               cop_ar: "آنو إيمون طاذكارذِياس.",
+                id: 14,
+                speaker: "Priester",
+                cop_de: "Ano imon tas kardias.",
+                de: "Erhebt Eure Herzen !",
+                ar: "إرفعوا قلوبكم.",
+                cop_cop: "Ⲁⲛⲱ ⲏ̀ⲙⲱⲛ ⲧⲁⲥ ⲕⲁⲣⲇⲓⲁⲥ.",
+                ar_de: "Irfa3u kulubakum.",
+                cop_ar: "آنو إيمون طاذكارذِياس.",
             },
             {
-               id: 15,
-               speaker: "Volk",
-               cop_de: "Echomen pros ton Kirion.",
-               de: "Wir haben sie beim Herrn.",
-               ar: "هي عند الرب.",
-               cop_cop: "Ⲉⲭⲟⲙⲉⲛ ⲡⲣⲟⲥ ⲧⲟⲛ Ⲕⲩⲣⲓⲟⲛ.",
-               ar_de: "Hiya 3inda er-Rab.",
-               cop_ar: "إيه خومين إبروس طون كيريون.",
+                id: 15,
+                speaker: "Volk",
+                cop_de: "Echomen pros ton Kirion.",
+                de: "Wir haben sie beim Herrn.",
+                ar: "هي عند الرب.",
+                cop_cop: "Ⲉⲭⲟⲙⲉⲛ ⲡⲣⲟⲥ ⲧⲟⲛ Ⲕⲩⲣⲓⲟⲛ.",
+                ar_de: "Hiya 3inda er-Rab.",
+                cop_ar: "إيه خومين إبروس طون كيريون.",
             },
             {
                 id: 16,
@@ -4032,7 +4096,329 @@ export const liturgies = {
                 ] // Ende von navigationButtons
             } // Ende von ID 724
         ] // Ende von content (Array)
-    } // Ende von seven_small_litanies (Objekt)
+    },// Ende von seven_small_litanies (Objekt)
+    // ============================================================
+    // SEITE: Die Gewässer (12. Paoni - 9. Babah)
+    // ============================================================
+    litany_waters: {
+        title: {
+            de: "Gebet für die Gewässer",
+            ar: "أوشية المياه"
+        },
+        content: [
+            {
+                id: 800,
+                speaker: "Priester",
+                ar: "تفضل يا رب مياه النهر في هذه السنة باركها.",
+                de: "Geruhe, o Herr, die Wasser des Flusses in diesem Jahr zu segnen.",
+                cop_ar: "آري كاطاكسين إبشويس ني موؤو إنتي إفيارو إتخين طاي رومبي ثاي إزمو إيروؤو.",
+                cop_cop: "Ⲁ̀ⲣⲓⲕⲁⲧⲁⲝⲓⲛ Ⲡ̀ϭⲟⲓⲥ ⲛⲓⲙⲱⲟⲩ ⲛ̀ⲧⲉ ⲫⲓⲁⲣⲟ ⲉⲧϧⲉⲛ ⲧⲁⲓⲣⲟⲙⲡⲓ ⲑⲁⲓ ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲱⲟⲩ.",
+                cop_de: "Ari-kataxin P-chois ni-mo-ou ente pi-iaro et-khen tai-rompi thai ezmo ero-ou.",
+                ar_de: "Tafaddal ya Rabb miyah el-nahr fi hazihi el-sana barekha."
+            },
+            // ID 801: Die Gewässer - Diakon (Zusammengefasst)
+            {
+                id: 801,
+                speaker: "Diakon",
+                ar: "اطلبوا عن صعود مياه الأنهار في هذا السنة، لكي يباركها المسيح إلهنا،\nويصعدها كمقدارها، ويفرح وجه الأرض، ويعولنا نحن البشر، ويعطي النجاة للبهائم، ويغفر لنا خطايانا.",
+
+                de: "Bittet für den Anstieg der Flusswasser in diesem Jahr, damit Christus, unser Gott, sie segnet, sie nach ihrem Maß ansteigen lässt, dem Antlitz der Erde Freude schenkt, uns Menschen versorgt, dem Vieh Rettung gibt und uns unsere Sünden vergibt.",
+
+                cop_ar: "طوبه إيه جين إبجين موشي إيه إبشوى إنتيه ني يارؤو إم موؤو خين طاي رومبي ثاي: هينا إنتيه بخرستوس بين نوتي إسمو إيه رؤو:\nإنتيف إيه نو إيه إبشوى كاطا نوشي: إنتيف تي إم إبؤنوف إم إبهو إم إبكاهي: إنتيف شانو شتين خا ني شيري إنتيه ني رومي: إنتيف تي إم إفنو هيم إن ني تيف نو أووي: إنتيف كانين نوفي نان إيفول.",
+
+                cop_cop: "Ⲧⲱⲃϩ ⲉ̀ϫⲉⲛ ⲡϫⲓⲛⲙⲟϣⲓ ⲉ̀ⲡϣⲱⲓ ⲛ̀ⲧⲉ ⲛⲓⲓⲁⲣⲱⲟⲩ ⲙ̀ⲙⲱⲟⲩ ϧⲉⲛ ⲧⲁⲓⲣⲟⲙⲡⲓ ⲑⲁⲓ: ϩⲓⲛⲁ ⲛ̀ⲧⲉ Ⲡⲭ̅ⲥ̅ Ⲡⲉⲛⲛⲟⲩϯ ⲥⲙⲟⲩ ⲉ̀ⲣⲱⲟⲩ:\nⲛ̀ⲧⲉϥⲉⲛⲟⲩ ⲉ̀ⲡϣⲱⲓ ⲕⲁⲧⲁ ⲛⲟⲩϣⲓ: ⲛ̀ⲧⲉϥϯ ⲙ̀ⲡⲟⲩⲛⲟϥ ⲙ̀ⲡϩⲟ ⲙ̀ⲡⲕⲁϩⲓ: ⲛ̀ⲧⲉϥϣⲁⲛⲟⲩϣⲧⲉⲛ ϧⲁ ⲛⲓϣⲏⲣⲓ ⲛ̀ⲧⲉ ⲛⲓⲣⲱⲙⲓ: ⲛ̀ⲧⲉϥϯ ⲙ̀ⲫⲛⲟϩⲉⲙ ⲛ̀ⲛⲓⲧⲉⲃⲛⲱⲟⲩⲓ̀: ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+
+                cop_de: "Tovh ejen pi-jin-moshi e-epshoi ente ni-iaro em-mo-ou khen tai-rompi thai: hina ente Pi-khristos Pen-nouti esmou ero-ou:\nentef-enou e-epshoi kata nou-shi: entef-ti em-pounof em-peho em-pkahi: entef-shan-oushten kha ni-shiri ente ni-romi: entef-ti em-ef-nohem en-ni-tev-no-oui: entef-ka nen-novi nan evol.",
+
+                ar_de: "Otlobou 3an so3oud meyah el-anhar fi hazehi el-sana, lekay yobarekaha el-Masih elahona, wa yos3idaha ka-meqdariha, wa yofarre7 wagh el-ard, wa ya3oulana nahnou el-bashar, wa yo3ti el-nagat lel-baha2em, wa yaghfer lana khatayana."
+            },
+            // ID 802: Volk - Kyrie Eleison x3 (Abschluss Gewässer)
+            {
+                id: 802,
+                speaker: "Volk",
+                ar: "(يارب ارحم.) 3",
+                de: "(Herr erbarme Dich.) 3.",
+                cop_ar: "(كيريه ليسون.) 3",
+                cop_cop: "(Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ.) ⲅ̅",
+                cop_de: "(Kyrie eleyson.) 3",
+                ar_de: "(Ya Rab erham.) 3",
+
+                navigationButtons: [
+                    {
+                        label_ar: "(ب) الباسيلي",
+                        label_de: "(B) Basilius",
+                        action: "jumpToId",
+                        targetLiturgy: "basily",
+                        targetId: 75
+                    },
+                    {
+                        label_ar: "(غ) الغريغوري",
+                        label_de: "(G) Gregorios",
+                        action: "jumpToId",
+                        targetLiturgy: "gregorios",
+                        targetId: 1 // Platzhalter, da keine spezifische ID genannt wurde
+                    },
+                    {
+                        label_ar: "(ك) الكيرلسي",
+                        label_de: "(K) Cyrillus",
+                        action: "jumpToId",
+                        targetLiturgy: "kerollosy",
+                        targetId: 17.26
+                    }
+                ]
+            }
+
+            // Hier folgen später Diakon und Volk für Gewässer...
+        ]
+    },
+
+    // ============================================================
+    // SEITE: Die Saat (10. Babah - 10. Tobi)
+    // ============================================================
+    litany_plants: {
+        title: {
+            de: "Gebet für die Saat",
+            ar: "أوشية الزروع"
+        },
+        content: [
+            {
+                id: 900,
+                speaker: "Priester",
+                ar: "تفضل يا رب الزروع والعشب، ونبات الحقل في هذه السنة، باركها.",
+                de: "Geruhe, o Herr, die Saat, die Kräuter und die Gewächse des Feldes in diesem Jahr zu segnen.",
+                cop_ar: "آري كاطاكسين إبشويس نيسيتي نيم ني سيم نيم ني روت إنتي إتكوي إيت خين تاي رومبي ثاي إزمو إيروؤو.",
+                cop_cop: "Ⲁ̀ⲣⲓⲕⲁⲧⲁⲝⲓⲟⲓⲛ Ⲡϭⲟⲓⲥ ⲛⲓⲥⲓϯ ⲛⲉⲙ ⲛⲓⲥⲓⲙ ⲛⲉⲙ ⲛⲓⲣⲱⲧ ⲛ̀ⲧⲉ ⲧ̀ⲕⲟⲓ ⲉⲧϧⲉⲛ ⲧⲁⲓⲣⲟⲙⲡⲓ ⲑⲁⲓ ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲱⲟⲩ.",
+                cop_de: "Ari-kataxin P-chois ni-siti nem ni-sim nem ni-rot ente et-koi et-khen tai-rompi thai ezmo ero-ou.",
+                ar_de: "Tafaddal ya Rabb el-zorou3 wal-3oshb wa nabat el-haql fi hazihi el-sana barekha."
+            },
+            // ID 901: Die Saat - Diakon (Zusammengefasst)
+            {
+                id: 901,
+                speaker: "Diakon",
+
+                // Zusammengefügt aus beiden Bildern
+                ar: "اطلبوا عن الزروع والعشب، ونبات الحقل في هذه السنة، لكي يباركها المسيح إلهنا:\nلتنمو وتكثر إلى أن تكمل بثمرة عظيمة، ويتحنن على جبلته التي صنعتها يداه، ويغفر لنا خطايانا.",
+
+                de: "Bittet für die Saat, die Kräuter und die Gewächse des Feldes in diesem Jahr, damit Christus, unser Gott, sie segnet:\ndamit sie wachsen und sich vermehren, bis sie vollendet sind in großer Frucht, und er sich seiner Schöpfung erbarmt, die seine Hände gemacht haben, und uns unsere Sünden vergibt.",
+
+                cop_ar: "طوبه إيه جين ني سيتي نيم ني سيم نيم ني روت إنتيه إتكوي خين طاي رومبي ثاي: هينا إنتيه بخرستوس بين نوتي إسمو إيه رؤو:\nإنطو آي آي أووه إنطو آشاي شا إنطو جوك إيفول خين أونشتي إن كاربوس أووه إنتيف شينهيت خا بيف إبلاسما إيه طا نيف جيج ثاميوف: إنتيف كانين نوفي نان إيفول.",
+
+                cop_cop: "Ⲧⲱⲃϩ ⲉ̀ϫⲉⲛ ⲛⲓⲥⲓϯ ⲛⲉⲙ ⲛⲓⲥⲓⲙ ⲛⲉⲙ ⲛⲓⲣⲱⲧ ⲛ̀ⲧⲉ ⲧ̀ⲕⲟⲓ ϧⲉⲛ ⲧⲁⲓⲣⲟⲙⲡⲓ ⲑⲁⲓ: ϩⲓⲛⲁ ⲛ̀ⲧⲉ Ⲡⲭ̅ⲥ̅ Ⲡⲉⲛⲛⲟⲩϯ ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲱⲟⲩ:\nⲛ̀ⲧⲟⲩⲁⲓⲁⲓ ⲟⲩⲟϩ ⲛ̀ⲧⲟⲩⲁϣⲁⲓ ϣⲁⲛⲧⲟⲩϫⲱⲕ ⲉ̀ⲃⲟⲗ ϧⲉⲛ ⲟⲩⲛⲓϣϯ ⲛ̀ⲕⲁⲣⲡⲟⲥ: ⲟⲩⲟϩ ⲛ̀ⲧⲉϥϣⲉⲛϩⲏⲧ ϧⲁ ⲡⲉϥⲡⲗⲁⲥⲙⲁ ⲉ̀ⲧⲁ ⲛⲉϥϫⲓϫ ⲑⲁⲙⲓⲟϥ: ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+
+                cop_de: "Tovh ejen ni-siti nem ni-sim nem ni-rot ente et-koi khen tai-rompi thai: hina ente Pi-khristos Pen-nouti esmou ero-ou:\nentou-aiai owoh entou-ashai sha-ntou-jok evol khen ou-nishti en-karpos: owoh entef-shenhit kha pef-plasma eta nef-jij thamiof: entef-ka nen-novi nan evol.",
+
+                ar_de: "Otlobou 3an el-zorou3 wal-3oshb wa nabat el-haql fi hazehi el-sana, lekay yobarekaha el-Masih elahona:\nle-tanmou wa takthor ela an tokmel be-thamara 3azima, wa yata7anan 3ala jeblatih allati sana3atha yadah, wa yaghfer lana khatayana."
+            },
+            // ID 902: Volk - Kyrie Eleison x3 (Abschluss Saat)
+            {
+                id: 902,
+                speaker: "Volk",
+                ar: "(يارب ارحم.) 3",
+                de: "(Herr erbarme Dich.) 3.",
+                cop_ar: "(كيريه ليسون.) 3",
+                cop_cop: "(Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ.) ⲅ̅",
+                cop_de: "(Kyrie eleyson.) 3",
+                ar_de: "(Ya Rab erham.) 3",
+
+                navigationButtons: [
+                    {
+                        label_ar: "(ب) الباسيلي",
+                        label_de: "(B) Basilius",
+                        action: "jumpToId",
+                        targetLiturgy: "basily",
+                        targetId: 75
+                    },
+                    {
+                        label_ar: "(غ) الغريغوري",
+                        label_de: "(G) Gregorios",
+                        action: "jumpToId",
+                        targetLiturgy: "gregorios",
+                        targetId: 1
+                    },
+                    {
+                        label_ar: "(ك) الكيرلسي",
+                        label_de: "(K) Cyrillus",
+                        action: "jumpToId",
+                        targetLiturgy: "kerollosy",
+                        targetId: 17.26
+                    }
+                ]
+            }
+        ]
+    },
+
+    // ============================================================
+    // SEITE: Die Lüfte (11. Tobi - 11. Paoni)
+    // ============================================================
+    litany_airs: {
+        title: {
+            de: "Gebet für die Lüfte",
+            ar: "أوشية الأهوية"
+        },
+        content: [
+            {
+                id: 903,
+                speaker: "Priester",
+                ar: "تفضل يا رب أهوية السماء وثمرات الأرض في هذه السنة باركها.",
+                de: "Geruhe, o Herr, die Lüfte des Himmels und die Früchte der Erde in diesem Jahr zu segnen.",
+                cop_ar: "آري كاطاسكين إبشويس ني آإير إنتي إتفي نيم ني كاربوس إنتي إبكاهي خين تاي رومبي ثاي إزمو إيروؤو.",
+                cop_cop: "Ⲁ̀ⲣⲓⲕⲁⲧⲁⲝⲓⲟⲓⲛ Ⲡϭⲟⲓⲥ ⲛⲓⲁ̀ⲏⲣ ⲛ̀ⲧⲉ ⲧ̀ⲫⲉ ⲛⲉⲙ ⲛⲓⲕⲁⲣⲡⲟⲥ ⲛ̀ⲧⲉ ⲡ̀ⲕⲁϩⲓ ϧⲉⲛ ⲧⲁⲓⲣⲟⲙⲡⲓ ⲑⲁⲓ: ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲱⲟⲩ.",
+                cop_de: "Ari-kataxin P-chois ni-a-ir ente et-phe nem ni-karpos ente ep-kahi khen tai-rompi thai ezmo ero-ou.",
+                ar_de: "Tafaddal ya Rabb ahwiyat el-sama2 wa thamarat el-ard fi hazihi el-sana barekha."
+            },
+            // ID 1001: Die Lüfte - Diakon (Zusammengefasst)
+            {
+                id: 904,
+                speaker: "Diakon",
+
+                ar: "أطلبوا عن أهوية السماء وثمرات الأرض والشجر والكروم وكل شجرة مثمرة\nفي كل المسكونة، لكي يباركها المسيح إلهنا ويكملها سالمة بغير آفة: ويغفر لنا خطايانا",
+
+                de: "Bittet für die Lüfte des Himmels, die Früchte der Erde, die Bäume, die Weinberge und jeden fruchttragenden Baum\nauf dem ganzen Erdkreis, damit Christus, unser Gott, sie segnet, sie vollendet in Frieden ohne Schaden, und uns unsere Sünden vergibt.",
+
+                cop_ar: "طوبه إيه جين ني آير إنتيه إتفيه نيم ني كاربوس إنتيه إبكاهي: نيم فاي ني إش شين نيم فا نيما إن آلولي نيم إش شين نيفين إنريف تي كاربوس\nإت خين تي أويكو ميني تيرس: هينا إنتيه بخرستوس بين نوتي إسمو إيه رؤو: إنتيف جوكو إيفول خين أو هيريني أتشنيه إمكاه: إنتيف كانين نوفي نان إيفول.",
+
+                cop_cop: "Ⲧⲱⲃϩ ⲉ̀ϫⲉⲛ ⲛⲓⲁ̀ⲏⲣ ⲛ̀ⲧⲉ ⲧ̀ⲫⲉ: ⲛⲉⲙ ⲛⲓⲕⲁⲣⲡⲟⲥ ⲛ̀ⲧⲉ ⲡ̀ⲕⲁϩⲓ: ⲛⲉⲙ ⲫⲁ ⲛⲓϣϣⲏⲛ ⲛⲉⲙ ⲫⲁ ⲛⲓⲙⲁⲛ̀ⲁ̀ⲗⲟⲗⲓ: ⲛⲉⲙ ϣϣⲏⲛ ⲛⲓⲃⲉⲛ ⲛ̀ⲣⲉϥϯⲕⲁⲣⲡⲟⲥ\nⲉⲧϧⲉⲛ ϯⲟⲓⲕⲟⲩⲙⲉⲛⲏ ⲧⲏⲣⲥ: ϩⲓⲛⲁ ⲛ̀ⲧⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲛⲟⲩϯ ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲱⲟⲩ ⲛ̀ⲧⲉϥϫⲟⲕⲟⲩ ⲉ̀ⲃⲟⲗ ϧⲉⲛ ⲟⲩϩⲓⲣⲏⲛⲏ ⲁⲃⲛⲉ ⲙ̀ⲕⲁϩ: ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+
+                cop_de: "Tovh ejen ni-air ente et-fe: nem ni-karpos ente ep-kahi: nem fa ni-sh-shin nem fa ni-man-aloli: nem sh-shin niven en-ref-ti-karpos\net-khen ti-oikoumeni tirs: hina ente Pi-khristos Pen-nouti esmou ero-ou: entef-joko evol khen ou-hirini at-shne emkah: entef-ka nen-novi nan evol.",
+
+                ar_de: "Otlobou 3an ahwiyat el-sama2 wa thamarat el-ard wal shagar wal koroum wa kol shagara mothmira\nfi kol el-maskouna, lekay yobarekaha el-Masih elahona wa yokamelaha salima be-ghayr afa: wa yaghfer lana khatayana."
+            },
+            // ID 1002: Volk - Kyrie Eleison x3 (Abschluss Lüfte)
+            {
+                id: 904,
+                speaker: "Volk",
+                ar: "(يارب ارحم.) 3",
+                de: "(Herr erbarme Dich.) 3.",
+                cop_ar: "(كيريه ليسون.) 3",
+                cop_cop: "(Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏⲥⲟⲛ.) ⲅ̅",
+                cop_de: "(Kyrie eleyson.) 3",
+                ar_de: "(Ya Rab erham.) 3",
+
+                navigationButtons: [
+                    {
+                        label_ar: "(ب) الباسيلي",
+                        label_de: "(B) Basilius",
+                        action: "jumpToId",
+                        targetLiturgy: "basily",
+                        targetId: 75
+                    },
+                    {
+                        label_ar: "(غ) الغريغوري",
+                        label_de: "(G) Gregorios",
+                        action: "jumpToId",
+                        targetLiturgy: "gregorios",
+                        targetId: 1
+                    },
+                    {
+                        label_ar: "(ك) الكيرلسي",
+                        label_de: "(K) Cyrillus",
+                        action: "jumpToId",
+                        targetLiturgy: "kerollosy",
+                        targetId: 17.26
+                    }
+                ]
+            }
+        ]
+    },
+
+    // ============================================================
+    // SEITE: Zusammenfassung (Combined)
+    // ============================================================
+    litany_combined: {
+        title: {
+            de: "Zusammenfassung (Gewässer, Saat, Lüfte)",
+            ar: "أوشية مجمعة"
+        },
+        content: [
+            {
+                id: 905,
+                speaker: "Priester",
+                ar: "تفضل يارب، أهوية السماء وثمرات الأرض و مياه الأنهار والزروع والعشب ونبات الحقل في هذه السنة باركها.",
+
+                de: "Bitte, o Herr, segne die Lüfte des Himmels und die Früchte der Erde, das Wasser des Flusses, die Saaten und die Kräuter und die Gewächse des Feldes in diesem Jahr",
+
+                cop_ar: "آري كاطاكسن ابشويس ني آ إير انتى اتفى نيم ني كاربوس انتى ابكاهى نيم ني موؤو انتى افيارو نيم نيسيتي نيم ني سيم نيم نيروت انتى اتكوى ايت خين تاى رومبى ثاى اسمو ايروؤو.",
+
+                cop_cop: "Ⲁ̀ⲣⲓⲕⲁⲧⲁⲝⲓⲛ Ⲡϭⲟⲓⲥ ⲛⲓⲁ̀ⲏⲣ ⲛ̀ⲧⲉ ⲧ̀ⲫⲉ ⲛⲉⲙ ⲛⲓⲕⲁⲣⲡⲟⲥ ⲛ̀ⲧⲉ ⲡ̀ⲕⲁϩⲓ ⲛⲉⲙ ⲛⲓⲙⲱⲟⲩ ⲛ̀ⲧⲉ ⲫⲓⲁⲣⲟ ⲛⲉⲙ ⲛⲓⲥⲓϯ ⲛⲉⲙ ⲛⲓⲥⲓⲙ ⲛⲉⲙ ⲛⲓⲣⲱⲧ ⲛ̀ⲧⲉ ⲧ̀ⲕⲟⲓ ⲉⲧϧⲉⲛ ⲧⲁⲓⲣⲟⲙⲡⲓ ⲑⲁⲓ ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲱⲟⲩ.",
+
+                cop_de: "Ari-kataxin P-chois ni-a-ir ente et-phe nem ni-karpos ente ep-kahi nem ni-mo-ou ente phi-aro nem ni-siti nem ni-sim nem ni-rot ente et-koi et-khen tai-rompi thai esmou ero-ou.",
+
+                ar_de: "Tafaddal ya Rabb ahwiyat el-sama2 wa thamarat el-ard wa miyah el-anhar wal-zorou3 wal-3oshb wa nabat el-haql fi hazihi el-sana barekha."
+            },
+            // ID 1101: Zusammenfassung - Diakon
+            {
+                id: 906,
+                speaker: "Diakon",
+
+                // Zusammengefügt aus beiden Bildern
+                ar: "اطلبوا عن أهوية السماء وثمرات الأرض وصعود مياه الأنهار وعن الزروع والعشب ونبات الحقل\nلكي يباركها المسيح إلهنا ويتحنن على جبلته التي صنعتها يداه ويغفر لنا خطايانا.",
+
+                de: "Bittet für die Lüfte des Himmels, die Früchte der Erde, für den Anstieg der Gewässer, der Flüsse, für die Saaten, Kräuter und Gewächse des Feldes\ndass Christus, unser Gott, sie segnet, und dass er mit seiner eigenhändigen Schöpfung Erbarmen hat und uns unsere Sünden vergibt.",
+
+                cop_ar: "طوبه إيه جين ني آير إنتيه إتفيه نيم ني كاربوس إنتيه إبكاهي نيم إبجين موشي إيه إبشوي إنتيه ني يارؤو إم موؤو نيم ني سيتي نيم ني سيم نيم ني روت إنتيه إت كوي\nثاي هينا انتى بى اخرستوس بننوتى اسمو ايروؤو اووه انتيف شينهيت خا بيف ابلاسما ايتانيف جيج ثاميوف انتيف كا نين نوفى نان ايفول.",
+
+                cop_cop: "Ⲧⲱⲃϩ ⲉ̀ϫⲉⲛ ⲛⲓⲁ̀ⲏⲣ ⲛ̀ⲧⲉ ⲧ̀ⲫⲉ ⲛⲉⲙ ⲛⲓⲕⲁⲣⲡⲟⲥ ⲛ̀ⲧⲉ ⲡ̀ⲕⲁϩⲓ ⲛⲉⲙ ⲡϫⲓⲛⲙⲟϣⲓ ⲉ̀ⲡϣⲱⲓ ⲛ̀ⲧⲉ ⲛⲓⲓⲁⲣⲱⲟⲩ ⲙ̀ⲙⲱⲟⲩ ⲛⲉⲙ ⲛⲓⲥⲓϯ ⲛⲉⲙ ⲛⲓⲥⲓⲙ ⲛⲉⲙ ⲛⲓⲣⲱⲧ ⲛ̀ⲧⲉ ⲧ̀ⲕⲟⲓ.\nⲐⲁⲓ ϩⲓⲛⲁ ⲛ̀ⲧⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲛⲟⲩϯ ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲱⲟⲩ ⲟⲩⲟϩ ⲛ̀ⲧⲉϥϣⲉⲛϩⲏⲧ ϧⲁ ⲡⲉϥⲡⲗⲁⲥⲙⲁ ⲉ̀ⲧⲁ ⲛⲉϥϫⲓϫ ⲑⲁⲙⲓⲟϥ: ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+
+                cop_de: "Tovh ejen ni-air ente et-phe nem ni-karpos ente ep-kahi nem pi-jin-moshi e-epshoi ente ni-iaro em-mo-ou nem ni-siti nem ni-sim nem ni-rot ente et-koi.\nThai hina ente Pi-khristos Pen-nouti esmou ero-ou owoh entef-shenhit kha pef-plasma eta nef-jij thamiof: entef-ka nen-novi nan evol.",
+
+                ar_de: "Otlobou 3an ahwiyat el-sama2 wa thamarat el-ard wa so3oud meyah el-anhar wa 3an el-zorou3 wal-3oshb wa nabat el-haql.\nLekay yobarekaha el-Masih elahona wa yata7anan 3ala jeblatih allati sana3atha yadah wa yaghfer lana khatayana."
+            },
+            // ID 1102: Volk - Kyrie Eleison x3 (Abschluss Zusammenfassung)
+            {
+                id: 907,
+                speaker: "Volk",
+                ar: "(يارب ارحم.) 3",
+                de: "(Herr erbarme Dich.) 3.",
+                cop_ar: "(كيريه ليسون.) 3",
+                cop_cop: "(Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉ̀ⲏⲥⲟⲛ.) ⲅ̅",
+                cop_de: "(Kyrie eleyson.) 3",
+                ar_de: "(Ya Rab erham.) 3",
+
+                navigationButtons: [
+                    {
+                        label_ar: "(ب) الباسيلي",
+                        label_de: "(B) Basilius",
+                        action: "jumpToId",
+                        targetLiturgy: "basily",
+                        targetId: 75
+                    },
+                    {
+                        label_ar: "(غ) الغريغوري",
+                        label_de: "(G) Gregorios",
+                        action: "jumpToId",
+                        targetLiturgy: "gregorios",
+                        targetId: 1
+                    },
+                    {
+                        label_ar: "(ك) الكيرلسي",
+                        label_de: "(K) Cyrillus",
+                        action: "jumpToId",
+                        targetLiturgy: "kerollosy",
+                        targetId: 17.26
+                    }
+                ]
+            }
+
+        ]
+    },
+
+    // ============================================================
+    // SEITE: Nach ihrem Maß (Oblations/Schluss)
+    // ============================================================
+    litany_oblations: {
+        title: {
+            de: "Erhebe sie nach ihrem Maß",
+            ar: "أصعدها كمقدارها"
+        },
+        content: [
+            {
+                id: 1,
+                speaker: "Info",
+                de: "Inhalt folgt...",
+                ar: "يتبع..."
+            }
+        ]
+    },
 
 };
 
