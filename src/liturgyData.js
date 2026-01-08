@@ -2072,26 +2072,6 @@ export const liturgies = {
                 cop_ar: "كيه ميه طا طو إبنفما طوسو",
             },
             {
-<<<<<<< Updated upstream
-                id: 14,
-                speaker: "Priester",
-                cop_de: "Ano imon tas kardias.",
-                de: "Erhebt Eure Herzen !",
-                ar: "إرفعوا قلوبكم.",
-                cop_cop: "Ⲁⲛⲱ ⲏ̀ⲙⲱⲛ ⲧⲁⲥ ⲕⲁⲣⲇⲓⲁⲥ.",
-                ar_de: "Irfa3u kulubakum.",
-                cop_ar: "آنو إيمون طاذكارذِياس.",
-            },
-            {
-                id: 15,
-                speaker: "Volk",
-                cop_de: "Echomen pros ton Kirion.",
-                de: "Wir haben sie beim Herrn.",
-                ar: "هي عند الرب.",
-                cop_cop: "Ⲉⲭⲟⲙⲉⲛ ⲡⲣⲟⲥ ⲧⲟⲛ Ⲕⲩⲣⲓⲟⲛ.",
-                ar_de: "Hiya 3inda er-Rab.",
-                cop_ar: "إيه خومين إبروس طون كيريون.",
-=======
                id: 13,
                speaker: "Priester",
                cop_de: "Ano imon tas kardias.",
@@ -2110,7 +2090,6 @@ export const liturgies = {
                cop_cop: "Ⲉⲭⲟⲙⲉⲛ ⲡⲣⲟⲥ ⲧⲟⲛ Ⲕⲩⲣⲓⲟⲛ.",
                ar_de: "Hiya 3inda er-Rab.",
                cop_ar: "إيه خومين إبروس طون كيريون.",
->>>>>>> Stashed changes
             },
             {
                 id: 15,
