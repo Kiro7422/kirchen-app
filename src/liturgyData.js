@@ -2053,16 +2053,6 @@ export const liturgies = {
             },
             {
                 id: 11,
-                speaker: "",
-                cop_de: "",
-                de: "Die Liebe Gottes des Vaters und die Gande seines einzig geborenen Sohnes ",
-                ar: "محبة الله الآب ونعمة الابن الوحيد الجنس",
-                cop_cop: "",
-                ar_de: "",
-                cop_ar: "إى أغابى تو ثيئو كى باتروس كى إيخاريس  تو مونوجينيس",
-            },
-            {
-                id: 12,
                 speaker: "Priester",
                 cop_de: "I agapi tu Theu ke Patros: ke i charis tu Monogenus. Iu Kiriu de ke Theu: ke Sotiros imon Isu Christu. Ke i kinonia: ke i dorea tu Agiu Pnevmatos: i i meta panton imon.",
                 de: "Die Liebe Gottes des Vaters und die Gnade seines einzig geborenen Sohnes, unseres Herrn und Gottes und Erlösers Jesus Christus. Und die Gemeinschaft und die Gabe des Heiligen Geistes sei mit euch allen.",
@@ -2072,7 +2062,7 @@ export const liturgies = {
                 cop_ar: "إي أغابي تو ثيئو كي باتروس كي إيخاريس تو مونوجينيس. إيو كيرِيو ذي كي ثيئو كي سوتيروس إيمون إيسو خريستو. كي إي كينونيا كي إي ذوريئا تو أجيو بنيڤماتوس، إي إي ميتا بانطون إيمون",
             },
             {
-                id: 13,
+                id: 12,
                 speaker: "Volk",
                 cop_de: "Ke meta tu pnevmatos su.",
                 de: "Und mit deinem Geiste.",
@@ -2082,6 +2072,7 @@ export const liturgies = {
                 cop_ar: "كيه ميه طا طو إبنفما طوسو",
             },
             {
+<<<<<<< Updated upstream
                 id: 14,
                 speaker: "Priester",
                 cop_de: "Ano imon tas kardias.",
@@ -2100,9 +2091,29 @@ export const liturgies = {
                 cop_cop: "Ⲉⲭⲟⲙⲉⲛ ⲡⲣⲟⲥ ⲧⲟⲛ Ⲕⲩⲣⲓⲟⲛ.",
                 ar_de: "Hiya 3inda er-Rab.",
                 cop_ar: "إيه خومين إبروس طون كيريون.",
+=======
+               id: 13,
+               speaker: "Priester",
+               cop_de: "Ano imon tas kardias.",
+               de: "Erhebt Eure Herzen !",
+               ar: "إرفعوا قلوبكم.",
+               cop_cop: "Ⲁⲛⲱ ⲏ̀ⲙⲱⲛ ⲧⲁⲥ ⲕⲁⲣⲇⲓⲁⲥ.",
+               ar_de: "Irfa3u kulubakum.",
+               cop_ar: "آنو إيمون طاذكارذِياس.",
             },
             {
-                id: 16,
+               id: 14,
+               speaker: "Volk",
+               cop_de: "Echomen pros ton Kirion.",
+               de: "Wir haben sie beim Herrn.",
+               ar: "هي عند الرب.",
+               cop_cop: "Ⲉⲭⲟⲙⲉⲛ ⲡⲣⲟⲥ ⲧⲟⲛ Ⲕⲩⲣⲓⲟⲛ.",
+               ar_de: "Hiya 3inda er-Rab.",
+               cop_ar: "إيه خومين إبروس طون كيريون.",
+>>>>>>> Stashed changes
+            },
+            {
+                id: 15,
                 speaker: "Priester",
                 cop_de: "Efcharistisomen to Kirio.",
                 de: "Lasst uns dem Herrn danken.",
@@ -2112,7 +2123,7 @@ export const liturgies = {
                 cop_ar: "إيفخاريستى صومين طو كيريو.",
             },
             {
-                id: 17,
+                id: 16,
                 speaker: "Volk",
                 cop_de: "Axion ke dikeon.",
                 de: "Würdig und recht.",
@@ -2122,7 +2133,7 @@ export const liturgies = {
                 cop_ar: "أكسيون كيه ذى كيه أون.",
             },
             {
-                id: 18,
+                id: 17,
                 speaker: "Priester",
                 cop_de: "Axion ke dikeon: axion ke dikeon: axion ke dikeon. Efemepsha den u-methmi uoh u-dikeon pe: e-hos erok: e-smu erok: e-schemschi mmok: e-u-oscht mmok: e-ti-o-u nak. Pi-uai em-mauatf en-alithinos: Pi-nuti pi-mai-romi. Pi-at-sadschi emmof: pi-ath-nau erof: pi-at-schopf: pi-at-archi: pi-scha eneh: pi-at-snu: pi-at-osch erof: pi-at-schbet-thoutf: pi-at-fonh: pi-ref-thamio ente ep-tirf: pi-ref-sot ente u-on niben. Phi-et-ko ebol en-nen-nobi: phi-et-soti em-pen-onch ebol chen ep-tako: phi-et-ti-klom edjon chen han-nai nem han-met-schenhit. Enthok pe etu-hos erok endje ni-angelos: etu-u-oscht emmok endje ni-archi-angelos. Enthok pe etu-smu erok endje ni-archi: et-osch u-bek endje ni-met-tshois. Enthok pe etere ni-exusia djo em-pek-o-u. Enthok pe etere ni-thronos u-orp nak ep-schoi em-pi-taio. Han-an-scho en-scho es-ohi eratu erok: han-thba en-thba se-ini nak e-chun em-pi-schemschi. Enthok pe etu-smu erok endje ni-ath-nau er-wo-u. Enthok pe etu-u-oscht emmok endje ni-eth-u-onh ebol. Ev-iri tiru em-pek-sadji pen-nib.",
                 de: "Würdig und recht, würdig und recht, Es ist in Wahrheit Würdig und recht . dich zu Loben, dir zu huldigen, dir zu dienen, dich anzubeten, dich zu verherrlichen, du Einziger, allein Wahrhaftiger, Gott, Menschenliebender. Der du Unausspechlicher Unsichtbarer , Unbeschränkbarer, ohne Anfang, Ewiger, Zeitloser, Unmeßbarer, Unerforschlicher, Unwandelbarer, Schöpfer des Alls, Retter eines jeden bist. Der du unsere Sünden vergibst, der unser Leben Vor dem Untergang rettet ,der uns mit Erbarmen und Barmherzigkeit Krönt Du bist der , dem die Engel Lobsingen und den die Erzengel anbeten. Du bist der ,den die Mächt preisen und dem die Herrscharen zurufen. Du bist der , dessen Ehre die Gewalten Verkünden. Du bist der , dem die Throne die Ruhm emporsenden Tausende und Abertausende stellen sich vor dir auf, Zehntausende und die Aberzehntausende dienen dir. Du bist der, den die Unsichtbaren preisen. Du bist der ,den die sichtbaren anbeten. Indem sie alle deine Befehle ausführen, unser Herr.",
@@ -2132,7 +2143,7 @@ export const liturgies = {
                 cop_ar: "أكسيون كي ديكاؤون: أكسيون كي ديكاؤون: أكسيون كي ديكاؤون. إفشيمبشا خين أوميثمي أووه أوديكاؤون بي: إيه هوس إيروك: إيه إسمو إيروك: إيه شيمشي إمموك: إيه أوأوشت إمموك: إيه تي أو أو ناك. بي أوواي إممافاتس إن أليثينوس: أفنوتي بي ماي رومي. بي أت ساجي إموف: بي أثناف إيروف: بي أت شوبف: بي أت أرشي: بي شا إينيه: بي أت سنو: بي أت أوش إيروف: بي أت شبيت ثووتف: بي أت فون: بي ريف ثاميو إنتيه إبتيرف: بي ريف سوتي إنتيه أوأون نيفين. في إت كو إيفول إن نين نوفي: في إت سوتي إم بين أونخ إيفول خين إبتاكو: في إت تي كلوم إيجون خين هان ناي نيم هان ميت شينهيت. إنثوك بي إيتو هوس إيروك إنجيه ني أنجيلوس: إيتو أوأوشت إمموك إنجيه ني أرشي أنجيلوس. إنثوك بي إيتو إسمو إيروك إنجيه ني أرشي: إت أوش أوفيك إنجيه ني ميت تشويس. إنثوك بي إتيريه ني إكسوسيا جو إمبيك أو أو. إنثوك بي إتيريه ني ثرونوس أوأورب ناك إي إبشوي إمبي طايو. هان أن شو إن شو إس أوهي إيراتو إيروك: هان ثفا إن ثفا سي إيني ناك إي خون إمبي شيمشي. إنثوك بي إيتو إسمو إيروك إنجيه ني أثناف إيرو أو. إنثوك بي إيتو أوأوشت إمموك إنجيه ني إث أوأونه إيفول. إف إيري تيرو إمبيك ساجي بين نيب.",
             },
             {
-                id: 19,
+                id: 18,
                 speaker: "Diakon",
                 cop_de: "I kathimeni anastite.",
                 de: "Wer sitzt, stehe auf!",
@@ -2142,7 +2153,7 @@ export const liturgies = {
                 cop_ar: "إي كثيميني أناستيتي.",
             },
             {
-                id: 20,
+                id: 19,
                 speaker: "Priester",
                 cop_de: "Phi-et-shop Ph-nib ep-shois ef-nuti en-ta-phmi: ebol chen u-nuti en-ta-phmi. Phi-etaf-u-onh nan ebol em-pho-u-oini em-phiot. Phi-etaf-er-hmot nan em-pi-emi em-mi ente pi-pnevma eth-uab. Phi-etaf-u-onh nan ebol em-pai-nishti em-mistirion ente ep-onch. Phi-etaf-tahro en-ti-met-ref-ohi e-ratf ente pi-choros ente ni-asomatos chen ni-romi. Phi-etaf-ti en-ni-et-hidjen pi-kahi en-ti-met-ref-hos ente ni-seraphim. Tshi en-toten hon en-ten-smi nem ni-ath-nau er-o-u. Op-ten nem ni-dynamis et-chen ni-fi-o-ui. Maren-djos hon nem ni-ete em-mau: e-an-hi-wi sa-bol em-mon em-mev-i niben ente ni-logismos en-a-topon. Nten-osh ebol en-ni-enare ni-ete em-mau ta-o-uo em-mo-u: chen han-smi en-at-khar-o-u: nem han-rof en-ath-munk: uoh enten-smu e-tek-met-nishti.",
                 de: "Der Du bist, Meister, Herr, wahrer Gott von wahrem Gott. Der du uns das Licht Des Vaters geoffenbart hast. Der du uns die wahrhafte Erkenntnis des Heiligen Geistes geschenkt hast. der Du uns dieses große sakrament des Lebens geoffenbart hast. Der du den Chor der Unleiblichen unter den Menschen aufgestellt hast. Der du denen , die auf der Erde sind, den Seraphims-lobgesang gegeben hast, nimm auch von uns unsere Stimme mit den Unsichtbaren an , zähle uns zu den himmlischen Kräften . Lasst uns mit jeden sagen, nachdem wir jeden unpassenden bösen Gedanken abgelegt haben. Und aufrufen was jene mit nimmer schweigenden Stimmen und mit nie stillen Mündern verkünden und Deine Größe preisen.",
@@ -2152,7 +2163,7 @@ export const liturgies = {
                 cop_ar: "في إت شوب إب نيب إبتشويس إفنوتي إنتافمي: إيفول خين أونوتي إنتافمي. في إيطاف أوأونه نان إيفول إمفو أوأويني إمفيوت. في إيطاف إيرهموت نان إمبي إيمي إممي إنتيه بي بنيفما إثؤواب. في إيطاف أوأونه نان إيفول إمباي نيشتي إمميستيريون إنتيه إب أونخ. في إيطاف طاجرو إنتي ميت ريف أوهي إيرات إف إنتيه بي خوروس إنتيه ني أسوماتوس خين ني رومي. في إيطاف تي إن ني إت هيجين بي كاهي إنتي ميت ريف هوس إنتيه ني سيرافيم. تشي إنتوتين هون إنتين إسمي نيم ني أثناف إيرو أو. أوبتين نيم ني ديناميس إت خين ني في أوي. مارين جوس هون نيم ني إتيه إمماف: إيه أن هي أوي سافول إممون إمميف إي نيفين إنتيه ني لوجيسموس إن أتوبون. إنتين أوش إيفول إن ني إيناريه ني إتيه إمماف طاو أو إهمو أو: خين هان إسمي إن أت خارو أو: نيم هان روف إن أث موناك: أووه إنتين إسمو إي تيك ميت نيشتي.",
             },
             {
-                id: 21,
+                id: 20,
                 speaker: "Diakon",
                 cop_de: "Is anatolas blepsate.",
                 de: "Schaut nach Osten!",
@@ -2162,7 +2173,7 @@ export const liturgies = {
                 cop_ar: "إيس أناتولاس فليپساتي.",
             },
             {
-                id: 22,
+                id: 21,
                 speaker: "Priester",
                 cop_de: "Nthok gar pe etu-ohi eratu em-pek-koti: endje ni-Cherubim nem ni-Seraphim: ere so-u entenh em-pi-uai: uoh so-u entenh em-pi-ke-uai. Chen snau men entenh ev-hobs em-pu-ho: Chen snau de ev-hobs em-pu-balauj: ev-hil de chen pi-ke-snau: ev-osch ebol uai ube uai em-mo-u. Ev-ta-u-o em-pi-hymnos ente pi-bro uoh en-udjai en-tan: chen u-smi es-meh en-o-u. Ev-hos ev-djo: ev-osch ebol ev-ti-hro-u ev-djo em-mos.",
                 de: "Du bist der ,der umgeben ist von den Cherubim und den Seraphim , sechs Flügel hat der eine und sechs Flügel hat der andere. und mit zweien bedecken sie ihre Antlitze, und mit zweien bedecken sie ihre Füße, und mit zweien fliegen sie. Und sie rufen, einer zum anderen. Sie verkünden den Lobgesang des Sieges unseres Heils in einer Stimme voll der Ehre. Sie loben, singen, rufen und sprechen:",
@@ -2172,7 +2183,7 @@ export const liturgies = {
                 cop_ar: "إنثوك غار بي إيتو أوهي إيراتو إمبيك كوتي: إنجيه ني شيروبيم نيم ني سيرافيم: إيريه سو أو إنتينه إمبي أوواي: أووه سو أو إنتينه إمبي كي أوواي. خين إسناف مين إنتينه إف هوبس إمبو هو: خين إسناف ديه إف هوبس إمبو فالافج: إف هيل ديه خين بي كي إسناف: إف أوش إيفول أوواي أوفيه أوواي إممو أو. إف طاو أو إمبي هيمنوس إنتيه بي فرو أووه إن أوجاي إن تان: خين أو إسمي إسميه إن أو أو. إف هوس إف جو: إف أوش إيفول إف تي إهروا أو إف جو إمموس.",
             },
             {
-                id: 23,
+                id: 22,
                 speaker: "Diakon",
                 cop_de: "Pros-chomen.",
                 de: "Wir hören!",
@@ -2180,6 +2191,21 @@ export const liturgies = {
                 cop_cop: "Ⲡⲣⲟⲥⲭⲱⲙⲉⲛ.",
                 ar_de: "nonsit.",
                 cop_ar: "بروسخومين.",
+           reconciliation_menu: [
+                    { label_ar: "أيها الرب إله القوات", label_de: "O Herr, Gott der Heerscharen", action: "goto_lord_of_hosts" },
+                    { label_ar: "اسبسمس واطس 1", label_de: "Aspasmos Watos 1", action: "goto_aspasmos_watos_1" },
+                    { label_ar: "اسبسمس واطس 2", label_de: "Aspasmos Watos 2", action: "goto_aspasmos_watos_2" }
+                ]
+            },
+         {
+                id: 23,
+                speaker: "Volk",
+                cop_de: "Ni-cherubim se-u-osht mmok: nem ni-seraphim se-ti-o-u nak: ev-osh ebol ev-djo mmos. Dje agios agios agios: Kyrios sabaoth: pliris o uranos ke i gi: tis agias su doxis.",
+                de: "Die Cherubim beten Dich an und die Seraphim verherrlichen Dich, indem sie ausrufen und sprechen: Heilig, heilig, heilig ist der Herr der Heerscharen , der Himmel und die Erde sind erfüllt von deiner heiligen Herrlichkeit.",
+                ar: "الشاروبيم يسجدون لك والسيرافيم يمجدونك صارخين قائلين: قدوس قدوس قدوس رب الصباؤوت السماء والأرض مملوءتان من مجدك الأقدس",
+                cop_cop: "Ⲛⲓⲭⲉⲣⲟⲩⲃⲓⲙ ⲥⲉⲟⲩⲱϣⲧ ⲙ̀ⲙⲟⲕ : ⲛⲉⲙ ⲛⲓⲤⲉⲣⲁⲫⲓⲙ ⲥⲉϯⲱⲟⲩ ⲛⲁⲕ : ⲉⲩⲱϣ ⲉ̀ⲃⲟⲗ ⲉⲩϫⲱ ⲙ̀ⲙⲟⲥ. Ϫⲉ ⲁ̀ⲅⲓⲟⲥ ⲁ̀ⲅⲓⲟⲥ ⲁ̀ⲅⲓⲟⲥ : Ⲕⲩⲣⲓⲟⲥ ⲥⲁⲃⲁⲱⲑ : ⲡ̀ⲗⲏⲣⲏⲥ ⲟ̀ ⲟⲩⲣⲁⲛⲟⲥ ⲕⲉ ⲏ̀ ⲅⲏ : ⲧⲏⲥ ⲁ̀ⲅⲓⲁⲥ ⲥⲟⲩ ⲇⲟⲝⲏⲥ.",
+                ar_de: "El-sherubim yasguduna laka wal-seraphim yumaggidunaka sarekhina ka-ilin: Kuddus kuddus kuddus rab el-sabaot el-sama wal-ard mamlu-atani min magdika el-akdas.",
+                cop_ar: "ني شيروبيم سي أوأوشت إمموك: نيم ني سيرافيم سي تي أو أو ناك: إف أوش إيفول إف جو إمموس. جيه أجيوس أجيوس أجيوس: كيريوس سافاؤوت: بليريس أو أورانوس كي إي جي: تيس أجياس سو ذوكسيس.",
             },
             {
                 id: 65,
@@ -4136,7 +4162,7 @@ export const liturgies = {
                 // HIER SIND DIE NEUEN KNÖPFE:
                 reconciliation_menu: [
                     { label_ar: "(ب) الباسيلي", label_de: "(B) Basilius", action: "goto_basily_id_222" },
-                    { label_ar: "(غ) الغريغوري", label_de: "(G) Gregorios", action: "goto_gregorios_start" },
+                    { label_ar: "(غ) الغريغوري", label_de: "(G) Gregorios", action: "goto_gregorios_id_22" },
                     { label_ar: "(ك) الكيرلسي", label_de: "(K) Cyrillus", action: "goto_cyrillus_id_23" } // Führt zu ID 21
                 ]
 
