@@ -92,11 +92,13 @@ const SettingsPopup = memo(({ appLang, setAppLang, activeLangs, toggleLanguage, 
       <h3 style={{ color: 'var(--gold)', textAlign: 'center', marginTop: 0 }}>
         {t('settings')}
         <span className="current-role-indicator">
-          {userRole === 'priester' ? 'Kahn' : userRole === 'diakon' ? 'Schamas' : 'Shaab'}
+          {userRole === 'priester' ? (appLang === 'ar' ? 'كاهن' : 'Priester') :
+            userRole === 'diakon' ? (appLang === 'ar' ? 'شماس' : 'Diakon') :
+              (appLang === 'ar' ? 'شعب' : 'Volk')}
         </span>
       </h3>
 
-      {/* App Sprache Umschalter (Wieder da!) */}
+      {/* 1. App Sprache */}
       <div className="settings-section">
         <label className="settings-label"><Globe size={14} /> App Language</label>
         <div className="theme-grid">
@@ -105,6 +107,24 @@ const SettingsPopup = memo(({ appLang, setAppLang, activeLangs, toggleLanguage, 
         </div>
       </div>
 
+      {/* 2. Gebetssprachen */}
+      <div className="settings-section">
+        <label className="settings-label">{appLang === 'ar' ? 'لغات الصلاة' : 'Gebetssprachen'}</label>
+        <div className="lang-grid">
+          {Object.entries(languages).map(([key, info]) => (
+            <button
+              key={key}
+              className={`lang-btn ${activeLangs.includes(key) ? 'active' : ''}`}
+              onClick={() => toggleLanguage(key)}
+              disabled={!activeLangs.includes(key) && activeLangs.length >= 3}
+            >
+              {info.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* 3. Rollen Auswahl */}
       <div className="settings-section">
         <label className="settings-label"><User size={14} /> {appLang === 'ar' ? 'تغيير الدور' : 'Rolle ändern'}</label>
         <div className="theme-grid">
@@ -114,19 +134,7 @@ const SettingsPopup = memo(({ appLang, setAppLang, activeLangs, toggleLanguage, 
         </div>
       </div>
 
-      <div className="settings-section">
-        <label className="settings-label">{appLang === 'ar' ? 'حجم الخط' : 'Schriftgröße'}</label>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span>A</span>
-          <input
-            type="range" min="0.8" max="1.8" step="0.1"
-            value={fontSize}
-            onChange={(e) => changeFontSize(parseFloat(e.target.value))}
-          />
-          <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>A</span>
-        </div>
-      </div>
-
+      {/* 4. Design / Themes (Wieder da!) */}
       <div className="settings-section">
         <label className="settings-label">{appLang === 'ar' ? 'السمة' : 'Design'}</label>
         <div className="theme-grid">
@@ -134,6 +142,12 @@ const SettingsPopup = memo(({ appLang, setAppLang, activeLangs, toggleLanguage, 
           <button className={`theme-btn ${appTheme === 'light' ? 'active' : ''}`} onClick={() => setAppTheme('light')}><Sun size={16} /></button>
           <button className={`theme-btn ${appTheme === 'sepia' ? 'active' : ''}`} onClick={() => setAppTheme('sepia')}><Coffee size={16} /></button>
         </div>
+      </div>
+
+      {/* 5. Schriftgröße */}
+      <div className="settings-section">
+        <label className="settings-label">{appLang === 'ar' ? 'حجم الخط' : 'Schriftgröße'}</label>
+        <input type="range" min="0.8" max="1.8" step="0.1" value={fontSize} onChange={(e) => changeFontSize(parseFloat(e.target.value))} />
       </div>
 
       <button className="close-btn" onClick={close}>{t('done')}</button>
@@ -400,24 +414,27 @@ export default function App() {
       )}</AnimatePresence>
 
       <header className="header">
-        {/* Back-Button: Jetzt immer sichtbar außer auf Home */}
-        {view !== 'home' ? (
-          <motion.button whileTap={{ scale: 0.9 }} onClick={handleBack} className="icon-btn">
-            <ArrowLeft size={28} />
-          </motion.button>
-        ) : <div style={{ width: 48 }}></div>}
+        {/* Links: Back Button */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          {view !== 'home' ? (
+            <motion.button whileTap={{ scale: 0.9 }} onClick={handleBack} className="icon-btn">
+              <ArrowLeft size={28} />
+            </motion.button>
+          ) : <div style={{ width: 48 }}></div>}
 
-        {/* TOC in der Mitte (durch CSS transform zentriert) */}
-        {view === 'prayer' && selectedLiturgy && (
-          <TableOfContents
-            content={liturgies[selectedLiturgy].content}
-            appLang={appLang}
-            isOpen={showTOC}
-            toggleOpen={() => setShowTOC(!showTOC)}
-            onJump={scrollToElementById}
-          />
-        )}
+          {/* Inhaltsverzeichnis: Hier direkt neben dem Back-Button positioniert */}
+          {view === 'prayer' && selectedLiturgy && (
+            <TableOfContents
+              content={liturgies[selectedLiturgy].content}
+              appLang={appLang}
+              isOpen={showTOC}
+              toggleOpen={() => setShowTOC(!showTOC)}
+              onJump={scrollToElementById}
+            />
+          )}
+        </div>
 
+        {/* Rechts: Datum & Zahnrad */}
         <div className="header-right-group">
           <div className="coptic-date-display">{getCopticDate(appLang)}</div>
           <motion.button whileTap={{ rotate: 90 }} onClick={() => setShowSettings(!showSettings)} className="icon-btn">
