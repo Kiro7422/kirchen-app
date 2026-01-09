@@ -160,23 +160,40 @@ const SettingsPopup = memo(({ appLang, setAppLang, activeLangs, toggleLanguage, 
 });
 
 // --- INHALTSVERZEICHNIS ---
+// src/App.js
+
+// ...
+
+// --- INHALTSVERZEICHNIS (Nur Icon) ---
 const TableOfContents = ({ content, appLang, onJump, isOpen, toggleOpen }) => {
   const sections = content.filter(row => row.sectionTitle);
   if (sections.length === 0) return null;
 
   return (
     <div className="toc-header-wrapper">
-      <motion.button whileTap={{ scale: 0.95 }} className={`toc-toggle-btn ${isOpen ? 'active' : ''}`} onClick={toggleOpen}>
-        <BookOpen size={18} />
-        <span className="toc-label">{appLang === 'ar' ? 'الفهرس' : 'Inhalt'}</span>
-        <ChevronDown size={14} className={`toc-chevron ${isOpen ? 'rotated' : ''}`} />
+      <motion.button
+        whileTap={{ scale: 0.95 }}
+        className={`toc-toggle-btn ${isOpen ? 'active' : ''}`}
+        onClick={toggleOpen}
+        // Button etwas runder machen, da kein Text mehr drin ist
+        style={{ padding: '8px', borderRadius: '50%', aspectRatio: '1/1', justifyContent: 'center' }}
+      >
+        <BookOpen size={20} />
+        {/* Text wurde hier entfernt */}
+        {/* Kleiner Pfeil optional behalten oder auch entfernen, hier behalten für UX */}
+        <ChevronDown size={14} className={`toc-chevron ${isOpen ? 'rotated' : ''}`} style={{ marginLeft: 0 }} />
       </motion.button>
 
       <AnimatePresence>
         {isOpen && (
           <>
             <div className="toc-backdrop" onClick={toggleOpen} />
-            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="toc-dropdown-solid">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="toc-dropdown-solid"
+            >
               {sections.map((sec, idx) => (
                 <button key={idx} className="toc-item-solid" onClick={() => { onJump(sec.id); toggleOpen(); }}>
                   {sec.sectionTitle[appLang]}
@@ -189,7 +206,6 @@ const TableOfContents = ({ content, appLang, onJump, isOpen, toggleOpen }) => {
     </div>
   );
 };
-
 // --- GEBETSZEILE (MEMOIZED) ---
 const PrayerRowWithLogic = memo(({
   row,

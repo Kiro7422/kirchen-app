@@ -930,6 +930,24 @@ input[type=range] {
   vertical-align: middle;
 }
 
+/* src/App.css - Am Ende hinzufügen */
+
+/* --- SPRACH-REIHENFOLGE IM GRID --- */
+/* Deutsch immer Links (Pos 1) */
+.text-grid .lang-de {
+  order: 1;
+}
+
+/* Jede andere Sprache (z.B. Koptisch) in die Mitte (Pos 2) */
+.text-grid .text-line {
+  order: 2;
+}
+
+/* Arabisch immer Rechts (Pos 3) */
+.text-grid .lang-ar {
+  order: 3;
+}
+
 .header-right-group {
   display: flex;
   align-items: center;

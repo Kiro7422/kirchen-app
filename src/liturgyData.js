@@ -45,8 +45,8 @@ export const uiTranslations = {
     }
 };
 export const languages = {
-    de: { label: "🇩🇪 Deutsch", default: true },
-    ar: { label: "🇪🇬 Arabisch", default: true },
+    de: { label: " Deutsch", default: true },
+    ar: { label: " Arabisch", default: true },
 
     // Deine neuen Bezeichnungen:
     ar_de: { label: "Franco / فرانكو", default: false },
