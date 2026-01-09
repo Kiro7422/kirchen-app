@@ -135,27 +135,55 @@ const SettingsPopup = memo(({ appLang, activeLangs, toggleLanguage, fontSize, ch
 });
 
 // --- GEBETSZEILE (MEMOIZED) ---
-const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, hasNav, handleNavAction, getSpeakerClass, hints, triggeredHints, setTriggeredHints, openHint }) => {
+// --- GEBETSZEILE (MEMOIZED) ---
+const PrayerRowWithLogic = memo(({
+  row,
+  rowID,
+  appLang,
+  dynamicLangs,
+  hasMenu,
+  handleMenuAction,
+  hasNav,
+  handleNavAction,
+  getSpeakerClass,
+  hints,
+  triggeredHints,
+  setTriggeredHints,
+  openHint,
+  selectedLiturgy // <--- NEU: Wichtig für den Schlüssel
+}) => {
   const rowRef = useRef(null);
-  const hasHintData = hints && hints[rowID];
-  const showIcon = triggeredHints.includes(rowID);
+
+  // 1. Erstelle den spezifischen Schlüssel (z.B. "basily_id_5")
+  // Falls keine Liturgie gewählt ist (Fallback), nutze nur die ID, aber idealerweise ist selectedLiturgy da.
+  const uniqueHintKey = selectedLiturgy ? `${selectedLiturgy}_id_${rowID}` : `generic_id_${rowID}`;
+
+  // 2. Prüfe, ob für DIESEN Schlüssel Daten existieren
+  const hasHintData = hints && hints[uniqueHintKey];
+
+  // 3. Prüfe, ob DIESER Schlüssel bereits getriggert wurde
+  const showIcon = triggeredHints.includes(uniqueHintKey);
 
   useEffect(() => {
+    // Wenn keine Daten da sind oder das Icon schon gezeigt wird, abbrechen
     if (!hasHintData || showIcon) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setTriggeredHints(prev => {
-            if (prev.includes(rowID)) return prev;
-            return [...prev, rowID];
+            // Speichere den vollen Schlüssel ("basily_id_5")
+            if (prev.includes(uniqueHintKey)) return prev;
+            return [...prev, uniqueHintKey];
           });
           observer.disconnect();
         }
       }, { threshold: 0.6 }
     );
+
     if (rowRef.current) observer.observe(rowRef.current);
     return () => observer.disconnect();
-  }, [hasHintData, showIcon, rowID, setTriggeredHints]);
+  }, [hasHintData, showIcon, uniqueHintKey, setTriggeredHints]);
 
   return (
     <>
@@ -168,7 +196,15 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
       <div ref={rowRef} className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
 
         {showIcon && (
-          <motion.div className="hint-trigger-icon" onClick={() => openHint(rowID)} whileTap={{ scale: 0.9 }} initial={{ scale: 0 }} animate={{ scale: 1 }}>!</motion.div>
+          <motion.div
+            className="hint-trigger-icon"
+            onClick={() => openHint(uniqueHintKey)} // <--- WICHTIG: Übergebe den Unique Key
+            whileTap={{ scale: 0.9 }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+          >
+            !
+          </motion.div>
         )}
 
         {row.speaker && <span className="speaker">{row.speaker}</span>}
@@ -186,7 +222,6 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
           <KyrieCounter initialCount={row.counter} />
         )}
 
-        {/* --- MENU KNÖPFE (Alt: Reconciliation) --- */}
         {hasMenu && (
           <div className="inline-menu-container">
             {row.reconciliation_menu.map((btn, btnIdx) => (
@@ -198,7 +233,6 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
           </div>
         )}
 
-        {/* --- NEU: NAVIGATION KNÖPFE (ID 59) --- */}
         {hasNav && (
           <div className="inline-menu-container">
             {row.navigationButtons.map((btn, btnIdx) => (
@@ -213,7 +247,6 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
     </>
   );
 });
-
 export default function App() {
   const [loading, setLoading] = useState(true);
 
@@ -317,7 +350,7 @@ export default function App() {
       case "goto_cyrillus_id_16": setSelectedLiturgy('kerollosy'); setTargetScrollId(16); break;
       case "goto_cyrillus_id_23": setSelectedLiturgy('kerollosy'); setTargetScrollId(23); break;
       case "goto_cyrillus_love_prayer": setTargetScrollId(null); setSelectedLiturgy('kerollosy'); break;
-      case "goto_gregorios_start": setTargetScrollId(null); setSelectedLiturgy('gregorios'); break;
+      case "goto_gregorios_id_22": setTargetScrollId(22); setSelectedLiturgy('gregorios'); break;
       case "goto_gregorios_id_5": setSelectedLiturgy('gregorios'); setTargetScrollId(5); break;
       case "goto_gregorios_christ_prayer": setTargetScrollId(null); setSelectedLiturgy('gregorios'); break;
       case "goto_rejoice_mary": setTargetScrollId(null); setSelectedLiturgy('rejoice_mary'); break;
@@ -520,11 +553,10 @@ export default function App() {
                 </div>
 
                 <div className="prayer-content">
+
                   {liturgies[selectedLiturgy].content.map((row, index) => {
                     const dynamicLangs = activeLangs.filter(lang => row[lang] && row[lang].trim() !== "");
                     const hasMenu = row.reconciliation_menu && row.reconciliation_menu.length > 0;
-
-                    // --- NEU: Prüfen auf navigationButtons ---
                     const hasNav = row.navigationButtons && row.navigationButtons.length > 0;
 
                     if (dynamicLangs.length === 0 && !hasMenu && !hasNav && !row.sectionTitle) return null;
@@ -539,7 +571,6 @@ export default function App() {
                         dynamicLangs={dynamicLangs}
                         hasMenu={hasMenu}
                         handleMenuAction={handleMenuAction}
-                        // --- NEU: Props weitergeben ---
                         hasNav={hasNav}
                         handleNavAction={handleNavAction}
                         getSpeakerClass={getSpeakerClass}
@@ -547,6 +578,8 @@ export default function App() {
                         triggeredHints={triggeredHints}
                         setTriggeredHints={setTriggeredHints}
                         openHint={openHint}
+
+                        selectedLiturgy={selectedLiturgy} // <--- DIESE ZEILE MUSS HINZUGEFÜGT WERDEN!
                       />
                     );
                   })}
