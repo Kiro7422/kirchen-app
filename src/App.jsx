@@ -1,7 +1,8 @@
 /* src/App.js */
 import React, { useState, useEffect, useRef, useLayoutEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, ArrowLeft, BookOpen, User, Sun, Moon, Coffee, Check, ChevronDown, Globe } from 'lucide-react';
+// Icons
+import { Settings, ArrowLeft, BookOpen, User, Sun, Moon, Coffee, Check, ChevronDown, Globe, HelpCircle, X } from 'lucide-react';
 import { liturgies, languages, uiTranslations, liturgyHints } from './liturgyData';
 import './App.css';
 
@@ -14,81 +15,131 @@ const getCopticDate = (appLang) => {
     { ar: "برمهات", de: "Paremhotep" }, { ar: "برمودة", de: "Parmouti" }, { ar: "بشنس", de: "Pashons" },
     { ar: "بؤونة", de: "Paoni" }, { ar: "أبيب", de: "Epip" }, { ar: "مسرى", de: "Mesori" }, { ar: "نسيئ", de: "Pi Kogi Enavot" }
   ];
-
   let cDay, cMonthIndex, cYear;
   const day = today.getDate();
   const month = today.getMonth();
   const year = today.getFullYear();
   cYear = year - 284;
-
-  if (month === 0) {
-    if (day <= 8) { cMonthIndex = 3; cDay = day + 22; } else { cMonthIndex = 4; cDay = day - 8; }
-  } else if (month === 1) {
-    if (day <= 7) { cMonthIndex = 4; cDay = day + 23; } else { cMonthIndex = 5; cDay = day - 7; }
-  } else {
-    const monthOffset = (month + 4) % 13;
-    cMonthIndex = monthOffset;
-    cDay = day;
-  }
-
+  if (month === 0) { if (day <= 8) { cMonthIndex = 3; cDay = day + 22; } else { cMonthIndex = 4; cDay = day - 8; } }
+  else if (month === 1) { if (day <= 7) { cMonthIndex = 4; cDay = day + 23; } else { cMonthIndex = 5; cDay = day - 7; } }
+  else { const monthOffset = (month + 4) % 13; cMonthIndex = monthOffset; cDay = day; }
   const monthName = appLang === 'ar' ? copticMonths[cMonthIndex].ar : copticMonths[cMonthIndex].de;
   const dayString = appLang === 'ar' ? cDay.toLocaleString('ar-EG') : cDay;
   const yearString = appLang === 'ar' ? cYear.toLocaleString('ar-EG') : cYear;
-
-  return appLang === 'ar'
-    ? `${dayString} ${monthName} ${yearString} للشهداء`
-    : `${cDay}. ${monthName} ${cYear} A.M.`;
+  return appLang === 'ar' ? `${dayString} ${monthName} ${yearString} للشهداء` : `${cDay}. ${monthName} ${cYear} A.M.`;
 };
 
-// --- KYRIE COUNTER (Zählt -3) ---
+// --- KYRIE COUNTER ---
 const KyrieCounter = ({ initialCount }) => {
   const [count, setCount] = useState(initialCount);
   const [isFinished, setIsFinished] = useState(false);
-
-  const handleClick = (e) => {
-    e.stopPropagation();
-    if (count > 0) {
-      if (navigator.vibrate) navigator.vibrate(40);
-      const newCount = Math.max(0, count - 3);
-      setCount(newCount);
-      if (newCount === 0) {
-        setIsFinished(true);
-        if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-      }
-    }
-  };
-
-  const handleContextMenu = (e) => {
-    e.preventDefault();
-    setCount(initialCount);
-    setIsFinished(false);
-    if (navigator.vibrate) navigator.vibrate(100);
-  };
-
+  const handleClick = (e) => { e.stopPropagation(); if (count > 0) { if (navigator.vibrate) navigator.vibrate(40); const newCount = Math.max(0, count - 3); setCount(newCount); if (newCount === 0) { setIsFinished(true); if (navigator.vibrate) navigator.vibrate([100, 50, 100]); } } };
+  const handleContextMenu = (e) => { e.preventDefault(); setCount(initialCount); setIsFinished(false); if (navigator.vibrate) navigator.vibrate(100); };
   return (
     <div className="counter-wrapper">
-      <motion.button
-        className={`counter-btn ${isFinished ? 'finished' : ''}`}
-        onClick={handleClick}
-        onContextMenu={handleContextMenu}
-        whileTap={{ scale: 0.95 }}
-      >
-        {isFinished ? <Check size={40} /> : count}
-        {!isFinished && <span className="counter-label">Kyrie Eleison</span>}
+      <motion.button className={`counter-btn ${isFinished ? 'finished' : ''}`} onClick={handleClick} onContextMenu={handleContextMenu} whileTap={{ scale: 0.95 }}>
+        {isFinished ? <Check size={40} /> : count} {!isFinished && <span className="counter-label">Kyrie Eleison</span>}
       </motion.button>
     </div>
   );
 };
 
-// --- SETTINGS POPUP (Sprache & Rolle jetzt hier drin) ---
+// --- SUPPORT POPUP (ZENTRIERT & SCROLLBAR) ---
+// --- SUPPORT POPUP (ZENTRIERT & SCROLLBAR) ---
+const SupportPopup = ({ onClose }) => {
+  const [formData, setFormData] = useState({ vorname: '', name: '', email: '', phone: '', message: '' });
+  const [isSent, setIsSent] = useState(false);
+
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  // --- NEUE SENDELOGIK (Formsubmit) ---
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch("https://formsubmit.co/ajax/kirokolta@yahoo.com", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        _subject: `Support: ${formData.vorname} ${formData.name}`,
+        _template: "table",
+        ...formData
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        setIsSent(true);
+        setFormData({ vorname: '', name: '', email: '', phone: '', message: '' });
+      })
+      .catch(error => {
+        console.log(error);
+        alert("Fehler beim Senden. Bitte Internetverbindung prüfen.");
+      });
+  };
+  // ------------------------------------
+
+  return (
+    <>
+      <div className="support-backdrop" onClick={onClose} />
+      <motion.div
+        className="support-popup"
+        initial={{ opacity: 0, scale: 0.9, x: "-50%", y: "-50%" }}
+        animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
+        exit={{ opacity: 0, scale: 0.9, x: "-50%", y: "-50%" }}
+      >
+        <div className="support-header">
+          <span className="support-title" style={{ color: 'var(--gold)', fontWeight: 'bold', fontSize: '1.2rem', fontFamily: 'Cairo' }}>Kontakt / Support</span>
+          <button onClick={onClose} style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer' }}><X size={24} /></button>
+        </div>
+
+        <div className="dev-info-section">
+          <div className="dev-label" style={{ fontSize: '0.75rem', textTransform: 'uppercase', marginBottom: '10px', opacity: 0.7 }}>Entwickelt von</div>
+          <div className="dev-card">
+            <span className="dev-name">Kiro Kolta</span>
+            <span className="dev-detail">📞 +49 157 34966434</span>
+            <span className="dev-detail">✉️ kirokolta@yahoo.com</span>
+          </div>
+          <div className="dev-card">
+            <span className="dev-name">Kerollos Emad</span>
+            <span className="dev-detail">📞 +49 157 35650689</span>
+          </div>
+          <div className="dev-card">
+            <span className="dev-name">Daniel Mikhail</span>
+            <span className="dev-detail">📞 +49 163 3656432</span>
+            <span className="dev-detail">✉️ Daniel.mikhail@outlook.de</span>
+          </div>
+        </div>
+
+        {!isSent ? (
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-title">Problem melden</div>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <input required placeholder="Vorname" type="text" name="vorname" className="form-input" value={formData.vorname} onChange={handleChange} />
+              <input required placeholder="Name" type="text" name="name" className="form-input" value={formData.name} onChange={handleChange} />
+            </div>
+            <input required placeholder="Email" type="email" name="email" className="form-input" value={formData.email} onChange={handleChange} />
+            <input placeholder="Telefonnummer" type="tel" name="phone" className="form-input" value={formData.phone} onChange={handleChange} />
+            <textarea required placeholder="Nachricht / Betreff..." name="message" className="form-textarea" value={formData.message} onChange={handleChange} />
+            <button type="submit" className="submit-btn">Senden</button>
+          </form>
+        ) : (
+          <div className="success-message">
+            <Check size={30} style={{ margin: '0 auto 10px auto', display: 'block' }} />
+            <p>Nachricht gesendet!</p>
+            <button className="submit-btn" onClick={() => setIsSent(false)} style={{ marginTop: '10px', background: 'transparent', border: '1px solid var(--gold)', color: 'var(--text-main)' }}>Zurück</button>
+          </div>
+        )}
+      </motion.div>
+    </>
+  );
+};
+
+// --- SETTINGS POPUP ---
 const SettingsPopup = memo(({ appLang, setAppLang, activeLangs, toggleLanguage, fontSize, changeFontSize, appTheme, setAppTheme, setRole, userRole, close, t }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className="settings-popup"
-    >
+    <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="settings-popup">
       <h3 style={{ color: 'var(--gold)', textAlign: 'center', marginTop: 0 }}>
         {t('settings')}
         <span className="current-role-indicator">
@@ -97,8 +148,6 @@ const SettingsPopup = memo(({ appLang, setAppLang, activeLangs, toggleLanguage, 
               (appLang === 'ar' ? 'شعب' : 'Volk')}
         </span>
       </h3>
-
-      {/* 1. App Sprache */}
       <div className="settings-section">
         <label className="settings-label"><Globe size={14} /> App Language</label>
         <div className="theme-grid">
@@ -106,98 +155,60 @@ const SettingsPopup = memo(({ appLang, setAppLang, activeLangs, toggleLanguage, 
           <button className={`theme-btn ${appLang === 'ar' ? 'active' : ''}`} onClick={() => setAppLang('ar')}>AR</button>
         </div>
       </div>
-
-      {/* 2. Gebetssprachen mit Limit-Anzeige */}
       <div className="settings-section">
         <label className="settings-label">
           {appLang === 'ar' ? 'لغات الصلاة' : 'Gebetssprachen'}
-          <div style={{ fontSize: '0.7rem', opacity: 0.7, textTransform: 'none', marginTop: '2px' }}>
-            {appLang === 'ar' ? '(حد أقصى ٣ لغات)' : '(maximal 3 Sprachen)'}
-          </div>
         </label>
         <div className="lang-grid">
           {Object.entries(languages).map(([key, info]) => (
-            <button
-              key={key}
-              className={`lang-btn ${activeLangs.includes(key) ? 'active' : ''}`}
-              onClick={() => toggleLanguage(key)}
-              disabled={!activeLangs.includes(key) && activeLangs.length >= 3}
-            >
-              {info.label}
+            <button key={key} className={`lang-btn ${activeLangs.includes(key) ? 'active' : ''}`} onClick={() => toggleLanguage(key)} disabled={!activeLangs.includes(key) && activeLangs.length >= 3}>
+              {info.label.replace(/[\u{1F1E6}-\u{1F1FF}]/gu, '')}
             </button>
           ))}
         </div>
       </div>
-
-      {/* 3. Rollen Auswahl */}
       <div className="settings-section">
-        <label className="settings-label"><User size={14} /> {appLang === 'ar' ? 'تغيير الدور' : 'Rolle ändern'}</label>
+        <label className="settings-label"><User size={14} /> Rolle</label>
         <div className="theme-grid">
           <button className={`theme-btn ${userRole === 'priester' ? 'active' : ''}`} onClick={() => setRole('priester')}>Priester</button>
           <button className={`theme-btn ${userRole === 'diakon' ? 'active' : ''}`} onClick={() => setRole('diakon')}>Diakon</button>
           <button className={`theme-btn ${userRole === 'volk' ? 'active' : ''}`} onClick={() => setRole('volk')}>Volk</button>
         </div>
       </div>
-
-      {/* 4. Design / Themes */}
       <div className="settings-section">
-        <label className="settings-label">{appLang === 'ar' ? 'السمة' : 'Design'}</label>
+        <label className="settings-label">Design</label>
         <div className="theme-grid">
           <button className={`theme-btn ${appTheme === 'dark' ? 'active' : ''}`} onClick={() => setAppTheme('dark')}><Moon size={16} /></button>
           <button className={`theme-btn ${appTheme === 'light' ? 'active' : ''}`} onClick={() => setAppTheme('light')}><Sun size={16} /></button>
           <button className={`theme-btn ${appTheme === 'sepia' ? 'active' : ''}`} onClick={() => setAppTheme('sepia')}><Coffee size={16} /></button>
         </div>
       </div>
-
       <div className="settings-section">
-        <label className="settings-label">{appLang === 'ar' ? 'حجم الخط' : 'Schriftgröße'}</label>
+        <label className="settings-label">Größe</label>
         <input type="range" min="0.8" max="1.8" step="0.1" value={fontSize} onChange={(e) => changeFontSize(parseFloat(e.target.value))} />
       </div>
-
       <button className="close-btn" onClick={close}>{t('done')}</button>
     </motion.div>
   );
 });
 
-// --- INHALTSVERZEICHNIS ---
-// src/App.js
-
-// ...
-
-// --- INHALTSVERZEICHNIS (Nur Icon) ---
+// --- TOC ---
 const TableOfContents = ({ content, appLang, onJump, isOpen, toggleOpen }) => {
   const sections = content.filter(row => row.sectionTitle);
   if (sections.length === 0) return null;
-
   return (
     <div className="toc-header-wrapper">
-      <motion.button
-        whileTap={{ scale: 0.95 }}
-        className={`toc-toggle-btn ${isOpen ? 'active' : ''}`}
-        onClick={toggleOpen}
-        // Button etwas runder machen, da kein Text mehr drin ist
-        style={{ padding: '8px', borderRadius: '50%', aspectRatio: '1/1', justifyContent: 'center' }}
-      >
+      <motion.button whileTap={{ scale: 0.95 }} className={`toc-toggle-btn ${isOpen ? 'active' : ''}`} onClick={toggleOpen} style={{ padding: '8px', borderRadius: '50%', aspectRatio: '1/1', justifyContent: 'center' }}>
         <BookOpen size={20} />
-        {/* Text wurde hier entfernt */}
-        {/* Kleiner Pfeil optional behalten oder auch entfernen, hier behalten für UX */}
         <ChevronDown size={14} className={`toc-chevron ${isOpen ? 'rotated' : ''}`} style={{ marginLeft: 0 }} />
       </motion.button>
-
       <AnimatePresence>
         {isOpen && (
           <>
             <div className="toc-backdrop" onClick={toggleOpen} />
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="toc-dropdown-solid"
-            >
+            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="toc-dropdown-solid">
               {sections.map((sec, idx) => (
-                <button key={idx} className="toc-item-solid" onClick={() => { onJump(sec.id); toggleOpen(); }}>
-                  {sec.sectionTitle[appLang]}
-                </button>
+                <button key={idx} className="toc-item-solid" onClick={() => { onJump(sec.id); toggleOpen(); }}>{sec.sectionTitle[appLang]}</button>
               ))}
             </motion.div>
           </>
@@ -206,41 +217,11 @@ const TableOfContents = ({ content, appLang, onJump, isOpen, toggleOpen }) => {
     </div>
   );
 };
-// --- GEBETSZEILE (MEMOIZED) ---
-// src/App.js
 
-// ... (Imports bleiben gleich)
-
-// --- GEBETSZEILE (LOGIK UPDATE: SOFORTIGE HINWEISE) ---
-const PrayerRowWithLogic = memo(({
-  row,
-  rowID,
-  appLang,
-  dynamicLangs,
-  hasMenu,
-  handleMenuAction,
-  hasNav,
-  handleNavAction,
-  getSpeakerClass,
-  hints,
-  // triggeredHints und setTriggeredHints brauchen wir nicht mehr
-  openHint,
-  selectedLiturgy,
-  userRole
-}) => {
-
-  // Eindeutiger Schlüssel für den Hinweis
+// --- GEBETSZEILE ---
+const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, hasNav, handleNavAction, getSpeakerClass, hints, openHint, selectedLiturgy, userRole }) => {
   const uniqueHintKey = selectedLiturgy ? `${selectedLiturgy}_id_${rowID}` : `generic_id_${rowID}`;
-
-  // PRÜFUNG: Gibt es einen Hinweis für DIESE Rolle an DIESER Stelle?
-  // Das !! macht daraus einen echten ja/nein (boolean) Wert
-  const hasHintData =
-    hints &&
-    hints[uniqueHintKey] &&
-    hints[uniqueHintKey].roles &&
-    hints[uniqueHintKey].roles[userRole];
-
-  // LÖSUNG: Zeige Icon SOFORT, wenn Daten da sind. Kein Warten auf Scrollen.
+  const hasHintData = hints && hints[uniqueHintKey] && hints[uniqueHintKey].roles && hints[uniqueHintKey].roles[userRole];
   const showIcon = !!hasHintData;
 
   return (
@@ -250,61 +231,34 @@ const PrayerRowWithLogic = memo(({
           <h4 className="section-title">{row.sectionTitle[appLang]}</h4>
         </div>
       )}
-
       <div className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
-
-        {/* Hinweis Icon - Erscheint sofort, wenn Text für die Rolle existiert */}
         {showIcon && (
-          <motion.div
-            className="hint-trigger-icon"
-            onClick={() => openHint(uniqueHintKey)}
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            !
-          </motion.div>
+          <motion.div className="hint-trigger-icon" onClick={() => openHint(uniqueHintKey)} initial={{ scale: 0 }} animate={{ scale: 1 }} whileTap={{ scale: 0.9 }}>!</motion.div>
         )}
-
         {row.speaker && <span className="speaker">{row.speaker}</span>}
-
         <div className="text-grid" style={{ gridTemplateColumns: `repeat(${dynamicLangs.length || 1}, 1fr)` }}>
-          {[...dynamicLangs].map(lang => (
-            <p key={lang} className={`text-line lang-${lang}`}>{row[lang]}</p>
-          ))}
+          {[...dynamicLangs].map(lang => (<p key={lang} className={`text-line lang-${lang}`}>{row[lang]}</p>))}
         </div>
-
-        {/* Menü & Navigations Knöpfe */}
         {(hasMenu || hasNav) && (
           <div className="inline-menu-container">
             {hasMenu && row.reconciliation_menu.map((btn, idx) => (
-              <button
-                key={`menu-${idx}`}
-                className="inline-menu-btn"
-                onClick={() => handleMenuAction(btn.action)}
-              >
-                <span className="btn-label-ar">{btn.label_ar}</span>
-                <span className="btn-label-de">{btn.label_de}</span>
+              <button key={`menu-${idx}`} className="inline-menu-btn" onClick={() => handleMenuAction(btn.action)}>
+                <span className="btn-label-ar">{btn.label_ar}</span><span className="btn-label-de">{btn.label_de}</span>
               </button>
             ))}
-
             {hasNav && row.navigationButtons.map((btn, idx) => (
-              <button
-                key={`nav-${idx}`}
-                className="inline-menu-btn"
-                onClick={() => handleNavAction(btn)}
-              >
-                <span className="btn-label-ar">{btn.label_ar}</span>
-                <span className="btn-label-de">{btn.label_de}</span>
+              <button key={`nav-${idx}`} className="inline-menu-btn" onClick={() => handleNavAction(btn)}>
+                <span className="btn-label-ar">{btn.label_ar}</span><span className="btn-label-de">{btn.label_de}</span>
               </button>
             ))}
           </div>
         )}
-
       </div>
     </>
   );
 });
+
+// --- HAUPT APP KOMPONENTE ---
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState(null);
@@ -314,10 +268,10 @@ export default function App() {
   const [activeLangs, setActiveLangs] = useState(['de', 'ar', 'cop_ar']);
   const [showSettings, setShowSettings] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
+  const [showSupport, setShowSupport] = useState(false); // Die Variable für das Popup
   const [targetScrollId, setTargetScrollId] = useState(null);
   const [fontSize, setFontSize] = useState(1);
   const [appTheme, setAppTheme] = useState('dark');
-  const [triggeredHints, setTriggeredHints] = useState([]);
   const [activeHintData, setActiveHintData] = useState(null);
 
   const scrollContainerRef = useRef(null);
@@ -332,23 +286,15 @@ export default function App() {
   const openHint = useCallback((id) => {
     const hint = liturgyHints[id];
     if (!hint || !hint.roles) return;
-
     const roleHint = hint.roles[userRole];
-    if (!roleHint) return; // Rolle hat keinen Hinweis → nichts anzeigen
-
-    setActiveHintData({
-      id,
-      ...roleHint
-    });
+    if (!roleHint) return;
+    setActiveHintData({ id, ...roleHint });
   }, [userRole]);
-
 
   const scrollToElementById = (id) => {
     if (!scrollContainerRef.current) return;
     const element = scrollContainerRef.current.querySelector(`[data-id="${id}"]`);
-    if (element) {
-      element.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ block: 'center', behavior: 'smooth' });
   };
 
   useLayoutEffect(() => {
@@ -367,19 +313,11 @@ export default function App() {
   const handleMenuAction = useCallback((action) => {
     if (!action) return;
     const litMap = {
-      goto_basily_start: ['basily', null],
-      goto_basily_id_5: ['basily', 5],
-      goto_basily_id_222: ['basily', 222],
-      goto_cyrillus_start: ['kerollosy', null],
-      goto_cyrillus_id_9: ['kerollosy', 9],
-      goto_cyrillus_id_16: ['kerollosy', 16],
-      goto_cyrillus_id_23: ['kerollosy', 23],
-      goto_gregorios_id_22: ['gregorios', 22],
-      goto_gregorios_id_5: ['gregorios', 5],
-      goto_rejoice_mary: ['rejoice_mary', null],
-      goto_aspasmos_adam: ['aspasmos_adam', null],
-      goto_lord_of_hosts: ['lord_of_hosts', null],
-      goto_aspasmos_watos_1: ['aspasmos_watos_1', null]
+      goto_basily_start: ['basily', null], goto_basily_id_5: ['basily', 5], goto_basily_id_222: ['basily', 222],
+      goto_cyrillus_start: ['kerollosy', null], goto_cyrillus_id_9: ['kerollosy', 9], goto_cyrillus_id_16: ['kerollosy', 16], goto_cyrillus_id_23: ['kerollosy', 23],
+      goto_gregorios_id_22: ['gregorios', 22], goto_gregorios_id_5: ['gregorios', 5], goto_gregorios_start: ['gregorios', null],
+      goto_rejoice_mary: ['rejoice_mary', null], goto_aspasmos_adam: ['aspasmos_adam', null],
+      goto_lord_of_hosts: ['lord_of_hosts', null], goto_aspasmos_watos_1: ['aspasmos_watos_1', null]
     };
     if (litMap[action]) {
       setSelectedLiturgy(litMap[action][0]);
@@ -401,7 +339,6 @@ export default function App() {
   }, []);
 
   const t = (key, subKey) => subKey ? uiTranslations[key][subKey][appLang] : uiTranslations.titles[key][appLang];
-
   const getSpeakerClass = useCallback((speaker) => {
     const s = speaker?.toLowerCase().trim() || "";
     if (s.startsWith('p')) return "speaker-priester";
@@ -431,61 +368,61 @@ export default function App() {
       <div className="bg-image"></div>
       <div className="overlay"></div>
 
-      <AnimatePresence>{activeHintData && (
-        <motion.div className="hint-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeHintPopup}>
-          <div className="hint-box" onClick={e => e.stopPropagation()}>
-            <h2 className="hint-title">{appLang === 'ar' ? 'تنبيه' : 'Hinweis'}</h2>
-            <div className="hint-text">{activeHintData[appLang] || activeHintData['de']}</div>
-            <button className="hint-btn" onClick={closeHintPopup}>{appLang === 'ar' ? 'حسناً' : 'OK'}</button>
-          </div>
-        </motion.div>
-      )}</AnimatePresence>
+      <AnimatePresence>
+        {activeHintData && (
+          <motion.div className="hint-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeHintPopup}>
+            <div className="hint-box" onClick={e => e.stopPropagation()}>
+              <h2 className="hint-title">{appLang === 'ar' ? 'تنبيه' : 'Hinweis'}</h2>
+              <div className="hint-text">{activeHintData[appLang] || activeHintData['de']}</div>
+              <button className="hint-btn" onClick={closeHintPopup}>{appLang === 'ar' ? 'حسناً' : 'OK'}</button>
+            </div>
+          </motion.div>
+        )}
 
+        {showSettings && (
+          <SettingsPopup
+            appLang={appLang} setAppLang={setAppLang} activeLangs={activeLangs}
+            toggleLanguage={l => setActiveLangs(prev => prev.includes(l) ? (prev.length > 1 ? prev.filter(x => x !== l) : prev) : (prev.length < 3 ? [...prev, l] : prev))}
+            fontSize={fontSize} changeFontSize={setFontSize} appTheme={appTheme} setAppTheme={setAppTheme}
+            setRole={setUserRole} userRole={userRole} close={() => setShowSettings(false)} t={t}
+          />
+        )}
 
-
-      <AnimatePresence>{showSettings && (
-        <SettingsPopup
-          appLang={appLang}
-          setAppLang={setAppLang}
-          activeLangs={activeLangs}
-          toggleLanguage={l => setActiveLangs(prev => prev.includes(l) ? (prev.length > 1 ? prev.filter(x => x !== l) : prev) : (prev.length < 3 ? [...prev, l] : prev))}
-          fontSize={fontSize}
-          changeFontSize={setFontSize}
-          appTheme={appTheme}
-          setAppTheme={setAppTheme}
-          setRole={setUserRole}
-          userRole={userRole} // Wichtig: Rolle übergeben
-          close={() => setShowSettings(false)}
-          t={t}
-        />
-      )}</AnimatePresence>
+        {/* HIER WIRD DAS POPUP AUFGERUFEN - ZENTRAL! */}
+        {showSupport && (
+          <SupportPopup onClose={() => setShowSupport(false)} />
+        )}
+      </AnimatePresence>
 
       <header className="header">
-        {/* Links: Back Button */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           {view !== 'home' ? (
             <motion.button whileTap={{ scale: 0.9 }} onClick={handleBack} className="icon-btn">
-              <ArrowLeft size={28} />
+              <ArrowLeft size={24} />
             </motion.button>
-          ) : <div style={{ width: 48 }}></div>}
+          ) : <div style={{ width: 24 }}></div>}
 
-          {/* Inhaltsverzeichnis: Hier direkt neben dem Back-Button positioniert */}
+          {/* Der Knopf im Header */}
+          <motion.button
+            className="icon-btn"
+            onClick={() => setShowSupport(true)}
+            whileTap={{ scale: 0.9 }}
+          >
+            <HelpCircle size={22} />
+          </motion.button>
+
           {view === 'prayer' && selectedLiturgy && (
             <TableOfContents
-              content={liturgies[selectedLiturgy].content}
-              appLang={appLang}
-              isOpen={showTOC}
-              toggleOpen={() => setShowTOC(!showTOC)}
-              onJump={scrollToElementById}
+              content={liturgies[selectedLiturgy].content} appLang={appLang}
+              isOpen={showTOC} toggleOpen={() => setShowTOC(!showTOC)} onJump={scrollToElementById}
             />
           )}
         </div>
 
-        {/* Rechts: Datum & Zahnrad */}
         <div className="header-right-group">
           <div className="coptic-date-display">{getCopticDate(appLang)}</div>
           <motion.button whileTap={{ rotate: 90 }} onClick={() => setShowSettings(!showSettings)} className="icon-btn">
-            <Settings size={28} />
+            <Settings size={24} />
           </motion.button>
         </div>
       </header>
@@ -493,7 +430,7 @@ export default function App() {
       <main className="content">
         <AnimatePresence mode='wait'>
           {view === 'home' && (
-            <motion.div key="home" className="center-view">
+            <motion.div key="home" className="center-view" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <div className="center-content-wrapper">
                 <motion.img src="/logo.png" className="main-logo" animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 5 }} />
                 <h1 className="church-title">{t('homeSubtitle')}</h1>
@@ -507,7 +444,7 @@ export default function App() {
           )}
 
           {view === 'liturgyMenu' && (
-            <motion.div key="menu" className="center-view">
+            <motion.div key="menu" className="center-view" initial={{ x: 100 }} animate={{ x: 0 }} exit={{ x: -100 }}>
               <div className="center-content-wrapper">
                 <h2 className="page-title">{t('chooseLiturgy')}</h2>
                 <div className="btn-group">
@@ -528,29 +465,27 @@ export default function App() {
                 <div className="prayer-content">
                   {liturgies[selectedLiturgy].content.map((row, index) => {
                     const dynamicLangs = activeLangs.filter(l => row[l]?.trim());
+                    if (row.counter) return <KyrieCounter key={index} initialCount={row.counter} />;
                     return (
                       <PrayerRowWithLogic
-                        key={index}
-                        row={row}
-                        rowID={row.id || index}
-                        appLang={appLang}
-                        dynamicLangs={dynamicLangs}
-                        hasMenu={!!row.reconciliation_menu?.length}
-                        handleMenuAction={handleMenuAction}
-                        hasNav={!!row.navigationButtons?.length}
-                        handleNavAction={handleNavAction}
-                        getSpeakerClass={getSpeakerClass}
-                        hints={liturgyHints}
-                        // HIER WURDEN DIE 'triggeredHints' PROPS ENTFERNT:
-                        openHint={openHint}
-                        selectedLiturgy={selectedLiturgy}
-                        userRole={userRole}
+                        key={index} row={row} rowID={row.id || index} appLang={appLang} dynamicLangs={dynamicLangs}
+                        hasMenu={!!row.reconciliation_menu?.length} handleMenuAction={handleMenuAction}
+                        hasNav={!!row.navigationButtons?.length} handleNavAction={handleNavAction}
+                        getSpeakerClass={getSpeakerClass} hints={liturgyHints} openHint={openHint}
+                        selectedLiturgy={selectedLiturgy} userRole={userRole}
                       />
                     );
                   })}
                 </div>
                 <div style={{ height: '100px' }}></div>
               </div>
+            </div>
+          )}
+
+          {(view === 'agpeya' || view === 'bible') && (
+            <div className="center-view">
+              <h2 style={{ color: 'var(--gold)' }}>Coming Soon...</h2>
+              <button onClick={() => setView('home')} className="hint-btn">Zurück</button>
             </div>
           )}
         </AnimatePresence>
@@ -577,7 +512,6 @@ function RoleSelectionScreen({ setRole, appLang, setAppLang }) {
     </div>
   );
 }
-
 function RoleCard({ labelDe, labelAr, onClick }) {
   return (
     <motion.div className="role-card" onClick={onClick} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
@@ -586,7 +520,6 @@ function RoleCard({ labelDe, labelAr, onClick }) {
     </motion.div>
   );
 }
-
 function MenuButton({ text, onClick, highlight, icon }) {
   return (
     <motion.button whileTap={{ scale: 0.96 }} onClick={onClick} className={`menu-btn ${highlight ? 'highlight' : ''}`}>
@@ -594,7 +527,6 @@ function MenuButton({ text, onClick, highlight, icon }) {
     </motion.button>
   );
 }
-
 function LoadingScreen({ appLang }) {
   return (
     <div className="loading-screen">

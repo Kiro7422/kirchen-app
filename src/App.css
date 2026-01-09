@@ -937,3 +937,129 @@ input[type=range] {
   align-items: center;
   gap: 10px;
 }
+
+/* --- SUPPORT POPUP (ZENTRIERT & SCROLLBAR) --- */
+
+/* Hintergrund abdunkeln */
+.support-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9998;
+  /* Ganz weit vorne */
+  backdrop-filter: blur(5px);
+}
+
+/* Das Fenster in der Mitte */
+.support-popup {
+  position: fixed;
+  /* Fixiert am Bildschirm */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Exakte Mitte */
+
+  width: 90%;
+  max-width: 450px;
+  /* Optimale Breite */
+  max-height: 85vh;
+  /* Maximal 85% der Bildschirmhöhe */
+  overflow-y: auto;
+  /* Scrollbar anziehen! */
+
+  background: #1a1a1a;
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  padding: 20px;
+
+  z-index: 9999;
+  /* Über dem Backdrop */
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+  color: var(--text-main);
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) #1a1a1a;
+}
+
+/* Header fixieren, damit er beim Scrollen sichtbar bleibt */
+.support-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+  position: sticky;
+  top: -20px;
+  background: #1a1a1a;
+  z-index: 10;
+  padding-top: 5px;
+}
+
+/* ... Rest der Styles (Formular, Dev-Cards etc.) bleiben gleich ... */
+/* Falls du sie nicht mehr hast, hier kurz die wichtigsten: */
+
+.dev-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border-left: 4px solid var(--gold);
+}
+
+.dev-name {
+  color: var(--gold);
+  font-weight: bold;
+  display: block;
+}
+
+.dev-detail {
+  font-size: 0.85rem;
+  color: #ccc;
+  display: block;
+  word-break: break-word;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  color: white;
+  padding: 12px;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--gold);
+  color: black;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.success-message {
+  color: #4caf50;
+  border: 1px solid #4caf50;
+  padding: 15px;
+  text-align: center;
+  border-radius: 6px;
+}
