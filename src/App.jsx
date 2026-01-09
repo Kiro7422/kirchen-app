@@ -207,6 +207,11 @@ const TableOfContents = ({ content, appLang, onJump, isOpen, toggleOpen }) => {
   );
 };
 // --- GEBETSZEILE (MEMOIZED) ---
+// src/App.js
+
+// ... (Imports bleiben gleich)
+
+// --- GEBETSZEILE (LOGIK UPDATE: SOFORTIGE HINWEISE) ---
 const PrayerRowWithLogic = memo(({
   row,
   rowID,
@@ -218,43 +223,25 @@ const PrayerRowWithLogic = memo(({
   handleNavAction,
   getSpeakerClass,
   hints,
-  triggeredHints,
-  setTriggeredHints,
+  // triggeredHints und setTriggeredHints brauchen wir nicht mehr
   openHint,
   selectedLiturgy,
   userRole
 }) => {
-  const rowRef = useRef(null);
 
   // Eindeutiger Schlüssel für den Hinweis
   const uniqueHintKey = selectedLiturgy ? `${selectedLiturgy}_id_${rowID}` : `generic_id_${rowID}`;
 
-  // PROBLEM 2 LÖSUNG: Strikte Prüfung
-  // Gibt es einen Hinweis? UND gibt es Text spezifisch für MEINE Rolle?
-  // Wenn hints[key].roles[userRole] undefined ist, wird hasHintData false.
+  // PRÜFUNG: Gibt es einen Hinweis für DIESE Rolle an DIESER Stelle?
+  // Das !! macht daraus einen echten ja/nein (boolean) Wert
   const hasHintData =
     hints &&
     hints[uniqueHintKey] &&
     hints[uniqueHintKey].roles &&
     hints[uniqueHintKey].roles[userRole];
 
-  // Zeige Icon nur, wenn es getriggert wurde UND Daten für diese Rolle existieren
-  const showIcon = triggeredHints.includes(uniqueHintKey) && !!hasHintData;
-
-  useEffect(() => {
-    // Observer nur starten, wenn es überhaupt einen Hinweis für diese Rolle gibt
-    if (!hasHintData || showIcon) return;
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setTriggeredHints(prev => prev.includes(uniqueHintKey) ? prev : [...prev, uniqueHintKey]);
-        observer.disconnect();
-      }
-    }, { threshold: 0.6 });
-
-    if (rowRef.current) observer.observe(rowRef.current);
-    return () => observer.disconnect();
-  }, [hasHintData, showIcon, uniqueHintKey, setTriggeredHints]);
+  // LÖSUNG: Zeige Icon SOFORT, wenn Daten da sind. Kein Warten auf Scrollen.
+  const showIcon = !!hasHintData;
 
   return (
     <>
@@ -264,13 +251,15 @@ const PrayerRowWithLogic = memo(({
         </div>
       )}
 
-      <div ref={rowRef} className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
+      <div className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
 
-        {/* Hinweis Icon - Erscheint nur für die richtige Rolle */}
+        {/* Hinweis Icon - Erscheint sofort, wenn Text für die Rolle existiert */}
         {showIcon && (
           <motion.div
             className="hint-trigger-icon"
             onClick={() => openHint(uniqueHintKey)}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
             whileTap={{ scale: 0.9 }}
           >
             !
@@ -285,11 +274,9 @@ const PrayerRowWithLogic = memo(({
           ))}
         </div>
 
-        {/* PROBLEM 3 LÖSUNG: Die Knöpfe werden jetzt hier gerendert */}
+        {/* Menü & Navigations Knöpfe */}
         {(hasMenu || hasNav) && (
           <div className="inline-menu-container">
-
-            {/* Menü Knöpfe (z.B. Versöhnungsgebet Auswahl) */}
             {hasMenu && row.reconciliation_menu.map((btn, idx) => (
               <button
                 key={`menu-${idx}`}
@@ -301,7 +288,6 @@ const PrayerRowWithLogic = memo(({
               </button>
             ))}
 
-            {/* Navigations Knöpfe (z.B. Springe zu Wassergebet) */}
             {hasNav && row.navigationButtons.map((btn, idx) => (
               <button
                 key={`nav-${idx}`}
@@ -555,13 +541,11 @@ export default function App() {
                         handleNavAction={handleNavAction}
                         getSpeakerClass={getSpeakerClass}
                         hints={liturgyHints}
-                        triggeredHints={triggeredHints}
-                        setTriggeredHints={setTriggeredHints}
+                        // HIER WURDEN DIE 'triggeredHints' PROPS ENTFERNT:
                         openHint={openHint}
                         selectedLiturgy={selectedLiturgy}
                         userRole={userRole}
                       />
-
                     );
                   })}
                 </div>

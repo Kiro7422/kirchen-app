@@ -8,40 +8,31 @@
 :root {
   /* --- DARK THEME (Standard) --- */
   --bg-main: #000000;
-  /* Startseite */
-
-  /* Hintergrund Grau, damit er sich von den schwarzen Karten abhebt */
   --bg-paper: #222222;
-
-  /* Karten komplett Schwarz */
   --card-bg: #000000;
 
   --gold: #D4AF37;
-  --red: #ff8a80;
+
+  /* ÄNDERUNG: Reines, leuchtendes Signalrot */
+  --red: #FF0000;
 
   --text-main: #ffffff;
   --text-dim: #bbbbbb;
 
-  /* Hintergrundbild (Muster) */
   --prayer-bg-image: url('/backgrounddark.png');
   --prayer-bg-blend: overlay;
 
-  /* Header & Sektionen */
   --header-bg: #1a1a1a;
   --section-bg: #000000;
   --section-text: #D4AF37;
   --section-border: rgba(212, 175, 55, 0.5);
-
   --overlay-color: rgba(0, 0, 0, 0.8);
 
   /* --- ROLLE TEXTFARBEN (DARK MODE) --- */
   --prayer-text-priester: #ffffff;
   --prayer-text-diakon: #FFD700;
-  /* Gold */
   --prayer-text-volk: #ff9e80;
-  /* Lachsrot (heller für Schwarz) */
 
-  /* Hintergründe für aktive Rollen */
   --bg-diakon-active: linear-gradient(145deg, #001a1d 0%, #000000 100%);
   --bg-priester-active: linear-gradient(145deg, #1f1a00 0%, #000000 100%);
 
@@ -55,7 +46,9 @@
   --card-bg: #ffffff;
 
   --gold: #B8860B;
-  --red: #c62828;
+
+  /* ÄNDERUNG: Kräftiges Rot (Crimson) für hellen Hintergrund */
+  --red: #DC143C;
 
   --text-main: #000000;
   --text-dim: #555555;
@@ -67,7 +60,6 @@
   --section-bg: #ffffff;
   --section-text: #8B0000;
   --section-border: rgba(139, 0, 0, 0.2);
-
   --overlay-color: rgba(255, 255, 255, 0.6);
 
   --prayer-text-priester: #000000;
@@ -82,13 +74,9 @@
 [data-theme='sepia'] {
   --bg-main: #e8e0c5;
   --bg-paper: #e8e0c5;
-  /* Helles Kaffeebraun/Beige */
   --card-bg: #f4ecd8;
-  /* Helles Creme/Papier */
 
   --prayer-bg-image: url('/background.png');
-
-  /* ÄNDERUNG HIER: 'multiply' macht die Struktur schärfer und deutlicher */
   --prayer-bg-blend: multiply;
 
   --section-bg: #dcd0b0;
@@ -96,24 +84,19 @@
   --section-border: rgba(91, 70, 54, 0.2);
 
   --text-main: #463428;
-  /* Dunkles Kaffeebraun */
   --text-dim: #7a6652;
   --header-bg: #e0d6b6;
   --overlay-color: rgba(232, 224, 197, 0.6);
 
   --gold: #8B4513;
-  /* SaddleBrown */
-  --red: #8a3324;
 
-  /* --- ROLLE TEXTFARBEN (SEPIA MODE) --- */
+  /* ÄNDERUNG: Starkes Rot statt Braun-Rot */
+  --red: #D32F2F;
+
   --prayer-text-priester: #2c1b0e;
-  /* Sehr dunkles Braun */
   --prayer-text-volk: #8a3324;
-  /* Rostrot */
   --prayer-text-diakon: #006064;
-  /* Dunkles Petrol */
 
-  /* Hintergründe für aktive Rollen */
   --bg-diakon-active: linear-gradient(145deg, #e0f2f1 0%, #f4ecd8 100%);
   --bg-priester-active: linear-gradient(145deg, #fff8e1 0%, #f4ecd8 100%);
 }
@@ -699,15 +682,16 @@ input[type=range] {
 
 @keyframes pulse-red {
   0% {
-    box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.7);
+    /* ÄNDERUNG: 255, 0, 0 ist knalliges Rot */
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
   }
 
   70% {
-    box-shadow: 0 0 0 10px rgba(139, 0, 0, 0);
+    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(139, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
   }
 }
 
