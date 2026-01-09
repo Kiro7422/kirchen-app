@@ -191,20 +191,42 @@ const TableOfContents = ({ content, appLang, onJump, isOpen, toggleOpen }) => {
 };
 
 // --- GEBETSZEILE (MEMOIZED) ---
-const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, hasNav, handleNavAction, getSpeakerClass, hints, triggeredHints, setTriggeredHints, openHint, selectedLiturgy, userRole }) => {
+const PrayerRowWithLogic = memo(({
+  row,
+  rowID,
+  appLang,
+  dynamicLangs,
+  hasMenu,
+  handleMenuAction,
+  hasNav,
+  handleNavAction,
+  getSpeakerClass,
+  hints,
+  triggeredHints,
+  setTriggeredHints,
+  openHint,
+  selectedLiturgy,
+  userRole
+}) => {
   const rowRef = useRef(null);
+
+  // Eindeutiger Schlüssel für den Hinweis
   const uniqueHintKey = selectedLiturgy ? `${selectedLiturgy}_id_${rowID}` : `generic_id_${rowID}`;
 
-  // PRÜFUNG: Gibt es einen Hinweis für DIESE Rolle an DIESER Stelle?
+  // PROBLEM 2 LÖSUNG: Strikte Prüfung
+  // Gibt es einen Hinweis? UND gibt es Text spezifisch für MEINE Rolle?
+  // Wenn hints[key].roles[userRole] undefined ist, wird hasHintData false.
   const hasHintData =
     hints &&
     hints[uniqueHintKey] &&
     hints[uniqueHintKey].roles &&
     hints[uniqueHintKey].roles[userRole];
 
-  const showIcon = triggeredHints.includes(uniqueHintKey) && hasHintData;
+  // Zeige Icon nur, wenn es getriggert wurde UND Daten für diese Rolle existieren
+  const showIcon = triggeredHints.includes(uniqueHintKey) && !!hasHintData;
 
   useEffect(() => {
+    // Observer nur starten, wenn es überhaupt einen Hinweis für diese Rolle gibt
     if (!hasHintData || showIcon) return;
 
     const observer = new IntersectionObserver(([entry]) => {
@@ -225,7 +247,10 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
           <h4 className="section-title">{row.sectionTitle[appLang]}</h4>
         </div>
       )}
+
       <div ref={rowRef} className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
+
+        {/* Hinweis Icon - Erscheint nur für die richtige Rolle */}
         {showIcon && (
           <motion.div
             className="hint-trigger-icon"
@@ -235,18 +260,49 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
             !
           </motion.div>
         )}
+
         {row.speaker && <span className="speaker">{row.speaker}</span>}
+
         <div className="text-grid" style={{ gridTemplateColumns: `repeat(${dynamicLangs.length || 1}, 1fr)` }}>
           {[...dynamicLangs].map(lang => (
             <p key={lang} className={`text-line lang-${lang}`}>{row[lang]}</p>
           ))}
         </div>
-        {/* ... Menü/Nav Logik ... */}
+
+        {/* PROBLEM 3 LÖSUNG: Die Knöpfe werden jetzt hier gerendert */}
+        {(hasMenu || hasNav) && (
+          <div className="inline-menu-container">
+
+            {/* Menü Knöpfe (z.B. Versöhnungsgebet Auswahl) */}
+            {hasMenu && row.reconciliation_menu.map((btn, idx) => (
+              <button
+                key={`menu-${idx}`}
+                className="inline-menu-btn"
+                onClick={() => handleMenuAction(btn.action)}
+              >
+                <span className="btn-label-ar">{btn.label_ar}</span>
+                <span className="btn-label-de">{btn.label_de}</span>
+              </button>
+            ))}
+
+            {/* Navigations Knöpfe (z.B. Springe zu Wassergebet) */}
+            {hasNav && row.navigationButtons.map((btn, idx) => (
+              <button
+                key={`nav-${idx}`}
+                className="inline-menu-btn"
+                onClick={() => handleNavAction(btn)}
+              >
+                <span className="btn-label-ar">{btn.label_ar}</span>
+                <span className="btn-label-de">{btn.label_de}</span>
+              </button>
+            ))}
+          </div>
+        )}
+
       </div>
     </>
   );
 });
-
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState(null);
