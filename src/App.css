@@ -825,6 +825,169 @@ input[type=range] {
   font-size: 2.5rem;
 }
 
+.toc-container {
+  position: fixed;
+  top: 70px;
+  /* Unter dem Header */
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Spiegelbildlich für Arabisch */
+[lang="ar"] .toc-container {
+  right: auto;
+  left: 20px;
+}
+
+.toc-toggle-btn {
+  background: var(--gold-dark);
+  color: white;
+  border: 1px solid var(--gold);
+  padding: 8px 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.toc-dropdown {
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  margin-top: 10px;
+  width: 250px;
+  max-height: 60vh;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  padding: 5px;
+}
+
+.toc-item {
+  width: 100%;
+  text-align: left;
+  padding: 12px 15px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+[lang="ar"] .toc-item {
+  text-align: right;
+}
+
+.toc-item:last-child {
+  border-bottom: none;
+}
+
+.toc-item:hover {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+/* --- Dropdown im Header --- */
+.toc-header-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.toc-toggle-btn {
+  background: var(--gold-dark, #8a6d3b);
+  color: white;
+  border: 1px solid var(--gold, #d4af37);
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.toc-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.toc-chevron {
+  transition: transform 0.3s ease;
+}
+
+.toc-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.toc-dropdown-solid {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  /* Komplett undurchsichtig */
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  width: 260px;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  padding: 8px 0;
+}
+
+.toc-item-solid {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  color: white;
+  text-align: left;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  cursor: pointer;
+}
+
+[lang="ar"] .toc-item-solid {
+  text-align: right;
+}
+
+.toc-item-solid:hover {
+  background: rgba(212, 175, 55, 0.2);
+}
+
+.toc-item-solid:last-child {
+  border-bottom: none;
+}
+
+.toc-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: -1;
+}
+
+.role-badge {
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  border: 1px solid var(--gold);
+  padding: 5px 10px;
+  border-radius: 15px;
+  background: transparent;
+  cursor: pointer;
+}
+
 .counter-label {
   position: absolute;
   bottom: -25px;

@@ -341,6 +341,10 @@ export const liturgies = {
             },
             {
                 id: 28,
+                sectionTitle: {
+                    de: "Fürbitten",
+                    ar: "الهيتنيات"
+                },
                 speaker: "Volk",
                 cop_ar: "سوتيس آمين كي طو بنيڤماتي سو",
                 de: "Erlöst Amen und mit deinem Geiste",
@@ -531,6 +535,10 @@ export const liturgies = {
             },
             {
                 id: 43,
+                sectionTitle: {
+                    de: "Das Dreimalheilig",
+                    ar: "اجيوس",
+                },
                 speaker: "Volk",
                 cop_ar: "أجيوس أوثيئوس: أجيوس إس شيروس: أجيوس أثانا طوس: إسطافرو تيس ذي إيماس إيليسون إيماس.\nأجيوس أوثيئوس: أجيوس إس شيروس: أجيوس أثانا طوس: أو إكبر ثينو جينيتيس إيليسون إيماس.\nأجيوس أوثيئوس: أجيوس إس شيروس: أجيوس أثانا طوس: أو أنسطاس إك طون نيكرون كيه أنيلثون إيس طوس أورانوس إيليسون إيماس.\nذو كصابتري كيه إيو كيه آجيو إبنڤماتى: كيه نين كيه آ أى كيه إسطوس إيه أوناس طون إيه أونون آمين. آجيا إترياس إيليسون إيماس.",
                 de: "Heiliger Gott, Heiliger Starker, Heiliger Unsterblicher, gekreuzigt an unserer statt: Erbarme dich unser.\nHeiliger Gott, Heiliger Starker, Heiliger Unsterblicher, von der Jungfrau geboren: Erbarme dich unser.\nHeiliger Gott, Heiliger Mächtiger, Heiliger Unsterblicher, auferstanden von den Toten und aufgefahren in den Himmel: Erbarme Dich unser.\nEhre sei dem Vater und dem Sohn und dem Heiligen Geist, jetzt und immer und in alle Ewigkeit. Amen. Heilige Dreifaltigkeit, erbarme Dich unser.",
@@ -942,6 +950,10 @@ export const liturgies = {
             },
             {
                 id: 6,
+                sectionTitle: {
+                    de: "Durch die Fürsprachen",
+                    ar: "بشفاعات"
+                },
                 speaker: "Volk",
                 cop_ar: "هيتين نى إبريسفيا إنتيه تى ثيه أوطوكوس إثؤواب ماريا: إبتشويس أرى إهموت نان إمبى كو إيفول إنتيه نين نوفى.\nتين أوأوشت إممو ك أو بخرستوس: نيم بيك يوت إن آغاثوس: نيم بي إبنفما إثؤواب: جيه (أك إى / أكطونك) أكسوتى إممون.\nإيليوس إيرينيس ثيسيا إينيسي أوس.",
                 de: "Durch die Fürsprachen der Mutter Gottes, der heiligen Maria, gewähre uns, o Herr, die Vergebung unserer Sünden.\nWir beten dich an, o Christus, zusammen mit deinem guten Vater, und dem Heiligen Geist, denn Du bist (gekommen / auferstanden) und hast uns erlöst.\nErbarmen des Friedens, Opfer des Lobes.",
@@ -1639,6 +1651,10 @@ export const liturgies = {
             // ID 60: Gebet für den Frieden der Kirche und Einheit (Priester)
             {
                 id: 60,
+                sectionTitle: {
+                    de: "Die Gebte",
+                    ar: "الاواشي"
+                },
                 speaker: "Priester",
                 ar: "اجعلنا مستحقين كلنا يا سيدنا ان نتناول من قدساتك طهارة لأنفسنا اجسادنا وأرواحنا.\nلكي نكون جسداً واحداً وروحاً واحداً ونجد نصيباً وميراثاً مع جمع القديسين الذين ارضوك منذ البدء.\nاذكر يارب سلام كنيستك الواحدة الوحيدة المقدسة الجامعة الرسولية.",
                 de: "Mache uns alle würdig, unser Herr, dass wir an dem Heiligen teilhaben, zur Reinigung unserer Seelen, unserer Leiber und unserer Geister,\ndamit wir ein einziger Leib und ein einziger Geist werden, und Anteil und Erbe mit allen Heiligen erlangen, die dir seit Anbeginn wohlgefallen haben.\nGedenke, o Herr, des Friedens Deiner einen, einzigen, heiligen, universalen und apostolischen Kirche.",
@@ -1869,6 +1885,10 @@ export const liturgies = {
             },
             {
                 id: 77,
+                sectionTitle: {
+                    de: "Gebet für die Opfergaben",
+                    ar: "اوشيه القرابين"
+                },
                 speaker: "Priester",
                 ar: "أذكر يارب الذين قدموا لك هذه القرابين والذين قدمت عنهم والذين قدمت بواسطتهم أعطهم كلهم الأجر السمائي.",
                 de: "Gedenke, o Herr, derer, die dir diese Gaben dargebracht haben derer, für die sie dargebracht werden und derer, durch die sie dargebracht werden. Gib ihnen allen den himmlischen Lohn.",
@@ -1899,6 +1919,10 @@ export const liturgies = {
             },
             {
                 id: 80,
+                sectionTitle: {
+                    de: "Die Gemeinschaft der Heiligen",
+                    ar: "المجمع"
+                },
                 speaker: "Priester",
                 ar: "لأن هذا يا رب هو أمر ابنك الوحيد أن نشترك في تذكار قديسيك. تفضل يارب أن تذكر جميع القديسين الذين أرضوك منذ البدء آبائنا القديسين رؤساء الآباء والأنبياء والرسل والمبشرين والإنجيليين والشهداء والمعترفين وكل أرواح الصديقين الذين كملوا في الإيمان. وبالأكثر القديسة المملوءة مجداً العذراء كل حين والدة الإله القديسة الطاهرة مريم، التي ولدت الله الكلمة بالحقيقة والقديس يوحنا السابق الصابغ والشهيد والقديس استفانوس رئيس الشمامسة وأول الشهداء وناظر الإله الإنجيلي مرقس الرسول الطاهر والشهيد والبطريرك القديس ساويرس ومعلمنا ديوسقورس والقديس أثناسيوس الرسولي والقديس بطرس رئيس الكهنة وخاتم الشهداء والقديس يوحنا ذهبي الفم والقديس ثيؤدوسيوس والقديس ثيؤفيلوس والقديس ديمتريوس والقديس كيرلس والقديس باسيليوس والقديس اغريغوريوس الناطق بالإلهيات والقديس اغريغوريوس الصانع العجائب والقديس اغريغوريوس الأرمني والثلاثمائة والثمانية عشر المجتمعين بنقية والمئة والخمسين بالقسطنطينية والمائتين بأفسس وأبانا الصديق العظيم أنبا أنطونيوس والبار أنبا بولا والثلاثة أنبا مقارات القديسين وجميع أولادهم لباس الصليب وأبانا أنبا يحنس القمص وأبانا أنبا بيشوي البار الرجل الكامل حبيب مخلصنا الصالح وأبانا أنبا بولا الطموهي وحزقيال تلميذه وسيدي الأبوين القديسين الروميين مكسيموس ودوماديوس والتسعة والأربعين شهيداً شيوخ شيهيت والقوي القديس أنبا موسى ويحنس كاما القس وأبانا أنبا ايسيذورس القمص وأبانا أنبا دانيال وأبانا أنبا باخوم صاحب الشركة وتادرس تلميذه وأبانا أنبا شنودة رئيس المتوحدين وأنبا ويصا تلميذه والبطريرك البابا كيرلس السادس، الارشيدياكون حبيب جرجس وأبانا أنبا إبرآم أسقف الفيوم وأبانا القمص ميخائيل البحيري تلميذه وكل مصاف قديسيك هؤلاء الذين بسؤلاتهم وطلباتهم ارحمنا كلنا معاً وانقذنا من أجل اسمك القدوس الذي دعي علينا.",
 
@@ -1995,6 +2019,10 @@ export const liturgies = {
             },
             {
                 id: 86,
+                sectionTitle: {
+                    de: "Einleitung des Gebets zum Brotbrechen",
+                    ar: "مقدمه القسمه "
+                },
                 speaker: "Priester",
                 ar: "السلام لجميعكم.",
                 de: "Friede sei mit euch allen.",
@@ -2154,6 +2182,10 @@ export const liturgies = {
             },
             {
                 id: 101,
+                sectionTitle: {
+                    de: "Das Bekenntnis",
+                    ar: "الاعتراف"
+                },
                 speaker: "Volk",
                 ar: "بالمسيح يسوع ربنا.",
                 de: "Durch Christus Jesus, unsern Herrn.",
@@ -2384,6 +2416,160 @@ export const liturgies = {
                 cop_de: "Doxa si Kyrie doxa si.",
                 ar_de: "El-magd laka ya Rabb, el-magd laka."
             },
+            {
+                id: 123,
+                sectionTitle: {
+                    de: "Psalm 150",
+                    ar: "المزمور 150"
+                },
+                speaker: "Volk",
+                ar: "سبحوا الله، في جميع قديسيه، هليلويا.",
+                de: " Lobt Gott in seinem Heiligtum! Halleluja.",
+                cop_ar: "إزمو إي إفنوتى خين نى إثؤواب تيرو إنتاف: الليلويا.",
+                cop_cop: "Ⲥ̀ⲙⲟⲩ ⲉ̀ⲫ̀ⲛⲟⲩϯ ϧⲉⲛ ⲛⲏⲉⲑⲟⲩⲁⲃ ⲧⲏⲣⲟⲩ ⲛ̀ⲧⲁϥ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Smou e-Phnouti khen ni-ethouab tirou entaf: Allelouia.",
+                ar_de: "Sabbihou Allah fi gami3 qadissih, Hallelujah."
+            },
+            {
+                id: 124,
+                speaker: "Volk",
+                ar: "سبحوه في جلد قوته، هليلويا.",
+                de: "Lobt ihn in seiner mächtigen Feste! Halleluja.",
+                cop_ar: "إزمو إيروف خين بى تاجرو إنتيه تيفجوم: الليلويا.",
+                cop_cop: "Ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟϥ ϧⲉⲛ ⲡⲓⲧⲁϫⲣⲟ ⲛ̀ⲧⲉ ⲧⲉϥϫⲟⲙ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Smou erof khen pi-tajro ente tef-jom: Allelouia.",
+                ar_de: "Sabbihouhou fi galad qowatih, Hallelujah."
+            },
+            {
+                id: 125,
+                speaker: "Volk",
+                ar: "سبحوه على مقدرته، هليلويا.",
+                de: "Lobt ihn für seine großen Taten! Halleluja.",
+                cop_ar: "إزمو إيروف إهرى هيجين تيف ميت جوري: الليلويا.",
+                cop_cop: "Ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟϥ ⲉ̀ϩ̀ⲣⲏⲓ ϩⲓϫⲉⲛ ⲧⲉϥⲙⲉⲧϫⲱⲣⲓ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Smou erof ehri hijen tef-met-jori: Allelouia.",
+                ar_de: "Sabbihouhou 3ala maqdaratih, Hallelujah."
+            },
+            {
+                id: 126,
+                speaker: "Volk",
+                ar: "سبحوه ككثرة عظمته، هليلويا.",
+                de: "Lobt ihn in seiner gewaltigen Größe! Halleluja.",
+                cop_ar: "إزمو إيروف كاتا إب أوشا إنتيه تيف ميت نيشتى: الليلويا.",
+                cop_cop: "Ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟϥ ⲕⲁⲧⲁ ⲡ̀ⲁϣⲁⲓ ⲛ̀ⲧⲉ ⲧⲉϥⲙⲉⲧⲛⲓϣϯ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Smou erof kata ep-ashai ente tef-met-nishti: Allelouia.",
+                ar_de: "Sabbihouhou kata kathrat 3azmatih, Hallelujah."
+            },
+            {
+                id: 127,
+                speaker: "Volk",
+                ar: "سبحوه بصوت البوق، هليلويا.",
+                de: "Lobt ihn mit dem Schall des Horns! Halleluja.",
+                cop_ar: "إزمو إيروف خين أو إسمى إن سيلبينغوس: الليلويا.",
+                cop_cop: "Ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟϥ ϧⲉⲛ ⲟⲩⲥ̀ⲙⲏ ⲛ̀ⲥⲁⲗⲡⲓⲅⲅⲟⲥ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Smou erof khen ou-smi en-salpingos: Allelouia.",
+                ar_de: "Sabbihouhou be-sawt el-bouq, Hallelujah."
+            },
+            {
+                id: 128,
+                speaker: "Volk",
+                ar: "سبحوه بمزمار وقيثارة، هليلويا.",
+                de: "Lobt ihn mit Harfe und Zither! Halleluja.",
+                cop_ar: "إزمو إيروف خين أو إبسالتيريون نيم أو كيثارا: الليلويا.",
+                cop_cop: "Ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟϥ ϧⲉⲛ ⲟⲩⲯⲁⲗⲧⲏⲣⲓⲟⲛ ⲛⲉⲙ ⲟⲩⲕⲓⲑⲁⲣⲁ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Smou erof khen ou-psaltirion nem ou-kithara: Allelouia.",
+                ar_de: "Sabbihouhou be-mezmar wa qithara, Hallelujah."
+            },
+            {
+                id: 129,
+                speaker: "Volk",
+                ar: "سبحوه بدفوف وصفوف، هليلويا.",
+                de: " Lobt ihn mit Pauken und Reigen! Halleluja.",
+                cop_ar: "إزمو إيروف خين هان كيم كيم نيم هان خورس: الليلويا.",
+                cop_cop: "Ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟϥ ϧⲉⲛ ϩⲁⲛⲕⲉⲙⲕⲉⲙ ⲛⲉⲙ ϩⲁⲛⲭⲟⲣⲟⲥ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Smou erof khen han-kemkem nem han-khoros: Allelouia.",
+                ar_de: "Sabbihouhou be-dofouf wa sofouf, Hallelujah."
+            },
+            {
+                id: 130,
+                speaker: "Volk",
+                ar: "سبحوه بأوتار وأرغن، هليلويا.",
+                de: "Lobt ihn mit Flöten und Saitenspiel! Halleluja.",
+                cop_ar: "إزمو إيروف خين هان كاب نيم أو أورغانون: الليلويا.",
+                cop_cop: "Ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟϥ ϧⲉⲛ ϩⲁⲛⲕⲁⲡ ⲛⲉⲙ ⲟⲩⲟⲣⲅⲁⲛⲟⲛ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Smou erof khen han-kap nem ou-organon: Allelouia.",
+                ar_de: "Sabbihouhou be-awtar wa organ, Hallelujah."
+            },
+            {
+                id: 131,
+                speaker: "Volk",
+                ar: "سبحوه بصنوج حسنة الصوت، هليلويا.",
+                de: " Lobt ihn mit wohlklingenden Zimbeln! Halleluja.",
+                cop_ar: "إزمو إيروف خين هان كيمفالون إن إيسيتو إيسمى: الليلويا.",
+                cop_cop: "Ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟϥ ϧⲉⲛ ϩⲁⲛⲕⲩⲙⲃⲁⲗⲟⲛ ⲉⲛⲉⲥⲉⲧⲟⲩⲥ̀ⲙⲏ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Smou erof khen han-kimvalon en-esetou-smi: Allelouia.",
+                ar_de: "Sabbihouhou be-sonoug hasanat el-sawt, Hallelujah."
+            },
+            {
+                id: 132,
+                speaker: "Volk",
+                ar: "سبحوه بصنوج التهليل، هليلويا.",
+                de: "Lobt ihn mit schallenden Zimbeln! Halleluja.",
+                cop_ar: "إزمو إيروف خين هان كيمفالون إنتيه أو إيشميليل: الليلويا.",
+                cop_cop: "Ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟϥ ϧⲉⲛ ϩⲁⲛⲕⲩⲙⲃⲁⲗⲟⲛ ⲛ̀ⲧⲉ ⲟⲩⲉϣⲗⲏⲗⲟⲩⲓ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Smou erof khen han-kimvalon ente ou-eshleloui: Allelouia.",
+                ar_de: "Sabbihouhou be-sonoug el-tahlil, Hallelujah."
+            },
+            {
+                id: 133,
+                speaker: "Volk",
+                ar: "كل نسمة فلتسبح اسم الرب إلهنا، هليلويا.",
+                de: " Alles, was atmet, lobe den Namen des Herrn, unseres Gottes! Halleluja.",
+                cop_ar: "نيفيفى نيفين مارو إزمو تيرو إي إفران إم إبشويس بين نوتى: الليلويا.",
+                cop_cop: "Ⲛⲓϥⲉⲓϥⲓ ⲛⲓⲃⲉⲛ ⲙⲁⲣⲟⲩⲥ̀ⲙⲟⲩ ⲧⲏⲣⲟⲩ ⲉ̀ⲫ̀ⲣⲁⲛ ⲙ̀Ⲡ̀ϭⲟⲓⲥ ⲡⲉⲛⲛⲟⲩϯ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Nifeifi niben marousmou tirou e-phran em-Pchois pennouti: Allelouia.",
+                ar_de: "Kol nasama feltosabbih ism el-Rabb ilahina, Hallelujah."
+            },
+            {
+                id: 134,
+                speaker: "Volk",
+                ar: "المجد للآب والابن والروح القدس، هليلويا.",
+                de: "Ehre sei dem Vater und dem Sohn und dem Heiligen Geist. Halleluja.",
+                cop_ar: "ذوكصا باترى نيم إيو نيم أجيو إبنوماتى: الليلويا.",
+                cop_cop: "Ⲇⲟⲝⲁ Ⲡⲁⲧ̀ⲣⲓ ⲕⲉ Ⲩⲓⲱ ⲕⲉ Ⲁⲅⲓⲱ Ⲡ̀ⲛⲉⲩⲙⲁⲧⲓ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Doxa Patri ke Yio ke Agio Pnevmati: Allelouia.",
+                ar_de: "El-magd lel-Ab wal-Ibn wal-Rouh el-Qodos, Hallelujah."
+            },
+            {
+                id: 135,
+                speaker: "Volk",
+                ar: "الآن وكل أوان وإلى دهر الدهور آمين، هليلويا.",
+                de: " Jetzt und immerdar und in Ewigkeit. Amen. Halleluja.",
+                cop_ar: "كى نين كى آ إى كى إيستوس إي أوناس تون إي أونون آمين: الليلويا.",
+                cop_cop: "Ⲕⲉ ⲛⲩⲛ ⲕⲉ ⲁ̀ⲉⲓ ⲕⲉ ⲉⲓⲥ ⲧⲟⲩⲥ ⲁⲓⲱⲛⲁⲥ ⲧⲱⲛ ⲁⲓⲱⲛⲱⲛ: Ⲁ̀ⲙⲏⲛ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Ke nin ke ai ke istous e-onas ton e-onon: Amin: Allelouia.",
+                ar_de: "Al-an wa kol awan wa ila dahr el-dohour, Amin, Hallelujah."
+            },
+            {
+                id: 136,
+                speaker: "Volk",
+                ar: "هليلويا، هليلويا، المجد لك يا إلهنا، هليلويا.",
+                de: "Halleluja, Halleluja, Ehre sei Dir, unser Gott. Halleluja.",
+                cop_ar: "الليلويا، الليلويا، ذوكصاصى أو ثيؤوس إيمون: الليلويا.",
+                cop_cop: "Ⲁ̅Ⲗ̅ Ⲁ̅Ⲗ̅: Ⲇⲟⲝⲁ ⲥⲟⲓ ⲟ̔ Ⲑⲉⲟⲥ ⲏ̔ⲙⲱⲛ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Allelouia, Allelouia: Doxa si o Theos imon: Allelouia.",
+                ar_de: "Hallelujah, Hallelujah, el-magd laka ya ilahina, Hallelujah."
+            },
+            {
+                id: 137,
+                speaker: "Volk",
+                ar: "هليلويا، هليلويا، المجد لإلهنا، هليلويا.",
+                de: " Halleluja, Halleluja, Ehre sei unserem Gott. Halleluja.",
+                cop_ar: "الليلويا، الليلويا، بى أواو إن بين نوتى بيه: الليلويا.",
+                cop_cop: "Ⲁ̅Ⲗ̅ Ⲁ̅Ⲗ̅: Ⲡⲓⲱⲟⲩ ⲙ̀ⲡⲉⲛⲛⲟⲩϯ ⲡⲉ: Ⲁ̅Ⲗ̅.",
+                cop_de: "Allelouia, Allelouia: Pi-o-ou em-pennouti pe: Allelouia.",
+                ar_de: "Hallelujah, Hallelujah, el-magd le-ilahina, Hallelujah."
+            },
         ],
     },
 
@@ -2490,6 +2676,10 @@ export const liturgies = {
             },
             {
                 id: 10,
+                sectionTitle: {
+                    de: "Durch die Fürsprachen",
+                    ar: "بشفاعات"
+                },
                 speaker: "Volk",
                 cop_de: "Hiten ni-presvia ente ti-theotokos eth-ouab Maria: Ep-schois ari-hmot nan em-pi-ko ewol ente nen-novi. Ten-u-oscht emmok o Pi-Christos: nem Pek-yot en-agathos: nem Pi-pnevma eth-ouab: dsche (ak-i / ak-tonk) ak-soti emmon. Eleos irinis thisia eneseos.",
                 de: "Durch die Fürsprachen der Mutter Gottes, der Heiligen Maria, vergib uns, o Herr, unsere Sünden durch Deine Gnade. Wir beten dich an, o Christus, zusammen mit deinem guten Vater, und dem Heiligen Geist, denn du bist (auferstanden/gekommen) und hast uns erlöst. Erbarmen des Friedens, Opfer des Lobes.",
