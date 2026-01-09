@@ -1,7 +1,7 @@
 /* src/App.js */
 import React, { useState, useEffect, useRef, useLayoutEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, ArrowLeft, BookOpen, User, Sun, Moon, Coffee, Check, ChevronDown } from 'lucide-react';
+import { Settings, ArrowLeft, BookOpen, User, Sun, Moon, Coffee, Check, ChevronDown, Globe } from 'lucide-react';
 import { liturgies, languages, uiTranslations, liturgyHints } from './liturgyData';
 import './App.css';
 
@@ -40,7 +40,7 @@ const getCopticDate = (appLang) => {
     : `${cDay}. ${monthName} ${cYear} A.M.`;
 };
 
-// --- KYRIE COUNTER ---
+// --- KYRIE COUNTER (Zählt -3) ---
 const KyrieCounter = ({ initialCount }) => {
   const [count, setCount] = useState(initialCount);
   const [isFinished, setIsFinished] = useState(false);
@@ -80,18 +80,37 @@ const KyrieCounter = ({ initialCount }) => {
   );
 };
 
-// --- SETTINGS POPUP ---
-const SettingsPopup = memo(({ appLang, activeLangs, toggleLanguage, fontSize, changeFontSize, appTheme, setAppTheme, close, t }) => {
+// --- SETTINGS POPUP (Sprache & Rolle jetzt hier drin) ---
+const SettingsPopup = memo(({ appLang, setAppLang, activeLangs, toggleLanguage, fontSize, changeFontSize, appTheme, setAppTheme, setRole, userRole, close, t }) => {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="settings-popup">
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="settings-popup"
+    >
+      <h3 style={{ color: 'var(--gold)', textAlign: 'center', marginTop: 0 }}>
+        {t('settings')}
+        <span className="current-role-indicator">
+          {userRole === 'priester' ? 'Kahn' : userRole === 'diakon' ? 'Schamas' : 'Shaab'}
+        </span>
+      </h3>
+
+      {/* App Sprache Umschalter (Wieder da!) */}
       <div className="settings-section">
-        <label className="settings-label">{t('prayerLanguages')}</label>
-        <div className="lang-grid">
-          {Object.entries(languages).map(([key, info]) => (
-            <button key={key} className={`lang-btn ${activeLangs.includes(key) ? 'active' : ''}`} onClick={() => toggleLanguage(key)} disabled={!activeLangs.includes(key) && activeLangs.length >= 3}>
-              {info.label}
-            </button>
-          ))}
+        <label className="settings-label"><Globe size={14} /> App Language</label>
+        <div className="theme-grid">
+          <button className={`theme-btn ${appLang === 'de' ? 'active' : ''}`} onClick={() => setAppLang('de')}>DE</button>
+          <button className={`theme-btn ${appLang === 'ar' ? 'active' : ''}`} onClick={() => setAppLang('ar')}>AR</button>
+        </div>
+      </div>
+
+      <div className="settings-section">
+        <label className="settings-label"><User size={14} /> {appLang === 'ar' ? 'تغيير الدور' : 'Rolle ändern'}</label>
+        <div className="theme-grid">
+          <button className={`theme-btn ${userRole === 'priester' ? 'active' : ''}`} onClick={() => setRole('priester')}>Priester</button>
+          <button className={`theme-btn ${userRole === 'diakon' ? 'active' : ''}`} onClick={() => setRole('diakon')}>Diakon</button>
+          <button className={`theme-btn ${userRole === 'volk' ? 'active' : ''}`} onClick={() => setRole('volk')}>Volk</button>
         </div>
       </div>
 
@@ -99,7 +118,11 @@ const SettingsPopup = memo(({ appLang, activeLangs, toggleLanguage, fontSize, ch
         <label className="settings-label">{appLang === 'ar' ? 'حجم الخط' : 'Schriftgröße'}</label>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span>A</span>
-          <input type="range" min="0.8" max="1.8" step="0.1" value={fontSize} onChange={(e) => changeFontSize(parseFloat(e.target.value))} />
+          <input
+            type="range" min="0.8" max="1.8" step="0.1"
+            value={fontSize}
+            onChange={(e) => changeFontSize(parseFloat(e.target.value))}
+          />
           <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>A</span>
         </div>
       </div>
@@ -112,12 +135,13 @@ const SettingsPopup = memo(({ appLang, activeLangs, toggleLanguage, fontSize, ch
           <button className={`theme-btn ${appTheme === 'sepia' ? 'active' : ''}`} onClick={() => setAppTheme('sepia')}><Coffee size={16} /></button>
         </div>
       </div>
+
       <button className="close-btn" onClick={close}>{t('done')}</button>
     </motion.div>
   );
 });
 
-// --- TABLE OF CONTENTS ---
+// --- INHALTSVERZEICHNIS ---
 const TableOfContents = ({ content, appLang, onJump, isOpen, toggleOpen }) => {
   const sections = content.filter(row => row.sectionTitle);
   if (sections.length === 0) return null;
@@ -125,10 +149,11 @@ const TableOfContents = ({ content, appLang, onJump, isOpen, toggleOpen }) => {
   return (
     <div className="toc-header-wrapper">
       <motion.button whileTap={{ scale: 0.95 }} className={`toc-toggle-btn ${isOpen ? 'active' : ''}`} onClick={toggleOpen}>
-        <BookOpen size={20} />
+        <BookOpen size={18} />
         <span className="toc-label">{appLang === 'ar' ? 'الفهرس' : 'Inhalt'}</span>
-        <ChevronDown size={16} className={`toc-chevron ${isOpen ? 'rotated' : ''}`} />
+        <ChevronDown size={14} className={`toc-chevron ${isOpen ? 'rotated' : ''}`} />
       </motion.button>
+
       <AnimatePresence>
         {isOpen && (
           <>
@@ -147,26 +172,33 @@ const TableOfContents = ({ content, appLang, onJump, isOpen, toggleOpen }) => {
   );
 };
 
-// --- PRAYER ROW ---
-const PrayerRowWithLogic = memo(({
-  row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, hasNav, handleNavAction, getSpeakerClass, hints, triggeredHints, setTriggeredHints, openHint, selectedLiturgy
-}) => {
+// --- GEBETSZEILE (MEMOIZED) ---
+const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, hasNav, handleNavAction, getSpeakerClass, hints, triggeredHints, setTriggeredHints, openHint, selectedLiturgy, userRole }) => {
   const rowRef = useRef(null);
   const uniqueHintKey = selectedLiturgy ? `${selectedLiturgy}_id_${rowID}` : `generic_id_${rowID}`;
-  const hasHintData = hints && hints[uniqueHintKey];
-  const showIcon = triggeredHints.includes(uniqueHintKey);
+
+  // WICHTIG: Nur true, wenn ein Hinweis existiert UND dieser explizit für die userRole definiert ist
+  const hasHintForMe =
+    hints &&
+    hints[uniqueHintKey] &&
+    hints[uniqueHintKey].roles &&
+    hints[uniqueHintKey].roles[userRole]; // Prüft z.B. hints['basily_id_24'].roles['volk']
+
+  const showIcon = triggeredHints.includes(uniqueHintKey) && hasHintForMe;
 
   useEffect(() => {
-    if (!hasHintData || showIcon) return;
+    if (!hasHintForMe || showIcon) return; // Wenn kein Hinweis für meine Rolle da ist, mach nichts
+
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setTriggeredHints(prev => prev.includes(uniqueHintKey) ? prev : [...prev, uniqueHintKey]);
         observer.disconnect();
       }
     }, { threshold: 0.6 });
+
     if (rowRef.current) observer.observe(rowRef.current);
     return () => observer.disconnect();
-  }, [hasHintData, showIcon, uniqueHintKey, setTriggeredHints]);
+  }, [hasHintForMe, showIcon, uniqueHintKey, setTriggeredHints]);
 
   return (
     <>
@@ -175,7 +207,8 @@ const PrayerRowWithLogic = memo(({
           <h4 className="section-title">{row.sectionTitle[appLang]}</h4>
         </div>
       )}
-      <div ref={rowRef} className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID}>
+      <div ref={rowRef} className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
+        {/* Das Icon erscheint NUR, wenn hasHintForMe wahr ist */}
         {showIcon && (
           <motion.div className="hint-trigger-icon" onClick={() => openHint(uniqueHintKey)} whileTap={{ scale: 0.9 }}>!</motion.div>
         )}
@@ -237,22 +270,24 @@ export default function App() {
   const closeHintPopup = () => setActiveHintData(null);
   const openHint = useCallback((id) => {
     const hint = liturgyHints[id];
-    if (hint) setActiveHintData({ id, ...hint });
-  }, []);
+    if (!hint || !hint.roles) return;
+
+    const roleHint = hint.roles[userRole];
+    if (!roleHint) return; // Rolle hat keinen Hinweis → nichts anzeigen
+
+    setActiveHintData({
+      id,
+      ...roleHint
+    });
+  }, [userRole]);
+
 
   const scrollToElementById = (id) => {
-    let attempts = 0;
-    const checkAndScroll = () => {
-      if (!scrollContainerRef.current) return;
-      const element = scrollContainerRef.current.querySelector(`[data-id="${id}"]`);
-      if (element) {
-        element.scrollIntoView({ block: 'center', behavior: 'smooth' });
-      } else if (attempts < 50) {
-        attempts++;
-        requestAnimationFrame(checkAndScroll);
-      }
-    };
-    requestAnimationFrame(checkAndScroll);
+    if (!scrollContainerRef.current) return;
+    const element = scrollContainerRef.current.querySelector(`[data-id="${id}"]`);
+    if (element) {
+      element.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }
   };
 
   useLayoutEffect(() => {
@@ -262,14 +297,10 @@ export default function App() {
     }
   }, [selectedLiturgy, targetScrollId, view]);
 
-  // --- LOGIK FÜR ZURÜCK BUTTON ---
   const handleBack = () => {
     setShowTOC(false);
-    if (view === 'prayer') {
-      setView('liturgyMenu');
-    } else if (view === 'liturgyMenu' || view === 'bible' || view === 'agpeya') {
-      setView('home');
-    }
+    if (view === 'prayer') setView('liturgyMenu');
+    else setView('home');
   };
 
   const handleMenuAction = useCallback((action) => {
@@ -310,11 +341,35 @@ export default function App() {
 
   const t = (key, subKey) => subKey ? uiTranslations[key][subKey][appLang] : uiTranslations.titles[key][appLang];
 
+  const getSpeakerClass = useCallback((speaker) => {
+    const s = speaker?.toLowerCase().trim() || "";
+    if (s.startsWith('p')) return "speaker-priester";
+    if (s.startsWith('d')) return "speaker-diakon";
+    if (s === "volk" || s === "v") return "speaker-volk";
+    return "";
+  }, []);
+
   if (loading) return <LoadingScreen appLang={appLang} />;
-  if (!userRole) return <RoleSelectionScreen setRole={setUserRole} appLang={appLang} setAppLang={setAppLang} />;
+
+  if (!userRole) {
+    return (
+      <div className="app-container">
+        <div className="bg-image"></div>
+        <div className="overlay"></div>
+        <RoleSelectionScreen setRole={setUserRole} appLang={appLang} setAppLang={setAppLang} />
+      </div>
+    );
+  }
+
+  let prayerModeClass = "prayer-mode";
+  if (userRole === 'diakon') prayerModeClass += " role-diakon-active";
+  if (userRole === 'priester') prayerModeClass += " role-priester-active";
 
   return (
     <div className="app-container">
+      <div className="bg-image"></div>
+      <div className="overlay"></div>
+
       <AnimatePresence>{activeHintData && (
         <motion.div className="hint-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeHintPopup}>
           <div className="hint-box" onClick={e => e.stopPropagation()}>
@@ -325,40 +380,48 @@ export default function App() {
         </motion.div>
       )}</AnimatePresence>
 
+
+
       <AnimatePresence>{showSettings && (
-        <SettingsPopup appLang={appLang} activeLangs={activeLangs} toggleLanguage={l => setActiveLangs(prev => prev.includes(l) ? (prev.length > 1 ? prev.filter(x => x !== l) : prev) : (prev.length < 3 ? [...prev, l] : prev))} fontSize={fontSize} changeFontSize={setFontSize} appTheme={appTheme} setAppTheme={setAppTheme} close={() => setShowSettings(false)} t={t} />
+        <SettingsPopup
+          appLang={appLang}
+          setAppLang={setAppLang}
+          activeLangs={activeLangs}
+          toggleLanguage={l => setActiveLangs(prev => prev.includes(l) ? (prev.length > 1 ? prev.filter(x => x !== l) : prev) : (prev.length < 3 ? [...prev, l] : prev))}
+          fontSize={fontSize}
+          changeFontSize={setFontSize}
+          appTheme={appTheme}
+          setAppTheme={setAppTheme}
+          setRole={setUserRole}
+          userRole={userRole} // Wichtig: Rolle übergeben
+          close={() => setShowSettings(false)}
+          t={t}
+        />
       )}</AnimatePresence>
 
       <header className="header">
+        {/* Back-Button: Jetzt immer sichtbar außer auf Home */}
         {view !== 'home' ? (
           <motion.button whileTap={{ scale: 0.9 }} onClick={handleBack} className="icon-btn">
             <ArrowLeft size={28} />
           </motion.button>
-        ) : (
-          <div style={{ width: '48px' }}></div> /* Platzhalter für Symmetrie */
+        ) : <div style={{ width: 48 }}></div>}
+
+        {/* TOC in der Mitte (durch CSS transform zentriert) */}
+        {view === 'prayer' && selectedLiturgy && (
+          <TableOfContents
+            content={liturgies[selectedLiturgy].content}
+            appLang={appLang}
+            isOpen={showTOC}
+            toggleOpen={() => setShowTOC(!showTOC)}
+            onJump={scrollToElementById}
+          />
         )}
 
-        {view === 'prayer' && selectedLiturgy && liturgies[selectedLiturgy] && (
-          <TableOfContents content={liturgies[selectedLiturgy].content} appLang={appLang} isOpen={showTOC} toggleOpen={() => setShowTOC(!showTOC)} onJump={scrollToElementById} />
-        )}
-
-        <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', gap: '8px' }}>
-          {/* Sprachwahl immer sichtbar */}
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <LanguageToggle current={appLang} lang='de' setLang={setAppLang} label="DE" />
-            <LanguageToggle current={appLang} lang='ar' setLang={setAppLang} label="AR" />
-          </div>
-
+        <div className="header-right-group">
           <div className="coptic-date-display">{getCopticDate(appLang)}</div>
-
-          {/* Rollenwechsel Badge */}
-          <motion.button whileTap={{ scale: 0.95 }} onClick={() => setUserRole(null)} className="role-badge">
-            <User size={14} />
-            {userRole === 'diakon' ? (appLang === 'ar' ? 'شماس' : 'Diakon') : userRole === 'priester' ? (appLang === 'ar' ? 'كاهن' : 'Priester') : (appLang === 'ar' ? 'شعب' : 'Volk')}
-          </motion.button>
-
           <motion.button whileTap={{ rotate: 90 }} onClick={() => setShowSettings(!showSettings)} className="icon-btn">
-            <Settings size={24} />
+            <Settings size={28} />
           </motion.button>
         </div>
       </header>
@@ -366,7 +429,7 @@ export default function App() {
       <main className="content">
         <AnimatePresence mode='wait'>
           {view === 'home' && (
-            <motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="center-view">
+            <motion.div key="home" className="center-view">
               <div className="center-content-wrapper">
                 <motion.img src="/logo.png" className="main-logo" animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 5 }} />
                 <h1 className="church-title">{t('homeSubtitle')}</h1>
@@ -380,7 +443,7 @@ export default function App() {
           )}
 
           {view === 'liturgyMenu' && (
-            <motion.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="center-view">
+            <motion.div key="menu" className="center-view">
               <div className="center-content-wrapper">
                 <h2 className="page-title">{t('chooseLiturgy')}</h2>
                 <div className="btn-group">
@@ -392,8 +455,8 @@ export default function App() {
             </motion.div>
           )}
 
-          {view === 'prayer' && selectedLiturgy && liturgies[selectedLiturgy] && (
-            <div className="prayer-mode">
+          {view === 'prayer' && selectedLiturgy && (
+            <div className={prayerModeClass}>
               <div className="scroll-area" ref={scrollContainerRef}>
                 <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                   <h3 className="liturgy-header">{liturgies[selectedLiturgy].title[appLang]}</h3>
@@ -401,19 +464,26 @@ export default function App() {
                 <div className="prayer-content">
                   {liturgies[selectedLiturgy].content.map((row, index) => {
                     const dynamicLangs = activeLangs.filter(l => row[l]?.trim());
-                    if (!dynamicLangs.length && !row.reconciliation_menu && !row.navigationButtons && !row.sectionTitle) return null;
                     return (
-                      <PrayerRowWithLogic key={index} row={row} rowID={row.id || index} appLang={appLang} dynamicLangs={dynamicLangs}
-                        hasMenu={!!row.reconciliation_menu?.length} handleMenuAction={handleMenuAction}
-                        hasNav={!!row.navigationButtons?.length} handleNavAction={handleNavAction}
-                        getSpeakerClass={val => {
-                          const s = val?.toLowerCase().trim() || "";
-                          if (s.startsWith('p')) return "speaker-priester";
-                          if (s.startsWith('d')) return "speaker-diakon";
-                          if (s === "volk" || s === "v") return "speaker-volk";
-                          return "";
-                        }} hints={liturgyHints} triggeredHints={triggeredHints} setTriggeredHints={setTriggeredHints}
-                        openHint={openHint} selectedLiturgy={selectedLiturgy} />
+                      <PrayerRowWithLogic
+                        key={index}
+                        row={row}
+                        rowID={row.id || index}
+                        appLang={appLang}
+                        dynamicLangs={dynamicLangs}
+                        hasMenu={!!row.reconciliation_menu?.length}
+                        handleMenuAction={handleMenuAction}
+                        hasNav={!!row.navigationButtons?.length}
+                        handleNavAction={handleNavAction}
+                        getSpeakerClass={getSpeakerClass}
+                        hints={liturgyHints}
+                        triggeredHints={triggeredHints}
+                        setTriggeredHints={setTriggeredHints}
+                        openHint={openHint}
+                        selectedLiturgy={selectedLiturgy}
+                        userRole={userRole}
+                      />
+
                     );
                   })}
                 </div>
@@ -427,10 +497,14 @@ export default function App() {
   );
 }
 
-// --- UI COMPONENTS ---
+// --- UI SCREENS ---
 function RoleSelectionScreen({ setRole, appLang, setAppLang }) {
   return (
     <div className="role-selection-container">
+      <div style={{ position: 'absolute', top: 20, right: 20, display: 'flex', gap: '10px' }}>
+        <button onClick={() => setAppLang('de')} style={{ color: appLang === 'de' ? 'var(--gold)' : 'white', background: 'none', border: 'none', fontWeight: 'bold' }}>DE</button>
+        <button onClick={() => setAppLang('ar')} style={{ color: appLang === 'ar' ? 'var(--gold)' : 'white', background: 'none', border: 'none', fontWeight: 'bold' }}>AR</button>
+      </div>
       <motion.img src="/logo.png" style={{ width: '120px', marginBottom: '20px' }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} />
       <h2 style={{ color: 'var(--gold)', fontFamily: 'Cairo', marginBottom: '40px' }}>{appLang === 'ar' ? 'اختر دورك' : 'Wähle deine Rolle'}</h2>
       <div className="role-grid">
@@ -451,16 +525,6 @@ function RoleCard({ labelDe, labelAr, onClick }) {
   );
 }
 
-function LanguageToggle({ current, lang, setLang, label }) {
-  return (
-    <button onClick={() => setLang(lang)} style={{
-      opacity: current === lang ? 1 : 0.4,
-      background: 'none', border: 'none', color: current === lang ? 'var(--gold)' : 'white',
-      fontWeight: 'bold', cursor: 'pointer', fontSize: '1rem', transition: '0.2s'
-    }}>{label}</button>
-  );
-}
-
 function MenuButton({ text, onClick, highlight, icon }) {
   return (
     <motion.button whileTap={{ scale: 0.96 }} onClick={onClick} className={`menu-btn ${highlight ? 'highlight' : ''}`}>
@@ -472,7 +536,7 @@ function MenuButton({ text, onClick, highlight, icon }) {
 function LoadingScreen({ appLang }) {
   return (
     <div className="loading-screen">
-      <motion.img src="/logo.png" className="loading-logo" animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 4, ease: "linear" }} />
+      <motion.img src="/logo.png" className="loading-logo" animate={{ y: [0, -30, 0] }} transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }} />
       <h2 style={{ fontFamily: 'Cairo' }}>{appLang === 'ar' ? '...جار التحميل' : 'Wird geladen...'}</h2>
     </div>
   );

@@ -5753,33 +5753,53 @@ export const liturgies = {
 
 
 export const liturgyHints = {
-    // Syntax: "LITURGIE_TYPE_ID_NUMMER": { de: "...", ar: "..." }
-
-    // --- BASILIUS LITURGIE (basily) ---
-
+    // --- BASILIUS ---
     "basily_id_1": {
-        de: "✟ Bereite das Prospharin vor (Enthüllung).",
-        ar: "✟ استعد لرفع الإبروسفارين."
+        roles: {
+            priester: {
+                de: "✟ Priester: Bereite das Prospharin vor.",
+                ar: "✟ الكاهن: استعد لرفع الإبروسفارين."
+            },
+            diakon: {
+                de: "Diakon: Achte auf die Abdeckung des Altars.",
+                ar: "الشماس: انتبه لتغطية المذبح."
+            },
+            volk: {
+                de: "Gemeinde: Steht ehrfürchtig.",
+                ar: "الشعب: قف بخشوع."
+            }
+        }
     },
 
     "basily_id_24": {
-        de: "🕯️ Zünde jetzt die Kerzen an!",
-        ar: "🕯️ أشعل الشموع الآن!"
+        roles: {
+            diakon: {
+                de: "🕯️ Diakon: Zünde jetzt die Kerzen an!",
+                ar: "🕯️ الشماس: أشعل الشموع الآن!"
+            }
+        }
     },
 
     "basily_id_222": {
-        de: "⚠️ Vergiss das Weihrauchgefäß nicht!",
-        ar: "⚠️لا تنس الشورية"
-    },
-    "basily_id_79": {
-        de: "⚠️ Vergiss das Weihrauchgefäß nicht!",
-        ar: "⚠️لا تنس الشورية"
+        roles: {
+            priester: {
+                de: "⚠️ Priester: Weihrauchgefäß nicht vergessen!",
+                ar: "⚠️ الكاهن: لا تنس الشورية!"
+            },
+            diakon: {
+                de: "⚠️ Diakon: Reiche dem Priester die Schورية.",
+                ar: "⚠️ الشماس: قدّم الشورية للكاهن."
+            }
+        }
     },
 
-    // --- BEISPIEL FÜR EINE ANDERE LITURGIE (z.B. gregory) ---
-    // Hier könnte ID 5 etwas ganz anderes bedeuten:
+    // --- GREGORIOS ---
     "gregorios_id_5": {
-        de: "Andere Anweisung für Gregorius...",
-        ar: "تنبيه مختلف للغريغوري..."
+        roles: {
+            priester: {
+                de: "Gregorius – priesterliche Anweisung.",
+                ar: "تعليمات كهنوتية للغريغوري."
+            }
+        }
     }
 };
