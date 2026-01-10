@@ -273,6 +273,13 @@ export default function App() {
   const [fontSize, setFontSize] = useState(1);
   const [appTheme, setAppTheme] = useState('dark');
   const [activeHintData, setActiveHintData] = useState(null);
+  const [selectedIDs, setSelectedIDs] = useState([]);
+
+  const toggleSelection = (id) => {
+    setSelectedIDs(prev =>
+      prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
+    );
+  };
 
   const scrollContainerRef = useRef(null);
 
@@ -317,7 +324,8 @@ export default function App() {
       goto_cyrillus_start: ['kerollosy', null], goto_cyrillus_id_9: ['kerollosy', 9], goto_cyrillus_id_16: ['kerollosy', 16], goto_cyrillus_id_23: ['kerollosy', 23],
       goto_gregorios_id_22: ['gregorios', 22], goto_gregorios_id_5: ['gregorios', 5], goto_gregorios_start: ['gregorios', null],
       goto_rejoice_mary: ['rejoice_mary', null], goto_aspasmos_adam: ['aspasmos_adam', null],
-      goto_lord_of_hosts: ['lord_of_hosts', null], goto_aspasmos_watos_1: ['aspasmos_watos_1', null]
+      goto_lord_of_hosts: ['lord_of_hosts', null], goto_aspasmos_watos_1: ['aspasmos_watos_1', null],
+      goto_offering_id_1: ['offering', 1],
     };
     if (litMap[action]) {
       setSelectedLiturgy(litMap[action][0]);
@@ -448,6 +456,18 @@ export default function App() {
               <div className="center-content-wrapper">
                 <h2 className="page-title">{t('chooseLiturgy')}</h2>
                 <div className="btn-group">
+
+                  {/* --- NEUER KNOPF: Morgenweihrauchopfer --- */}
+                  <MenuButton
+                    onClick={() => { setSelectedLiturgy('morning_incense'); setView('prayer'); }}
+                    text={t('buttons', 'morning_incense')}
+                    icon={<Sun size={20} />}
+                    highlight={true}
+                  />
+
+
+
+                  {/* --- Standard Liste --- */}
                   {['offering', 'basily', 'kerollosy', 'gregorios', 'habashy'].map(type => (
                     <MenuButton key={type} onClick={() => { setSelectedLiturgy(type); setView('prayer'); }} text={t('buttons', type)} />
                   ))}
@@ -464,8 +484,32 @@ export default function App() {
                 </div>
                 <div className="prayer-content">
                   {liturgies[selectedLiturgy].content.map((row, index) => {
+
+                    // 1. Check: Ist es das Auswahl-Menü?
+                    if (row.type === 'selection_menu') {
+                      return (
+                        <SelectionMenu
+                          key={index}
+                          data={row}
+                          selectedIDs={selectedIDs}
+                          toggle={toggleSelection}
+                          appLang={appLang}
+                        />
+                      );
+                    }
+
+                    // 2. Check: Ist es eine Doxologie (ID hat einen Punkt, z.B. "45.1")?
+                    // Wenn ja, zeige sie NUR, wenn sie ausgewählt wurde.
+                    if (row.id && row.id.toString().includes('.')) {
+                      if (!selectedIDs.includes(row.id)) {
+                        return null; // Ausblenden
+                      }
+                    }
+
+                    // 3. Normaler Inhalt (Kyrie oder Textzeile)
                     const dynamicLangs = activeLangs.filter(l => row[l]?.trim());
                     if (row.counter) return <KyrieCounter key={index} initialCount={row.counter} />;
+
                     return (
                       <PrayerRowWithLogic
                         key={index} row={row} rowID={row.id || index} appLang={appLang} dynamicLangs={dynamicLangs}
@@ -532,6 +576,72 @@ function LoadingScreen({ appLang }) {
     <div className="loading-screen">
       <motion.img src="/logo.png" className="loading-logo" animate={{ y: [0, -30, 0] }} transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }} />
       <h2 style={{ fontFamily: 'Cairo' }}>{appLang === 'ar' ? '...جار التحميل' : 'Wird geladen...'}</h2>
+    </div>
+  );
+}
+// --- NEUE KOMPONENTE: Auswahl Menü ---
+function SelectionMenu({ data, selectedIDs, toggle, appLang }) {
+  const isAr = appLang === 'ar';
+
+  return (
+    <div className="selection-menu-container" style={{
+      background: 'rgba(0,0,0,0.3)',
+      border: '1px solid var(--gold)',
+      borderRadius: '8px',
+      padding: '15px',
+      margin: '20px 10px',
+      textAlign: isAr ? 'right' : 'left'
+    }}>
+      <h3 style={{ color: 'var(--gold)', marginTop: 0, fontFamily: isAr ? 'Cairo' : 'inherit' }}>
+        {data.title}
+      </h3>
+      <p style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '15px' }}>
+        {data.description}
+      </p>
+
+      {/* Abschnitt: Feste */}
+      {data.feasts && data.feasts.length > 0 && (
+        <div style={{ marginBottom: '15px' }}>
+          <h4 style={{ color: '#fff', borderBottom: '1px solid #444', paddingBottom: '5px' }}>
+            {isAr ? 'الأعياد (تسبق التذاكية)' : 'Feste (Vor der Theotokie)'}
+          </h4>
+          {data.feasts.map(item => (
+            <label key={item.id} style={{ display: 'flex', alignItems: 'center', padding: '8px 0', cursor: 'pointer', flexDirection: isAr ? 'row-reverse' : 'row' }}>
+              <input
+                type="checkbox"
+                checked={selectedIDs.includes(item.id)}
+                onChange={() => toggle(item.id)}
+                style={{ width: '20px', height: '20px', margin: '0 10px' }}
+              />
+              <span style={{ fontSize: '1rem', fontFamily: isAr ? 'Cairo' : 'inherit' }}>
+                {isAr ? item.ar : item.de}
+              </span>
+            </label>
+          ))}
+        </div>
+      )}
+
+      {/* Abschnitt: Heilige */}
+      {data.saints && data.saints.length > 0 && (
+        <div>
+          <h4 style={{ color: '#fff', borderBottom: '1px solid #444', paddingBottom: '5px' }}>
+            {isAr ? 'القديسين' : 'Heilige'}
+          </h4>
+          {data.saints.map(item => (
+            <label key={item.id} style={{ display: 'flex', alignItems: 'center', padding: '8px 0', cursor: 'pointer', flexDirection: isAr ? 'row-reverse' : 'row' }}>
+              <input
+                type="checkbox"
+                checked={selectedIDs.includes(item.id)}
+                onChange={() => toggle(item.id)}
+                style={{ width: '20px', height: '20px', margin: '0 10px' }}
+              />
+              <span style={{ fontSize: '1rem', fontFamily: isAr ? 'Cairo' : 'inherit' }}>
+                {isAr ? item.ar : item.de}
+              </span>
+            </label>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

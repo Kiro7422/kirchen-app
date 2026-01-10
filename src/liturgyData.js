@@ -34,6 +34,7 @@ export const uiTranslations = {
         }
     },
     buttons: {
+        morning_incense: { ar: "رفع بخور باكر", de: "Morgenweihrauchopfer" },
         agpeya: { de: "Agpeya", ar: "الأجبية" },
         liturgy: { de: "Liturgie", ar: "القداسات" },
         bible: { de: "Bibel", ar: "الكتاب المقدس" },
@@ -56,6 +57,1061 @@ export const languages = {
 };
 
 export const liturgies = {
+    // --- NEU: MORGENWEIHRAUCHOPFER ---
+    morning_incense: {
+        title: { ar: "رفع بخور باكر", de: "Morgenweihrauchopfer" },
+        content: [
+            {
+                id: 1,
+                speaker: "Priester & Volk",
+                ar: "ارحمنا يا الله الآب ضابط الكل، أيها الثالوث القدوس ارحمنا. أيها الرب إله القوات كن معنا، لأنه ليس لنا معين في شدائدنا وضيقاتنا سواك. اللهم اجعلنا مستحقين أن نقول بشكر: أبانا الذي في السموات...",
+                de: "Erbarme dich unser, Gott Vater, Allmächtiger, Heilige Dreifaltigkeit, erbarme dich unser. Gott, Herr der Heerscharen, sei mit uns, denn wir haben keinen anderen Helfer in unseren Nöten und Bedrängnissen außer dir. Mache uns würdig in Dankbarkeit zu sprechen: Vater unser im Himmel...",
+                cop_ar: "إليصون إيماس أو ثيؤس أو باتير أو بانتوكراتور: باناجيا ترياس إليصون إيماس: إبشويس إفنوتي إنتي ني جوم شوبي نيمان: جي إممون إنتان إن أو فويثوس خين نين ثليفصيس نيم نين هوج هيج إيفيل إيروك. أريتين إن إمبشا إن جوس خين أو شيب إهموت: بين يوت إت خين ني فيئي...",
+                cop_cop: "Ⲉⲗⲉⲏⲥⲟⲛ ⲏⲙⲁⲥ ⲟ Ⲑⲉⲟⲥ ⲟ Ⲡⲁⲧⲏⲣ ⲟ Ⲡⲁⲛⲧⲟⲕⲣⲁⲧⲱⲣ: Ⲡⲁⲛⲁⲅⲓⲁ Ⲧⲣⲓⲁⲥ ⲉⲗⲉⲏⲥⲟⲛ ⲏⲙⲁⲥ: Ⲡ̀ϭⲟⲓⲥ Ⲫ̀ⲛⲟⲩϯ ⲛ̀ⲧⲉ ⲛⲓϫⲟⲙ ϣⲱⲡⲓ ⲛⲉⲙⲁⲛ: ϫⲉ ⲙ̀ⲙⲟⲛ ⲛ̀ⲧⲁⲛ ⲛ̀ⲟⲩⲃⲟⲏ̀ⲑⲟⲥ ϧⲉⲛ ⲛⲉⲛⲑ̀ⲗⲓⲯⲓⲥ ⲛⲉⲙ ⲛⲉⲛϩⲟϫϩⲉϫ ⲉ̀ⲃⲏⲗ ⲉ̀ⲣⲟⲕ. Ⲁⲣⲓⲧⲉⲛ ⲛ̀ⲉⲙⲡ̀ϣⲁ ⲛ̀ϫⲟⲥ ϧⲉⲛ ⲟⲩϣⲉⲡϩ̀ⲙⲟⲧ: Ⲡⲉⲛⲓⲱⲧ ⲉⲧϧⲉⲛ ⲛⲓⲫⲏⲟⲩⲓ̀...",
+                ar_de: "Erhamna ya Allah el ab dabet el kol, ayoha el thalouth el qodos erhamna. Ayoha el rab elah el qowat kon ma3ana, le anaho laysa lana mo3in fi shada2edna wa diqatana sewak. Allahom eg3alna mostahiqin an naqoul be shokr: Abana allazi fi el samawat...",
+                cop_de: "Eleison imas o Theos o Patir o Pantokrator: Panagia Trias eleison imas: Epchois Efnouti ente ni gom shopi neman: je emmon entan en ou voithos khen nen thlipsis nem nen hogheg evol erok. Ariten en emepsha en gos khen ou shep ehmot: Pen iot et khen ni feoui..."
+            },
+            {
+                id: 2,
+                sectionTitle: {
+                    de: "Das Dankugsgebet",
+                    ar: "صلاه الشكر"
+                },
+                speaker: "Priester",
+                ar: "صَلّ.",
+                de: "Betet!",
+                cop_ar: "شليل.",
+                cop_cop: "Ϣ̀ⲗⲏⲗ.",
+                ar_de: "Sall.",
+                cop_de: "EShlel."
+            },
+            {
+                id: 3,
+                speaker: "Diakon",
+                ar: "للصلاة قِفُوا.",
+                de: "Erhebt euch zum Gebet!",
+                cop_ar: "إيبي إبروسفكي إسطاثيتي.",
+                cop_cop: "Ⲉⲡⲓ ̀ⲡⲣⲟⲥⲉⲩⲭⲏ ̀ⲥⲧⲁⲑⲏⲧⲉ.",
+                ar_de: "Lel salat qefou.",
+                cop_de: "Epi prosevki stathite."
+            },
+            {
+                id: 4,
+                speaker: "Priester",
+                ar: "السَّلَامُ لِلْكُلِّ.",
+                de: "Friede sei mit euch.",
+                cop_ar: "إيريني باسي.",
+                cop_cop: "Ⲓⲣⲏⲛⲏ ⲡⲁⲥⲓ.",
+                ar_de: "El salam lel kol.",
+                cop_de: "Irini pasi."
+            },
+            {
+                id: 5,
+                speaker: "Volk",
+                ar: "ولروحك أيضاً.",
+                de: "Und mit deinem Geiste.",
+                cop_ar: "كي طو إبنيفماتي صو.",
+                cop_cop: "Ⲕⲉ ⲧⲱ ⲡⲛⲉⲩⲙⲁⲧⲓ ⲥⲟⲩ.",
+                ar_de: "Wa lirohika aydan.",
+                cop_de: "Ke to pnevmati sou."
+            },
+            {
+                id: 6,
+                speaker: "Priester",
+                ar: "فَلْنَشْكُرْ صَانِعَ الْخَيْرَاتِ، الرَّحُومَ الله، أَبَا رَبِّنَا وَإِلهِنَا وَمُخَلِّصِنَا، يَسُوعَ الْمَسِيحِ. لأَنَّهُ سَتَرَنَا، وَأَعَانَنَا، وَحَفِظَنَا، وقبلنا إليه وشَفَقَ علينَا، وعَضَّدَنَا، وأتى بنا إلى هذه الساعة. هُوَ أَيْضاً فَلْنَسْأَلْهُ أَنْ يَحْفَظَنَا فِي هَذَا الْيَوْمِ الْمُقَدَّسِ وكُلَّ أيَّام حياتِنا بِكُلِّ سلام، ضابِطُ الكُلِّ الرَّبُّ إلهُنا.",
+                de: "Lasst uns Dank sagen dem Wohltaten spendenden und erbarmungsreichen Gott, dem Vater unseres Herrn, Gottes und Erlösers Jesus Christus. Denn er hat uns beschützt, geholfen, bewahrt, uns angenommen, mit Erbarmen bedacht, gestärkt und bis zu dieser Stunde gelangen lassen. Ihn, den Allmächtigen Herrn unseren Gott, bitten wir auch, dass er uns an diesem heiligen Tag und an allen Tagen unseres Lebens in Frieden bewahre.",
+                cop_ar: "مارين شيب إهموت إنتوتف إمبي ريف إير بيث نانيو أووه إن نائيت: إفنوتي إفيوت إم بين شويس أووه بين نوتي أووه بين سوتير إيسوس بي إخرستوس. جي أف إير إسكيبازين إيجون: أف إير فو إيثين إيرون: أف أري إه إيرون: أف شوب تين إيروف: أف تي أسو إيرون: أف تي توتين أف إنتين شا إ إهري إي تاي أونيو ثاي. إنثوف أون مارين تيهو إيروف: هوبوس إنتيف أري إه إيرون: خين باي إيهوو إثؤواف فاي: نيم ني إيهوو تيرو إنتي بين أونخ: خين إيريني نيفين: إنجي بي بانتوكراتور إبشويس بين نوتي.",
+                cop_cop: "Ⲙⲁⲣⲉⲛϣⲉⲡϩ̀ⲙⲟⲧ ⲛ̀ⲧⲟⲧϥ ⲙ̀ⲡⲓⲣⲉϥⲉⲣⲡⲉⲑⲛⲁⲛⲉⲩ ⲟⲩⲟϩ ⲛ̀ⲛⲁⲏⲧ: Ⲫ̀ⲛⲟⲩϯ Ⲫ̀ⲓⲱⲧ ⲙ̀Ⲡⲉⲛϭⲟⲓⲥ ⲟⲩⲟϩ Ⲡⲉⲛⲛⲟⲩϯ ⲟⲩⲟϩ Ⲡⲉⲛⲥⲱⲧⲏⲣ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ. Ϫⲉ ⲁϥⲉⲣⲥ̀ⲕⲉⲡⲁⲍⲓⲛ ⲉ̀ϫⲱⲛ: ⲁϥⲉⲣⲃⲟⲏ̀ⲑⲓⲛ ⲉ̀ⲣⲟⲛ: ⲁϥⲁ̀ⲣⲉϩ ⲉ̀ⲣⲟⲛ: ⲁϥϣⲟⲡⲧⲉⲛ ⲉ̀ⲣⲟϥ: ⲁϥϯⲁ̀ⲥⲟ ⲉ̀ⲣⲟⲛ: ⲁϥϯⲧⲟⲧⲉⲛ ⲁϥⲉⲛⲧⲉⲛ ϣⲁ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ⲧⲁⲓⲟⲩⲛⲟⲩ ⲑⲁⲓ. Ⲛ̀ⲑⲟϥ ⲟⲛ ⲙⲁⲣⲉⲛϯϩⲟ ⲉ̀ⲣⲟϥ: ϩⲟⲡⲱⲥ ⲛ̀ⲧⲉϥⲁ̀ⲣⲉϩ ⲉ̀ⲣⲟⲛ: ϧⲉⲛ ⲡⲁⲓⲉ̀ϩⲟⲟⲩ ⲉⲑⲟⲩⲁⲃ ⲫⲁⲓ: ⲛⲉⲙ ⲛⲓⲉ̀ϩⲟⲟⲩ ⲧⲏⲣⲟⲩ ⲛ̀ⲧⲉ ⲡⲉⲛⲱⲛϧ: ϧⲉⲛ ϩⲓⲣⲏⲛⲏ ⲛⲓⲃⲉⲛ: ⲛ̀ϫⲉ Ⲡⲓⲡⲁⲛⲧⲟⲕⲣⲁⲧⲱⲣ Ⲡ̀ϭⲟⲓⲥ Ⲡⲉⲛⲛⲟⲩϯ.",
+                ar_de: "Fal nashkor sane3 el khayrat, el ra7oum Allah, aba rabina wa ilahina wa mokhalisina, Yasou3 el Masih. Le anaho satarana, wa a3anana, wa hafazana, wa qabilana ilayhi, wa shafaqa 3alayna, wa 3adadana, wa ata bina ila hazihi el sa3a. Howa aydan fal nas2alho an yahfazana fi haza el yawm el moqadas wa kol ayam 7ayatina be kol salam, dabet el kol el rab elahona.",
+                cop_de: "Maren shep ehmot entotf empi ref er peth naneu ouoh en nait: Efnouti Efiot em Penchois ouoh Pennouti ouoh Pensotir Isos Pi Khristos. Je afer skepazin egon: afer voithin eron: af areh eron: af shop ten erof: af ti aso eron: af ti toten af enten sha e hri e tai ounou thai. Enthof on maren tiho erof: hopos entef areh eron: khen pai ehoou ethowab fai: nem ni ehoou tirou ente pen onkh: khen hirini niven: enje Pi pantokrator Epchois Pennouti."
+            },
+            {
+                id: 7,
+                speaker: "Diakon",
+                ar: "صَلُّوا.",
+                de: "Betet!",
+                cop_ar: "بروسيفكساستي.",
+                cop_cop: "Ⲡⲣⲟⲥⲉⲩⲝⲁⲥⲑⲉ.",
+                ar_de: "Sallou.",
+                cop_de: "Prosevxasthe."
+            },
+            {
+                id: 8,
+                speaker: "Volk",
+                ar: "يَا رَبُّ ارْحَمْ.",
+                de: "Herr erbarme dich.",
+                cop_ar: "كيرياليسون.",
+                cop_cop: "Ⲕⲩⲣⲓⲉ̀ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ.",
+                ar_de: "Ya rab erham.",
+                cop_de: "Kyrie eleison."
+            },
+            {
+                id: 9,
+                speaker: "Priester",
+                ar: "أَيُّهَا السَّيِّدُ الرَّبُّ الْإِلهُ ضَابِطُ الْكُلِّ، أَبُو رَبِّنَا وَإِلهِنَا وَمُخَلِّصِنَا يَسُوعَ الْمَسِيحِ. نَشْكُرُكَ عَلَى كُلِّ حَالٍ، وَمِنْ أَجْلِ كُلِّ حَالٍ، وَفِي كُلِّ حَالٍ. لأَنَّكَ سَتَرْتَنَا، وَأَعَنْتَنَا، وَحَفِظْتَنَا، وَقَبِلْتَنَا إِلَيْكَ، وَشَفَقْتَ عَلَيْنَا، وَعَضَّدْتَنَا، وَأَتَيْتَ بِنَا إِلَى هذِهِ السَّاعَةِ.",
+                de: "Meister, Herr, Gott Allmächtiger, Vater unseres Herrn, Gottes und Erlösers Jesus Christus, wir danken dir für alles, wegen allem und in allem, denn du hast uns beschützt, geholfen, bewahrt, uns angenommen, mit Erbarmen bedacht, gestärkt und bis zu dieser Stunde geführt.",
+                cop_ar: "فنيب إبشويس إفنوتي بيبانتوكراتور: إفيوت إمبين شويس أووه بين نوتي أووه بين سوتير إيسوس بي إخرستوس. تين شيب إهموت إنتوتك كاطا هوب نيفين: نيم إثفي هوب نيفين: نيم خين هوب نيفين. جي أك إير إسكيبازين إيجون: أك إير فو إيثين إيرون: أك أري إه إيرون: أك شوب تين إروك: أك تي أسو إيرون: أك تي توتين أك إنتين شا إ إهري إي تاي أونيو ثاي.",
+                cop_cop: "Ⲫⲛⲏⲃ Ⲡ̀ϭⲟⲓⲥ Ⲫ̀ⲛⲟⲩϯ Ⲡⲓⲡⲁⲛⲧⲟⲕⲣⲁⲧⲱⲣ: Ⲫ̀ⲓⲱⲧ ⲙ̀Ⲡⲉⲛϭⲟⲓⲥ ⲟⲩⲟϩ Ⲡⲉⲛⲛⲟⲩϯ ⲟⲩⲟϩ Ⲡⲉⲛⲥⲱⲧⲏⲣ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ. Ⲧⲉⲛϣⲉⲡϩ̀ⲙⲟⲧ ⲛ̀ⲧⲟⲧⲕ ⲕⲁⲧⲁ ϩⲱⲃ ⲛⲓⲃⲉⲛ: ⲛⲉⲙ ⲉⲑⲃⲉ ϩⲱⲃ ⲛⲓⲃⲉⲛ: ⲛⲉⲙ ϧⲉⲛ ϩⲱⲃ ⲛⲓⲃⲉⲛ. Ϫⲉ ⲁⲕⲉⲣⲥ̀ⲕⲉⲡⲁⲍⲓⲛ ⲉ̀ϫⲱⲛ: ⲁⲕⲉⲣⲃⲟⲏ̀ⲑⲓⲛ ⲉ̀ⲣⲟⲛ: ⲁⲕⲁ̀ⲣⲉϩ ⲉ̀ⲣⲟⲛ: ⲁⲕϣⲟⲡⲧⲉⲛ ⲉ̀ⲣⲟⲕ: ⲁⲕϯⲁ̀ⲥⲟ ⲉ̀ⲣⲟⲛ: ⲁⲕϯⲧⲟⲧⲉⲛ ⲁⲕⲉⲛⲧⲉⲛ ϣⲁ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ⲧⲁⲓⲟⲩⲛⲟⲩ ⲑⲁⲓ.",
+                ar_de: "Ayoha el sayed el rab el ilah dabet el kol, abou rabina wa ilahina wa mokhalisina Yasou3 el Masih. Nashkoroka 3ala kol hal, wa men agl kol hal, wa fi kol hal. Le annaka satartana, wa a3antana, wa hafztana, wa qabiltana ilayka, wa shafaqta 3alayna, wa 3adadtana, wa atayta bina ila hazihi el sa3a.",
+                cop_de: "Fnib Epchois Efnouti Pi-pantokrator: Efiot em-Penchois ouoh Pennouti ouoh Pensotir Isos Pi-Khristos. Ten-shep-ehmot entotk kata hob niven: nem ethbe hob niven: nem khen hob niven. Je ak-er-skepazin ejon: ak-er-voithin eron: ak-areh eron: ak-shopten erok: ak-ti-aso eron: ak-ti-toten ak-enten sha e-hri e-tai-ounou thai."
+            },
+            {
+                id: 10,
+                speaker: "Diakon",
+                ar: "أطلبوا لكي يرحمنا الله، ويترأف علينا، ويسمعنا ويعيننا، ويقبل سؤالات وطلبات قديسيه منهم بالصلاح عنا في كل حين، ويغفر لنا خطايانا.",
+                de: "Bittet, dass Gott sich unser erbarme, gnädig mit uns sei, uns erhöre und helfe, die Gebete und Bitten seiner Heiligen annehme für unser Wohlergehen zu allen Zeiten, und uns unsere Sünden vergebe.",
+                cop_ar: "توف هينا إنتي إفنوتي ناي نان: إنتيف شينهيت خارون: إنتيف سوتيم إيرون: إنتيف إير فويثين إيرون: إنتيف تشي إن ني تيهو نيم ني توفه إنتي ني إثؤواف إنت اف: إنتوتو إإهري إيجون إي بي أغاثون إنسيو نيفين: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ⲧⲱⲃϩ ϩⲓⲛⲁ ⲛ̀ⲧⲉ Ⲫϯ ⲛⲁⲓ ⲛⲁⲛ : ⲛ̀ⲧⲉϥϣⲉⲛϩⲧ ϧⲁⲣⲟⲛ : ⲛ̀ⲧⲉϥⲥⲱⲧⲉⲙ ⲉ̀ⲣⲟⲛ : ⲛ̀ⲧⲉϥⲉⲣⲃⲟⲏ̀ⲑⲓⲛ ⲉ̀ⲣⲟⲛ : ⲛ̀ⲧⲉϥϭⲓ ⲛ̀ⲛⲓϯϩⲟ ⲛⲉⲙ ⲛⲓⲧⲱⲃϩ ⲛ̀ⲧⲉ ⲛⲏⲉⲑⲟⲩⲁⲃ ⲛ̀ⲧⲁϥ : ⲛ̀ⲧⲟⲧⲟⲩ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ ⲉ̀ⲡⲓⲁ̀ⲅⲁⲑⲟⲛ ⲛ̀ⲥⲏⲟⲩ ⲛⲓⲃⲉⲛ : * ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Otlobo lekay yarhamana Allah, wa yatara'af 'alayna, wa yasma'ana wa yo'inana, wa yaqbal so'alat wa talabat qadisih minhom bel salah 'anna fi kol hin, wa yaghfer lana khatayana.",
+                cop_de: "Tobh hina ente Efnouti nai nan: entef shenhit kharon: entef sotem eron: entef er voithin eron: entef chi en ni tiho nem ni tobh ente ni ethowab entaf: entoto e hri egon e pi agathon en siou niven: entef ka nen novi nan evol."
+            },
+            {
+                id: 11,
+                speaker: "Volk",
+                ar: "يَا رَبُّ ارْحَمْ.",
+                de: "Herr erbarme dich.",
+                cop_ar: "كيرياليسون.",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ.",
+                ar_de: "Ya rab erham.",
+                cop_de: "Kyrie eleison."
+            },
+            {
+                id: 12,
+                speaker: "Priester",
+                ar: "مِنْ أَجْلِ هَذَا نَسْأَلُ وَنَطْلُبُ مِنْ صَلَاحِكَ يَا مُحِبَّ الْبَشَرِ، إِمْنَحْنَا أَنْ نُكَمِّلَ هذَا الْيَوْمَ الْمُقَدَّسَ، وَكُلَّ أَيَّامِ حَيَاتِنَا بِكُلِّ سَلَامٍ مَعَ خَوْفِكَ. كُلَّ حَسَدٍ، وَكُلَّ تَجْرِبَةٍ، وَكُلَّ فِعْلِ الشَّيْطَانِ، ومُؤَامَرَةَ النَّاسِ الْأَشْرَارِ، وقِيَامَ الْأَعْدَاءِ الْخَفِيِّينَ وَالظَّاهِرِينَ، اِنْزِعْهَا عَنَّا وَعَنْ سَائِرِ شَعْبِكَ وَعَنْ هَذِهِ الْكَنِيسَةِ وَعَنْ مَوْضِعِكَ الْمُقَدَّسِ هَذَا. وَأَمَّا الصَّالِحَاتُ وَالنَّافِعَاتُ فَارْزُقْنَا إِيَّاهَا، لِأَنَّكَ أَنْتَ الَّذِي أَعْطَيْتَنَا السُّلْطَانَ أَنْ نَدُوسَ عَلَى الْحَيَّاتِ وَالْعَقَارِبِ، وَعَلَى كُلِّ قُوَّةِ الْعَدُوِّ.",
+                de: "Darum bitten wir dich und erflehen deine Güte, Menschenliebender, gewähre uns, diesen heiligen Tag und alle Tage unseres Lebens in völligem Frieden zu vollenden in Ehrfurcht vor dir. Jeden Neid, jede Versuchung, alle Werke des Satans, die Nachstellungen böser Menschen und das Hervorkommen von Feinden, verborgen oder offenkundig, halte fern von uns und von deinem ganzen Volk und von dieser Kirche und von diesem deinem heiligen Ort. Die guten und die nützlichen Dinge aber lass uns zuteil werden, denn du hast uns Macht gegeben, auf Schlangen und Skorpione und jegliche Macht des Feindes zu treten.",
+                cop_ar: "إثفي فاي تين تيهو أووه تين توفه إنتيك ميت أغاثوس بي ماي رومي: ميس نان إثرين جوك إيفول إمباي إيهوو إثؤواف فاي: نيم ني إيهوو تيرو إنتي بين أونخ: خين إيريني نيفين نيم تيك هوتي. إفثونوس نيفين: بيراسموس نيفين: إنيرجيا نيفين إنتي بي ساتاناس: بي سوتشني إنتي هان رومي إف هوؤو: نيم بي تونف إإبشوي إنتي هان جاجي ني إت هيب نيم ني إث أوؤنه إيفول. أليتو إيفول هارون نيم إيفول ها بيك لاؤس تيرف نيم إيفول ها تاي إككليسيا ثاي نيم إيفول ها باي ما إثؤواف إنتاك فاي. ني دي إث نانيو نيم ني إت إير نوفري ساهني إمموؤو نان: جي إنثوك بي إيتاك تي إمبي إير شيشي نان: إهومي إيجين هان جوف نيم هان شلي نيم إيجين تي جوم تيرس إنتي بي جاجي.",
+                cop_cop: "Ⲉⲑⲃⲉ ⲫⲁⲓ ⲧⲉⲛϯϩⲟ ⲟⲩⲟϩ ⲧⲉⲛⲧⲱⲃϩ ⲛ̀ⲧⲉⲕⲙⲉⲧⲁ̀ⲅⲁⲑⲟⲥ ⲡⲓⲙⲁⲓⲣⲱⲙⲓ: ⲙⲏⲓⲥ ⲛⲁⲛ ⲉⲑⲣⲉⲛϫⲱⲕ ⲉ̀ⲃⲟⲗ ⲙ̀ⲡⲁⲓⲉ̀ϩⲟⲟⲩ ⲉⲑⲟⲩⲁⲃ ⲫⲁⲓ: ⲛⲉⲙ ⲛⲓⲉ̀ϩⲟⲟⲩ ⲧⲏⲣⲟⲩ ⲛ̀ⲧⲉ ⲡⲉⲛⲱⲛϧ: ϧⲉⲛ ϩⲓⲣⲏⲛⲏ ⲛⲓⲃⲉⲛ ⲛⲉⲙ ⲧⲉⲕϩⲟϯ. Ⲫⲑⲟⲛⲟⲥ ⲛⲓⲃⲉⲛ: ⲡⲓⲣⲁⲥⲙⲟⲥ ⲛⲓⲃⲉⲛ: ⲉⲛⲉⲣⲅⲓⲁ ⲛⲓⲃⲉⲛ ⲛ̀ⲧⲉ ⲡ̀ⲥⲁⲧⲁⲛⲁⲥ: ⲡ̀ⲥⲟϭⲛⲓ ⲛ̀ⲧⲉ ϩⲁⲛⲣⲱⲙⲓ ⲉⲩϩⲱⲟⲩ: ⲛⲉⲙ ⲡ̀ⲧⲱⲛϥ ⲉ̀ⲡ̀ϣⲱⲓ ⲛ̀ⲧⲉ ϩⲁⲛϫⲁϫⲓ ⲛⲏⲉⲧϩⲏⲡ ⲛⲉⲙ ⲛⲏⲉⲑⲟⲩⲱⲛϩ ⲉ̀ⲃⲟⲗ. Ⲁⲗⲓⲧⲟⲩ ⲉ̀ⲃⲟⲗ ϩⲁⲣⲟⲛ. Ⲛⲉⲙ ⲉ̀ⲃⲟⲗ ϩⲁ ⲡⲉⲕⲗⲁⲟⲥ ⲧⲏⲣϥ. Ⲛⲉⲙ ⲉ̀ⲃⲟⲗ ϩⲁ ⲧⲁⲓⲉⲕⲕⲗⲏⲥⲓⲁ ⲑⲁⲓ. Ⲛⲉⲙ ⲉ̀ⲃⲟⲗ ϩⲁ ⲡⲁⲓⲙⲁ ⲉⲑⲟⲩⲁⲃ ⲛ̀ⲧⲁⲕ ⲫⲁⲓ. Ⲛⲏ ⲇⲉ ⲉⲑⲛⲁⲛⲉⲩ ⲛⲉⲙ ⲛⲏⲉⲧⲉⲣⲛⲟϥⲣⲓ ⲥⲁϩⲛⲓ ⲙ̀ⲙⲱⲟⲩ ⲛⲁⲛ: ϫⲉ ⲛ̀ⲑⲟⲕ ⲡⲉ ⲉⲧⲁⲕϯ ⲙ̀ⲡⲓⲉⲣϣⲓϣⲓ ⲛⲁⲛ: ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲉⲛ ϩⲁⲛϫⲟϥ ⲛⲉⲙ ϩⲁⲛϭⲗⲏ ⲛⲉⲙ ⲉ̀ϫⲉⲛ ϯϫⲟⲙ ⲧⲏⲣⲥ ⲛ̀ⲧⲉ ⲡⲓϫⲁϫⲓ.",
+                ar_de: "Men agl haza nas'al wa natlob men salahika ya moheb el bashar, emnahna an nokamel haza el yawm el moqadas, wa kol ayam hayatina be kol salam ma'a khawfik. Kol hasad, wa kol tagriba, wa kol fe'l el shaitan, wa mo'amarat el nas el ashrar, wa qiyam el a'da' el khafiyin wa el zahirin, enza'ha anna wa an sa'er sha'bika wa an hazihi el kanisa wa an mawde'ika el moqadas haza. Wa amma el salehat wa el nafe'at fa-arzoqna iyaha, le-annaka anta allazi a'taytana el soltan an nadous ala el hayat wa el aqareb, wa ala kol qowat el 'adou.",
+                cop_de: "Ethve fai tentiho ouoh tentovh entek-met-agathos pi-mai-romi: mis nan ethren-jok evol empai-ehoou ethowab fai: nem ni-ehoou tirou ente pen-onkh: khen hirini niven nem tek-hoti. Fthonos niven: pirasmos niven: energia niven ente pi-satanas: pi-sochni ente han-romi ev-hoou: nem pi-tonf e-pshoi ente han-jaji ni-et-hip nem ni-eth-ouonh evol. Alitou evol haron. Nem evol ha pek-laos tirf. Nem evol ha tai-ekklesia thai. Nem evol ha pai-ma ethowab entak fai. Ni de eth-naneu nem ni-et-er-nofri sahni emmo-ou nan: je enthok pe etak-ti empi-ershishi nan: e-homi ejen han-jof nem han-chli nem ejen ti-jom tirs ente pi-jaji."
+            },
+            {
+                id: 13,
+                sectionTitle: {
+                    de: "Die Zimbelstrophen Adam",
+                    ar: "ارباع الناقوس ادام"
+                },
+                speaker: "Volk",
+                ar: "تعالوا فلنسجد، للثالوث القدوس، الذي هو الآب والابن، والروح القدس.\n\nنحن الشعوب المسيحيين، لأن هذا هو، إلهنا الحقيقي.\n\nلنا رجاء في القديسة مريم، الله يرحمنا، بشفاعاتها.\n\nيوجد هدوء في العالم، مِنْ قِبَلِ صلاة، القديسة مريم العذراء.",
+                de: "Kommt lasst uns anbeten – die Heilige Dreifaltigkeit – den Vater und den Sohn – und den Heiligen Geist.\n\nWir, die christlichen Völker, – denn er ist – unser wahrer Gott.\n\nWir haben Hoffnung – auf die heilige Maria. – Möge Gott sich unser erbarmen, – durch ihre Fürsprachen.\n\nAlle Ruhe – in der Welt – kommt durch das Gebet – der heiligen Jungfrau Maria.",
+                cop_ar: "أمويني مارين أو أوشت: إنتي ترياس إثؤواف: إيتي إفيوت نيم إبشيري: نيم بي إبنيفما إثؤواف.\n\nأنون خا ني لاؤس: إن إخريستيانوس: فاي غار بي بين نوتي إن أليثينوس.\n\nأوؤن أو هلبيس إنتان: خين ثي إثؤواف ماريا: إيري إفنوتي ناي نان: هيتين نيس بريسفيا.\n\nأوؤن أو ميت سيمنوس: شوب خين بي كوسموس: إيفول هيتين بي شليل: إنتي تي أجيا ماريا تي بارثينوس.",
+                cop_cop: "Ⲁⲙⲱⲓⲛⲓ ⲙⲁⲣⲉⲛⲟⲩⲱϣⲧ : ⲛ̀ϯⲧ̀ⲣⲓⲁⲥ ⲉⲑⲟⲩⲁⲃ : ⲉ̀ⲧⲉ Ⲫⲓⲱⲧ ⲛⲉⲙ Ⲡ̀ϣⲏⲣⲓ : ⲛⲉⲙ Ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ.\n\nⲀⲛⲟⲛ ϧⲁ ⲛⲓⲗⲁⲟⲥ : ⲛ̀ⲭ̀ⲣⲓⲥⲧⲓⲁ̀ⲛⲟⲥ : ⲫⲁⲓ ⲅⲁⲣ ⲡⲉ Ⲡⲉⲛⲛⲟⲩϯ ⲛ̀ⲁ̀ⲗⲏⲑⲓⲛⲟⲥ.\n\nⲞⲩⲟⲛ ⲟⲩϩⲉⲗⲡⲓⲥ ⲛ̀ⲧⲁⲛ : ϧⲉⲛ ⲑⲏⲉⲑⲟⲩⲁⲃ Ⲙⲁⲣⲓⲁ̀ : ⲉ̀ⲣⲉ Ⲫϯ ⲛⲁⲓ ⲛⲁⲛ : ϩⲓⲧⲉⲛ ⲛⲉⲥⲡ̀ⲣⲉⲥⲃⲓⲁ̀.\n\nⲞⲩⲟⲛ ⲟⲩⲙⲉⲧⲥⲉⲙⲛⲟⲥ : ϣⲟⲡ ϧⲉⲛ ⲡⲓⲕⲟⲥⲙⲟⲥ : ⲉ̀ⲃⲟⲗϩⲓⲧⲉⲛ ⲡⲓϣ̀ⲗⲏⲗ : ⲛ̀ⲧⲉ ϯⲁ̀ⲅⲓⲁ̀ Ⲙⲁⲣⲓⲁ̀ ϯⲡⲁⲣⲑⲉⲛⲟⲥ.",
+                ar_de: "Ta'alou fal nasgod, lel thalouth el qodos, allazi howa el Ab wal Ebn, wal Roh el Qodos.\n\nNahno el sho'oub el masihiyin, le ana haza howa, ilahuna el haqiqi.\n\nLana raga' fi el qadisa Mariam, Allah yarhamna, be shafa'atiha.\n\nYougad hodou' fi el 'alam, men qibal salat, el qadisa Mariam el 'azra'.",
+                cop_de: "Amoini maren-ouosht: en-ti-trias ethowab: ete Efiot nem Epshiri: nem Pi-pnevma ethowab.\n\nAnon kha ni-laos: en-khristianos: fai gar pe Pennouti en-alithinos.\n\nOuon ou-helpis entan: khen thi-ethowab Maria: ere Efnouti nai nan: hiten nes-presvia.\n\nOuon ou-met-semnos: shop khen pi-kosmos: evol-hiten pi-shlel: ente ti-agia Maria ti-parthenos."
+            },
+            {
+                id: 14,
+                speaker: "Volk",
+                ar: "السلام لك يا مريم، الحمامة الحسنة، التي ولدت لنا، الله الكلمة.\n\nالسلام لك يا مريم، سلاماً مقدساً. السلام لك يا مريم، أم القدوس.\n\nالسلام لميخائيل، رئيس الملائكة العظيم. السلام لغبريال، المبشر المختار.\n\nالسلام للشاروبيم. السلام للسرافيم. السلام لجميع الطغمات السمائية.\n\nالسلام ليوحنا، السابق العظيم. السلام للكاهن، نسيب عمانوئيل.\n\nالسلام لسادتي الآباء الرسل. السلام لتلاميذ ربنا يسوع المسيح.\n\nالسلام لك أيها الشهيد. السلام للإنجيلي. السلام للرسول، أنبا مرقس ناظر الإله.\n\nالسلام لإسطفانوس، أول الشهداء. السلام للشماس، المبارك.\n\nالسلام لك أيها الشهيد. السلام للشجاع المجاهد. السلام للابس الجهاد: سيدي الملك جيورجيوس، وفيلوباتير مرقوريوس، وأنبا مينا البياضي (العجائبي).",
+                de: "Gegrüßt seist du Maria, du schöne Taube, die hat für uns geboren, Gott das Wort.\n\nGegrüßt seist du Maria, mit heiligem Gruß. Gegrüßt seist du Maria, Mutter des Heiligen.\n\nGegrüßt sei Michael, der große Erzengel. Gegrüßt sei Gabriel, der auserwählte Verkündiger.\n\nGegrüßt seien die Cherubim. Gegrüßt seien die Seraphim. Gegrüßt seien alle himmlischen Heerscharen.\n\nGegrüßt sei Johannes, der große Vorläufer. Gegrüßt sei der Priester, der Verwandte Emmanuels.\n\nGegrüßt seien meine Herren und Väter, die Apostel. Gegrüßt seien die Jünger unseres Herrn Jesus Christus.\n\nGegrüßt seist du, o Märtyrer, gegrüßt sei der Evangelist. Gegrüßt sei der Apostel, Abba Markus, der Gotteseher.\n\nGegrüßt sei Stephanus, der erste Märtyrer. Gegrüßt sei der gesegnete Archidiakon.\n\nGegrüßt seist du, o Märtyrer, gegrüßt sei der mutige Held, gegrüßt sei der Streiter: mein Herr, der König Georg, und Philopater Merkurius, und Abba Mena der Wundertäter (ente ni faiat).",
+                cop_ar: "شيري ني ماريا: تي تشرومبي إثنيسوس: ثي إيطاس ميسي نان: إم إفنوتي بي لوغوس.\n\nشيري ني ماريا: خين أو شيري إثؤواف: شيري ني ماريا: إثماف إم في إثؤواف.\n\nشيري ميخائيل: بي نيشتي إن أرشي أنجيلوس: شيري غافريل: بي سوتب إن فاي شينوفي.\n\nشيري ني شيروبيم: شيري ني سيرافيم: شيري ني تاغما تيرو: إن إيبورانيون.\n\nشيري يؤانس: بي نيشتي إم برودروموس: شيري بي أوويب: إبسين جينيس إن إممانوئيل.\n\nشيري نا شويس إن يوتي: إن أبوستولوس: شيري ني ماثيتيس: إنتي بين شويس إيسوس بي إخرستوس.\n\nشيري ناك أو بي مارتيروس: شيري بي إف أنجيليستيس: شيري بي أبوستولوس: آفا ماركوس بي ثيؤريموس.\n\nشيري ستيفانوس: بي شورب إم مارتيروس: شيري بي أرشي دياكون: إت إسماروؤت.\n\nشيري ناك أو بي مارتيروس: شيري بي تشويج إن جينيئوس: شيري بي أثلوفوروس: با شويس إبؤورو جيورجيوس: نيم فيلوباتير مركوريوس: نيم آفا مينا إنتي ني فايات.",
+                cop_cop: "Ⲭⲉⲣⲉ ⲛⲉ Ⲙⲁⲣⲓⲁ : ϯϭⲣⲟⲙⲡⲓ ⲉⲑⲛⲉⲥⲱⲥ : ⲑⲏⲉⲧⲁⲥⲙⲓⲥⲓ ⲛⲁⲛ : ⲙ̀Ⲫ̀ⲛⲟⲩϯ Ⲡⲓⲗⲟⲅⲟⲥ.\n\nⲬⲉⲣⲉ ⲛⲉ Ⲙⲁⲣⲓⲁ : ϧⲉⲛ ⲟⲩⲭⲉⲣⲉ ⲉⲑⲟⲩⲁⲃ : Ⲭⲉⲣⲉ ⲛⲉ Ⲙⲁⲣⲓⲁ : ⲑⲙⲁⲩ ⲙ̀Ⲫⲏⲉⲑⲟⲩⲁⲃ.\n\nⲬⲉⲣⲉ Ⲙⲓⲭⲁⲏⲗ : ⲡⲓⲛⲓϣϯ ⲛ̀ⲁⲣⲭⲏⲁⲅⲅⲉⲗⲟⲥ : Ⲭⲉⲣⲉ Ⲅⲁⲃⲣⲓⲏⲗ : ⲡⲓⲥⲱⲧⲡ ⲛ̀ϥⲁⲓϣⲉⲛⲛⲟⲩϥⲓ.\n\nⲬⲉⲣⲉ ⲛⲓⲬⲉⲣⲟⲩⲃⲓⲙ : Ⲭⲉⲣⲉ ⲛⲓⲤⲉⲣⲁⲫⲓⲙ : Ⲭⲉⲣⲉ ⲛⲓⲧⲁⲅⲙⲁ ⲧⲏⲣⲟⲩ : ⲛ̀ⲉ̀ⲡⲟⲩⲣⲁⲛⲓⲟⲛ.\n\nⲬⲉⲣⲉ Ⲓⲱⲁⲛⲛⲏⲥ : ⲡⲓⲛⲓϣϯ ⲙ̀ⲡⲣⲟⲇⲣⲟⲙⲟⲥ : Ⲭⲉⲣⲉ ⲡⲓⲟⲩⲏⲃ : ⲡ̀ⲥⲩⲅⲅⲉⲛⲏⲥ ⲛ̀Ⲉⲙⲙⲁⲛⲟⲩⲏⲗ.\n\nⲬⲉⲣⲉ ⲛⲁϭⲟⲓⲥ ⲛ̀ⲓⲟϯ : ⲛ̀ⲁ̀ⲡⲟⲥⲧⲟⲗⲟⲥ : Ⲭⲉⲣⲉ ⲛⲓⲙⲁⲑⲏⲧⲏⲥ : ⲛ̀ⲧⲉ Ⲡⲉⲛϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ.\n\nⲬⲉⲣⲉ ⲛⲁⲕ ⲱ ⲡⲓⲙⲁⲣⲧⲩⲣⲟⲥ : Ⲭⲉⲣⲉ ⲡⲓⲉⲩⲁⲅⲅⲉⲗⲓⲥⲧⲏⲥ : Ⲭⲉⲣⲉ ⲡⲓⲁ̀ⲡⲟⲥⲧⲟⲗⲟⲥ : Ⲁⲃⲃⲁ Ⲙⲁⲣⲕⲟⲥ ⲡⲓⲑⲉⲱⲣⲓⲙⲟⲥ.\n\nⲬⲉⲣⲉ Ⲥⲧⲉⲫⲁⲛⲟⲥ : ⲡⲓϣⲟⲣⲡ ⲙ̀ⲙⲁⲣⲧⲩⲣⲟⲥ : Ⲭⲉⲣⲉ ⲡⲓⲁⲣⲭⲓⲇⲓⲁⲕⲱⲛ : ⲉⲧⲥ̀ⲙⲁⲣⲱⲟⲩⲧ.\n\nⲬⲉⲣⲉ ⲛⲁⲕ ⲱ ⲡⲓⲙⲁⲣⲧⲩⲣⲟⲥ : Ⲭⲉⲣⲉ ⲡⲓϫⲱⲣⲓ ⲛ̀ⲅⲉⲛⲛⲉⲟⲥ : Ⲭⲉⲣⲉ ⲡⲓⲁⲑⲗⲟⲫⲟⲣⲟⲥ : ⲡⲁϭⲟⲓⲥ ⲉ̀ⲡⲟⲩⲣⲟ Ⲅⲉⲱⲣⲅⲓⲟⲥ : ⲛⲉⲙ Ⲫⲓⲗⲟⲡⲁⲧⲏⲣ Ⲙⲉⲣⲕⲟⲩⲣⲓⲟⲥ : ⲛⲉⲙ Ⲁⲃⲃⲁ Ⲙⲏⲛⲁ ⲛ̀ⲧⲉ ⲛⲓⲃⲁⲓⲁ̀ⲧ.",
+                ar_de: "El salam laki ya Mariam, el hamama el hasana, allati waladat lana, Allah el Kalima.\n\nEl salam laki ya Mariam, salaman moqadasan. El salam laki ya Mariam, om el Qodos.\n\nEl salam le Mikhaïl, ra'is el mala'ika el 'azim. El salam le Ghabrial, el mobasher el mokhtar.\n\nEl salam lel Cherubim. El salam lel Seraphim. El salam le jami' el taghmat el sama'iya.\n\nEl salam le Youhanna, el sabeq el 'azim. El salam lel kahen, nasib Emmanuel.\n\nEl salam le sadati el aba' el rosol. El salam le talamiz rabina Yasou' el Masih.\n\nEl salam laka ayoha el shahid. El salam lel ingili. El salam lel rasoul, Anba Markos nazer el Ilah.\n\nEl salam le Estafanos, awal el shohada'. El salam lel shammas, el mobarak.\n\nEl salam laka ayoha el shahid. El salam lel shoga' el mogahed. El salam le labes el jehad: Sayedi el malek Georgios, wa Philopater Mercurius, wa Abba Mina ente ni faiat.",
+                cop_de: "Shere ne Maria: ti-chrompi ethnesos: thi-etas-misi nan: em-Efnouti Pi-Logos.\n\nShere ne Maria: khen ou-shere ethowab: Shere ne Maria: ethmav em-fi-ethowab.\n\nShere Michael: pi-nishti en-archi-angelos: Shere Gabriel: pi-sotp en-fai-shenoufi.\n\nShere ni-Cherubim: Shere ni-Seraphim: Shere ni-taghma tirou: en-epouranion.\n\nShere Ioannes: pi-nishti em-prodromos: Shere pi-ouib: ep-singenis en-Emmanuel.\n\nShere na-chois en-ioti: en-apostolos: Shere ni-mathitis: ente Penchois Isos Pi-Khristos.\n\nShere nak o pi-martyros: Shere pi-evangelistis: Shere pi-apostolos: Abba Markos pi-theorimos.\n\nShere Stefanos: pi-shorp em-martyros: Shere pi-archidiakon: et-esmaroout.\n\nShere nak o pi-martyros: Shere pi-choij en-genneos: Shere pi-athloforos: pa-chois ep-ouro Georgios: nem Philopater Mercurius: nem Abba Mina ente ni faiat."
+            },
+            {
+                id: 15,
+                sectionTitle: {
+                    de: "Abschluss der Zimbelstrophen",
+                    ar: "ختام ارباع الناقوس"
+                },
+                speaker: "Volk",
+                ar: "بِشَفَاعَاتِ وَالِدَةِ الإِلهِ، الْقِدِّيسَةِ مَرْيَمَ، يَا رَبُّ أَنْعِمْ لَنَا، بِمَغْفِرَةِ خَطَايَانَا.\n\nلِكَيْ نُسَبِّحَكَ، مَعَ أَبِيكَ الصَّالِحِ، وَالرُّوحِ الْقُدُسِ، لأَنَّكَ أَتَيْتَ (قُمْتَ) وَخَلَّصْتَنَا. ارحمنا.",
+                de: "Durch die Fürsprachen der Mutter Gottes, der heiligen Maria, gewähre uns, o Herr, die Vergebung unserer Sünden.\n\nDamit wir dich preisen mit deinem guten Vater und dem Heiligen Geist, du bist gekommen (auferstanden) und hast uns erlöst, erbarme dich unser.",
+                cop_ar: "هيتين ني بريسفيا: إنتي تي ثيؤطوكوس إثؤواف ماريا إبشويس أري إهموت نان: إم بي كو إيفول إنتي نين نوفي.\n\nإثرين هوس إيروك: نيم بيك يوت إن أغاثوس: نيم بي إبنيفما إثؤواف: جي أك إي (أك تونك) أك سوتي إممون ناي نان.",
+                cop_cop: "Ϩⲓⲧⲉⲛ ⲛⲓⲡ̀ⲣⲉⲥⲃⲓⲁ̀ : ⲛ̀ⲧⲉ ϯⲑⲉⲟ̀ⲧⲟⲕⲟⲥ ⲉⲑⲟⲩⲁⲃ Ⲙⲁⲣⲓⲁ̀ Ⲡ̀ϭⲟⲓⲥ ⲁ̀ⲣⲓϩ̀ⲙⲟⲧ ⲛⲁⲛ : ⲙ̀ⲡⲓⲭⲱ ⲉ̀ⲃⲟⲗ ⲛ̀ⲧⲉ ⲛⲉⲛⲛⲟⲃⲓ.\n\nⲈⲑⲣⲉⲛϩⲱⲥ ⲉ̀ⲣⲟⲕ : ⲛⲉⲙ Ⲡⲉⲕⲓⲱⲧ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ : ⲛⲉⲙ Ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ : ϫⲉ ⲁⲕⲓ̀ (ⲁⲕⲧⲱⲛⲕ) ⲁⲕⲥⲱϯ ⲙ̀ⲙⲟⲛ ⲛⲁⲓ ⲛⲁⲛ.",
+                ar_de: "Be shafa'at walidat el ilah, el qadisa Mariam, ya rab an'em lana, be maghferat khatayana.\n\nLekay nosabihaka, ma'a abika el saleh, wal roh el qodos, le anaka atayta (qomta) wa khalastana. Erhamna.",
+                cop_de: "Hiten ni-presvia: ente ti-theotokos ethowab Maria Epchois ari-ehmot nan: empi-ko evol ente nen-novi.\n\nEthren-hos erok: nem Pek-iot en-agathos: nem Pi-pnevma ethowab: je ak-i (ak-tonk) ak-soti emmon nai nan."
+            },
+            {
+                id: 16,
+                speaker: "Priester",
+                ar: "صَلّ.",
+                de: "Betet!",
+                cop_ar: "شليل.",
+                cop_cop: "Ϣ̀ⲗⲏⲗ.",
+                ar_de: "Sall.",
+                cop_de: "Shlel."
+            },
+            {
+                id: 17,
+                speaker: "Diakon",
+                ar: "للصلاة قِفُوا.",
+                de: "Erhebt euch zum Gebet!",
+                cop_ar: "إيبي إبروسفكي إسطاثيتي.",
+                cop_cop: "Ⲉⲡⲓ ̀ⲡⲣⲟⲥⲉⲩⲭⲏ ̀ⲥⲧⲁⲑⲏⲧⲉ.",
+                ar_de: "Lel salat qefou.",
+                cop_de: "Epi prosevki stathite."
+            },
+            {
+                id: 18,
+                speaker: "Priester",
+                ar: "السَّلَامُ لِلْكُلِّ.",
+                de: "Friede sei mit euch.",
+                cop_ar: "إيريني باسي.",
+                cop_cop: "Ⲓⲣⲏⲛⲏ ⲡⲁⲥⲓ.",
+                ar_de: "El salam lel kol.",
+                cop_de: "Irini pasi."
+            },
+            {
+                id: 19,
+                speaker: "Volk",
+                ar: "ولروحك أيضاً.",
+                de: "Und mit deinem Geiste.",
+                cop_ar: "كي طو إبنيفماتي صو.",
+                cop_cop: "Ⲕⲉ ⲧⲱ ⲡⲛⲉⲩⲙⲁⲧⲓ ⲥⲟⲩ.",
+                ar_de: "Wa lirohika aydan.",
+                cop_de: "Ke to pnevmati sou."
+            },
+            {
+                id: 20,
+                sectionTitle: {
+                    de: "Das Gebet für die Entschlafenen (nur Samstags)",
+                    ar: "اوشيه الراقدين (السبت فقط)"
+                },
+                speaker: "Priester",
+                ar: "وَأَيْضاً فَلْنَسْأَلِ اللهَ ضَابِطَ الْكُلِّ، أَبَا رَبِّنَا وَإِلهِنَا وَمُخَلِّصِنَا يَسُوعَ الْمَسِيحِ، نَسْأَلُ وَنَطْلُبُ مِنْ صَلَاحِكَ يَا مُحِبَّ الْبَشَرِ، أُذْكُرْ يَا رَبُّ أَنْفُسَ عَبِيدِكَ الَّذِينَ رَقَدُوا، آبَائِنَا وَإِخْوَتِنَا.",
+                de: "Wiederum lasst uns beten zu Gott, dem Allmächtigen, dem Vater unseres Herrn, Gottes und Erlösers Jesus Christus, wir bitten dich und erflehen deine Güte, Menschenliebender, gedenke, Herr, der Seelen deiner Diener, die entschlafen sind, unserer Väter und Brüder.",
+                cop_ar: "بالين أون مارين تيهو إي إفنوتي بي بانتوكراتور: إفيوت إمبين شويس أووه بين نوتي أووه بين سوتير إيسوس بي إخرستوس. تين تيهو أووه تين توفه إنتيك ميت أغاثوس بي ماي رومي. أري إفميفئي إبشويس إن ني إبسيشي إنتي نيك إيفيايك إيطاف إنكوت نين يوتي نيم نين إسنيو.",
+                cop_cop: "Ⲡⲁⲗⲓⲛ ⲟⲛ ⲙⲁⲣⲉⲛϯϩⲟ ⲉ̀Ⲫ̀ⲛⲟⲩϯ Ⲡⲓⲡⲁⲛⲧⲟⲕⲣⲁⲧⲱⲣ : Ⲫ̀ⲓⲱⲧ ⲙ̀Ⲡⲉⲛϭⲟⲓⲥ ⲟⲩⲟϩ Ⲡⲉⲛⲛⲟⲩϯ ⲟⲩⲟϩ Ⲡⲉⲛⲥⲱⲧⲏⲣ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ. Ⲧⲉⲛϯϩⲟ ⲟⲩⲟϩ ⲧⲉⲛⲧⲱⲃϩ ⲛ̀ⲧⲉⲕⲙⲉⲧⲁ̀ⲅⲁⲑⲟⲥ ⲡⲓⲙⲁⲓⲣⲱⲙⲓ. Ⲁⲣⲓⲫ̀ⲙⲉⲩⲓ̀ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲛⲓⲯⲩⲭⲏ ⲛ̀ⲧⲉ ⲛⲉⲕⲉ̀ⲃⲓⲁⲓⲕ ⲉ̀ⲧⲁⲩⲉⲛⲕⲟⲧ ⲛⲉⲛⲓⲟϯ ⲛⲉⲙ ⲛⲉⲛⲥ̀ⲛⲏⲟⲩ.",
+                ar_de: "Wa aydan fal nas'al Allah dabet el kol, aba rabina wa ilahina wa mokhalisina Yasou3 el Masih. Nas'al wa natlob men salahika ya moheb el bashar, ozkor ya rab anfos 'abidaka allazina raqadou, abana wa ekhwatina.",
+                cop_de: "Palin on maren tiho e-Efnouti Pi-pantokrator: Efiot em-Penchois ouoh Pennouti ouoh Pensotir Isos Pi-Khristos. Ten-tiho ouoh ten-tovh entek-met-agathos pi-mai-romi. Ari-phmevi Epchois en-ni-psishi ente nek-eviaik etav-enkot nen-ioti nem nen-sniou."
+            },
+            {
+                id: 21,
+                speaker: "Diakon",
+                ar: "أُطْلُبُوا عَنْ آبَائِنَا وَإِخْوَتِنَا الَّذِينَ رَقَدُوا، وَتَنَيَّحُوا فِي الْإِيمَانِ بِالْمَسِيحِ مُنْذُ الْبَدْءِ. آبَائِنَا الْقِدِّيسِينَ رُؤَسَاءِ الْأَسَاقِفَةِ، وَآبَائِنَا الْأَسَاقِفَةِ، وَآبَائِنَا الْقَمَامِصَةِ، وَآبَائِنَا الْقُسُوسِ وَإِخْوَتِنَا الشَّمَامِسَةِ، وَآبَائِنَا الرُّهْبَانِ، وَآبَائِنَا الْعِلْمَانِيِّينَ، وَعَنْ نِيَاحِ كُلِّ الْمَسِيحِيِّينَ. لِكَيْ الْمَسِيحُ إِلَهُنَا يُنَيِّحَ نُفُوسَهُمْ أَجْمَعِينَ فِي فِرْدَوْسِ النَّعِيمِ، وَنَحْنُ أَيْضاً يَصْنَعُ مَعَنَا رَحْمَةً، وَيَغْفِرُ لَنَا خَطَايَانَا.",
+                de: "Bittet für unsere Väter und Brüder, die entschlafen und aus dem Leben geschieden sind im Glauben an Christus seit dem Anfang. Unsere heiligen Väter, die Bischofoberhäupter, Bischöfe, Erzpriester, Priester, unsere Brüder, die Diakone. Unsere Mönchsväter und Laienväter und für alle Christen, damit Christus unser Gott, ihren Seelen im Paradies der Freude ewige Ruhe schenke. Uns möge er Erbarmen erweisen und unsere Sünden vergeben.",
+                cop_ar: "توف إيجين نين يوتي نيم نين إسنيو إيطاف إنكوت: أف إمطون إمموؤو خين إفناهتي إم بي إخرستوس إيسجين بي إينيه. نين يوتي إثؤواف إن أرشي إبيسكوبوس كي نين يوتي إن إبيسكوبوس: نين يوتي إن إيغومينوس كي نين يوتي إم بريسفيتيروس: نيم نين إسنيو إن دياكون. نين يوتي إم موناخوس كي نين يوتي إن لايكوس: نيم إإهري إيجين تي أنابا فسيس تيرس إنتي ني إخرستيانوس: هينا إنتي بي إخرستوس بين نوتي تي إمطون إن نو بسيشي تيرو: خين بي باراديسوس إنتي إب أونوف: أنون دي هون إنتيف إير بي ناي نيمان: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ⲧⲱⲃϩ ⲉ̀ϫⲉⲛ ⲛⲉⲛⲓⲟϯ ⲛⲉⲙ ⲛⲉⲛⲥ̀ⲛⲏⲟⲩ ⲉ̀ⲧⲁⲩⲉⲛⲕⲟⲧ : ⲁⲩⲙ̀ⲧⲟⲛ ⲙ̀ⲙⲱⲟⲩ ϧⲉⲛ ⲫⲛⲁϩϯ ⲙ̀Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ ⲓⲥϫⲉⲛ ⲡⲉⲛⲉϩ. Ⲛⲉⲛⲓⲟϯ ⲉⲑⲟⲩⲁⲃ ⲛ̀ⲁⲣⲭⲏⲉⲡⲓⲥⲕⲟⲡⲟⲥ ⲕⲉ ⲛⲉⲛⲓⲟϯ ⲛ̀ⲉ̀ⲡⲓⲥⲕⲟⲡⲟⲥ : ⲛⲉⲛⲓⲟϯ ⲛ̀ⲏⲅⲟⲩⲙⲉⲛⲟⲥ ⲕⲉ ⲛⲉⲛⲓⲟϯ ⲙ̀ⲡⲣⲉⲥⲃⲩⲧⲉⲣⲟⲥ : ⲛⲉⲙ ⲛⲉⲛⲥ̀ⲛⲏⲟⲩ ⲛ̀ⲇⲓⲁⲕⲱⲛ. Ⲛⲉⲛⲓⲟϯ ⲙ̀ⲙⲟⲛⲁⲭⲟⲥ ⲕⲉ ⲛⲉⲛⲓⲟϯ ⲛ̀ⲗⲁⲓⲕⲟⲥ : ⲛⲉⲙ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲉⲛ ϯⲁ̀ⲛⲁⲡⲁⲩⲥⲓⲥ ⲧⲏⲣⲥ ⲛ̀ⲧⲉ ⲛⲓⲭ̀ⲣⲓⲥⲧⲓⲁ̀ⲛⲟⲥ : ϩⲓⲛⲁ ⲛ̀ⲧⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲛⲟⲩϯ ϯⲙ̀ⲧⲟⲛ ⲛ̀ⲛⲟⲩⲯⲩⲭⲏ ⲧⲏⲣⲟⲩ : ϧⲉⲛ ⲡⲓⲡⲁⲣⲁⲇⲓⲥⲟⲥ ⲛ̀ⲧⲉ ⲡⲟⲩⲛⲟϥ : ⲁ̀ⲛⲟⲛ ⲇⲉ ϩⲱⲛ ⲛ̀ⲧⲉϥⲉⲣ ⲡⲓⲛⲁⲓ ⲛⲉⲙⲁⲛ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Otlobo 'an aba'ina wa ikhwatina allazina raqadou, wa tanayahu fi el iman bel Masih monzo el bad'. Aba'ina el qadisin ro'asa' el asaqifa, wa aba'ina el asaqifa, wa aba'ina el qamamisa, wa aba'ina el qosos wa ikhwatina el shamamisa, wa aba'ina el rohban, wa aba'ina el 'almaniyin, wa 'an niyah kol el masihiyin. Lekay el Masih ilahona yonayeh nofosohom ajma'in fi ferdaws el na'im, wa nahno aydan yasna' ma'ana rahma, wa yaghfer lana khatayana.",
+                cop_de: "Tovh ejen nen-ioti nem nen-sniou etav-enkot: av-emton emmo-ou khen eph-nahti em-Pi-Khristos isjen peneh. Nen-ioti ethowab en-archi-episkopos ke nen-ioti en-episkopos: nen-ioti en-igoumenos ke nen-ioti em-presviteros: nem nen-sniou en-diakon. Nen-ioti em-monakhos ke nen-ioti en-laikos: nem e-hri ejen ti-anapavsis tirs ente ni-khristianos: hina ente Pi-Khristos Pennouti ti-emton en-nou-psishi tirou: khen pi-paradisos ente pounof: anon de hon entef-er pi-nai neman: entef-ka nen-novi nan evol."
+            },
+            {
+                id: 22,
+                speaker: "Volk",
+                ar: "يَا رَبُّ ارْحَمْ.",
+                de: "Herr erbarme dich.",
+                cop_ar: "كيرياليسون.",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ.",
+                ar_de: "Ya rab erham.",
+                cop_de: "Kyrie eleison."
+            },
+            {
+                id: 23,
+                speaker: "Priester",
+                ar: "تَفَضَّلْ يَا رَبُّ نَيِّحْ نُفُوسَهُمْ جَمِيعاً، فِي حِضْنِ آبَائِنَا الْقِدِّيسِينَ إِبْرَاهِيمَ وَإِسْحَقَ وَيَعْقُوبَ. عُلْهُمْ فِي مَوْضِعِ خُضْرَةٍ، عَلَى مَاءِ الرَّاحَةِ فِي فِرْدَوْسِ النَّعِيمِ، الْمَوْضِعِ الَّذِي هَرَبَ مِنْهُ الْحُزْنُ وَالْكَآبَةُ وَالتَّنَهُدُ، فِي نُورِ قِدِّيسِيكَ. أَقِمْ أَجْسَادَهُمْ فِي الْيَوْمِ الَّذِي رَسَمْتَهُ، كَمَوَاعِيدِكَ الْحَقِيقِيَّةِ غَيْرِ الْكَاذِبَةِ. هَبْ لَهُمْ خَيْرَاتِ مَوَاعِيدِكَ، مَا لَمْ تَرَهُ عَيْنٌ وَلَمْ تَسْمَعْ بِهِ أُذُنٌ وَلَمْ يَخْطُرْ عَلَى قَلْبِ بَشَرٍ، مَا أَعْدَدْتَهُ يَا اللهُ لِمُحِبِّي اسْمِكَ الْقُدُّوسِ. لأَنَّهُ لاَ يَكُونُ مَوْتٌ لِعَبِيدِكَ، بَلْ هُوَ انْتِقَالٌ. وَإِنْ كَانَ لَحِقَهُمْ تَوَانٍ أَوْ تَفْرِيطٌ كَبَشَرٍ، وَقَدْ لَبِسُوا جَسَداً وَسَكَنُوا فِي هَذَا الْعَالَمِ، فَأَنْتَ كَصَالِحٍ وَمُحِبٍّ لِلْبَشَرِ، الَّلهُمَّ تَفَضَّلْ يَا رَبُّ عَبِيدَكَ الْمَسِيحِيِّينَ الأُرْثُوذُكْسِيِّينَ الَّذِينَ فِي الْمَسْكُونَةِ كُلِّهَا. مِنْ مَشَارِقِ الشَّمْسِ إِلَى مَغَارِبِهَا، وَمِنَ الشَّمَالِ إِلَى الْجَنُوبِ، كُلٌّ وَاحِدٍ بِاسْمِهِ وَكُلٌّ وَاحِدَةٍ بِاسْمِهَا، يَا رَبُّ نَيِّحْهُمْ وَاغْفِرْ لَهُمْ.",
+                de: "Bitte, o Herr, schenke allen ihren Seelen Ruhe im Schoß unserer heiligen Väter Abraham, Isaak und Jakob. Versorge sie am Ort des Grünen, am Wasser der Ruhe, im Paradies der Freude, an dem Ort, von dem Trauer, Kummer und Seufzen gewichen sind im Licht deiner Heiligen. Erwecke ihre Körper auf an dem Tag, den du vorherbestimmt hast nach deinen wahren Verheißungen, die nicht trügerisch sind. Schenke ihnen die Güte deines Versprechens: Was kein Auge gesehen, kein Ohr gehört und kein Menschenherz gedacht hat, was du denen bereitet hast, die deinen heiligen Namen lieben. Denn es gibt keinen Tod für deine Diener, sondern Heimgang. Ist ihnen Nachlässigkeit oder Faulheit als Menschen widerfahren, die Fleisch angezogen und diese Welt bewohnt haben, so vergib ihnen bitte, Gott, gemäß deiner Güte und Menschenliebe. Herr, deinen Dienern, die orthodoxen Christen auf dem ganzen Erdkreis. Vom Osten zum Westen und vom Norden zum Süden, jeden mit seinem Namen und jede mit ihrem Namen: Lass sie, Herr, ruhen.",
+                cop_ar: "أري كاتاكسين إبشويس ما إمطون إن نو بسيشي تيرو: خين كينف إن نين يوتي إثؤواف إفراآم نيم إيساآك نيم ياكوف. ما مون رو خين أو ما إن سيم: هيجين في مو إنتي تي إمطون: خين بي باراديسوس إنتي إب أونوف. بي ما إيطاف فوت إيفول إمماف: إنجي بي إمكاه نيم بي إهي نيم بي أتش هومي: خين إف أوؤيني إنتي ني إثؤواف إنتاك. إك تونوس إن نو سوما خين بي إيهوو إيطاك أولج: كاطا نيك إيبانجليا إممي: أووه إن أت ميت نوج. إك إر خاري زيست إيست نيؤو: إن ني أغاثون إنتي نيك إيبانجليا: ني إيتي إمبي فال ناف إيروؤو: أودي إمبي ماشج سوتمو: أودي إمبيف إي إي إهري إيجين إهيت إن رومي. ني إيتاك سيف توتو إفنوتي: إن ني إث مي إمبيك ران إثؤواف. جي إممون مو شوب إن نيك إيفيايك: أللا أو أو ؤتيب إيفول بي. إسجي دي أوؤن أو ميت أميليس: أو ميت أت سوتم شي إيروت: هي أومي خين ساركس فورين: أوساركس أووه أف شوبي خين باي كوسموس. إنثوك دي هوس أغاثوس أووه إم ماي رومي: إفنوتي أري كاتاكسين إبشويس إنتيك إيفيايك: إن إخريستيانوس: إن أورثودوكسوس إت خين تي إيكوميني تيرس. يسجين ني ما إن شاي إنتي إفري شا نيف ما إن هوتب: نيم يسجين تيم هيت شا فريس: بي أواي بي أواي كاطا بيف ران: نيم توي توي كاطا بيس ران: إبشويس ما إمطون نو أووه كو نو إيفول.",
+                cop_cop: "Ⲁⲣⲓⲕⲁⲧⲁⲝⲓⲛ Ⲡ̀ϭⲟⲓⲥ ⲙⲁⲙ̀ⲧⲟⲛ ⲛ̀ⲛⲟⲩⲯⲩⲭⲏ ⲧⲏⲣⲟⲩ : ϧⲉⲛ ⲕⲉⲛϥ ⲛ̀ⲛⲉⲛⲓⲟϯ ⲉⲑⲟⲩⲁⲃ Ⲁⲃⲣⲁⲁⲙ ⲛⲉⲙ Ⲓⲥⲁⲁⲕ ⲛⲉⲙ Ⲓⲁⲕⲱⲃ. Ⲙⲁⲙⲟⲛⲣⲱⲟⲩ ϧⲉⲛ ⲟⲩⲙⲁ ⲛ̀ⲥⲓⲙ : ϩⲓϫⲉⲛ ⲫⲙⲱⲟⲩ ⲛ̀ⲧⲉ ϯⲙ̀ⲧⲟⲛ : ϧⲉⲛ ⲡⲓⲡⲁⲣⲁⲇⲓⲥⲟⲥ ⲛ̀ⲧⲉ ⲡⲟⲩⲛⲟϥ. Ⲡⲓⲙⲁ ⲉ̀ⲧⲁϥⲫⲱⲧ ⲉ̀ⲃⲟⲗ ⲙ̀ⲙⲁⲩ : ⲛ̀ϫⲉ ⲡⲓⲙ̀ⲕⲁϩ ⲛⲉⲙ ⲡⲓⲓϩⲓ ⲛⲉⲙ ⲡⲓⲁϣϩⲟⲙⲓ : ϧⲉⲛ ⲫⲟⲩⲱⲓⲛⲓ ⲛ̀ⲧⲉ ⲛⲏⲉⲑⲟⲩⲁⲃ ⲛ̀ⲧⲁⲕ. Ⲉⲕⲧⲟⲩⲛⲟⲥ ⲛ̀ⲛⲟⲩⲥⲱⲙⲁ ϧⲉⲛ ⲡⲓⲉ̀ϩⲟⲟⲩ ⲉ̀ⲧⲁⲕⲑⲁϣϥ : ⲕⲁⲧⲁ ⲛⲉⲕⲉ̀ⲡⲁⲅⲅⲉⲗⲓⲁ̀ ⲙ̀ⲙⲏⲓ : ⲟⲩⲟϩ ⲛ̀ⲁⲧⲙⲉⲑⲛⲟⲩϫ. Ⲉⲕⲉⲣⲭⲁⲣⲓⲍⲉⲥⲑⲉ ⲛⲱⲟⲩ ⲛ̀ⲛⲓⲁ̀ⲅⲁⲑⲟⲛ ⲛ̀ⲧⲉ ⲛⲉⲕⲉ̀ⲡⲁⲅⲅⲉⲗⲓⲁ̀ : ⲛⲏⲉⲧⲉ ⲙ̀ⲡⲉ ⲃⲁⲗ ⲛⲁⲩ ⲉ̀ⲣⲱⲟⲩ : ⲟⲩⲇⲉ ⲙ̀ⲡⲉ ⲙⲁϣϫ ⲥⲟⲑⲙⲟⲩ : ⲟⲩⲇⲉ ⲙ̀ⲡⲟⲩⲓ̀ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲉⲛ ϩⲏⲧ ⲛ̀ⲣⲱⲙⲓ. Ⲛⲏⲉⲧⲁⲕⲥⲉⲃⲧⲱⲧⲟⲩ Ⲫⲛⲟⲩϯ : ⲛ̀ⲛⲏⲉⲑⲙⲉⲓ ⲙ̀ⲡⲉⲕⲣⲁⲛ ⲉⲑⲟⲩⲁⲃ. Ϫⲉ ⲙ̀ⲙⲟⲛ ⲙⲟⲩ ϣⲟⲡ ⲛ̀ⲛⲉⲕⲉ̀ⲃⲓⲁⲓⲕ : ⲁⲗⲗⲁ ⲟⲩⲟⲩⲱⲧⲉⲃ ⲉ̀ⲃⲟⲗ ⲡⲉ. Ⲓⲥϫⲉ ⲇⲉ ⲟⲩⲟⲛ ⲟⲩⲙⲉⲧⲁⲙⲉⲗⲏⲥ : ⲓⲉ ⲟⲩⲙⲉⲧⲁⲧⲥⲱⲧⲉⲙ ϣⲓ ⲉ̀ⲣⲱⲟⲩ : ϩⲱⲥ ⲉⲩⲫⲟⲣⲓⲛ ⲛ̀ⲥⲁⲣⲝ : ⲟⲩⲟϩ ⲁⲩϣⲱⲡⲓ ϧⲉⲛ ⲡⲁⲓⲕⲟⲥⲙⲟⲥ. Ⲛ̀ⲑⲟⲕ ⲇⲉ ϩⲱⲥ ⲁ̀ⲅⲁⲑⲟⲥ ⲟⲩⲟϩ ⲙ̀ⲙⲁⲓⲣⲱⲙⲓ : Ⲫⲛⲟⲩϯ ⲁ̀ⲣⲓⲕⲁⲧⲁⲝⲓⲛ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲛⲉⲕⲉ̀ⲃⲓⲁⲓⲕ : ⲛ̀ⲭ̀ⲣⲓⲥⲧⲓⲁ̀ⲛⲟⲥ ⲛ̀ⲟⲣⲑⲟⲇⲟⲝⲟⲥ ⲉⲧϧⲉⲛ ϯⲟⲓⲕⲟⲩⲙⲉⲛⲏ ⲧⲏⲣⲥ. Ⲓⲥϫⲉⲛ ⲛⲓⲙⲁⲛ̀ϣⲁⲓ ⲛ̀ⲧⲉ ⲫⲣⲏ ϣⲁ ⲛⲉϥⲙⲁⲛ̀ϩⲱⲧⲡ : ⲛⲉⲙ ⲓⲥϫⲉⲛ ⲡⲉⲙϩⲓⲧ ϣⲁ ⲫⲣⲏⲥ : ⲡⲓⲟⲩⲁⲓ ⲡⲓⲟⲩⲁⲓ ⲕⲁⲧⲁ ⲡⲉϥⲣⲁⲛ : ⲛⲉⲙ ϯⲟⲩⲓ̀ ϯⲟⲩⲓ̀ ⲕⲁⲧⲁ ⲡⲉⲥⲣⲁⲛ : Ⲡ̀ϭⲟⲓⲥ ⲙⲁⲙ̀ⲧⲟⲛ ⲛⲱⲟⲩ ⲟⲩⲟϩ ⲭⲱ ⲛⲱⲟⲩ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Tafadal ya rab nayeh nofosohom jami'an, fi hodn aba'ina el qadisin Ibrahim wa Ishaq wa Ya'qub. 'Olhom fi mawde' khodra, 'ala ma' el raha fi ferdaws el na'im, el mawde' allazi harab menho el hozn wal ka'aba wal tanahod, fi nour qadisik. Aqem ajsadahom fi el yawm allazi rasamtaho, kama wa'idika el haqiqiya ghayr el kaziba. Hab lahom khayrat mawa'idik... Le annaho la yakoun mawt le 'abidika... Men mashariq el shams ila magharibiha...",
+                cop_de: "Ari-kataxiin Epchois ma-emton en-nou-psishi tirou: khen kenf en-nen-ioti ethowab Abraam nem Isaak nem Iakob. Ma-mon-rou khen ou-ma en-sim: hijen fi-mou ente ti-emton: khen pi-paradisos ente pounof. Pi-ma etaf-fot evol em-mav: enje pi-emkah nem pi-ihi nem pi-ag-homi... (und so weiter) ... Epchois ma-emton no-ou ouoh ko no-ou evol."
+            },
+            {
+                id: 24,
+                speaker: "Volk",
+                ar: "يَا رَبُّ ارْحَمْ.",
+                de: "Herr erbarme dich.",
+                cop_ar: "كيرياليسون.",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ.",
+                ar_de: "Ya rab erham.",
+                cop_de: "Kyrie eleison."
+            },
+            {
+                id: 25,
+                sectionTitle: {
+                    de: "Das Gebet für die Kranken",
+                    ar: "اوشيه المرضي"
+                },
+                speaker: "Priester",
+                ar: "وَأَيْضاً فَلْنَسْأَلِ اللهَ ضَابِطَ الْكُلِّ، أَبَا رَبِّنَا وَإِلهِنَا وَمُخَلِّصِنَا يَسُوعَ الْمَسِيحِ، نَسْأَلُ وَنَطْلُبُ مِنْ صَلَاحِكَ يَا مُحِبَّ الْبَشَرِ، أُذْكُرْ يَا رَبُّ مَرْضَى شَعْبِكَ.",
+                de: "Wiederum lasst uns beten zu Gott, dem Allmächtigen, dem Vater unseres Herrn, Gottes und Erlösers Jesus Christus, wir bitten dich und erflehen deine Güte, Menschenliebender, gedenke, Herr, der Kranken unter deinem Volk.",
+                cop_ar: "بالين أون مارين تيهو إي إفنوتي بي بانتوكراتور: إفيوت إمبين شويس أووه بين نوتي أووه بين سوتير إيسوس بي إخرستوس. تين تيهو أووه تين توفه إنتيك ميت أغاثوس بي ماي رومي: أري إفميفئي إبشويس إن ني إت شوني إنتي بيك لاؤس.",
+                cop_cop: "Ⲡⲁⲗⲓⲛ ⲟⲛ ⲙⲁⲣⲉⲛϯϩⲟ ⲉ̀Ⲫ̀ⲛⲟⲩϯ Ⲡⲓⲡⲁⲛⲧⲟⲕⲣⲁⲧⲱⲣ : Ⲫ̀ⲓⲱⲧ ⲙ̀Ⲡⲉⲛϭⲟⲓⲥ ⲟⲩⲟϩ Ⲡⲉⲛⲛⲟⲩϯ ⲟⲩⲟϩ Ⲡⲉⲛⲥⲱⲧⲏⲣ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ. Ⲧⲉⲛϯϩⲟ ⲟⲩⲟϩ ⲧⲉⲛⲧⲱⲃϩ ⲛ̀ⲧⲉⲕⲙⲉⲧⲁ̀ⲅⲁⲑⲟⲥ ⲡⲓⲙⲁⲓⲣⲱⲙⲓ : ⲁ̀ⲣⲓⲫ̀ⲙⲉⲩⲓ̀ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲛⲏⲉⲧϣⲱⲛⲓ ⲛ̀ⲧⲉ ⲡⲉⲕⲗⲁⲟⲥ.",
+                ar_de: "Wa aydan fal nas'al Allah dabet el kol, aba rabina wa ilahina wa mokhalisina Yasou3 el Masih. Nas'al wa natlob men salahika ya moheb el bashar, ozkor ya rab marda sha'bika.",
+                cop_de: "Palin on maren tiho e-Efnouti Pi-pantokrator: Efiot em-Penchois ouoh Pennouti ouoh Pensotir Isos Pi-Khristos. Ten-tiho ouoh ten-tovh entek-met-agathos pi-mai-romi: ari-phmevi Epchois en-ni-et-shoni ente pek-laos."
+            },
+            {
+                id: 26,
+                speaker: "Diakon",
+                ar: "أُطْلُبُوا عَنْ آبَائِنَا وَإِخْوَتِنَا الْمَرْضَى بِكُلِّ مَرَضٍ، إِنْ كَانَ فِي هَذَا الْمَسْكَنِ أَوْ بِكُلِّ مَوْضِعٍ، لِكَيْ الْمَسِيحُ إِلَهُنَا يُنْعِمَ لَنَا وَلَهُمْ بِالْعَافِيَةِ وَالشِّفَاءِ، وَيَغْفِرَ لَنَا خَطَايَانَا.",
+                de: "Bittet für unsere Väter und Brüder, die an irgendeiner Krankheit leiden, ob an diesem oder an einem anderen Ort, dass Christus unser Gott uns und ihnen Gesundheit und Heilung schenkt und uns unsere Sünden vergibt.",
+                cop_ar: "توف إيجين نين يوتي نيم نين إسنيو إت شوني خين جين شوني نيفين: إيتي خين باي توبوس إيتي خين ماي نيفين: هينا إنتي بي إخرستوس بين نوتي إر إهموت نان نيموؤو إم بي أوجاي نيم بي طال-تشو: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ⲧⲱⲃϩ ⲉ̀ϫⲉⲛ ⲛⲉⲛⲓⲟϯ ⲛⲉⲙ ⲛⲉⲛⲥ̀ⲛⲏⲟⲩ ⲉⲧϣⲱⲛⲓ ϧⲉⲛ ϫⲓⲛϣⲱⲛⲓ ⲛⲓⲃⲉⲛ : ⲓ̀ⲧⲉ ϧⲉⲛ ⲡⲁⲓⲧⲟⲡⲟⲥ ⲓ̀ⲧⲉ ϧⲉⲛ ⲙⲁⲓ ⲛⲓⲃⲉⲛ : ϩⲓⲛⲁ ⲛ̀ⲧⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲛⲟⲩϯ ⲉⲣϩ̀ⲙⲟⲧ ⲛⲁⲛ ⲛⲉⲙⲱⲟⲩ ⲙ̀ⲡⲓⲟⲩϫⲁⲓ ⲛⲉⲙ ⲡⲓⲧⲁⲗϭⲟ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Otlobo 'an aba'ina wa ikhwatina el marda be kol marad, en kana fi haza el maskan aw be kol mawde', lekay el Masih ilahona yon'em lana wa lahom bel 'afia wal shifa', wa yaghfer lana khatayana.",
+                cop_de: "Tovh ejen nen-ioti nem nen-sniou et-shoni khen jin-shoni niven: ite khen pai-topos ite khen mai niven: hina ente Pi-Khristos Pennouti er-ehmot nan nem-o-ou empi-oujai nem pi-talcho: entef-ka nen-novi nan evol."
+            },
+            {
+                id: 27,
+                speaker: "Volk",
+                ar: "يَا رَبُّ ارْحَمْ.",
+                de: "Herr erbarme dich.",
+                cop_ar: "كيرياليسون.",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ.",
+                ar_de: "Ya rab erham.",
+                cop_de: "Kyrie eleison."
+            },
+            {
+                id: 28,
+                speaker: "Priester",
+                ar: "تَعَهَّدْهُمْ بِالْمَرَاحِمِ وَالرَّأْفَاتِ، اشْفِهِمْ. اِنْزِعْ عَنْهُمْ وَعَنَّا كُلَّ مَرَضٍ، وَكُلَّ سَقَمٍ، وَرُوحَ الْأَمْرَاضِ اِطْرُدْهُ. وَالَّذِينَ أَبْطَأُوا مَطْرُوحِينَ فِي الْأَمْرَاضِ أَقِمْهُمْ وَعَزِّهِمْ. وَالْمُعَذَّبِينَ مِنَ الْأَرْوَاحِ النَّجِسَةِ أَعْتِقْهُمْ جَمِيعاً. الَّذِينَ فِي السُّجُونِ أَوِ الْمَطَابِقِ أَوِ الَّذِينَ فِي النَّفْيِ أَوِ السَّبْيِ أَوِ الْمَقْبُوضِ عَلَيْهِمْ فِي عُبُودِيَّةٍ مُرَّةٍ، يَا رَبُّ أَعْتِقْهُمْ جَمِيعاً وَارْحَمْهُمْ. لِأَنَّكَ أَنْتَ الَّذِي تَحُلُّ الْمَرْبُوطِينَ وَتُقِيمُ السَّاقِطِينَ. رَجَاءُ مَنْ لَيْسَ لَهُ رَجَاءٌ، وَمُعِينَ مَنْ لَيْسَ لَهُ مُعِينٌ. عَزَاءُ صَغِيرِي الْقُلُوبِ، مِينَاءُ الَّذِينَ فِي الْعَاصِفِ. كُلُّ الْأَنْفُسِ الْمُتَضَايِقَةِ وَالْمَقْبُوضِ عَلَيْهَا، أَعْطِهَا يَا رَبُّ رَحْمَةً، أَعْطِهَا نِيَاحاً، أَعْطِهَا بُرُودَةً، أَعْطِهَا نِعْمَةً، أَعْطِهَا مَعُونَةً، أَعْطِهَا خَلَاصاً، أَعْطِهَا غُفْرَانَ خَطَايَاهَا وَآثَامِهَا. وَنَحْنُ أَيْضاً يَا رَبُّ، أَمْرَاضَ نُفُوسِنَا، اشْفِهَا وَالَّتِي لِأَجْسَادِنَا عَافِهَا. أَيُّهَا الطَّبِيبُ الْحَقِيقِيُّ الَّذِي لِأَنْفُسِنَا، وَأَجْسَادِنَا، يَا مُدَبِّرَ كُلِّ جَسَدٍ تَعَهَّدْنَا بِخَلَاصِكَ.",
+                de: "Pflege sie mit Erbarmen und Barmherzigkeit, heile sie. Entferne von ihnen und uns jede Krankheit, jedes Leiden und vertreibe aus ihnen den Hauch von Krankheiten. Richte die auf und tröste, die lange durch ihre Krankheiten behindert sind, und befreie die, die von unreinen Geistern gequält werden. Befreie und hab Erbarmen, Herr, mit denen, die in Gefängnissen, Gefangenschaften, Verbannung, Kriegsgefangenschaft oder in bitterer Sklaverei gefesselt sind. Denn du löst die Gebundenen und erhebst die Gefallenen. Du Hoffnung derer, die keine Hoffnung haben, Helfer derer, die keine Hilfe haben. Tröster derer, die kleinmütig sind und Hafen derer, die von Stürmen heimgesucht werden. Den Seelen aller, die bedrängt oder unterdrückt sind, Herr, gib ihnen Erbarmen, gib ihnen Ruhe, gib ihnen Erfrischung, gib ihnen Gnade, gib ihnen Unterstützung, gib ihnen Erlösung, gib ihnen die Vergebung der Sünden und Schuld. Heile auch uns, o Herr, die Krankheiten unserer Seelen und unserer Körper. Du wahrer Arzt unserer Seelen und Leiber, du Versorger unserer Körper, heile uns mit deiner Gnade.",
+                cop_ar: "سيمبيسكوبين إيجوؤو خين هان ناي نيم هان ميت شينهيت. أري باهري إيروؤو. أليتو إيفول هاروؤو نيم هارون إم شوني نيفين نيم إي هي نيفين. نيم بي إبنيفما إنتي ني شوني هيت ف إيفول هاروؤو. ني إيطاف إيرراشي إف كي إيتوتو خين ني شوني تونو سو ما نومتي نوؤو. ني إت هوج هيج إيفول هيتين ني إبنيفما إن أكاثرتون ماتو إيفول تيرو. ني إت كي خين ني شتيكو: يي ني ما إن شوني: يي ني إت كي خين بي إكسوريا: يي بي إيخمالوسيا: يي ني إت آموني إمموؤو خين أو ميت فوك إسطيف جي: ما تو إيفول تيرو إبشويس أووه ناي نوؤو. جي إنثوك بي إت فول إيفول إن ني إت سونح أووه إت تونوس إن ني إيطاف هي. تي هيلبيس إنتي ني إت أوؤنتو هيلبيس إمماف: تي فو إيثيا إنتي ني إت أوؤنتو فو إيثيا إمماف. بي نومتي إنتي ني كو جي إينهيت: بي ليمين إنتي ني إت كي خين بي خيمون. بسيشي نيفين إت هيمخيو أووه إت أوؤاهيم إيجوؤو. موي نوؤو إبشويس إن أو ناي: موي نوؤو إن أو إمطون: موي نوؤو إن أو إرشيشي: موي نوؤو إن أو أهموت: موي نوؤو إن أو فو إيثيا: موي نوؤو إن أو أوجاي: موي نوؤو إن أو كو إيفول إنتي نو نوفي نيم نو بارابتوماتي. أنون دي هون إبشويس ني شوني إنتي نين بسيشي أري باهري إيروؤو: أووه ني إنتي نين سوما ما طالتشوؤو. بي سين يني إن أليثينوس إنتي نين بسيشي نيم نين سوما. بي إبيس كوبوس إنتي ساركس نيفين سيمبيس كوبين إيرون خين بيك أوجاي.",
+                cop_cop: "Ⲥⲉⲙⲡⲓⲥⲕⲟⲡⲓⲛ ⲉ̀ϫⲱⲟⲩ ϧⲉⲛ ϩⲁⲛⲛⲁⲓ ⲛⲉⲙ ϩⲁⲛⲙⲉⲧϣⲉⲛϩⲏⲧ. Ⲁⲣⲓⲡⲁϧⲣⲓ ⲉ̀ⲣⲱⲟⲩ. Ⲁⲗⲓⲧⲟⲩ ⲉ̀ⲃⲟⲗ ϩⲁⲣⲱⲟⲩ ⲛⲉⲙ ϩⲁⲣⲟⲛ ⲙ̀ϣⲱⲛⲓ ⲛⲓⲃⲉⲛ ⲛⲉⲙ ⲓ̀ϩⲓ ⲛⲓⲃⲉⲛ. Ⲛⲉⲙ ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲛ̀ⲧⲉ ⲛⲓϣⲱⲛⲓ ϩⲓⲧϥ ⲉ̀ⲃⲟⲗ ϩⲁⲣⲱⲟⲩ. Ⲛⲏⲉⲧⲁⲩⲉⲣⲣⲁϣⲓ ⲉⲩⲕⲏ ⲉ̀ⲧⲟⲧⲟⲩ ϧⲉⲛ ⲛⲓϣⲱⲛⲓ ⲧⲟⲩⲛⲟⲥⲟⲩ ⲙⲁⲛⲟⲙϯ ⲛⲱⲟⲩ. Ⲛⲏⲉⲧϩⲟϫϩⲉϫ ⲉ̀ⲃⲟⲗ ϩⲓⲧⲉⲛ ⲛⲓⲡ̀ⲛⲉⲩⲙⲁ ⲛ̀ⲁ̀ⲕⲁⲑⲁⲣⲧⲟⲛ ⲙⲁⲧⲟⲩ ⲉ̀ⲃⲟⲗ ⲧⲏⲣⲟⲩ. Ⲛⲏⲉⲧⲭⲏ ϧⲉⲛ ⲛⲓϣⲧⲉⲕⲟ : ⲓⲉ ⲛⲓⲙⲁⲛ̀ϣⲱⲛⲓ : ⲓⲉ ⲛⲏⲉⲧⲭⲏ ϧⲉⲛ ⲡⲓⲉⲝⲟⲣⲓⲁ̀ : ⲓⲉ ⲡⲓⲉⲭⲙⲁⲗⲱⲥⲓⲁ̀ : ⲓⲉ ⲛⲏⲉⲧⲁ̀ⲙⲟⲛⲓ ⲙ̀ⲙⲱⲟⲩ ϧⲉⲛ ⲟⲩⲙⲉⲧⲃⲱⲕ ⲉⲥⲧⲉⲃϫⲏⲟⲩⲧ : ⲙⲁⲧⲟⲩ ⲉ̀ⲃⲟⲗ ⲧⲏⲣⲟⲩ Ⲡ̀ϭⲟⲓⲥ ⲟⲩⲟϩ ⲛⲁⲓ ⲛⲱⲟⲩ. Ϫⲉ ⲛ̀ⲑⲟⲕ ⲡⲉⲧⲃⲱⲗ ⲉ̀ⲃⲟⲗ ⲛ̀ⲛⲏⲉⲧⲥⲟⲛϩ ⲟⲩⲟϩ ⲉⲧⲧⲟⲩⲛⲟⲥ ⲛ̀ⲛⲏⲉⲧⲁⲩϩⲉⲓ. Ϯϩⲉⲗⲡⲓⲥ ⲛ̀ⲧⲉ ⲛⲏⲉⲧⲉ ⲙ̀ⲙⲟⲛⲧⲟⲩ ϩⲉⲗⲡⲓⲥ ⲙ̀ⲙⲁⲩ : ϯⲃⲟⲏ̀ⲑⲓⲁ̀ ⲛ̀ⲧⲉ ⲛⲏⲉⲧⲉ ⲙ̀ⲙⲟⲛⲧⲟⲩ ⲃⲟⲏ̀ⲑⲓⲁ̀ ⲙ̀ⲙⲁⲩ. Ⲡⲓⲛⲟⲙϯ ⲛ̀ⲧⲉ ⲛⲓⲕⲟⲩϫⲓⲛ̀ϩⲏⲧ : ⲡⲓⲗⲓⲙⲏⲛ ⲛ̀ⲧⲉ ⲛⲏⲉⲧⲭⲏ ϧⲉⲛ ⲡⲓⲭⲓⲙⲱⲛ. Ⲯⲩⲭⲏ ⲛⲓⲃⲉⲛ ⲉⲧϩⲉⲙϧⲓⲟⲩ ⲟⲩⲟϩ ⲉⲧⲟⲩⲁϩⲉⲙ ⲉ̀ϫⲱⲟⲩ. Ⲙⲟⲓ ⲛⲱⲟⲩ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲟⲩⲛⲁⲓ : ⲙⲟⲓ ⲛⲱⲟⲩ ⲛ̀ⲟⲩⲙ̀ⲧⲟⲛ : ⲙⲟⲓ ⲛⲱⲟⲩ ⲛ̀ⲟⲩⲉⲣϣⲓϣⲓ : ⲙⲟⲓ ⲛⲱⲟⲩ ⲛ̀ⲟⲩϩ̀ⲙⲟⲧ : ⲙⲟⲓ ⲛⲱⲟⲩ ⲛ̀ⲟⲩⲃⲟⲏ̀ⲑⲓⲁ̀ : ⲙⲟⲓ ⲛⲱⲟⲩ ⲛ̀ⲟⲩⲟⲩϫⲁⲓ : ⲙⲟⲓ ⲛⲱⲟⲩ ⲛ̀ⲟⲩⲭⲱ ⲉ̀ⲃⲟⲗ ⲛ̀ⲧⲉ ⲛⲟⲩⲛⲟⲃⲓ ⲛⲉⲙ ⲛⲟⲩⲡⲁⲣⲁⲡⲧⲱⲙⲁ. Ⲁ̀ⲛⲟⲛ ⲇⲉ ϩⲱⲛ Ⲡ̀ϭⲟⲓⲥ ⲛⲓϣⲱⲛⲓ ⲛ̀ⲧⲉ ⲛⲉⲛⲯⲩⲭⲏ ⲁ̀ⲣⲓⲡⲁϧⲣⲓ ⲉ̀ⲣⲱⲟⲩ : ⲟⲩⲟϩ ⲛⲏ ⲛ̀ⲧⲉ ⲛⲉⲛⲥⲱⲙⲁ ⲙⲁⲧⲁⲗϭⲱⲟⲩ. Ⲡⲓⲥⲏⲓⲛⲓ ⲛ̀ⲁ̀ⲗⲏⲑⲓⲛⲟⲥ ⲛ̀ⲧⲉ ⲛⲉⲛⲯⲩⲭⲏ ⲛⲉⲙ ⲛⲉⲛⲥⲱⲙⲁ. Ⲡⲓⲉ̀ⲡⲓⲥⲕⲟⲡⲟⲥ ⲛ̀ⲧⲉ ⲥⲁⲣⲝ ⲛⲓⲃⲉⲛ ⲥⲉⲙⲡⲓⲥⲕⲟⲡⲓⲛ ⲉ̀ⲣⲟⲛ ϧⲉⲛ ⲡⲉⲕⲟⲩϫⲁⲓ.",
+                ar_de: "Ta'ahad-hom bel-marahem wal-ra'fat, eshfe-hom. Enza' 'anhom wa 'anna kol marad, wa kol saqm, wa rouh el-amrad etrod-ho. Wal-lazina abta'ou matrouhin fi el-amrad aqem-hom wa 'az-ehom. Wal-mo'azabin men el-arwah el-najesa a'teq-hom jami'an. Allazina fi el-sojoun aw el-matabeq aw allazina fi el-nafy aw el-saby aw el-maqboud 'alayhim fi 'oboudiya morra, ya rab a'teq-hom jami'an warham-hom. Le-annaka anta allazi tahol el-marboutin wa toqim el-saqetin. Raga' man laysa laho raga', wa mo'in man laysa laho mo'in. 'Aza' seghari el-qoloub, mina' allazina fi el-'asef. Kol el-anfos el-motadayeqa wal-maqboud 'alayha, a'teha ya rab rahma, a'teha niyahan, a'teha borouda, a'teha ni'ma, a'teha ma'ouna, a'teha khalasan, a'teha ghofran khatayaha wa asamaha. Wa nahno aydan ya rab, amrad nofousina, eshfeha wallati le-ajsadina 'afeha. Ayoha el-tabib el-haqiqi allazi le-anfosina, wa ajsadina, ya modaber kol jasad ta'ahadna be-khalasik.",
+                cop_de: "Sempiskopin ego-ou khen han-nai nem han-met-shenhit. Ari-pahri ero-ou. Alitou evol haro-ou nem haron em-shoni niven nem ihi niven. Nem pi-pnevma ente ni-shoni hitf evol haro-ou. Ni-etav-er-rashi ev-ki etotou khen ni-shoni tounos-ou ma-nomti no-ou. Ni-et-hog-heg evol-hiten ni-pnevma en-akatharton matou evol tirou. Ni-et-ki khen ni-shteko: ie ni-ma-en-shoni: ie ni-et-ki khen pi-exoria: ie pi-ekhmalosia: ie ni-et-amoni emmo-ou khen ou-met-vok estev-jiout: matou evol tirou Epchois ouoh nai no-ou. Je enthok pet-vol evol en-ni-et-sonh ouoh et-tounos en-ni-etav-hei. Ti-helpis ente ni-ete emmontou helpis emmav: ti-voithia ente ni-ete emmontou voithia emmav. Pi-nomti ente ni-kouji-en-hit: pi-limin ente ni-et-ki khen pi-khimon. Psishi niven et-hem-khiou ouoh et-ouahem ego-ou. Moi no-ou Epchois en-ou-nai: moi no-ou en-ou-emton: moi no-ou en-ou-ershishi: moi no-ou en-ou-ehmot: moi no-ou en-ou-voithia: moi no-ou en-ou-oujai: moi no-ou en-ou-ko evol ente nou-novi nem nou-paraptoma. Anon de hon Epchois ni-shoni ente nen-psishi ari-pahri ero-ou: ouoh ni ente nen-soma ma-talcho-ou. Pi-sini en-alithinos ente nen-psishi nem nen-soma. Pi-episkopos ente sarx niven sempiskopin eron khen pek-oujai."
+            },
+            {
+                id: 29,
+                speaker: "Volk",
+                ar: "يَا رَبُّ ارْحَمْ.",
+                de: "Herr erbarme dich.",
+                cop_ar: "كيرياليسون.",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ.",
+                ar_de: "Ya rab erham.",
+                cop_de: "Kyrie eleison."
+            },
+            {
+                id: 30,
+                sectionTitle: {
+                    de: "Das Gebet für die Reisenden",
+                    ar: "اوشيه المسافرين"
+                },
+                speaker: "Priester",
+                ar: "نَسْأَلُ وَنَطْلُبُ مِنْ صَلَاحِكَ يَا مُحِبَّ الْبَشَرِ، أُذْكُرْ يَا رَبُّ آبَاءَنَا وَإِخْوَتَنَا الْمُسَافِرِينَ.",
+                de: "Wir bitten dich und erflehen deine Güte, Menschenliebender, gedenke, o Herr, unserer Väter und Brüder, die auf Reisen sind.",
+                cop_ar: "تين تيهو أووه تين توفه إنتيك ميت أغاثوس بي ماي رومي. أري إفميفئي إبشويس إن نين يوتي نيم نين إسنيو إيطاف شي إبشمو.",
+                cop_cop: "Ⲧⲉⲛϯϩⲟ ⲟⲩⲟϩ ⲧⲉⲛⲧⲱⲃϩ ⲛ̀ⲧⲉⲕⲙⲉⲧⲁ̀ⲅⲁⲑⲟⲥ ⲡⲓⲙⲁⲓⲣⲱⲙⲓ. Ⲁⲣⲓⲫ̀ⲙⲉⲩⲓ̀ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲛⲉⲛⲓⲟϯ ⲛⲉⲙ ⲛⲉⲛⲥ̀ⲛⲏⲟⲩ ⲉ̀ⲧⲁⲩϣⲉ ⲉ̀ⲡϣⲉⲙⲙⲟ.",
+                ar_de: "Nas'al wa natlob men salahika ya moheb el bashar, ozkor ya rab aba'ana wa ikhwatana el mosafirin.",
+                cop_de: "Ten-tiho ouoh ten-tovh entek-met-agathos pi-mai-romi. Ari-phmevi Epchois en-nen-ioti nem nen-sniou etav-she ep-shemmo."
+            },
+            {
+                id: 31,
+                speaker: "Diakon",
+                ar: "أُطْلُبُوا عَنْ آبَائِنَا وَإِخْوَتِنَا الْمُسَافِرِينَ، وَالَّذِينَ يُضْمِرُونَ السَّفَرَ فِي كُلِّ مَوْضِعٍ، سَهِّلْ طُرُقَهُمْ أَجْمَعِينَ، إِنْ كَانَ فِي الْبَحْرِ أَوِ الْأَنْهَارِ أَوِ الْبُحَيْرَاتِ [أَوْ الطُّرُقِ الْمَسْلُوكَةِ،] [أَوْ الْجَوِّ]، أَوْ الْمُسَافِرِينَ بِكُلِّ نَوْعٍ، لِكَيْ الْمَسِيحُ إِلَهُنَا يَرُدَّهُمْ إِلَى مَسَاكِنِهِمْ سَالِمِينَ، وَيَغْفِرَ لَنَا خَطَايَانَا.",
+                de: "Bittet für unsere Väter und Brüder, die auf Reisen sind und für die, die eine Reise in allerlei Orte vorhaben, dass Gott ihnen allen ihre Wege ebne, sei es auf dem Meer, auf den Flüssen, auf den Seen, auf den Reisewegen (und in der Luft), dass Christus, unser Gott diejenigen, die ihre Reise auf jegliche Art verrichten, friedlich heimführt und uns unsere Sünden vergibt.",
+                cop_ar: "توف إيجين نين يوتي نيم نين إسنيو إيطاف شي إبشمو: يي ني إث أوؤيتي إيشي خين ماي نيفين: سوتون نو مويت تيرو: إيتي إيفول هيتين فيوم: يي ني يارو يي ني ليمني يي ني مويت إم موشي (يي بي أ إير): يي إت إيري إمبو جين موشي إن ريتي نيفين: هينا إنتي بي إخرستوس بين نوتي طاس ثوؤو إن هيت إي نو ما إن شويبي خين أو إيريني: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ⲧⲱⲃϩ ⲉ̀ϫⲉⲛ ⲛⲉⲛⲓⲟϯ ⲛⲉⲙ ⲛⲉⲛⲥ̀ⲛⲏⲟⲩ ⲉ̀ⲧⲁⲩϣⲉ ⲉ̀ⲡϣⲉⲙⲙⲟ : ⲓⲉ ⲛⲏⲉⲑⲟⲩⲏϯ ⲉ̀ϣⲉ ϧⲉⲛ ⲙⲁⲓ ⲛⲓⲃⲉⲛ : ⲥⲟⲩⲧⲱⲛ ⲛⲟⲩⲙⲱⲓⲧ ⲧⲏⲣⲟⲩ : ⲓ̀ⲧⲉ ⲉ̀ⲃⲟⲗ ϩⲓⲧⲉⲛ ⲫⲓⲟⲙ : ⲓⲉ ⲛⲓⲓⲁⲣⲱⲟⲩ ⲓⲉ ⲛⲓⲗⲓⲙⲛⲏ ⲓⲉ ⲛⲓⲙⲱⲓⲧ ⲙ̀ⲙⲟϣⲓ (ⲓⲉ ⲡⲓⲁ̀ⲏⲣ) : ⲓⲉ ⲉⲧⲓ̀ⲣⲓ ⲙ̀ⲡⲟⲩϫⲓⲛⲙⲟϣⲓ ⲛ̀ⲣⲏϯ ⲛⲓⲃⲉⲛ : ϩⲓⲛⲁ ⲛ̀ⲧⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲛⲟⲩϯ ⲧⲁⲥⲑⲟⲟⲩ ⲉ̀ⲛ̀ϩⲏⲧ ⲉ̀ⲛⲟⲩⲙⲁⲛ̀ϣⲱⲡⲓ ϧⲉⲛ ⲟⲩϩⲓⲣⲏⲛⲏ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Otlobo 'an aba'ina wa ikhwatina el mosafirin, wallazina yodmeroun el safar fi kol mawde', sahel toroqa-hom ajma'in, en kana fi el bahr aw el anhar aw el bohayrat [aw el toro q el maslouka,] [aw el jaw], aw el mosafirin be kol naw', lekay el Masih ilahona yarodahom ila masakenehem salemin, wa yaghfer lana khatayana.",
+                cop_de: "Tovh ejen nen-ioti nem nen-sniou etav-she ep-shemmo: ie ni-eth-oueti e-she khen mai niven: souton nou-moit tirou: ite evol hiten fiom: ie ni-iarou ie ni-limni ie ni-moit em-moshi (ie pi-a-ir): ie et-iri em-pou-jin-moshi en-riti niven: hina ente Pi-Khristos Pennouti tastho-ou en-hyt e-nou-ma-en-shopi khen ou-hirini: entef-ka nen-novi nan evol."
+            },
+            {
+                id: 32,
+                speaker: "Volk",
+                ar: "يَا رَبُّ ارْحَمْ.",
+                de: "Herr erbarme dich.",
+                cop_ar: "كيرياليسون.",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ.",
+                ar_de: "Ya rab erham.",
+                cop_de: "Kyrie eleison."
+            },
+            {
+                id: 34,
+                speaker: "Priester",
+                ar: "وَالَّذِينَ يُضْمِرُونَ السَّفَرَ فِي كُلِّ مَكَانٍ، سَهِّلْ طُرُقَهُمْ أَجْمَعِينَ، إِنْ كَانَ فِي الْبَحْرِ، أَوِ الْأَنْهَارِ، أَوِ الْبُحَيْرَاتِ، أَوِ الطُّرُقِ الْمَسْلُوكَةِ [أَوْ الْجَوِّ]، أَوِ السَّالِكِينَ بِكُلِّ نَوْعٍ، كُلَّ أَحَدٍ بِكُلِّ مَوْضِعٍ، رُدَّهُمْ إِلَى مِينَاءٍ هَادِئٍ، مِينَاءِ الْخَلَاصِ. تَفَضَّلْ اصْحَبْهُمْ فِي الْإِقْلَاعِ، وَاصْحَبْهُمْ فِي الْمَسِيرِ. رُدَّهُمْ إِلَى ذَوِيهِمْ بِالْفَرَحِ فَرِحِينَ، وَبِالْعَافِيَةِ مُعَافِينَ. اشْتَرِكْ فِي الْعَمَلِ مَعَ عَبِيدِكَ فِي كُلِّ عَمَلٍ صَالِحٍ. وَنَحْنُ أَيْضاً يَا رَبُّ غُرْبَتَنَا فِي هَذَا الْعُمْرِ، احْفَظْهَا بِغَيْرِ مَضَرَّةٍ وَلَا عَاصِفٍ وَلَا قَلَقٍ إِلَى الْاِنْقِضَاءِ.",
+                de: "Und aller, die eine Reise irgendwohin vorhaben. Ebne ihnen allen ihre Wege, sei es auf Meeren, Flüssen, Seen, Landwegen, (in der Luft) oder auf anderen Reisewegen, jedem zu jedem Ort. Bringe sie zurück in einen ruhigen Hafen, zum Hafen des Heils. Bitte, sei ihnen ein Segelgefährte und Wegbegleiter. Und geleite sie nach Hause zurück zu den Ihren, von Freude erfüllt und mit Gesundheit gestärkt. Nimm Anteil an der Arbeit deiner Diener in jedem guten Werk. Was uns selbst betrifft, o Herr, bewahre unser Fremdsein in dieser Lebenszeit ohne Schaden, ohne Stürme und Sorgen bis ans Ende.",
+                cop_ar: "كي ني إث ميفئي إيشي خين ماي نيفين: سوتون نو مويت تيرو: إيتي إيفول هيتين فيوم: يي ني يارو يي ني ليمني: يي ني مويت إم موشي (يي بي أ إير): يي إت إيري إمبو جين موشي إن ريتي نيفين: إت في ما نيفين: ما طاس ثوؤو إي أو ليمين إن أت خينيم: بي ليمين إنتي بي أوجاي. أري كاتاكسين أري إشفير إي أو إير نيموؤو: أري إشفير إم موشي نيموؤو. ما طاس ثوؤو إي ني إتي نوؤو: خين أو راشي إف راشي: خين أو أوجاي إف أوؤج أووت. أري إشفير إير هوب نيم نيك إيفيايك: خين هوب نيفين إن أغاثون. أنون دي هون إبشويس تين ميت ريم إن كيلي إت خين باي فيوس فاي: أري إه إيروس إن أت ثليفي إن أت خيمون إن أت تشوب تور شا إيفول.",
+                cop_cop: "Ⲕⲉ ⲛⲏⲉⲑⲙⲉⲩⲓ̀ ⲉ̀ϣⲉ ϧⲉⲛ ⲙⲁⲓ ⲛⲓⲃⲉⲛ : ⲥⲟⲩⲧⲱⲛ ⲛⲟⲩⲙⲱⲓⲧ ⲧⲏⲣⲟⲩ : ⲓ̀ⲧⲉ ⲉ̀ⲃⲟⲗ ϩⲓⲧⲉⲛ ⲫⲓⲟⲙ : ⲓⲉ ⲛⲓⲓⲁⲣⲱⲟⲩ ⲓⲉ ⲛⲓⲗⲓⲙⲛⲏ : ⲓⲉ ⲛⲓⲙⲱⲓⲧ ⲙ̀ⲙⲟϣⲓ (ⲓⲉ ⲡⲓⲁ̀ⲏⲣ) : ⲓⲉ ⲉⲧⲓ̀ⲣⲓ ⲙ̀ⲡⲟⲩϫⲓⲛⲙⲟϣⲓ ⲛ̀ⲣⲏϯ ⲛⲓⲃⲉⲛ : ⲉⲧⲃⲉ ⲙⲁ ⲛⲓⲃⲉⲛ : ⲙⲁⲧⲁⲥⲑⲟⲟⲩ ⲉ̀ⲟⲩⲗⲓⲙⲏⲛ ⲛ̀ⲁⲧⲭⲓⲛⲓⲙ : ⲡⲓⲗⲓⲙⲏⲛ ⲛ̀ⲧⲉ ⲡⲓⲟⲩϫⲁⲓ. Ⲁⲣⲓⲕⲁⲧⲁⲝⲓⲛ ⲁ̀ⲣⲓϣⲫⲏⲣ ⲉ̀ⲟⲩⲱⲓⲣ ⲛⲉⲙⲱⲟⲩ : ⲁ̀ⲣⲓϣⲫⲏⲣ ⲙ̀ⲙⲟϣⲓ ⲛⲉⲙⲱⲟⲩ. Ⲙⲁⲧⲁⲥⲑⲟⲟⲩ ⲉ̀ⲛⲏⲉⲧⲉ ⲛⲟⲩⲟⲩ : ϧⲉⲛ ⲟⲩⲣⲁϣⲓ ⲉⲩⲣⲁϣⲓ : ϧⲉⲛ ⲟⲩⲟⲩϫⲁⲓ ⲉⲩⲟⲩⲟϫⲁⲟⲩⲧ. Ⲁⲣⲓϣⲫⲏⲣ ⲉ̀ⲣϩⲱⲃ ⲛⲉⲙ ⲛⲉⲕⲉ̀ⲃⲓⲁⲓⲕ : ϧⲉⲛ ϩⲱⲃ ⲛⲓⲃⲉⲛ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲛ. Ⲁ̀ⲛⲟⲛ ⲇⲉ ϩⲱⲛ Ⲡ̀ϭⲟⲓⲥ ⲧⲉⲛⲙⲉⲧⲣⲉⲙⲛ̀ⲭⲟⲓⲗⲓ ⲉⲧϧⲉⲛ ⲡⲁⲓⲃⲓⲟⲥ ⲫⲁⲓ : ⲁ̀ⲣⲉϩ ⲉ̀ⲣⲟⲥ ⲛ̀ⲁⲧⲑⲗⲓⲯⲓ ⲛ̀ⲁⲧⲭⲓⲙⲱⲛ ⲛ̀ⲁⲧϣⲑⲟⲣⲧⲉⲣ ϣⲁ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Wal lazina yodmeroun el safar fi kol makan, sahel toroqa-hom ajma'in, en kana fi el bahr, aw el anhar, aw el bohayrat, aw el toroqa el maslouka [aw el jaw], aw el salekin be kol naw', kol ahad be kol mawde', rodahom ila mina' hade', mina' el khalas. Tafadal eshab-hom fi el eqla', washab-hom fi el masir. Rodahom ila zawihim bel farah farehin, wa bel 'afia mo'afin. Eshterek fi el 'amal ma'a 'abidaka fi kol 'amal saleh. Wa nahno aydan ya rab ghorbatana fi haza el 'omr, ehfazha be ghayr madarra wa la 'asef wa la qalaq ila el enqida'.",
+                cop_de: "Ke ni-eth-mevi e-she khen mai niven: souton nou-moit tirou: ite evol hiten fiom: ie ni-iarou ie ni-limni: ie ni-moit em-moshi (ie pi-a-ir): ie et-iri em-pou-jin-moshi en-riti niven: et-ve ma niven: ma-tastho-ou e-ou-limin en-at-khinim: pi-limin ente pi-oujai. Ari-kataxiin ari-shfir-e-oou-eir nem-ou: ari-shfir em-moshi nem-ou. Ma-tastho-ou e-ni-ete nou-ou: khen ou-rashi ev-rashi: khen ou-oujai ev-ouoj-aout. Ari-shfir er-hob nem nek-eviaik: khen hob niven en-agathon. Anon de hon Epchois ten-met-rem-en-koili et-khen pai-vios fai: areh eros en-at-thlivi en-at-khimon en-at-tshop tor sha evol."
+            },
+            {
+                id: 35,
+                speaker: "Volk",
+                ar: "يَا رَبُّ ارْحَمْ.",
+                de: "Herr erbarme dich.",
+                cop_ar: "كيرياليسون.",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ.",
+                ar_de: "Ya rab erham.",
+                cop_de: "Kyrie eleison."
+            },
+            {
+                id: 36,
+                sectionTitle: {
+                    de: "Das Gebet für die Opfergaben",
+                    ar: "اوشيه القرابين"
+                },
+                speaker: "Priester",
+                ar: "نَسْأَلُ وَنَطْلُبُ مِنْ صَلَاحِكَ يَا مُحِبَّ الْبَشَرِ، أُذْكُرْ يَا رَبُّ صَعَائِدَ وَقَرَابِينَ وَتَشَكُّرَاتِ الَّذِينَ قَرَّبُوا. كَرَامَةً وَمَجْداً لِاسْمِكَ الْقُدُّوسِ.",
+                de: "Wir bitten dich und erflehen deine Güte, Menschenliebender, gedenke, o Herr, der Opfer, der Darbringungen und der Danksagungen all derer, die geopfert haben. Zum Ruhme und zur Ehre deines heiligen Namens.",
+                cop_ar: "تين تيهو أووه تين توفه إنتيك ميت أغاثوس بي ماي رومي. أري إفميفئي إبشويس إن ني ثيسيا ني إبروسفورا ني شيب إهموت إنتي ني إيطاف إير إبروسفيرين. إف طايو نيم أو أو أو إم بيك ران إثؤواف.",
+                cop_cop: "Ⲧⲉⲛϯϩⲟ ⲟⲩⲟϩ ⲧⲉⲛⲧⲱⲃϩ ⲛ̀ⲧⲉⲕⲙⲉⲧⲁ̀ⲅⲁⲑⲟⲥ ⲡⲓⲙⲁⲓⲣⲱⲙⲓ. Ⲁⲣⲓⲫ̀ⲙⲉⲩⲓ̀ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲛⲓⲑⲩⲥⲓⲁ̀ ⲛⲓⲡ̀ⲣⲟⲥⲫⲟⲣⲁ ⲛⲓϣⲉⲡϩ̀ⲙⲟⲧ ⲛ̀ⲧⲉ ⲛⲏⲉⲧⲁⲩⲉⲣⲡ̀ⲣⲟⲥⲫⲉⲣⲓⲛ. Ⲉⲩⲧⲁⲓⲟ̀ ⲛⲉⲙ ⲟⲩⲱ̀ⲟⲩ ⲙ̀ⲡⲉⲕⲣⲁⲛ ⲉⲑⲟⲩⲁⲃ.",
+                ar_de: "Nas'al wa natlob men salahika ya moheb el bashar, ozkor ya rab sa'a'ed wa qarabin wa tashakorat allazina qarabou. Karama wa majdan le esmika el qodos.",
+                cop_de: "Ten-tiho ouoh ten-tovh entek-met-agathos pi-mai-romi. Ari-phmevi Epchois en-ni-thisia ni-prosfora ni-shep-ehmot ente ni etav-er-prosferin. Ev-taio nem ou-o-ou em-pek-ran ethowab."
+            },
+            {
+                id: 37,
+                speaker: "Diakon",
+                ar: "أُطْلُبُوا عَنْ الْمُهْتَمِّينَ بِالصَّعَائِدِ، وَالْقَرَابِينِ، وَالْبُكُورِ، وَالزُّيُوتِ، وَالْبَخُورِ، وَالسُّتُورِ، وَكُتُبِ الْقِرَاءَةِ، وَأَوَانِي الْمَذْبَحِ، لِكَيْ الْمَسِيحُ إِلَهُنَا يُكَافِئَهُمْ فِي أُورُشَلِيمَ السَّمَائِيَّةِ، وَيَغْفِرَ لَنَا خَطَايَانَا.",
+                de: "Bittet für diejenigen, die sich um die Opfer kümmern, um die Darbringungen, die Erstlingsgaben, die Öle, den Weihrauch, die Vorhänge, die Lesebücher, die Gefäße des Altars, dass Christus unser Gott sie im himmlischen Jerusalem belohnt und uns unsere Sünden vergibt.",
+                cop_ar: "توف إيجين ني إت تشي إف رو أوش: إن ني ثيسيا ني إبروسفورا: ني أبارشي: ني نيه ني إسطوي نووفي: ني إسكيباسما ني جوم إناش: ني كي ميليون إنتي بي ما إن إير شوؤوشي: هينا إنتي بي إخرستوس بين نوتي تي شيفيو نوؤو خين ييروساليم إنتي إتفي: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ⲧⲱⲃϩ ⲉ̀ϫⲉⲛ ⲛⲏⲉⲧϭⲓⲙ̀ⲫ̀ⲣⲟⲟⲩϣ : ⲛ̀ⲛⲓⲑⲩⲥⲓⲁ̀ ⲛⲓⲡ̀ⲣⲟⲥⲫⲟⲣⲁ : ⲛⲓⲁ̀ⲡⲁⲣⲭⲏ ⲛⲓⲛⲉϩ ⲛⲓⲥ̀ⲑⲟⲓⲛⲟⲩϥⲓ ⲛⲓⲥ̀ⲕⲉⲡⲁⲥⲙⲁ ⲛⲓϫⲱⲙ ⲛ̀ⲱϣ : ⲛⲓⲕⲩⲙⲏⲗⲓⲟⲛ ⲛ̀ⲧⲉ ⲡⲓⲙⲁⲛ̀ⲉⲣϣⲱⲟⲩϣⲓ : ϩⲓⲛⲁ ⲛ̀ⲧⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲛⲟⲩϯ ϯϣⲉⲃⲓⲱ̀ ⲛⲱⲟⲩ ϧⲉⲛ Ⲓⲉⲣⲟⲩⲥⲁⲗⲏⲙ ⲛ̀ⲧⲉ ⲧ̀ⲫⲉ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Otlobo 'an el mohtamin bel sa'a'ed, wal qarabin, wal bokour, wal zoyout, wal bakhour, wal sotour, wa kotob el qira'a, wa awani el mazbah, lekay el Masih ilahona yokafe'ahom fi Orashalim el sama'iya, wa yaghfer lana khatayana.",
+                cop_de: "Tovh ejen ni-et-chi-em-ef-ro-osh: en-ni-thisia ni-prosfora: ni-aparchi ni-neh ni-stoi-noufi ni-skepasma ni-jom en-osh: ni-kimilion ente pi-ma-en-ersho-oushi: hina ente Pi-Khristos Pennouti ti-shevio no-ou khen Ierousalim ente et-fe: entef-ka nen-novi nan evol."
+            },
+            {
+                id: 38,
+                speaker: "Volk",
+                ar: "يَا رَبُّ ارْحَمْ.",
+                de: "Herr erbarme dich.",
+                cop_ar: "كيرياليسون.",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ.",
+                ar_de: "Ya rab erham.",
+                cop_de: "Kyrie eleison."
+            },
+            {
+                id: 40,
+                speaker: "Priester",
+                ar: "إقْبَلْهَا إِلَيْكَ عَلَى مَذْبَحِكَ الْمُقَدَّسِ، النَّاطِقِ السَّمَائِيِّ، رَائِحَةَ بَخُورٍ، تَدْخُلُ إِلَى عَظَمَتِكَ الَّتِي فِي السَّمَوَاتِ بِوَاسِطَةِ خِدْمَةِ مَلَائِكَتِكَ، وَرُؤَسَاءِ مَلَائِكَتِكَ الْمُقَدَّسِينَ. وَكَمَا قَبِلْتَ إِلَيْكَ قَرَابِينَ هَابِيلَ الصِّدِّيقِ، وَذَبِيحَةَ أَبِينَا إِبْرَاهِيمَ، وَفِلْسَيِّ الأَرْمَلَةِ. هكَذَا أَيْضاً نُذُورَ عَبِيدِكَ اقْبَلْهَا إِلَيْكَ، أَصْحَابَ الْكَثِيرِ وَأَصْحَابَ الْقَلِيلِ، الْخَفِيَّاتِ وَالظَّاهِرَاتِ. وَالَّذِينَ يُرِيدُونَ أَنْ يُقَدِّمُوا لَكَ وَلَيْسَ لَهُمْ، وَالَّذِينَ قَدَّمُوا لَكَ فِي هذَا الْيَوْمِ هذِهِ الْقَرَابِينَ. أَعْطِهِمُ الْبَاقِيَاتِ عِوَضاً عَنِ الْفَانِيَاتِ، السَّمَائِيَّاتِ عِوَضَ الأَرْضِيَّاتِ، الأَبَدِيَّاتِ عِوَضَ الزَّمَنِيَّاتِ. بُيُوتَهُمْ وَمَخَازِنَهُمْ امْلأَهَا مِنْ كُلِّ الْخَيْرَاتِ. أَحِطْهُمْ يَا رَبُّ بِقُوَّةِ مَلَائِكَتِكَ، وَرُؤَسَاءِ مَلَائِكَتِكَ الأَطْهَارِ. وَكَمَا ذَكَرُوا اسْمَكَ الْقُدُّوسَ عَلَى الأَرْضِ، أُذْكُرْهُمْ هُمْ أَيْضاً يَا رَبُّ فِي مَلَكُوتِكَ، وَفِي هذَا الدَّهْرِ لَا تَتْرُكْهُمْ عَنْكَ.",
+                de: "Nimm sie über deinem heiligen, lebendigen, himmlischen Altar an, als Wohlgeruch von Weihrauch für deine Herrlichkeit in den Himmeln, durch den Dienst deiner heiligen Engel und Erzengel. Wie du die Opfergaben des gerechten Abel, das Schlachtopfer unseres Vaters Abraham und die zwei Münzen der Witwe angenommen hast, so nimm dich ebenfalls aller Gaben deiner Diener an, derer, die viel besitzen und derer, die wenig haben, der verborgenen und der offenbar dargebrachten. Nimm dich auch derer an, die zu dir mit Opfergaben hineinkommen wollen und es nicht können, und derer, die zu dir gekommen sind an diesem Tag mit diesen Opfergaben. Gib ihnen das Unvergängliche als Entgelt für die vergänglichen Dinge, das Himmlische für das Irdische, das Ewige für das Zeitgebundene. Fülle ihre Häuser und Speicher mit allen Gütern. Umgebe sie, o Herr, mit der Kraft deiner reinen Engel und Erzengel. Wie sie deines heiligen Namens auf Erden gedacht haben, so gedenke auch ihrer in deinem Königreich. Und auch in dieser Erdenzeit verlasse sie nicht.",
+                cop_ar: "شوبو إيروك إيجين بيك مان إيرشؤوشي إثؤواف: إن لوجيكون إنتي إتفي: أو إسطوي نوفي إنتي بي إسطوي نوفي: إثناشي إيفون: إي تيك ميت نيشتي إت خين ني في أوي: إيفول هيتين بي شيمشي إنتي نيك أنجيلوس: نيم نيك أرشي أنجيلوس إثؤواف. إم فريتي إيطاك شوب إيروك إن ني دورون إنتي بي ثمي أفيل: نيم تي ثيسيا إنتي بين يوت إفراآم: نيم تي إسن اف إن ليبتون إنتي تي شيرا. بايريتي أون ني إفكي إنتي نيك إيفيايك شوبو إيروك: ني أو أوش نيم ني كوجي: ني إت هيب نيم ني إت أوؤنه إيفول. ني إث أوؤش إي إيني ناك إيفون أووه إممون إنتوؤو: نيم ني إيطاف إيني ناك إيفون خين باي إيهوو إنتي فوؤو ني إبروسفورا ناي. موي نوؤو إن ني أت طاكو إن تي شيفيو إن ني ريف طاكو: ني في أوي إن تي شيفيو إن نا إبكاهي: ني إينيه إن تي شيفيو إن ني بروس أو سيو. نو يي نو تاميون ماهو إيفول خين أغاثون نيفين. ما طاكتو إيروؤو إبشويس إن تي جوم إنتي نيك أنجيلوس: نيم نيك أرشي أنجيلوس إثؤواف. إم فريتي إيطاف إير إفميفئي إم بيك ران إثؤواف هيجين بي كاهي: أري إفميفئي إمموؤو إبشويس خين تيك ميت أورو: أووه خين باي كي إيون فاي إمبير خات نوك.",
+                cop_cop: "Ϣⲟⲡⲟⲩ ⲉ̀ⲣⲟⲕ ⲉ̀ϫⲉⲛ ⲡⲉⲕⲙⲁⲛ̀ⲉⲣϣⲱⲟⲩϣⲓ ⲉⲑⲟⲩⲁⲃ : ⲛ̀ⲗⲟⲅⲓⲕⲟⲛ ⲛ̀ⲧⲉ ⲧ̀ⲫⲉ : ⲟⲩⲥ̀ⲑⲟⲓⲛⲟⲩϥⲓ ⲛ̀ⲧⲉ ⲡⲓⲥ̀ⲑⲟⲓⲛⲟⲩϥⲓ : ⲉⲑⲛⲁϣⲉ ⲉ̀ϧⲟⲩⲛ : ⲉ̀ⲧⲉⲕⲙⲉⲧⲛⲓϣϯ ⲉⲧϧⲉⲛ ⲛⲓⲫⲏⲟⲩⲓ̀ : ⲉ̀ⲃⲟⲗ ϩⲓⲧⲉⲛ ⲡⲓϣⲉⲙϣⲓ ⲛ̀ⲧⲉ ⲛⲉⲕⲁⲅⲅⲉⲗⲟⲥ : ⲛⲉⲙ ⲛⲉⲕⲁⲣⲭⲏⲁⲅⲅⲉⲗⲟⲥ ⲉⲑⲟⲩⲁⲃ. Ⲙ̀ⲫ̀ⲣⲏϯ ⲉ̀ⲧⲁⲕϣⲱⲡ ⲉ̀ⲣⲟⲕ ⲛ̀ⲛⲓⲇⲱⲣⲟⲛ ⲛ̀ⲧⲉ ⲡⲓⲑ̀ⲙⲏⲓ Ⲁ̀ⲃⲉⲗ : ⲛⲉⲙ ϯⲑⲩⲥⲓⲁ̀ ⲛ̀ⲧⲉ ⲡⲉⲛⲓⲱⲧ Ⲁⲃⲣⲁⲁⲙ : ⲛⲉⲙ ϯⲥ̀ⲛⲁⲩ ⲛ̀ⲗⲉⲡⲧⲟⲛ ⲛ̀ⲧⲉ ϯⲭⲏⲣⲁ. Ⲡⲁⲓⲣⲏϯ ⲟⲛ ⲛⲓⲉⲩⲭⲏ ⲛ̀ⲧⲉ ⲛⲉⲕⲉ̀ⲃⲓⲁⲓⲕ ϣⲟⲡⲟⲩ ⲉ̀ⲣⲟⲕ : ⲛⲓⲟϣ ⲛⲉⲙ ⲛⲓⲕⲟⲩϫⲓ : ⲛⲏⲉⲧϩⲏⲡ ⲛⲉⲙ ⲛⲏⲉⲑⲟⲩⲱⲛϩ ⲉ̀ⲃⲟⲗ. Ⲛⲏⲉⲑⲟⲩⲱϣ ⲉ̀ⲓ̀ⲛⲓ ⲛⲁⲕ ⲉ̀ϧⲟⲩⲛ ⲟⲩⲟϩ ⲙ̀ⲙⲟⲛ ⲛ̀ⲧⲱⲟⲩ : ⲛⲉⲙ ⲛⲏⲉⲧⲁⲩⲓ̀ⲛⲓ ⲛⲁⲕ ⲉ̀ϧⲟⲩⲛ ϧⲉⲛ ⲡⲁⲓⲉ̀ϩⲟⲟⲩ ⲛ̀ⲧⲉ ⲫⲟⲟⲩ ⲛⲓⲡ̀ⲣⲟⲥⲫⲟⲣⲁ ⲛⲁⲓ. Ⲙⲟⲓ ⲛⲱⲟⲩ ⲛ̀ⲛⲓⲁⲧⲧⲁⲕⲟ ⲛ̀ⲧ̀ϣⲉⲃⲓⲱ̀ ⲛ̀ⲛⲓⲣⲉϥⲧⲁⲕⲟ : ⲛⲓⲫⲏⲟⲩⲓ̀ ⲛ̀ⲧ̀ϣⲉⲃⲓⲱ̀ ⲛ̀ⲛⲁ ⲡ̀ⲕⲁϩⲓ : ⲛⲓⲉ̀ⲛⲉϩ ⲛ̀ⲧ̀ϣⲉⲃⲓⲱ̀ ⲛ̀ⲛⲓⲡ̀ⲣⲟⲥⲟⲩⲥⲏⲟⲩ. Ⲛⲟⲩⲏⲓ ⲛⲟⲩⲧⲁⲙⲓⲟⲛ ⲙⲁϩⲟⲩ ⲉ̀ⲃⲟⲗ ϧⲉⲛ ⲁ̀ⲅⲁⲑⲟⲛ ⲛⲓⲃⲉⲛ. Ⲙⲁⲧⲁⲕⲧⲟ ⲉ̀ⲣⲱⲟⲩ Ⲡ̀ϭⲟⲓⲥ ⲛ̀ϯϫⲟⲙ ⲛ̀ⲧⲉ ⲛⲉⲕⲁⲅⲅⲉⲗⲟⲥ : ⲛⲉⲙ ⲛⲉⲕⲁⲣⲭⲏⲁⲅⲅⲉⲗⲟⲥ ⲉⲑⲟⲩⲁⲃ. Ⲙ̀ⲫ̀ⲣⲏϯ ⲉ̀ⲧⲁⲩⲉⲣⲫ̀ⲙⲉⲩⲓ̀ ⲙ̀ⲡⲉⲕⲣⲁⲛ ⲉⲑⲟⲩⲁⲃ ϩⲓϫⲉⲛ ⲡ̀ⲕⲁϩⲓ : ⲁ̀ⲣⲓⲫ̀ⲙⲉⲩⲓ̀ ⲙ̀ⲙⲱⲟⲩ Ⲡ̀ϭⲟⲓⲥ ϧⲉⲛ ⲧⲉⲕⲙⲉⲧⲟⲩⲣⲟ : ⲟⲩⲟϩ ϧⲉⲛ ⲡⲁⲓⲕⲉⲉ̀ⲱⲛ ⲫⲁⲓ ⲙ̀ⲡⲉⲣⲭⲁⲧ ⲛ̀ⲥⲱⲕ.",
+                ar_de: "Eqbalha elayka ala mazbahika el moqadas, el nateq el sama'i, ra'ehat bakhour, tadkhol ila 'azamatika allati fi el samawat be wasetat khedmat mala'ikatika, wa ro'asa' mala'ikatika el qadisin. Wa kama qabilta elayka qarabin Habil el sediq, wa zabihat abina Ibrahim, wa felsay el armala. Hakaza aydan nozour 'abidaka eqbalha elayka, ashab el kathir wa ashab el qalil, el khafiyat wal zaherat. Wallazina yoridoun an yoqadimou laka wa laysa lahom, wallazina qadamou laka fi haza el yawm hazihi el qarabin. A'tehom el baqiyat 'ewadan 'an el faniyat, el sama'iyat 'ewadan 'an el ardiyat, el abadiyat 'ewadan 'an el zamaniyat. Boyoutahom wa makhazenahom emla'ha men kol el khayrat. Ahethom ya rab be qowat mala'ikatika, wa ro'asa' mala'ikatika el athar. Wa kama zakarou esmaka el qodos ala el ard, ozkorhom hom aydan ya rab fi malakoutika, wa fi haza el dahr la tatrokhom 'anka.",
+                cop_de: "Shopou erok ejen pek-man-ersho-oushi ethowab: en-logikon ente et-fe: ou-stoy-nofi ente pi-stoy-noufi: eth-na-she evoun: e-tek-met-nishti et-khen ni-fi-oui: evol hiten pi-shemshi ente nek-angelos: nem nek-archi-angelos ethowab. Mphriti etak-shop erok en-ni-doron ente pi-thmi Avel: nem t-thysia ente pen-iot Abraam: nem ti-snav en-lepton ente ti-khira. Pairiti on ni-eukhi ente nek-eviaik shopou erok: ni-o-osh nem ni-kouji: ni-eth-hip nem ni-eth-ouonh evol. Ni-eth-ouosh e-ini nak evoun ouoh emmon ento-ou: nem ni-etav-ini nak evoun khen pai-ehoou ente fo-ou ni-prosfora nai. Moi no-ou en-ni-at-tako en-t-shevio en-ni-reftako: ni-fe-oui en-t-shevio en-na-pkahi: ni-eneh en-t-shevio en-ni-pros-ou-se-ou. Nou-yi nou-tamion mahou evol khen agathon niven. Matak-to eroo-ou Epchois en-t-jom ente nek-angelos: nem nek-archi-angelos ethowab. Mphriti etav-er-phmevi em-pek-ran ethowab hijen pi-kahi: ari-phmevi emmo-ou Epchois khen tek-met-ouro: ouoh khen pai-ke-eon fai emper-khat nouk."
+            },
+            {
+                id: 41,
+                speaker: "Volk",
+                ar: "يَا رَبُّ ارْحَمْ.",
+                de: "Herr erbarme dich.",
+                cop_ar: "كيرياليسون.",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ.",
+                ar_de: "Ya rab erham.",
+                cop_de: "Kyrie eleison."
+            },
+            {
+                id: 42,
+                sectionTitle: {
+                    de: "Der Lobpreis der Engel",
+                    ar: "فلنسبح مع الملائكه"
+                },
+                speaker: "Volk",
+                ar: "فَلْنُسَبِّحْ مَعَ الْمَلَائِكَةِ قَائِلِينَ: الْمَجْدُ للهِ فِي الْأَعَالِي، وَعَلَى الْأَرْضِ السَّلَامُ، وَفِي النَّاسِ الْمَسَرَّةُ.\n\nنُسَبِّحُكَ، نُبَارِكُكَ، نَخْدِمُكَ، نَسْجُدُ لَكَ، نَعْتَرِفُ لَكَ، نَنْطِقُ بِمَجْدِكَ، نَشْكُرُكَ مِنْ أَجْلِ عَظِيمِ مَجْدِكَ.\n\nأَيُّهَا الرَّبُّ الْمَلِكُ عَلَى السَّمَوَاتِ، اللهُ الْآبُ ضَابِطُ الْكُلِّ، وَالرَّبُّ الْابْنُ الْوَاحِدُ الْوَحِيدُ يَسُوعُ الْمَسِيحُ، وَالرُّوحُ الْقُدُسُ.\n\nأَيُّهَا الرَّبُّ الْإِلهُ، حَمَلُ اللهِ، ابْنُ الْآبِ، رَافِعُ خَطِيَّةِ الْعَالَمِ، ارْحَمْنَا. يَا حَامِلَ خَطِيَّةِ الْعَالَمِ، اقْبَلْ طِلْبَاتِنَا إِلَيْكَ.\n\nأَيُّهَا الْجَالِسُ عَنْ يَمِينِ أَبِيهِ، ارْحَمْنَا.\n\nأَنْتَ وَحْدَكَ الْقُدُّوسُ، أَنْتَ وَحْدَكَ الْعَلِيُّ، يَا رَبِّي يَسُوعُ الْمَسِيحُ، وَالرُّوحُ الْقُدُسُ. مَجْداً للهِ الْآبِ. آمين.\n\nأُبَارِكُكَ كُلَّ يَوْمٍ، وَأُسَبِّحُ اسْمَكَ الْقُدُّوسَ، إِلَى الْأَبَدِ وَإِلَى أَبَدِ الْأَبَدِ، آمين.\n\nمُنْذُ اللَّيْلِ رُوحِي تُبَكِّرُ إِلَيْكَ يَا إِلهِي، لأَنَّ أَوَامِرَكَ هِيَ نُورٌ عَلَى الْأَرْضِ.\n\nكُنْتُ أَتْلُو فِي طُرُقِكَ، لأَنَّكَ صِرْتَ لِي مُعِيناً. بَاكِراً يَا رَبُّ تَسْمَعُ صَوْتِي، بِالْغَدَاةِ أَقِفُ أَمَامَكَ وَتَرَانِي.",
+                de: "Lasst uns mit den Engeln lobsingen: „Verherrlicht ist Gott in der Höhe und auf Erden ist Friede bei den Menschen seiner Gnade“.\n\nWir loben dich, wir preisen dich, wir dienen dir, wir beten dich an, wir bekennen dich und sprechen deine Herrlichkeit aus. Wir danken dir wegen deiner großen Herrlichkeit.\n\nHerr, König der Himmel, Gott, Vater, Allmächtiger, Herr, allein eingeborener Sohn, Jesus Christus und Heiliger Geist.\n\nHerr und Gott, Lamm Gottes, Sohn des Vaters, du nimmst hinweg die Sünde der Welt, erbarme dich unser. Du nimmst hinweg die Sünde der Welt, nimm an unser Gebet.\n\nDu sitzt zur Rechten des Vaters, erbarme dich unser.\n\nDenn du allein bist der Heilige, du allein bist der Höchste: mein Herr, Jesus Christus, mit dem Heiligen Geist, Ehre sei Gott, dem Vater, Amen.\n\nDich verherrliche ich Tag für Tag und huldige deinem heiligen Namen von Ewigkeit bis in alle Ewigkeit. Amen.\n\nSeit der Nacht eilt meine Seele zu dir, mein Gott; denn deine Gesetze sind Licht auf Erden.\n\nIch sinne über deine Wege nach. Ja, du wurdest meine Hilfe. Herr, am Morgen wirst du meine Stimme anhören; am Morgen will ich zu dir treten und zu dir hinsehen.",
+                cop_ar: "مارين هوس نيم ني أنجيلوس جي: أو أو أو إم إفنوتي خين ني إت تشوسي: نيم أو هيريني هيجين بي كاهي: نيم أو تي ما تي خين ني رومي.\n\nتين هوس إيروك: تين إزمو إيروك: تين شيمشي إمموك: تين أو أوشت إمموك: تين أو أونه ناك إيفول: تين ساجي إم بيك أو أو: تين شيب إهموت إنتوتك: إثفي بيك نيشتي إن أو أو.\n\nإبشويس إب أورو إن إيبورانيون: إفنوتي إفيوت بي بانتوكراتور: إبشويس إبشيري إم مونو جينيس: إيسوس بي إخرستوس: نيم بي إبنيفما إثؤواف.\n\nإبشويس إفنوتي بي هييب إنتي إفنوتي: إبشيري إم إفيوت: في إت أولي إم إف نوفي إم بي كوسموس: ناي نان. في إت أولي إم إف نوفي إم بي كوسموس: شوب تين تيهو إيروك.\n\nفي إت هيمسي سا أوينام إم بيف يوت: ناي نان.\n\nجي إنثوك إم ما فاتك إثؤواف: إنثوك إم ما فاتك إت تشوسي: با شويس إيسوس بي إخرستوس: نيم بي إبنيفما إثؤواف: إي أو أو أو إم إفنوتي إفيوت. آمين.\n\nتي نا إزمو إيروك إم ميني: تي نا هوس إي بيك ران إثؤواف: شا إينيه نيم شا إينيه إنتي بي إينيه. آمين.\n\nإيسجين إيجوره أ با إبنيفما إر شورب: هاروك بانوتي: جي نيك أوأه ساهني هان أو أويني: هيجين بي كاهي.\n\nناي ميليتان هي نيك مويت: جي أك إر فويثوس إيروي. شورب إبشويس إك إي سوتيم إي با خروف: شورب تي نا أوهي إيرات ناهراك إك إي ناف إيروي.",
+                cop_cop: "Ⲙⲁⲣⲉⲛϩⲱⲥ ⲛⲉⲙ ⲛⲓⲁⲅⲅⲉⲗⲟⲥ ϫⲉ : Ⲟⲩⲱ̀ⲟⲩ ⲙ̀Ⲫ̀ⲛⲟⲩϯ ϧⲉⲛ ⲛⲏⲉⲧϭⲟⲥⲓ : ⲛⲉⲙ ⲟⲩϩⲓⲣⲏⲛⲏ ϩⲓϫⲉⲛ ⲡ̀ⲕⲁϩⲓ : ⲛⲉⲙ ⲟⲩϯⲙⲁϯ ϧⲉⲛ ⲛⲓⲣⲱⲙⲓ.\n\nⲦⲉⲛϩⲱⲥ ⲉ̀ⲣⲟⲕ ⲧⲉⲛⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟⲕ : ⲧⲉⲛϣⲉⲙϣⲓ ⲙ̀ⲙⲟⲕ : ⲧⲉⲛⲟⲩⲱϣⲧ ⲙ̀ⲙⲟⲕ : ⲧⲉⲛⲟⲩⲱⲛϩ ⲛⲁⲕ ⲉ̀ⲃⲟⲗ : ⲧⲉⲛⲥⲁϫⲓ ⲙ̀ⲡⲉⲕⲱ̀ⲟⲩ : ⲧⲉⲛϣⲉⲡϩ̀ⲙⲟⲧ ⲛ̀ⲧⲟⲧⲕ : ⲉⲑⲃⲉ ⲡⲉⲕⲛⲓϣϯ ⲙ̀ⲱ̀ⲟⲩ.\n\nⲠ̀ϭⲟⲓⲥ ⲡ̀ⲟⲩⲣⲟ ⲛ̀ⲉ̀ⲡⲟⲩⲣⲁⲛⲓⲟⲛ Ⲫ̀ⲛⲟⲩϯ Ⲫ̀ⲓⲱⲧ Ⲡⲓⲡⲁⲛⲧⲟⲕⲣⲁⲧⲱⲣ : Ⲡ̀ϭⲟⲓⲥ Ⲡ̀ϣⲏⲣⲓ ⲙ̀ⲙⲟⲛⲟⲅⲉⲛⲏⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ⲛⲉⲙ Ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ.\n\nⲠ̀ϭⲟⲓⲥ Ⲫ̀ⲛⲟⲩϯ Ⲡⲓϩⲓⲏⲃ ⲛ̀ⲧⲉ Ⲫ̀ⲛⲟⲩϯ : Ⲡ̀ϣⲏⲣⲓ ⲙ̀Ⲫ̀ⲓⲱⲧ : ⲫⲏⲉⲧⲱⲗⲓ ⲙ̀ⲫ̀ⲛⲟⲃⲓ ⲛ̀ⲧⲉ ⲡⲓⲕⲟⲥⲙⲟⲥ ⲛⲁⲓ ⲛⲁⲛ. Ⲫⲏⲉⲧⲱⲗⲓ ⲙ̀ⲫ̀ⲛⲟⲃⲓ ⲛ̀ⲧⲉ ⲡⲓⲕⲟⲥⲙⲟⲥ ϣⲱⲡ ⲧⲉⲛϯϩⲟ ⲉ̀ⲣⲟⲕ.\n\nⲪⲏⲉⲧϩⲉⲙⲥⲓ ⲥⲁⲟⲩⲓⲛⲁⲙ ⲙ̀Ⲡⲉϥⲓⲱⲧ ⲛⲁⲓ ⲛⲁⲛ.\n\nϪⲉ ⲛ̀ⲑⲟⲕ ⲙ̀ⲙⲁⲩⲁⲧⲕ ⲉⲑⲟⲩⲁⲃ : ⲛ̀ⲑⲟⲕ ⲙ̀ⲙⲁⲩⲁⲧⲕ ⲉⲧϭⲟⲥⲓ : Ⲡⲁϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ ⲛⲉⲙ Ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ : ⲉ̀ⲟⲩⲱ̀ⲟⲩ ⲙ̀Ⲫ̀ⲛⲟⲩϯ Ⲫ̀ⲓⲱⲧ. Ⲁ̀ⲙⲏⲛ.\n\nϮⲛⲁⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟⲕ ⲙ̀ⲙⲏⲛⲓ : ϯⲛⲁϩⲱⲥ ⲉ̀ⲡⲉⲕⲣⲁⲛ ⲉⲑⲟⲩⲁⲃ ϣⲁ ⲉ̀ⲛⲉϩ ⲛⲉⲙ ϣⲁ ⲉ̀ⲛⲉϩ ⲛ̀ⲧⲉ ⲡⲓⲉ̀ⲛⲉϩ. Ⲁ̀ⲙⲏⲛ.\n\nⲒⲥϫⲉⲛ ⲉϫⲱⲣϩ ⲁ ⲡⲁⲡ̀ⲛⲉⲩⲙⲁ ⲉⲣϣⲟⲣⲡ ϩⲁⲣⲟⲕ Ⲡⲁⲛⲟⲩϯ : ϫⲉ ⲛⲉⲕⲟⲩⲁϩⲥⲁϩⲛⲓ ϩⲁⲛⲟⲩⲱⲓⲛⲓ ϩⲓϫⲉⲛ ⲡ̀ⲕⲁϩⲓ.\n\nⲚⲁⲓⲙⲉⲗⲉⲧⲁⲛ ϩⲓ ⲛⲉⲕⲙⲱⲓⲧ : ϫⲉ ⲁⲕⲉⲣⲃⲟⲏ̀ⲑⲟⲥ ⲉ̀ⲣⲟⲓ. Ϣⲟⲣⲡ Ⲡ̀ϭⲟⲓⲥ ⲉⲕⲉ̀ⲥⲱⲧⲉⲙ ⲉ̀ⲡⲁϧⲣⲱⲟⲩ : ϣⲟⲣⲡ ϯⲛⲁⲟ̀ϩⲓ ⲉ̀ⲣⲁⲧ ⲛⲁϩⲣⲁⲕ ⲉⲕⲉ̀ⲛⲁⲩ ⲉ̀ⲣⲟⲓ.",
+                ar_de: "Fal nosabih ma'a el mala'ika qa'ilin: El magd lillah fi el a'ali, wa 'ala el ard el salam, wa fi el nas el masarra.\n\nNosabihoka, nobarikoka, nakhdimoka, nasgod laka, na'taref laka, pnantq be magdika, nashkoroka men agl 'azim magdika.\n\nAyoha el Rab el Malek 'ala el samawat, Allah el Ab dabet el kol, wal Rab el Ebn el wahed el wahid Yasou' el Masih, wal Roh el Qodos.\n\nAyoha el Rab el Ilah, hamal Allah, Ebn el Ab, rafe' khatiya el 'alam, erhamna. Ya hamel khatiya el 'alam, eqbal talibatina elayka.\n\nAyoha el gales 'an yamin abih, erhamna.\n\nAnta wahdaka el Qodos, anta wahdaka el 'Ali, ya rabbi Yasou' el Masih, wal Roh el Qodos. Magdan lillah el Ab. Amin.\n\nObarikoka kol yawm, wa osabih esmaka el qodos, ila el abad wa ila abad el abad, Amin.\n\nMonzo el layl rouhi tobaker elayka ya ilahi, le anna awamiraka hiya nour 'ala el ard.\n\nKonto atlou fi toroqe-ka, le annaka serta li mo'inan. Bakeran ya Rab tasma' sawti, bel ghadat aqef amamaka wa tarani.",
+                cop_de: "Maren hos nem ni-angelos je: O-ou-o em-Efnouti khen ni-et-chosi: nem ou-hirini hijen pi-kahi: nem ou-ti-mati khen ni-romi.\n\nTen-hos erok ten-smou erok: ten-shemshi mmok: ten-ouosht mmok: ten-ouonh nak evol: ten-saji mpek-o-ou: ten-shep-ehmot ntotk: ethve pek-nishti m-o-ou.\n\nEpchois ep-ouro en-epouranion Efnouti Efiot Pi-pantokrator: Epchois Pshiri m-monogenis Isos Pi-Khristos: nem Pi-pnevma ethowab.\n\nEpchois Efnouti pi-hiib nte Efnouti: Pshiri m-Efiot: fi-et-oli m-phnovi nte pi-kosmos: nai nan. Fi-et-oli m-phnovi nte pi-kosmos: shop ten-tiho erok.\n\nFi-et-hemsi sa-ouinam m-Pefiot: nai nan.\n\nJe nthok mmavatk ethowab: nthok mmavatk et-chosi: Pa-Chois Isos Pi-Khristos nem Pi-pnevma ethowab: e-ou-o-ou m-Efnouti Efiot. Amin.\n\nTina-smou erok mmini: tina-hos e-pek-ran ethowab: sha-eneh nem sha-eneh nte pi-eneh. Amin.\n\nIsjen ejorh a pa-pnevma er-shorp harok Panouti: je nek-ouah-sahni han-ouoini hijen pi-kahi.\n\nNa-i-meletan hi nek-moit: je ak-er-voithos eroi. Shorp Epchois ek-e-sotem e-pa-khrov: shorp tina-ohi erat nahrak ek-e-nav eroi."
+            },
+            {
+                id: 43,
+                speaker: "Volk",
+                ar: "قُدُّوسٌ الله، قُدُّوسٌ الْقَوِيُّ، قُدُّوسٌ الَّذِي لَا يَمُوتُ، الَّذِي وُلِدَ مِنَ الْعَذْرَاءِ، ارْحَمْنَا.\n\nقُدُّوسٌ الله، قُدُّوسٌ الْقَوِيُّ، قُدُّوسٌ الَّذِي لَا يَمُوتُ، الَّذِي صُلِبَ عَنَّا، ارْحَمْنَا.\n\nقُدُّوسٌ الله، قُدُّوسٌ الْقَوِيُّ، قُدُّوسٌ الَّذِي لَا يَمُوتُ، الَّذِي قَامَ مِنَ الْأَمْوَاتِ وَصَعِدَ إِلَى السَّمَوَاتِ، ارْحَمْنَا.\n\nالْمَجْدُ لِلآبِ وَالابْنِ وَالرُّوحِ الْقُدُسِ، الآنَ وَكُلَّ أَوَانٍ وَإِلَى دَهْرِ الدُّهُورِ. آمين. أَيُّهَا الثَّالُوثُ الْقُدُّوسُ ارْحَمْنَا.\n\nيَا رَبُّ اغْفِرْ لَنَا خَطَايَانَا، يَا رَبُّ اغْفِرْ لَنَا آثَامَنَا، يَا رَبُّ اغْفِرْ لَنَا زَلَّاتِنَا. يَا رَبُّ افْتَقِدْ مَرْضَى شَعْبِكَ، اشْفِهِمْ مِنْ أَجْلِ اسْمِكَ الْقُدُّوسِ. آبَاؤُنَا وَإِخْوَتُنَا الَّذِينَ رَقَدُوا، يَا رَبُّ نَيِّحْ نُفُوسَهُمْ.\n\nيَا مَنْ هُوَ بِلَا خَطِيَّةٍ، يَا رَبُّ ارْحَمْنَا، يَا الَّذِي بِلَا خَطِيَّةٍ، يَا رَبُّ أَعِنَّا، وَاقْبَلْ طِلْبَاتِنَا إِلَيْكَ. لأَنَّ لَكَ الْمَجْدَ وَالْعِزَّةَ وَالتَّقْدِيسَ الْمُثَلَّثَ. يَا رَبُّ ارْحَمْ، يَا رَبُّ ارْحَمْ، يَا رَبُّ بَارِكْ. آمين.",
+                de: "Heiliger Gott, Heiliger Starker, Heiliger Unsterblicher, von der Jungfrau geboren: Erbarme dich unser.\n\nHeiliger Gott, Heiliger Starker, Heiliger Unsterblicher, gekreuzigt an unserer statt: Erbarme dich unser.\n\nHeiliger Gott, Heiliger Starker, Heiliger Unsterblicher, auferstanden von den Toten und aufgefahren in den Himmel: Erbarme dich unser.\n\nEhre sei dem Vater und dem Sohn und dem Heiligen Geist, jetzt, alle Zeit und in alle Ewigkeit. Amen. Heilige Dreifaltigkeit, erbarme dich unser.\n\nHerr, vergib uns unsere Sünden, Herr, vergib uns unsere Schuld, Herr, vergib uns unsere Unterlassungen. Herr, tröste die Kranken deines Volkes, heile sie um deines heiligen Namens willen. Die Seelen unserer Väter und Brüder, die entschlafen sind, Herr, lass ruhen.\n\nDu sündenloser Herr, erbarme dich unser. Du sündenloser Herr, hilf uns und nimm unsere Bitten an. Denn dein ist die Ehre, Verherrlichung und dreifache Huldigung. Herr, erbarme dich, Herr, erbarme dich, Herr, segne uns. Amen.",
+                cop_ar: "أجيوس أو ثيؤس: أجيوس إيس شيروس: أجيوس أثاناطوس: أو إك بارثينو جيننيتيس: إليسون إيماس.\n\nأجيوس أو ثيؤس: أجيوس إيس شيروس: أجيوس أثاناطوس: أو إسطافروتيس دي إيماس: إليسون إيماس.\n\nأجيوس أو ثيؤس: أجيوس إيس شيروس: أجيوس أثاناطوس: أو أناسطاس إك طون نيكرون كي أنيلثون إيس توس أورانوس: إليسون إيماس.\n\nذوكصا باتري كي إيو كي أجيو إبنيفماتي: كي نين كي آإي كي إيس توس إؤناس طون إؤنون: آمين. أجيا ترياس إليسون إيماس.\n\nإبشويس كا نين نوفي نان إيفول: إبشويس كا نين أنوميا نان إيفول: إبشويس كا نين بارابتوماتي نان إيفول. إبشويس جيم إبشيني إن ني إت شوني إنتي بيك لاؤس: ما طالتشوؤو إثفي بيك ران إثؤواف: نين يوتي نيم نين إسنيو إيطاف إنكوت إبشويس ما إمطون إن نو بسيشي.\n\nبي أت نوفي إبشويس ناي نان: بي أت نوفي إبشويس أري فو إيثين إيرون: شوب تين تيهو إيروك. جي فوك بي بي أو أو نيم بي أماحي: نيم بي ترياجيوس: كيري إليسون: كيري إليسون: كيري إفلوجيسون. آمين.",
+                cop_cop: "Ⲁⲅⲓⲟⲥ ⲟ Ⲑⲉⲟⲥ: Ⲁⲅⲓⲟⲥ Ⲓⲥⲭⲩⲣⲟⲥ: Ⲁⲅⲓⲟⲥ Ⲁⲑⲁⲛⲁⲧⲟⲥ: ⲟ ⲉⲕ ⲡⲁⲣⲑⲉⲛⲟⲩ ⲅⲉⲛⲛⲉⲑⲓⲥ: ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ ⲏ̀ⲙⲁⲥ.\n\nⲀⲅⲓⲟⲥ ⲟ Ⲑⲉⲟⲥ: Ⲁⲅⲓⲟⲥ Ⲓⲥⲭⲩⲣⲟⲥ: Ⲁⲅⲓⲟⲥ Ⲁⲑⲁⲛⲁⲧⲟⲥ: ⲟ ⲥ̀ⲧⲁⲩⲣⲱⲑⲓⲥ ⲇⲓ ⲏ̀ⲙⲁⲥ: ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ ⲏ̀ⲙⲁⲥ.\n\nⲀⲅⲓⲟⲥ ⲟ Ⲑⲉⲟⲥ: Ⲁⲅⲓⲟⲥ Ⲓⲥⲭⲩⲣⲟⲥ: Ⲁⲅⲓⲟⲥ Ⲁⲑⲁⲛⲁⲧⲟⲥ: ⲟ ⲁ̀ⲛⲁⲥⲧⲁⲥ ⲉⲕ ⲧⲱⲛ ⲛⲉⲕⲣⲱⲛ ⲕⲉ ⲁ̀ⲛⲉⲗⲑⲱⲛ ⲓⲥ ⲧⲟⲩⲥ ⲟⲩⲣⲁⲛⲟⲩⲥ: ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ ⲏ̀ⲙⲁⲥ.\n\nⲆⲟⲝⲁ Ⲡⲁⲧⲣⲓ ⲕⲉ Ⲩⲓⲱ ⲕⲉ Ⲁ̀ⲅⲓⲱ Ⲡ̀ⲛⲉⲩⲙⲁⲧⲓ. Ⲕⲉ ⲛⲩⲛ ⲕⲉ ⲁ̀ⲓ̀ ⲕⲉ ⲓⲥ ⲧⲟⲩⲥ ⲉ̀ⲱⲛⲁⲥ ⲧⲱⲛ ⲉ̀ⲱⲛⲱⲛ. Ⲁ̀ⲙⲏⲛ. Ⲁ̀ⲅⲓⲁ̀ Ⲧ̀ⲣⲓⲁⲥ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ ⲏ̀ⲙⲁⲥ.\n\nⲠ̀ϭⲟⲓⲥ ⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ : Ⲡ̀ϭⲟⲓⲥ ⲭⲁ ⲛⲉⲛⲁ̀ⲛⲟⲙⲓⲁ̀ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ : Ⲡ̀ϭⲟⲓⲥ ⲭⲁ ⲛⲉⲛⲡⲁⲣⲁⲡⲧⲱⲙⲁ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ. Ⲡ̀ϭⲟⲓⲥ ϫⲉⲙⲡ̀ϣⲓⲛⲓ ⲛ̀ⲛⲏⲉⲧϣⲱⲛⲓ ⲛ̀ⲧⲉ ⲡⲉⲕⲗⲁⲟⲥ : ⲙⲁⲧⲁⲗϭⲱⲟⲩ ⲉⲑⲃⲉ ⲡⲉⲕⲣⲁⲛ ⲉⲑⲟⲩⲁⲃ : ⲛⲉⲛⲓⲟϯ ⲛⲉⲙ ⲛⲉⲛⲥ̀ⲛⲏⲟⲩ ⲉ̀ⲧⲁⲩⲉⲛⲕⲟⲧ Ⲡ̀ϭⲟⲓⲥ ⲙⲁⲙ̀ⲧⲟⲛ ⲛ̀ⲛⲟⲩⲯⲩⲭⲏ.\n\nⲠⲓⲁⲧⲛⲟⲃⲓ Ⲡ̀ϭⲟⲓⲥ ⲛⲁⲓ ⲛⲁⲛ : ⲡⲓⲁⲧⲛⲟⲃⲓ Ⲡ̀ϭⲟⲓⲥ ⲁ̀ⲣⲓⲃⲟⲏ̀ⲑⲓⲛ ⲉ̀ⲣⲟⲛ : ϣⲱⲡ ⲧⲉⲛϯϩⲟ ⲉ̀ⲣⲟⲕ. Ϫⲉ ⲫⲱⲕ ⲡⲉ ⲡⲓⲱ̀ⲟⲩ ⲛⲉⲙ ⲡⲓⲁ̀ⲙⲁϩⲓ : ⲛⲉⲙ ⲡⲓⲧ̀ⲣⲓⲁ̀ⲅⲓⲟⲥ : Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ : Ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ : Ⲕⲩⲣⲓⲉ ⲉⲩⲗⲟⲅⲏⲥⲟⲛ. Ⲁ̀ⲙⲏⲛ.",
+                ar_de: "Qodos Allah, Qodos El Qawi, Qodos Allazi la yamout, allazi woleda men el 'azra', erhamna.\n\nQodos Allah, Qodos El Qawi, Qodos Allazi la yamout, allazi soleba 'anna, erhamna.\n\nQodos Allah, Qodos El Qawi, Qodos Allazi la yamout, allazi qama men el amwat wa sa'eda ila el samawat, erhamna.\n\nEl magd lel Ab wal Ebn wal Roh el Qodos, el an wa kol awan wa ila dahr el dohour. Amin. Ayoha el thalouth el qodos erhamna.\n\nYa rab eghfer lana khatayana, ya rab eghfer lana asamana, ya rab eghfer lana zalatina. Ya rab eftaqed marda sha'bika, eshfehom men agl esmika el qodos. Aba'ona wa ekhwatona allazina raqadou, ya rab nayeh nofosohom.\n\nYa man howa bila khatiya, ya rab erhamna, ya allazi bila khatiya, ya rab a'ena, wa eqbal talibatina elayka. Le anna laka el magd wal 'ezza wal taqdis el mothallath. Ya rab erham, ya rab erham, ya rab barek. Amin.",
+                cop_de: "Agios o Theos: Agios Ischiros: Agios Athanatos: o ek parthenou gen-nethis: eleison imas.\n\nAgios o Theos: Agios Ischiros: Agios Athanatos: o stavrothis di imas: eleison imas.\n\nAgios o Theos: Agios Ischiros: Agios Athanatos: o anastas ek ton nekron ke anelthon is tous ouranous: eleison imas.\n\nDoxa Patri ke Io ke Agio Pnevmati: ke nyn ke a-i ke is tous e-onas ton e-onon: Amin. Agia Trias eleison imas.\n\nEpchois ka nen-novi nan evol: Epchois ka nen-anomia nan evol: Epchois ka nen-paraptoma nan evol. Epchois jem-epshini en-ni-et-shoni ente pek-laos: ma-talcho-ou ethve pek-ran ethowab: nen-ioti nem nen-sniou etav-enkot Epchois ma-emton en-nou-psishi.\n\nPi-at-novi Epchois nai nan: Pi-at-novi Epchois ari-voithin eron: shop ten-tiho erok. Je phok pe pi-o-ou nem pi-amahi: nem pi-triagios: Kyrie eleison: Kyrie eleison: Kyrie evlogison. Amin."
+            },
+            {
+                id: 44,
+                sectionTitle: {
+                    de: "Einleitung der Doxologie",
+                    ar: "مقدمه الذكصولوجيات"
+                },
+                speaker: "Volk",
+                ar: "بالمسيح يسوع ربنا، آمين. هلليلويا.\n\nالسلام لك، نسألك أيتها القديسة الممتلئة مجداً، العذراء كل حين، والدة الإله، أم المسيح.\n\nاصعدي صلواتنا إلى ابنك الحبيب، ليغفر لنا خطايانا.\n\nالسلام للتي ولدت لنا، النور الحقيقي، المسيح إلهنا، العذراء القديسة.\n\nاسألي الرب عنا، ليصنع رحمة، مع نفوسنا، ويغفر لنا خطايانا.\n\nأيتها العذراء مريم، والدة الإله، القديسة، الشفيعة الأمينة، لجنس البشرية.\n\nاشفعي فينا أمام المسيح الذي ولدتيه، لكي ينعم لنا، بغفران خطايانا.\n\nالسلام لك أيتها العذراء، الملكة الحقيقية الحقانية. السلام لفخر جنسنا، ولدت لنا عمانوئيل.\n\nنسألك أذكرينا، أيتها الشفيعة المؤتمنة، أمام ربنا يسوع المسيح، ليغفر لنا خطايانا.",
+                de: "Durch Christus Jesus unseren Herrn. Amen. Halleluja.\n\nGegrüßt seist du! – Wir bitten dich, du Heilige, voll der Gnade – immerwährend jungfräuliche – Mutter Gottes und Mutter Christi.\n\nTrage unsere Gebete empor – zu deinem geliebten Sohn, – damit er unsere Sünden – vergibt.\n\nGegrüßt seist du, – die uns das wahre Licht, Christus, – unseren Gott, geboren hat. – Heilige Jungfrau.\n\nBitte für uns beim Herrn, – damit er sich unserer – Seelen erbarme – und unsere Sünden vergibt.\n\nJungfrau Maria, – heilige Mutter Gottes, – treue Fürsprecherin – des Menschengeschlechts.\n\nSei unsere Fürsprecherin – vor Christus, den du geboren hast, – damit er uns die Vergebung – unserer Sünden gewährt.\n\nGegrüßt seist du! Jungfrau, – die wahre Königin in Wahrheit. – Gegrüßt seist du! Stolz unseres Geschlechts, – du hast uns den Emmanuel geboren.\n\nWir bitten dich, gedenke unser, – du treue Fürsprecherin, – vor unserem Herrn Jesus Christus, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "خين بي إخرستوس إيسوس بين شويس: آمين. الليلويا.\n\nشيري ني تين تيهو إيرو: أو ثي إثؤواف إثه ميه إن أو أو: إت أوي إم بارثينوس إن سيو نيفين: ثي ماس نوتي إثماف إم بي إخرستوس.\n\nأولي إنتين بروس إفكي: إي إبشوي ها بيشيري إم مينريت: إنتيف كا نين نوفي نان إيفول.\n\nشيري ثي إيطاس ميسي نان: إم بي أو أويني إن أليثينوس: بي إخرستوس بين نوتي: تي بارثينوس إثؤواف.\n\nماتيهو إي إبشويس إي إهري إيجون: إنتيف إر أو ناي نيم نين بسيشي: إنتيف كا نين نوفي نان إيفول.\n\nتي بارثينوس ماريا: تي ثيؤطوكوس إثؤواف: تي بروستاتيس إت انهوت: إنتي بي جينوس إنتي ني رومي.\n\nأري بريسفيفين إي إهري إيجون: ناهرين بي إخرستوس في إيطا ري ماسف: هوبوس إنتيف إر إهموت نان: إم بي كو إيفول إنتي نين نوفي.\n\nشيري ني أو تي بارثينوس: تي أورو إم مي إن أليثيني: شيري إب شوشو إنتي بين جينوس: أري إجفو نان إن إممانوئيل.\n\nتين تيهو أري بين ميفئي: أو تي بروستاتيس إت انهوت: ناهرين بين شويس إيسوس بي إخرستوس: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ϧⲉⲛ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲉⲛϭⲟⲓⲥ : Ⲁ̀ⲙⲏⲛ. Ⲁ̀ⲗⲗⲏⲗⲟⲩⲓⲁ̀.\n\nⲬⲉⲣⲉ ⲛⲉ ⲧⲉⲛϯϩⲟ ⲉ̀ⲣⲟ : ⲱ̀ ⲑⲏⲉⲑⲟⲩⲁⲃ ⲉⲑⲙⲉϩ ⲛ̀ⲱ̀ⲟⲩ : ⲉⲧⲟⲓ ⲙ̀ⲡⲁⲣⲑⲉⲛⲟⲥ ⲛ̀ⲥⲏⲟⲩ ⲛⲓⲃⲉⲛ : ⲑⲓⲙⲁⲥⲛⲟⲩϯ ⲑⲙⲁⲩ ⲙ̀Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ.\n\nⲀ̀ⲟⲗⲓ ⲛ̀ⲧⲉⲛⲡ̀ⲣⲟⲥⲉⲩⲭⲏ : ⲉ̀ⲡ̀ϣⲱⲓ ϩⲁ Ⲡⲉϣⲏⲣⲓ ⲙ̀ⲙⲉⲛⲣⲓⲧ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.\n\nⲬⲉⲣⲉ ⲑⲏⲉⲧⲁⲥⲙⲓⲥⲓ ⲛⲁⲛ : ⲙ̀ⲡⲓⲟⲩⲱⲓⲛⲓ ⲛ̀ⲁ̀ⲗⲏⲑⲓⲛⲟⲥ : Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲛⲟⲩϯ : ϯⲡⲁⲣⲑⲉⲛⲟⲥ ⲉⲑⲟⲩⲁⲃ.\n\nⲘⲁϯϩⲟ ⲉ̀Ⲡ̀ϭⲟⲓⲥ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲛ̀ⲧⲉϥⲉⲣ ⲟⲩⲛⲁⲓ ⲛⲉⲙ ⲛⲉⲛⲯⲩⲭⲏ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.\n\nϮⲡⲁⲣⲑⲉⲛⲟⲥ Ⲙⲁⲣⲓⲁⲙ : ϯⲑⲉⲟ̀ⲧⲟⲕⲟⲥ ⲉⲑⲟⲩⲁⲃ : ϯⲡ̀ⲣⲟⲥⲧⲁⲧⲏⲥ ⲉⲧⲉⲛϩⲟⲧ : ⲛ̀ⲧⲉ ⲡ̀ⲅⲉⲛⲟⲥ ⲛ̀ⲧⲉ ⲛⲓⲣⲱⲙⲓ.\n\nⲀ̀ⲣⲓⲡ̀ⲣⲉⲥⲃⲉⲩⲓⲛ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲛⲁϩⲣⲉⲛ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ ⲫⲏⲉⲧⲁⲣⲉⲙⲁⲥϥ : ϩⲟⲡⲱⲥ ⲛ̀ⲧⲉϥⲉⲣϩ̀ⲙⲟⲧ ⲛⲁⲛ : ⲙ̀ⲡⲓⲭⲱ ⲉ̀ⲃⲟⲗ ⲛ̀ⲧⲉ ⲛⲉⲛⲛⲟⲃⲓ.\n\nⲬⲉⲣⲉ ⲛⲉ ⲱ̀ ϯⲡⲁⲣⲑⲉⲛⲟⲥ : ϯⲟⲩⲣⲱ ⲙ̀ⲙⲏⲓ ⲛ̀ⲁ̀ⲗⲏⲑⲓⲛⲏ : Ⲭⲉⲣⲉ ⲡ̀ϣⲟⲩϣⲟⲩ ⲛ̀ⲧⲉ ⲡⲉⲛⲅⲉⲛⲟⲥ : ⲁ̀ⲣⲉϫⲫⲟ ⲛⲁⲛ ⲛ̀Ⲉⲙⲙⲁⲛⲟⲩⲏⲗ.\n\nⲦⲉⲛϯϩⲟ ⲁ̀ⲣⲓⲡⲉⲛⲙⲉⲩⲓ̀ : ⲱ̀ ϯⲡ̀ⲣⲟⲥⲧⲁⲧⲏⲥ ⲉⲧⲉⲛϩⲟⲧ : ⲛⲁϩⲣⲉⲛ Ⲡⲉⲛϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Bel Masih Yasou' rabina, Amin. Hallelouya.\n\nEl salam laki, nas'aloki ayatoha el qadisa el momtali'a majdan, el 'azra' kol hin, walidat el ilah, om el Masih.\n\nAs'edi salawatina ila ebniki el habib, li yaghfer lana khatayana.\n\nEl salam lillati waladat lana, el nour el haqiqi, el Masih ilahona, el 'azra' el qadisa.\n\nEs'ali el Rab 'anna, li yasna' rahma, ma'a nofousina, wa yaghfer lana khatayana.\n\nAyatoha el 'azra' Mariam, walidat el ilah, el qadisa, el shafi'a el amina, li jens el bashariya.\n\nEshfa'i fina amam el Masih allazi waladtihi, lekay yon'em lana, be ghofran khatayana.\n\nEl salam laki ayatoha el 'azra', el malika el haqiqiya el haqaniya. El salam li fakhr jinsina, waladti lana Emmanuel.\n\nNas'aloki ozkorina, ayatoha el shafi'a el mo'tamana, amam rabina Yasou' el Masih, li yaghfer lana khatayana.",
+                cop_de: "Khen Pi-Khristos Isos Penchois: Amin. Allelouia.\n\nShere ne ten-tiho ero: o thi-ethowab ethmeh en-o-ou: etoi em-parthenos en-sio niven: thi-mas-nouti ethmav em-Pi-Khristos.\n\nA-oli en-ten-prosevki: e-pshoi ha Pe-shiri em-menrit: entef-ka nen-novi nan evol.\n\nShere thi-etas-misi nan: em-pi-ouoini en-alithinos: Pi-Khristos Pennouti: ti-parthenos ethowab.\n\nMatiho e-Pchois e-hri egon: entef-er-ou-nai nem nen-psishi: entef-ka nen-novi nan evol.\n\nTi-parthenos Maria: ti-theotokos ethowab: ti-prostatis et-enhot: ente pi-genos ente ni-romi.\n\nAri-presvevin e-hri egon: nahren Pi-Khristos fi-eta-ri-masf: hopos entef-er-ehmot nan: empi-ko evol ente nen-novi.\n\nShere ne o ti-parthenos: ti-ouro em-mei en-alithini: Shere ep-shoushou ente pen-genos: are-jfo nan en-Emmanuel.\n\nTen-tiho ari-pen-mevi: o ti-prostatis et-enhot: nahren Penchois Isos Pi-Khristos: entef-ka nen-novi nan evol."
+            },
+            {
+                id: "menu_feasts",
+                type: "selection_menu",
+                title: "Doxologien der Feste / ذكصولوجيات الأعياد",
+                feasts: [
+                    { id: "45.1", de: "Geburt Christi", ar: "عيد الميلاد المجيد" },
+                    { id: "45.2", de: "Taufe Jesu", ar: "عيد الغطاس المجيد" }
+                ],
+                saints: [] // Leer lassen, da hier nur Feste sind
+            },
+
+            // 2. Hier die Inhalte der Fest-Doxologien (werden nur angezeigt, wenn ausgewählt)
+            {
+                id: "45.1",
+                speaker: "Volk",
+                ar: "حينئذ امتلأ فمنا فرحاً، ولساننا تهليلاً، لأن ربَّنا يسوع المسيح، وُلِدَ في بيت لحم.\n\nالسلام لمدينة إلهنا، مدينة الأحياء، مسكن الصدِّيقين، التي هي أورشليم.\n\nالسلام لك يا بيت لحم، مدينة الأنبياء، الذين تنبأوا، عن ميلاد عمانوئيل.\n\nاليوم أشرق لنا، نحن أيضاً النور الحقيقي، من مريم العذراء، العروس النقية.\n\nمريم ولدت مخلّصنا، محب البشر الصالح، في بيت لحم اليهودية، كأقوال الأنبياء.\n\nإشعياء النبي، يصرخ بصوت التهليل قائلاً: إنها تلد عمانوئيل، مخلّصنا الصالح.\n\nالسماوات تفرح، والأرض تتهلّل، لأنها ولدت لنا عمانوئيل، نحن (معشر) المسيحيين.\n\nمن أجل هذا نحن أغنياء، بالخيرات الكاملة، وبإيمان نُرتّل قائلين: هلليلويا.\n\n(هلليلويا)، يسوع المسيح ابن الله، وُلِدَ في بيت لحم.\n\nهذا الذي ينبغي لة المجد، مع أبيه الصالح، والروح القُدُس، من الآن وإلى الأبد.",
+                de: "Unser Mund ist erfüllt mit Freude – und unsere Zunge von Jubel, – denn unser Herr Jesus Christus – wurde in Bethlehem geboren.\n\nGegrüßt sei die Stadt unseres Gottes, – die Stadt der Lebendigen, – der Wohnort der Gerechten, – welche Jerusalem ist.\n\nFriede sei Bethlehem, – der Stadt der Propheten, – welche die Geburt Emmanuels prophezeiten.\n\nHeute ist auch uns – das wahre Licht erschienen – von der Jungfrau Maria, – der reinen Braut.\n\nMaria hat unseren Erlöser, – den gütigen Menschenliebenden geboren, – in Bethlehem in Judäa, – wie es die Propheten verkündet haben.\n\nDer Prophet Jesaja rief – mit fröhlicher Stimme und sprach: – Sie wird Emmanuel, – unseren gütigen Erlöser, gebären.\n\nDie Himmel sind erfreut – und die Erde jubelt, – denn sie hat uns Christen – Emmanuel geboren.\n\nDeshalb sind wir reich – an vollkommenen Gütern, – mit Glauben preisen wir dich – und sagen: Halleluja.\n\n(Halleluja), – Jesus Christus, der Sohn Gottes – wurde in Bethlehem geboren.\n\nIhm gebührt die Herrlichkeit – mit seinem guten Vater – und dem Heiligen Geist, – jetzt und in alle Ewigkeit.",
+                cop_ar: "طوتي رون أف موه إن راشي: أووه بين لاس خين أو ثيليل: جي بين شويس إيسوس بي إخرستوس: أف ماسف خين فيثليئيم.\n\nشيري إت فاكي إم بين نوتي: تي بوليس إنتي ني إت أونخ: إف ما إن شوبي إنتي ني ثمي: إيتي طاي تي ييروساليم.\n\nشيري ني أو فيثليئيم: تي بوليس إنتي ني بروفيتيس: ني إطاف إر بروفيتيفين: إثفي إبجين ميسي إن إممانوئيل.\n\nأبي أو أويني إن أليثينوس: شاي نان إم فوؤو هون: إيفول خين ماريا تي بارثينوس: تي شيليت إن كاثاروس.\n\nماريا أسميسي إم بين سوتير: بي ماي رومي إن أغاثوس: خين فيثليئيم إنتي تي يوذيا: كاطا ني إزمي إنتي ني بروفيتيس.\n\nإيسائياس بي بروفيتيس: أوش إيفول خين أو إزمي إن ثيليل: جي إس إي ميسي إن إممانوئيل: بين سوتير إن أغاثوس.\n\nني في أوي أونوف نيم إب كاهي ثيليل: جي أسميسي نان إن إممانوئيل: أنون خا ني خريستيانوس.\n\nإثفي فاي تين أوي إن راماؤ: خين ني أغاثون إت جيك إيفول: خين أو ناهتي تين إر إبسالين: إن جو إم موس جي الليلويا.\n\n(الليلويا): إيسوس بي إخرستوس إبشيري إم إفنوتي: أف ماسف خين فيثليئيم.\n\nفاي إيري بي أو أو إر بريبي ناف: نيم بيف يوت إن أغاثوس: نيم بي إبنيفما إثؤواف: يسجين تينو نيم شا إينيه.",
+                cop_cop: "Ⲧⲟⲧⲉ ⲣⲱⲛ ⲁϥⲙⲟϩ ⲛ̀ⲣⲁϣⲓ : ⲟⲩⲟϩ ⲡⲉⲛⲗⲁⲥ ϧⲉⲛ ⲟⲩⲑⲉⲗⲏⲗ : ϫⲉ Ⲡⲉⲛϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ⲁⲩⲙⲁⲥϥ ϧⲉⲛ Ⲃⲏⲑⲗⲉⲉⲙ.\n\nⲬⲉⲣⲉ ⲑⲃⲁⲕⲓ ⲙ̀Ⲡⲉⲛⲛⲟⲩϯ : ϯⲡⲟⲗⲓⲥ ⲛ̀ⲧⲉ ⲛⲏⲉⲧⲟⲛϧ : ⲫⲙⲁⲛ̀ϣⲱⲡⲓ ⲛ̀ⲧⲉ ⲛⲓⲑ̀ⲙⲏⲓ : ⲉ̀ⲧⲉ ⲧⲁⲓ ⲧⲉ Ⲓⲉⲣⲟⲩⲥⲁⲗⲏⲙ.\n\nⲬⲉⲣⲉ ⲛⲉ ⲱ̀ Ⲃⲏⲑⲗⲉⲉⲙ : ϯⲡⲟⲗⲓⲥ ⲛ̀ⲧⲉ ⲛⲓⲡ̀ⲣⲟⲫⲏⲧⲏⲥ : ⲛⲏⲉⲧⲁⲩⲉⲣⲡ̀ⲣⲟⲫⲏⲧⲉⲩⲓⲛ : ⲉⲑⲃⲉ ⲡ̀ϫⲓⲛⲙⲓⲥⲓ ⲛ̀Ⲉⲙⲙⲁⲛⲟⲩⲏⲗ.\n\nⲀ ⲡⲓⲟⲩⲱⲓⲛⲓ ⲛ̀ⲁ̀ⲗⲏⲑⲓⲛⲟⲥ : ϣⲁⲓ ⲛⲁⲛ ⲙ̀ⲫⲟⲟⲩ ϩⲱⲛ : ⲉ̀ⲃⲟⲗ ϧⲉⲛ Ⲙⲁⲣⲓⲁ ϯⲡⲁⲣⲑⲉⲛⲟⲥ : ϯϣⲉⲗⲉⲧ ⲛ̀ⲕⲁⲑⲁⲣⲟⲥ.\n\nⲘⲁⲣⲓⲁ̀ ⲁⲥⲙⲓⲥⲓ ⲙ̀Ⲡⲉⲛⲥⲱⲧⲏⲣ : ⲡⲓⲙⲁⲓⲣⲱⲙⲓ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ : ϧⲉⲛ Ⲃⲏⲑⲗⲉⲉⲙ ⲛ̀ⲧⲉ ϯⲒⲟⲩⲇⲉⲁ̀ : ⲕⲁⲧⲁ ⲛⲓⲥⲙⲏ ⲛ̀ⲧⲉ ⲛⲓⲡ̀ⲣⲟⲫⲏⲧⲏⲥ.\n\nⲎⲥⲁⲓⲁⲥ ⲡⲓⲡ̀ⲣⲟⲫⲏⲧⲏⲥ : ⲱϣ ⲉ̀ⲃⲟⲗ ϧⲉⲛ ⲟⲩⲥ̀ⲙⲏ ⲛ̀ⲑⲉⲗⲏⲗ : ϫⲉ ⲉⲥⲉ̀ⲙⲓⲥⲓ ⲛ̀Ⲉⲙⲙⲁⲛⲟⲩⲏⲗ : Ⲡⲉⲛⲥⲱⲧⲏⲣ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ.\n\nⲚⲓⲫⲏⲟⲩⲓ̀ ⲟⲩⲛⲟϥ ⲛⲉⲙ ⲡ̀ⲕⲁϩⲓ ⲑⲉⲗⲏⲗ : ϫⲉ ⲁⲥⲙⲓⲥⲓ ⲛⲁⲛ ⲛ̀Ⲉⲙⲙⲁⲛⲟⲩⲏⲗ : ⲁ̀ⲛⲟⲛ ϧⲁ ⲛⲓⲭ̀ⲣⲓⲥⲧⲓⲁ̀ⲛⲟⲥ.\n\nⲈⲑⲃⲉ ⲫⲁⲓ ⲧⲉⲛⲟⲓ ⲛ̀ⲣⲁⲙⲁⲟ̀ : ϧⲉⲛ ⲛⲓⲁ̀ⲅⲁⲑⲟⲛ ⲉⲧϫⲏⲕ ⲉ̀ⲃⲟⲗ : ϧⲉⲛ ⲟⲩⲛⲁϩϯ ⲧⲉⲛⲉⲣⲯⲁⲗⲓⲛ : ⲉⲛϫⲱ ⲙ̀ⲙⲟⲥ ϫⲉ Ⲁ̀ⲗⲗⲏⲗⲟⲩⲓⲁ̀.\n\n( Ⲁ̀ⲗⲗⲏⲗⲟⲩⲓⲁ̀ ) : Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲡ̀ϣⲏⲣⲓ ⲙ̀Ⲫ̀ⲛⲟⲩϯ : ⲁⲩⲙⲁⲥϥ ϧⲉⲛ Ⲃⲏⲑⲗⲉⲉⲙ.\n\nⲪⲁⲓ ⲉ̀ⲣⲉ ⲡⲓⲱ̀ⲟⲩ ⲉⲣⲡ̀ⲣⲉⲡⲓ ⲛⲁϥ : ⲛⲉⲙ Ⲡⲉϥⲓⲱⲧ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ : ⲛⲉⲙ Ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ : ⲓⲥϫⲉⲛ ϯⲛⲟⲩ ⲛⲉⲙ ϣⲁ ⲉ̀ⲛⲉϩ.",
+                ar_de: "Tote ren afmoh en rashi, wa pen las khen ou thelil, je Penchois Isos Pi-Khristos, av masf khen Vithleem.\n\nShere et vaki em Pennouti, ti polis ente ni et onkh, eph ma en shopi ente ni thmi, ete tai te Ierousalim.\n\nShere ne o Vithleem, ti polis ente ni prophitis, ni etav er prophitevin, ethve ep jin misi en Emmanuel.\n\nA pi o oini en alithinos, shai nan em foo hon, evol khen Maria ti parthenos, ti shelet en katharos.\n\nMaria as misi em Pensotir, pi mai romi en agathos, khen Vithleem ente ti Ioudea, kata ni smi ente ni prophitis.\n\nIsaias pi prophitis, osh evol khen ou smi en thelil, je es e misi en Emmanuel, Pensotir en agathos.\n\nNi fi o i ounof nem ep kahi thelil, je as misi nan en Emmanuel, anon kha ni khristianos.\n\nEthve fai ten oi en ramao, khen ni agathon et jik evol, khen ou nahti ten er psalin, en jo emmos je Allelouia.\n\n(Allelouia), Isos Pi-Khristos Ep shiri em Efnouti, av masf khen Vithleem.\n\nFai ere pi o o er prepi naf, nem Pef iot en agathos, nem Pi pnevma ethowab, isjen tinou nem sha eneh.",
+                cop_de: "Tote ron af-moh en-rashi: ouoh pen-las khen ou-thelil: je Penchois Isos Pi-Khristos: av-masf khen Vithleem.\n\nShere et-vaki em-Pennouti: ti-polis ente ni-et-onkh: eph-ma-en-shopi ente ni-thmi: ete tai te Ierousalim.\n\nShere ne o Vithleem: ti-polis ente ni-prophitis: ni-etav-er-prophitevin: ethve ep-jin-misi en-Emmanuel.\n\nA pi-ouoini en-alithinos: shai nan em-foo hon: evol khen Maria ti-parthenos: ti-shelet en-katharos.\n\nMaria as-misi em-Pensotir: pi-mai-romi en-agathos: khen Vithleem ente ti-Ioudea: kata ni-smi ente ni-prophitis.\n\nIsaias pi-prophitis: osh evol khen ou-smi en-thelil: je es-e-misi en-Emmanuel: Pensotir en-agathos.\n\nNi-fi-oui ounof nem ep-kahi thelil: je as-misi nan en-Emmanuel: anon kha ni-khristianos.\n\nEthve fai ten-oi en-ramao: khen ni-agathon et-jik evol: khen ou-nahti ten-er-psalin: en-jo emmos je Allelouia.\n\n(Allelouia): Isos Pi-Khristos Ep-shiri em-Efnouti: av-masf khen Vithleem.\n\nFai ere pi-o-ou er-prepi naf: nem Pef-iot en-agathos: nem Pi-pnevma ethowab: isjen tinou nem sha eneh."
+            },
+            {
+                id: "45.2",
+                speaker: "Volk",
+                ar: "يقولون في عيد الغطاس...", // (Hier den Text für Epiphanias einfügen, wenn du ihn hast)
+                de: "Doxologie für Epiphanias...",
+                cop_ar: "...",
+                cop_cop: "...",
+                ar_de: "...",
+                cop_de: "..."
+            },
+            {
+                id: 45,
+                sectionTitle: {
+                    de: "Doxologie für die Jungfrau Maria",
+                    ar: "ذكصلوجيه العدرا"
+                },
+                speaker: "Volk",
+                ar: "طوباك أنت يا مريم، الحكيمة العفيفة، القبة الثانية، الكنز الروحي.\n\nاليمامة النقية، التي نادت في أرضنا، وأينعت لنا، ثمرة الروح.\n\nالروح المعزي، الذي حل على ابنك، في مياه الأردن، كمثال نوح.\n\nلأن تلك الحمامة، هي بشرتنا، بسلام الله، الذي صار للبشر.\n\nوأنت أيضاً يا رجاءنا، اليمامة العقلية، أتيت لنا بالرحمة، وحملته في بطنك.\n\nأي يسوع، المولود من الآب، وُلِدَ لنا منك، وحرَّر جنسنا.\n\nفلنقل هذا، من قلبنا أولاً، وبعد ذلك بلساننا أيضاً، صارخين قائلين:\n\nيا ربنا يسوع المسيح، اجعل لك فينا، هيكلاً لروحك القدوس، يُعطيك تمجيداً.\n\nالسلام لك أيتها العذراء، الملكة الحقيقية الحقانية، السلام لفخر جنسنا، ولدت لنا عمانوئيل.\n\nنسألك أذكرينا، أيتها الشفيعة المؤتمنة، أمام ربنا يسوع المسيح، ليغفر لنا خطايانا.",
+                de: "Selig bist du Maria, – die Weise und Reine, – das zweite Heiligtum – und der geistige Schatz.\n\nDie reine Turteltaube, – die in unserem Land rief, – und sie brachte uns – die Frucht des Geistes.\n\nDer Geist, der Tröster, – der auf deinen Sohn herabkam, – auf das Wasser des Jordan – gemäß der Art des Noah.\n\nDenn dies ist die Taube, – sie verkündete uns – den Frieden Gottes, – den die Menschen erfuhren.\n\nDu bist unsere Hoffnung, – die besonnene Turteltaube. – Du brachtest uns das Erbarmen – und trugst es in deinem Leib.\n\nDieser ist Jesus, – geboren aus dem Vater. – Er wurde uns von dir geboren – und befreite unser Geschlecht.\n\nLasst uns das zuerst – mit unserem Herzen sagen, – dann auch mit unserer Zunge, – wobei wir rufen und sprechen:\n\nUnser Herr Jesus Christus – bau dir in uns einen Tempel – für deinen Heiligen Geist, – um dich zu preisen.\n\nGegrüßt seist du! Jungfrau, – die wahre Königin in Wahrheit. – Gegrüßt seist du! Stolz unseres Geschlechts, – du hast uns den Emmanuel geboren.\n\nWir bitten dich, gedenke unser, – du treue Fürsprecherin, – vor unserem Herrn Jesus Christus, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "أو نياتي هو ماريا: تي سافي أووه إن سيمني: تي ماه إس نوتي إن إسكيني: بي أهو إم بنيفماتيكون.\n\nتي تشرومبي إثنيسوس: ثي إيطاس موتي خين بين كاهي: أووه أس إين نان إيفول: إم بي أوطاه إنتي بي إبنيفما.\n\nبي إبنيفما إم باراكليتون: في إيطاف إي إيجين بيك شيري: خين ني موؤو إنتي بي يوردانيس: كاطا إب تيبوس إن نوإي.\n\nتي تشرومبي غار إتي إمماف: أس هي شين نوفينان: إن تي هيريني إنتي إفنوتي: ثي إيطاس شوبي شا ني رومي.\n\nإنثو غار بي تين هيلبيس: تي تشرومبي إن نو إيتي: أري إيني نان إم بي ناي: أري فاي خاروف خين تين نيجي.\n\nإيتي فاي بي إيسوس: بي ميسي إيفول خين إفيوت: أف ماسف نان إيفول إن خيتي: أف إر بين جينوس إن ريم هي.\n\nفاي غار مارين جوتف: خين بين هيت إن شورب: نيم نون أون خين بين لاس: إن أوش إيفول إن جو إم موس.\n\nجي بين شويس إيسوس بي إخرستوس: ما ثاميو ناك إن إهري إن خيتين: إن أو إيرفي إنتي بيك إبنيفما إثؤواف: إف تي ذوكصو لوجيا ناك.\n\nشيري ني أو تي بارثينوس: تي أورو إم مي إن أليثيني: شيري إب شوشو إنتي بين جينوس: أري إجفو نان إن إممانوئيل.\n\nتين تيهو أري بين ميفئي: أو تي بروستاتيس إت انهوت: ناهرين بين شويس إيسوس بي إخرستوس: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ⲱⲟⲩⲛⲓⲁϯ ϩⲱ Ⲙⲁⲣⲓⲁ : ϯⲥⲁⲃⲉ ⲟⲩⲟϩ ⲛ̀ⲥⲉⲙⲛⲏ : ϯⲙⲁϩⲥⲛⲟⲩϯ ⲛ̀ⲥⲕⲏⲛⲏ : ⲡⲓⲁ̀ϩⲟ ⲙ̀ⲡ̀ⲛⲉⲩⲙⲁⲧⲓⲕⲟⲛ.\n\nϮϭⲣⲟⲙⲡⲓ ⲉⲑⲛⲉⲥⲱⲥ : ⲑⲏⲉⲧⲁⲥⲙⲟⲩϯ ϧⲉⲛ ⲡⲉⲛⲕⲁϩⲓ : ⲟⲩⲟϩ ⲁⲥⲉⲛ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ : ⲙ̀ⲡⲓⲟⲩⲧⲁϩ ⲛ̀ⲧⲉ Ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ.\n\nⲠⲓⲡ̀ⲛⲉⲩⲙⲁ ⲙ̀ⲡⲁⲣⲁⲕⲗⲏⲧⲟⲛ : ⲫⲏⲉⲧⲁϥⲓ̀ ⲉ̀ϫⲉⲛ Ⲡⲉϣⲏⲣⲓ : ϧⲉⲛ ⲛⲓⲙⲱⲟⲩ ⲛ̀ⲧⲉ Ⲡⲓⲓⲟⲣⲇⲁⲛⲏⲥ : ⲕⲁⲧⲁ ⲡ̀ⲧⲩⲡⲟⲥ ⲛ̀Ⲛⲱⲉ̀.\n\nϮϭⲣⲟⲙⲡⲓ ⲅⲁⲣ ⲉ̀ⲧⲉ ⲙ̀ⲙⲁⲩ : ⲁⲥϩⲓϣⲉⲛⲛⲟⲩϥⲓ ⲛⲁⲛ : ⲛ̀ϯϩⲓⲣⲏⲛⲏ ⲛ̀ⲧⲉ Ⲫ̀ⲛⲟⲩϯ : ⲑⲏⲉⲧⲁⲥϣⲱⲡⲓ ϣⲁ ⲛⲓⲣⲱⲙⲓ.\n\nⲚ̀ⲑⲟ ⲅⲁⲣ ⲡⲉ ⲧⲉⲛϩⲉⲗⲡⲓⲥ : ϯϭⲣⲟⲙⲡⲓ ⲛ̀ⲛⲟⲏⲧⲏ : ⲁ̀ⲣⲉⲓ̀ⲛⲓ ⲛⲁⲛ ⲙ̀ⲡⲓⲛⲁⲓ : ⲁ̀ⲣⲉϥⲁⲓ ϧⲁⲣⲟϥ ϧⲉⲛ ⲧⲉⲛⲉϫⲓ.\n\nⲈⲧⲉ ⲫⲁⲓ ⲡⲉ Ⲓⲏⲥⲟⲩⲥ : ⲡⲓⲙⲓⲥⲓ ⲉ̀ⲃⲟⲗϧⲉⲛ Ⲫ̀ⲓⲱⲧ : ⲁⲩⲙⲁⲥϥ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ ⲛ̀ϧⲏϯ : ⲁϥⲉⲣ ⲡⲉⲛⲅⲉⲛⲟⲥ ⲛ̀ⲣⲉⲙϩⲉ.\n\nⲪⲁⲓ ⲅⲁⲣ ⲙⲁⲣⲉⲛϫⲟⲧϥ : ϧⲉⲛ ⲡⲉⲛϩⲏⲧ ⲛ̀ϣⲟⲣⲡ : ⲛⲉⲙ ⲛⲟⲛ ⲟⲛ ϧⲉⲛ ⲡⲉⲛⲗⲁⲥ : ⲉⲛⲱϣ ⲉ̀ⲃⲟⲗ ⲉⲛϫⲱ ⲙ̀ⲙⲟⲥ.\n\nϪⲉ Ⲡⲉⲛϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ ⲙⲁⲑⲁⲙⲓⲟ̀ ⲛⲁⲕ ⲛ̀ϩ̀ⲣⲏⲓ ⲛ̀ϧⲏⲧⲉⲛ : ⲛ̀ⲟⲩⲉⲣⲫⲉⲓ ⲛ̀ⲧⲉ Ⲡⲉⲕⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ : ⲉⲩϯⲇⲟⲝⲟⲗⲟⲅⲓⲁ̀ ⲛⲁⲕ.\n\nⲬⲉⲣⲉ ⲛⲉ ⲱ̀ ϯⲡⲁⲣⲑⲉⲛⲟⲥ : ϯⲟⲩⲣⲱ ⲙ̀ⲙⲏⲓ ⲛ̀ⲁ̀ⲗⲏⲑⲓⲛⲏ : Ⲭⲉⲣⲉ ⲡ̀ϣⲟⲩϣⲟⲩ ⲛ̀ⲧⲉ ⲡⲉⲛⲅⲉⲛⲟⲥ : ⲁ̀ⲣⲉϫⲫⲟ ⲛⲁⲛ ⲛ̀Ⲉⲙⲙⲁⲛⲟⲩⲏⲗ.\n\nⲦⲉⲛϯϩⲟ ⲁ̀ⲣⲓⲡⲉⲛⲙⲉⲩⲓ̀ : ⲱ̀ ϯⲡ̀ⲣⲟⲥⲧⲁⲧⲏⲥ ⲉⲧⲉⲛϩⲟⲧ : ⲛⲁϩⲣⲉⲛ Ⲡⲉⲛϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Toubak anti ya Mariam, el hakima el 'afifa, el qoba el thania, el kanz el rouhi.\n\nTi-chrompi ethnesos, allati nadat fi ardina, wa ayn'at lana, thamar el rouh.\n\nEl roh el mo'azi, allazi hal 'ala ebnek, fi meyah el Ordon, ka mathal Nouh.\n\nLe ana telka el hamama, hiya basharatna, be salam Allah, allazi sar lel bashar.\n\nWa anti aydan ya raga'na, el hamama el 'aqleya, atayti lana bel rahma, wa hamaltihi fi batnik.\n\nAiy Yasou', el mawloud men el Ab, woleda lana menk, wa harrar jinsana.\n\nFal naqol haza, men qalbina awalan, wa ba'd zalek be lisanina aydan, sarekhin qa'ilin:\n\nYa rabina Yasou' el Masih, eg'al laka fina, haykalan le rouhak el qodos, yo'tik tamjidan.\n\nShere ne o ti-parthenos: ti-ouro em-mei en-alithini: Shere ep-shoushou ente pen-genos: are-jfo nan en-Emmanuel.\n\nTen-tiho ari-pen-mevi: o ti-prostatis et-enhot: nahren Penchois Isos Pi-Khristos: entef-ka nen-novi nan evol.",
+                cop_de: "Ouniat ho Maria: ti-save ouoh en-semni: ti-mah-sno-outi en-skini: pi-aho em-pnevmatikon.\n\nTi-chrompi ethnesos: thi-etas-mouti khen pen-kahi: ouoh as-en nan evol: em-pi-outah ente Pi-pnevma.\n\nPi-pnevma em-parakliton: fi-etaf-i ejen Pek-shiri: khen ni-mo-ou ente Pi-Iordanis: kata ep-typos en-Noe.\n\nTi-chrompi gar ete emmav: as-hishen-noufi nan: en-ti-hirini ente Efnouti: thi-etas-shopi sha ni-romi.\n\nNtho ghar pe ten-helpis: ti-chrompi en-no-iti: are-ini nan em-pi-nai: are-fai kharof khen ten-neji.\n\nEte fai pe Isos: pi-misi evol khen Efiot: av-masf nan evol en-khiti: af-er pen-genos en-remhe.\n\nFai gar maren-jotf: khen pen-hit en-shorp: nem non on khen pen-las: en-osh evol en-jo emmos.\n\nJe Penchois Isos Pi-Khristos ma-thamio nak en-hri en-khiten: en-ou-erfei ente Pek-pnevma ethowab: ev-ti-doxologia nak.\n\nShere ne o ti-parthenos: ti-ouro em-mei en-alithini: Shere ep-shoushou ente pen-genos: are-jfo nan en-Emmanuel.\n\nTen-tiho ari-pen-mevi: o ti-prostatis et-enhot: nahren Penchois Isos Pi-Khristos: entef-ka nen-novi nan evol."
+            },
+            {
+                id: 46,
+                sectionTitle: {
+                    de: "Doxologie für die  himmlischen Heerscharen",
+                    ar: "ذكصلوجيه السمائيين"
+                },
+                speaker: "Volk",
+                ar: "سبعة رؤساء ملائكة، وقوف يسبحون، أمام ضابط الكل، يخدمون السر الخفي.\n\nميخائيل هو الأول، غبريال هو الثاني، رافائيل هو الثالث، كمثال الثالوث.\n\nسوريال سداقيال، سراثيال وأنانيال، هؤلاء المنيرون العظماء الأطهار، يطلبون منه عن الخليقة.\n\nالشاروبيم والسرافيم، الكراسي والأرباب والقوات، والأربعة مخلوقات الحية غير المتجسدين، الحاملون مركبة الله.\n\nالأربعة والعشرون قسيساً، في كنيسة الأبكار، يسبحونه بلا فتور، صارخين قائلين:\n\nقدوس الله، المرضى اشفهم. قدوس القوي، الراقدين يا رب نيحهم.\n\nقدوس الذي لا يموت، بارك ميراثك. ولتكن رحمتك وسلامك، حصناً لشعبك.\n\nقدوس، قدوس، قدوس رب الصباؤوت، السماء والأرض مملوءتان، من مجدك وكرامتك.\n\nإذا ما قالوا: هلليلويا، يتبعهم السمائيون قائلين: آمين هلليلويا، المجد لإلهنا.\n\nاشفعوا فينا، أيها العساكر الملائكية، والطغمات السمائية، ليغفر لنا خطايانا.",
+                de: "Sieben Erzengel – stehen lobpreisend – vor dem Allmächtigen, – sie dienen dem verborgenen Geheimnis.\n\nMichael ist der erste, – Gabriel ist der zweite, – Raphael ist der dritte, – als Symbol für die Dreifaltigkeit.\n\nSuriel, Sedakiel, Sarathiel und Ananiel – alle diese sind die Strahlenden, Großen und Reinen, – die vor ihm für die Schöpfung bitten.\n\nDie Cherubim, die Seraphim, – die Throne, die Herrschaften, die Mächte – und die vier unleiblichen Lebewesen, – die den Thron Gottes tragen.\n\nDie vierundzwanzig Priester – in der Kirche der Erstgeborenen – preisen ihn ohne Unterlass, – indem sie rufen und sprechen:\n\nHeiliger Gott, – heile die Kranken. – Heiliger Starker, – Herr gib den Entschlafenen die selige Ruhe.\n\nHeiliger Unsterblicher, – segne dein Erbe. – Möge dein Erbarmen und dein Frieden – die Zuflucht deines Volkes sein.\n\nHeilig, heilig, – heilig ist der Herr der Heerscharen. – der Himmel und die Erde sind voll – von deiner Ehre und deinem Ruhm.\n\nWenn sie Halleluja sagen, – folgen ihnen die himmlischen Heerscharen sprechend: – „Amen, Halleluja, – Herrlichkeit sei unserem Gott“.\n\nSeid unsere Fürsprecher, – ihr Heere der Engel – und die himmlischen Heerscharen, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "شاشف إن أرشي أنجيلوس: سي أوهي إراتو إف هوس: إم بيمثو إم بي بانتوكراتور: إف شيمشي إم بي ميستيريون إت هيب.\n\nميخائيل بي بي هويت: غافريل بي بي ماه إسناف: رافائيل بي بي ماه شومت: كاطا إب تيبوس إن تي ترياس.\n\nسوريال سداكيال: ساراثيال نيم أنانيال: ناي نيشتي إن ريف إر أو أويني إثؤواف: إف توفه إم موف إي إهري إيجين إب سونت.\n\nني شيروبيم نيم ني سيرافيم: ني ثرونوس ني ميت شويس ني جوم: نيم بي إفتوؤو إن زو أون إن أسوماتوس: إت فاي خا بي هارما إن ثيؤس.\n\nبي جوت أفتو إم بريسفيتيروس: خين تي إك كليسيا إنتي ني شورب إم ميسي: إف إزمو إيروف إن أت خاروؤو: إف أوش إيفول إف جو إم موس.\n\nجي أجيوس أو ثيؤس: ني إت شوني ما طالتشوؤو. أجيوس إيس شيروس: ني إيطاف إنكوت إبشويس ما إمطون نوؤو.\n\nأجيوس أثاناطوس: إزمو إي تيك كلي رونوميا. ماري بيك ناي نيم تيك هيريني: أوي إن سوفت إم بيك لاؤس.\n\nجي إك أواب أووه إك أواب: إك أواب إبشويس سافاؤوت: إت في نيم إب كاهي ميه إيفول: خين بيك أو أو نيم بيك طايو.\n\nأريشان جوس الليلويا: شاري ني إيبورانيون أواهو إن سوؤو إف جو إم موس: جي آمين الليلويا: بي أو أو فا بن نوتي بي.\n\nأري بريسفيفين إي إهري إيجون: ني ستراتيا إن أنجيليكون: نيم ني تاغما إن إيبورانيون: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ϣⲁϣϥ ⲛ̀ⲁⲣⲭⲏⲁⲅⲅⲉⲗⲟⲥ : ⲥⲉⲟ̀ϩⲓ ⲉ̀ⲣⲁⲧⲟⲩ ⲉⲩϩⲱⲥ : ⲙ̀ⲡⲉⲙⲑⲟ ⲙ̀Ⲡⲓⲡⲁⲛⲧⲟⲕⲣⲁⲧⲱⲣ : ⲉⲩϣⲉⲙϣⲓ ⲙ̀ⲡⲓⲙⲩⲥⲧⲏⲣⲓⲟⲛ ⲉⲧϩⲏⲡ.\n\nⲘⲓⲭⲁⲏⲗ ⲡⲉ ⲡⲓϩⲟⲩⲓⲧ : Ⲅⲁⲃⲣⲓⲏⲗ ⲡⲉ ⲡⲓⲙⲁϩⲥⲛⲁⲩ : ⲣⲁⲫⲁⲏⲗ ⲡⲉ ⲡⲓⲙⲁϩϣⲟⲙⲧ : ⲕⲁⲧⲁ ⲡ̀ⲧⲩⲡⲟⲥ ⲛ̀ϯⲦ̀ⲣⲓⲁⲥ.\n\nⲤⲟⲩⲣⲓⲏⲗ Ⲥⲉⲇⲁⲕⲓⲏⲗ : Ⲥⲁⲣⲁⲑⲓⲏⲗ ⲛⲉⲙ Ⲁ̀ⲛⲁⲛⲓⲏⲗ : ⲛⲁⲓⲛⲓϣϯ ⲛ̀ⲣⲉϥⲉⲣⲟⲩⲱⲓⲛⲓ ⲉⲑⲟⲩⲁⲃ : ⲉⲩⲧⲱⲃϩ ⲙ̀ⲙⲟϥ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲉⲛ ⲡ̀ⲥⲱⲛⲧ.\n\nⲚⲓⲬⲉⲣⲟⲩⲃⲓⲙ ⲛⲉⲙ ⲛⲓⲤⲉⲣⲁⲫⲓⲙ : ⲛⲓⲑ̀ⲣⲟⲛⲟⲥ ⲛⲓⲙⲉⲧϭⲟⲓⲥ ⲛⲓϫⲟⲙ : ⲛⲉⲙ ⲡⲓϥ̀ⲧⲟⲟⲩ ⲛ̀ⲍⲱⲟⲛ ⲛ̀ⲁ̀ⲥⲱⲙⲁⲧⲟⲥ : ⲉⲧϥⲁⲓ ϧⲁ ⲡⲓϩⲁⲣⲙⲁ ⲛ̀Ⲑⲉⲟⲥ.\n\nⲠⲓϫⲟⲩⲧⲁϥⲧⲟⲩ ⲙ̀ⲡ̀ⲣⲉⲥⲃⲩⲧⲉⲣⲟⲥ : ϧⲉⲛ ϯⲉⲕⲕⲗⲏⲥⲓⲁ̀ ⲛ̀ⲧⲉ ⲛⲓϣⲟⲣⲡ ⲙ̀ⲙⲓⲥⲓ : ⲉⲩⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟϥ ⲛ̀ⲁⲧⲭⲁⲣⲱⲟⲩ : ⲉⲩⲱϣ ⲉ̀ⲃⲟⲗ ⲉⲩϫⲱ ⲙ̀ⲙⲟⲥ.\n\nϪⲉ ⲁ̀ⲅⲓⲟⲥ ⲟ Ⲑⲉⲟⲥ : ⲛⲏⲉⲧϣⲱⲛⲓ ⲙⲁⲧⲁⲗϭⲱⲟⲩ. Ⲁ̀ⲅⲓⲟⲥ Ⲓⲥⲭⲩⲣⲟⲥ : ⲛⲏⲉⲧⲁⲩⲉⲛⲕⲟⲧ Ⲡ̀ϭⲟⲓⲥ ⲙⲁⲙ̀ⲧⲟⲛ ⲛⲱⲟⲩ.\n\nⲀ̀ⲅⲓⲟⲥ Ⲁⲑⲁⲛⲁⲧⲟⲥ : ⲥ̀ⲙⲟⲩ ⲉ̀ⲧⲉⲕⲕ̀ⲗⲏⲣⲟⲛⲟⲙⲓⲁ̀. Ⲙⲁⲣⲉ ⲡⲉⲕⲛⲁⲓ ⲛⲉⲙ ⲧⲉⲕϩⲓⲣⲏⲛⲏ : ⲟⲓ ⲛ̀ⲥⲟⲃⲧ ⲙ̀ⲡⲉⲕⲗⲁⲟⲥ.\n\nϪⲉ ⲉⲕⲟⲩⲁⲃ ⲟⲩⲟϩ ⲉⲕⲟⲩⲁⲃ : ⲉⲕⲟⲩⲁⲃ Ⲡ̀ϭⲟⲓⲥ ⲥⲁⲃⲁⲱⲑ : ⲧ̀ⲫⲉ ⲛⲉⲙ ⲡ̀ⲕⲁϩⲓ ⲙⲉϩ ⲉ̀ⲃⲟⲗ : ϧⲉⲛ ⲡⲉⲕⲱ̀ⲟⲩ ⲛⲉⲙ ⲡⲉⲕⲧⲁⲓⲟ̀.\n\nⲀⲣⲉϣⲁⲛϫⲟⲥ Ⲁ̀ⲗⲗⲏⲗⲟⲩⲓⲁ̀ : ϣⲁⲣⲉ ⲛⲓⲉ̀ⲡⲟⲩⲣⲁⲛⲓⲟⲛ ⲟⲩⲁϩⲟⲩ ⲛ̀ⲥⲱⲟⲩ ⲉⲩϫⲱ ⲙ̀ⲙⲟⲥ : ϫⲉ Ⲁ̀ⲙⲏⲛ Ⲁ̀ⲗⲗⲏⲗⲟⲩⲓⲁ̀ : ⲡⲓⲱ̀ⲟⲩ ⲫⲁ Ⲡⲉⲛⲛⲟⲩϯ ⲡⲉ.\n\nⲀ̀ⲣⲓⲡ̀ⲣⲉⲥⲃⲉⲩⲓⲛ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲛⲓⲥⲧⲣⲁⲧⲓⲁ̀ ⲛ̀ⲁⲅⲅⲉⲗⲓⲕⲟⲛ : ⲛⲉⲙ ⲛⲓⲧⲁⲅⲙⲁ ⲛ̀ⲉ̀ⲡⲟⲩⲣⲁⲛⲓⲟⲛ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Sab'at ro'asa' mala'ika, woqouf yosabihoun, amam dabet el kol, yakhdomoun el ser el khafi.\n\nMikhaïl howa el awal, Ghabrial howa el thani, Raphael howa el thales, ka mathal el thalouth.\n\nSourial Sedakial, Sarathial wa Ananial, ha'ola' el moniroun el 'ozama' el athar, yatloboun menho 'an el khaliqa.\n\nEl Cherubim wal Seraphim, el karasi wal arbab wal qowat, wal arba'at makhlouqat el haya ghayr el motagassidin, el hameloun markabat Allah.\n\nEl arba'at wa 'eshroun qasisan, fi kanisat el abkar, yosabihounaho bila fotour, sarekhin qa'ilin:\n\nQodos Allah, el marda eshfehom. Qodos el qawi, el raqedin ya rab nayeh-hom.\n\nQodos allazi la yamout, barek mirathak. Wa ltakon rahmatoka wa salamoka, hosnan le sha'bek.\n\nQodos, Qodos, Qodos rab el saba'out, el sama' wal ard mamlou'atan, men magdika wa karamatik.\n\nEza ma qalou: Hallelouya, yatba'ohom el sama'iyoun qa'ilin: Amin Hallelouya, el magd le ilahina.\n\nEshfa'ou fina, ayoha el 'asaker el mala'ikiya, wal taghmat el sama'iya, li yaghfer lana khatayana.",
+                cop_de: "Shashf en-archi-angelos: se-ohi eratou ev-hos: em-pemtho em-pi-pantokrator: ev-shemshi em-pi-mistirion et-hip.\n\nMichael pe pi-houit: Gabriel pe pi-mah-snav: Raphael pe pi-mah-shomt: kata ep-typos en-ti-trias.\n\nSouriel Sedakiel: Sarathiel nem Ananiel: nai-nishti en-ref-er-ouoini ethowab: ev-tovh emmof e-hri ejen ep-sont.\n\nNi-Cherubim nem ni-Seraphim: ni-thronos ni-met-chois ni-jom: nem pi-fto-ou en-zoon en-asomatos: et-fai kha pi-harma en-Theos.\n\nPi-jout-aftou em-presbyteros: khen ti-ekklisia ente ni-shorp em-misi: ev-smou erof en-at-kharo-ou: ev-osh evol ev-jo emmos.\n\nJe Agios o Theos: ni-et-shoni ma-talcho-ou. Agios Ischiros: ni-etav-enkot Epchois ma-emton no-ou.\n\nAgios Athanatos: smou e-tek-klironomia. Mare pek-nai nem tek-hirini: oi en-sovt em-pek-laos.\n\nJe ek-owab ouoh ek-owab: ek-owab Epchois Sabaoth: et-fe nem ep-kahi meh evol: khen pek-o-ou nem pek-taio.\n\nAreshan-jos Alleluia: share ni-epouranion ouahou en-so-ou ev-jo emmos: je Amin Alleluia: pi-o-ou fa Pennouti pe.\n\nAri-presvevin e-hri egon: ni-stratia en-angelikon: nem ni-taghma en-epouranion: entef-ka nen-novi nan evol."
+            },
+            {
+                id: 47,
+                sectionTitle: {
+                    de: "Doxologie für die Apostel",
+                    ar: "ذكصلوجيه الرسل"
+                },
+                speaker: "Volk",
+                ar: "الرب يسوع المسيح، اختار رسله، وهم بطرس واندراوس، ويوحنا ويعقوب.\n\nوفيليبس ومتى، وبرثولماوس وتوما، ويعقوب بن حلفى، وسمعان القانوني.\n\nوتذاوس ومتياس، وبولس ومرقس ولوقا، وبقية التلاميذ، الذين تبعوا مخلصنا.\n\nمتياس الذي صار، عوضاً عن يهوذا، وكمالاً لبقية (التلاميذ)، الذين تبعوا السيد.\n\nخرجت أصواتهم، على وجه الأرض كلها، وبلغ كلامهم، إلى أقطار المسكونة.\n\nأطلبوا من الرب عنا، يا سادتي الآباء الرسل، والسبعون تلميذاً، ليغفر لنا خطايانا.",
+                de: "Der Herr Jesus Christus – wählte seine Apostel. – Sie sind Petrus, Andreas, – Johannes und Jakobus.\n\nPhilippus, Matthäus, Bartholomäus, Thomas, – Jakobus, Sohn des Alphäus – und Simon, Kananäus.\n\nThaddäus, Matthias, – Paulus, Markus und Lukas. – Und die übrigen Jünger, – die unserem Erlöser folgten.\n\nMatthias, er ist Ersatz – an der Stelle von Judas. – Und alle übrigen Jünger, – die dem Herrn folgten.\n\nAuf die ganze Erde – ging ihr Schall hinaus – und bis an die Enden des Erdkreises ihre Worte.\n\nBittet beim Herrn für uns – meine Herren und Väter, die Apostel – und die siebzig Jünger, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "كيريوس إيسوس بي إخرستوس: أف سوتب إن نيف أبوستولوس: إتي بتروس نيم أندراؤس: يوأنس نيم ياكوفوس.\n\nليبون فيليبوس نيم ماتاؤس: برثولوميؤس نيم ثوماس: ياكوفوس إنتي ألفيؤس: نيم سيمون بي كانانيؤس.\n\nثاديؤس نيم ماتياس: بافلوس نيم ماركوس نيم لوكاس: نيم إبسيبى إنتي ني ماثيتيس: ني إتاف موشي إنسا بين سوتير.\n\nماتياس في إيتاف شوبي: إنت شيفيو إن يوذاس: نيم إبجوك إيفول نيم إبسيبى: إن ني إتاف موشي إنسا دسبوطا.\n\nأ بو خروؤو شيناف إيفول: هيجين إبهو إم إبكاهي تيرف: أووه نو ساجي أف فوه: شا أفريجس إن تي إيكوميني.\n\nتوف إم إبشويس إي إهري إيجون: نا شويس إن يوتي إن أبوستولوس: نيم بي شفي إم ماثيتيس: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ⲕⲩⲣⲓⲟⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ⲁϥⲥⲱⲧⲡ ⲛ̀ⲛⲉϥⲁ̀ⲡⲟⲥⲧⲟⲗⲟⲥ : ⲉ̀ⲧⲉ Ⲡⲉⲧⲣⲟⲥ ⲛⲉⲙ Ⲁⲛ̀ⲇⲣⲉⲁⲥ : Ⲓⲱⲁⲛⲛⲏⲥ ⲛⲉⲙ Ⲓⲁⲕⲱⲃⲟⲥ.\n\nⲖⲟⲓⲡⲟⲛ Ⲫⲓⲗⲓⲡⲡⲟⲥ ⲛⲉⲙ Ⲙⲁⲧⲑⲉⲟⲥ : Ⲃⲁⲣⲑⲟⲗⲟⲙⲉⲟⲥ ⲛⲉⲙ Ⲑⲱⲙⲁⲥ : Ⲓⲁⲕⲱⲃⲟⲥ ⲛ̀ⲧⲉ Ⲁⲗⲫⲉⲟⲥ : ⲛⲉⲙ Ⲥⲓⲙⲱⲛ ⲡⲓⲕⲁⲛⲁⲛⲉⲟⲥ.\n\nⲐⲁⲇⲇⲉⲟⲥ ⲛⲉⲙ Ⲙⲁⲧⲑⲓⲁⲥ : Ⲡⲁⲩⲗⲟⲥ ⲛⲉⲙ Ⲙⲁⲣⲕⲟⲥ ⲛⲉⲙ Ⲗⲟⲩⲕⲁⲥ : ⲛⲉⲙ ⲡ̀ⲥⲉⲡⲓ ⲛ̀ⲧⲉ ⲛⲓⲙⲁⲑⲏⲧⲏⲥ : ⲛⲏⲉⲧⲁⲩⲙⲟϣⲓ ⲛ̀ⲥⲁ Ⲡⲉⲛⲥⲱⲧⲏⲣ.\n\nⲘⲁⲧⲑⲓⲁⲥ ⲫⲏⲉⲧⲁϥϣⲱⲡⲓ : ⲛ̀ⲧ̀ϣⲉⲃⲓⲱ̀ ⲛ̀Ⲓⲟⲩⲇⲁⲥ : ⲛⲉⲙ ⲡ̀ϫⲱⲕ ⲉ̀ⲃⲟⲗ ⲛⲉⲙ ⲡ̀ⲥⲉⲡⲓ : ⲛ̀ⲛⲏⲉⲧⲁⲩⲙⲟϣⲓ ⲛ̀ⲥⲁ Ⲇⲉⲥⲡⲟⲧⲁ.\n\nⲀ ⲡⲟⲩϧ̀ⲣⲱⲟⲩ ϣⲉⲛⲁϥ ⲉ̀ⲃⲟⲗ : ϩⲓϫⲉⲛ ⲡ̀ϩⲟ ⲙ̀ⲡ̀ⲕⲁϩⲓ ⲧⲏⲣϥ : ⲟⲩⲟϩ ⲛⲟⲩⲥⲁϫⲓ ⲁⲩⲫⲟϩ : ϣⲁ ⲁⲩⲣⲏϫⲥ ⲛ̀ϯⲟⲓⲕⲟⲩⲙⲉⲛⲏ.\n\nⲦⲱⲃϩ ⲙ̀Ⲡ̀ϭⲟⲓⲥ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲛⲁϭⲟⲓⲥ ⲛ̀ⲓⲟϯ ⲛ̀ⲁ̀ⲡⲟⲥⲧⲟⲗⲟⲥ : ⲛⲉⲙ ⲡⲓϣ̀ⲃⲉ ⲙ̀ⲙⲁⲑⲏⲧⲏⲥ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "El Rab Yasou' el Masih, ekhtar rosolaho, wa hom Botros wa Andraos, wa Youhanna wa Ya'qub.\n\nWa Philippos wa Matta, wa Bartholomaos wa Thomas, wa Ya'qub ben Halfa, wa Sem'an el qanouni.\n\nWa Thaddaos wa Matthias, wa Pavlos wa Markos wa Loqa, wa baqiyat el talamiz, allazina taba'ou mokhalisana.\n\nMatthias allazi sar, 'ewadan 'an Yahoza, wa kamalan le baqiyat (el talamiz), allazina taba'ou el Sayed.\n\nKharagat aswatohom, 'ala wagh el ard kolaha, wa balagha kalamohom, ila aqtar el maskouna.\n\nOtlobou men el Rab 'anna, ya sadati el aba' el rosol, wal sab'oun tilmizan, li yaghfer lana khatayana.",
+                cop_de: "Kyrios Isos Pi-Khristos: af-sotp en-nef-apostolos: ete Petros nem Andreas: Ioannis nem Iakobos.\n\nLipon Filippos nem Matheos: Bartholomeos nem Thomas: Iakobos ente Alpheos: nem Simon pi-kananeos.\n\nThaddeos nem Mathias: Pavlos nem Markos nem Loukas: nem ep-sepi ente ni-mathitis: ni-etav-moshi ensa Pensotir.\n\nMathias fi-etaf-shopi: en-t-shevio en-Ioudas: nem ep-jok evol nem ep-sepi: en-ni-etav-moshi ensa Despota.\n\nA pou-khro-ou shenaf evol: hijen ep-ho em-ep-kahi tirf: ouoh nou-saji av-foh: sha av-rigs en-ti-oikoumeni.\n\nTovh em-Pchois e-hri ejon: na-chois en-ioti en-apostolos: nem pi-shve em-mathitis: entef-ka nen-novi nan evol."
+            },
+            {
+                id: 48,
+                sectionTitle: {
+                    de: "Doxologie für den heiligen Markus,den Apostel",
+                    ar: "ذكصلوجيه مار مرقس"
+                },
+                speaker: "Volk",
+                ar: "يا مرقس الرسول، والإنجيلي، الشاهد لآلام، الإله الوحيد الجنس.\n\nأتيـت وأنـرت لنـا، بإنجيـلك، وعلمتنـا الآب والابن، والروح القُدُس.\n\nوأخرجتنـا مـن الظلمـة، إلـى النـور الحقيقـي، وأطعمتنـا خُبـز الحيـاة، الـذي نـزل مـن السَّمـاء.\n\nتباركـت بـك، كُـلّ قبائـل الأرض، وأقوالـك بلغـت، إلـى أقطـار المسكونـة.\n\nالسـلام لـك أيهـا الشهيـد، السـلام للإنجيلـي، السـلام للرسـول، مرقـس ناظـر الالـه.\n\nأطلـب مـن الـربِّ عنـا، يـا ناظـر الإلـه الإنجيلـي، مرقـس الرسـول، ليغفـر لنـا خطايانـا.",
+                de: "Markus der Apostel – und der Evangelist, – der Zeuge der Leiden – des eingeborenen Gottes wurde.\n\nDu bist gekommen und hast uns – durch dein Evangelium erleuchtet, – und lehrtest uns den Vater und den Sohn – und den Heiligen Geist.\n\nDu hast uns von der Finsternis – in das wahre Licht herausgeführt, – und hast uns ernährt mit dem Brot des Lebens, – das vom Himmel herabgekommen ist.\n\nAlle Stämme der Erde – wurden durch dich gesegnet, – und deine Worte erreichten – die ganze Welt.\n\nGegrüßt seist du, o Märtyrer, – gegrüßt seist du, Evangelist, – gegrüßt sei der Apostel, – Abba Markus, der Gotteseher.\n\nBitte beim Herrn für uns, – Gotteseher und Evangelist, – Abba Markus, der Apostel, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "ماركوس بي أبوستولوس: أووه بي إف أنجيليستيس: بي ميثري خا ني إمكاه: إنتي بي مونو جينيس إنس نوتي.\n\nأك إي أك إر أو أويني إيرون: هيتين بيك إف أنجيليون: أك تسافون إم إفيوت نيم إبشيري: نيم بي إبنيفما إثؤواف.\n\nأك إنتين إيفول خين إب خاكي: إي خون إي بي أو أويني إم مي: أك تيممون إم بي أويك إنتي إب أونخ: إيطاف إي إيبيسيت إيفول خين إتفي.\n\nأف تشي إزمو إن إهري إن خيتك: إنجي ني فيلي تيرو إنتي إب كاهي: أووه نيك ساجي أف فوه: شا أفريجس إن تي إيكوميني.\n\nشيري ناك أو بي مارتيروس: شيري بي إف أنجيليستيس: شيري بي أبوستولوس: آفا ماركوس بي ثيؤريموس.\n\nتوف إم إبشويس إي إهري إيجون: أو بي ثيؤريموس إن إف أنجيليستيس: آفا ماركوس بي أبوستولوس: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ⲙⲁⲣⲕⲟⲥ ⲡⲓⲁ̀ⲡⲟⲥⲧⲟⲗⲟⲥ : ⲟⲩⲟϩ ⲡⲓⲉⲩⲁⲅⲅⲉⲗⲓⲥⲧⲏⲥ : ⲡⲓⲙⲉⲑⲣⲉ ϧⲁ ⲛⲓⲙ̀ⲕⲁϩ : ⲛ̀ⲧⲉ ⲡⲓⲙⲟⲛⲟⲅⲉⲛⲏⲥ ⲛ̀ⲛⲟⲩϯ.\n\nⲀⲕⲓ̀ ⲁⲕⲉⲣⲟⲩⲱⲓⲛⲓ ⲉ̀ⲣⲟⲛ : ϩⲓⲧⲉⲛ ⲡⲉⲕⲉⲩⲁⲅⲅⲉⲗⲓⲟⲛ : ⲁⲕⲧ̀ⲥⲁⲃⲟⲛ ⲙ̀Ⲫ̀ⲓⲱⲧ ⲛⲉⲙ Ⲡ̀ϣⲏⲣⲓ : ⲛⲉⲙ Ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ.\n\nⲀⲕⲉⲛⲧⲉⲛ ⲉ̀ⲃⲟⲗ ϧⲉⲛ ⲡ̀ⲭⲁⲕⲓ : ⲉ̀ϧⲟⲩⲛ ⲉ̀ⲡⲓⲟⲩⲱⲓⲛⲓ ⲙ̀ⲙⲏⲓ : ⲁⲕⲧⲉⲙⲙⲟⲛ ⲙ̀ⲡⲓⲱⲓⲕ ⲛ̀ⲧⲉ ⲡ̀ⲱⲛϧ : ⲉ̀ⲧⲁϥⲓ̀ ⲉ̀ⲡⲉⲥⲏⲧ ⲉ̀ⲃⲟⲗϧⲉⲛ ⲧ̀ⲫⲉ.\n\nⲀⲩϭⲓⲥ̀ⲙⲟⲩ ⲛ̀ϩ̀ⲣⲏⲓ ⲛ̀ϧⲏⲧⲕ : ⲛ̀ϫⲉ ⲛⲓⲫⲩⲗⲏ ⲧⲏⲣⲟⲩ ⲛ̀ⲧⲉ ⲡ̀ⲕⲁϩⲓ : ⲟⲩⲟϩ ⲛⲉⲕⲥⲁϫⲓ ⲁⲩⲫⲟϩ : ϣⲁ ⲁⲩⲣⲏϫⲥ ⲛ̀ϯⲟⲓⲕⲟⲩⲙⲉⲛⲏ.\n\nⲬⲉⲣⲉ ⲛⲁⲕ ⲱ̀ ⲡⲓⲙⲁⲣⲧⲩⲣⲟⲥ : ⲭⲉⲣⲉ ⲡⲓⲉⲩⲁⲅⲅⲉⲗⲓⲥⲧⲏⲥ : ⲭⲉⲣⲉ ⲡⲓⲁ̀ⲡⲟⲥⲧⲟⲗⲟⲥ : ⲁⲃⲃⲁ Ⲙⲁⲣⲕⲟⲥ ⲡⲓⲑⲉⲱⲣⲓⲙⲟⲥ.\n\nⲦⲱⲃϩ ⲙ̀Ⲡ̀ϭⲟⲓⲥ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲱ̀ ⲡⲓⲑⲉⲱⲣⲓⲙⲟⲥ ⲛ̀ⲉⲩⲁⲅⲅⲉⲗⲓⲥⲧⲏⲥ : ⲁⲃⲃⲁ Ⲙⲁⲣⲕⲟⲥ ⲡⲓⲁ̀ⲡⲟⲥⲧⲟⲗⲟⲥ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Markos pi apostolos, wa pi evangelistis, pi methre kha ni emkah, ente pi monogenis en nouti.\n\nAk i ak er o oini eron, hiten pek evangelion, ak tsavon em Efiot nem Ep shiri, nem Pi pnevma ethowab.\n\nAk enten evol khen ep khaki, e khoun e pi o oini em mei, ak temmon em pi oik ente ep onkh, etaf i e pesit evol khen etfe.\n\nAv chi ezmo en hri en khitk, enje ni fyli tirou ente ep kahi, ooh nek sagi av foh, sha av rigs en ti oikoumeni.\n\nShere nak o pi martyros, shere pi evangelistis, shere pi apostolos, Abba Markos pi theorimos.\n\nTovh em Epchois e hri egon, o pi theorimos en evangelistis, Abba Markos pi apostolos, entef ka nen novi nan evol.",
+                cop_de: "Markos pi-apostolos: ouoh pi-evangelistis: pi-methre kha ni-emkah: ente pi-monogenis ennouti.\n\nAk-i ak-er-ouoini eron: hiten pek-evangelion: ak-tsavon em-Efiot nem Ep-shiri: nem Pi-pnevma ethowab.\n\nAk-enten evol khen ep-khaki: e-khoun e-pi-ouoini em-mei: ak-temmon em-pi-oik ente ep-onkh: etaf-i e-pesit evol-khen et-fe.\n\nAv-chi-smou en-hri en-khitk: enje ni-fyli tirou ente ep-kahi: ouoh nek-saji av-foh: sha av-rigs en-ti-oikoumeni.\n\nShere nak o pi-martyros: Shere pi-evangelistis: Shere pi-apostolos: Abba Markos pi-theorimos.\n\nTovh em-Pchois e-hri ejon: o pi-theorimos en-evangelistis: Abba Markos pi-apostolos: entef-ka nen-novi nan evol."
+            },
+            {
+                id: "menu_saints",
+                type: "selection_menu",
+                title: "Doxologien der Heiligen / ذكصولوجيات القديسين",
+                description: "Wähle die Doxologien für die Heiligen des Tages.",
+                feasts: [], // Leer lassen
+                saints: [
+                    { id: "48.1", de: "Hl. Stephanus", ar: "القديس إسطفانوس" },
+                    { id: "48.2", de: "Hl. Georg", ar: "الشهيد مار جرجس" },
+                    { id: "48.3", de: "Hl. Philopater Merkurius", ar: "الشهيد فيلوباتير مرقوريوس" },
+                    { id: "48.4", de: "Hl. Mina", ar: "الشهيد مار مينا" },
+                    { id: "48.5", de: "Hl. Antonius", ar: "الأنبا أنطونيوس" },
+                    { id: "48.6", de: "Hl. Mose der Schwarze", ar: "الأنبا موسى الأسود" },
+                    { id: "48.7", de: "Hl. Papst Kyrillus VI.", ar: "البابا كيرلس السادس" },
+                    { id: "48.8", de: "Hl. Johannes der Täufer (2)", ar: "السابق يوحنا المعمدان (2)" },
+                    { id: "48.9", de: "Hl. Johannes der Täufer (1)", ar: "السابق يوحنا المعمدان (1)" },
+                    { id: "48.10", de: "Erzengel Michael", ar: "رئيس الملائكة ميخائيل" }
+                ]
+            },
+
+            // 2. Hier folgen die Inhalte der Heiligen-Doxologien (werden nur angezeigt, wenn ausgewählt)
+
+            // Stephanus
+            {
+                id: "48.1",
+                speaker: "Volk",
+                ar: "الشهيد المكرم، الذي لربنا يسوع المسيح، القديس إسطفانوس، الذي تأويله الإكليل.\n\nالذي كشف له الله، أسراراً عظيمة، واستنار وجهه، مثل وجه ملاك.\n\nالذي رأى السموات مفتوحة، وربنا يسوع عن يمين أبيه، والذين يرجمونه، كان يطلب عن خلاصهم.\n\nصارخاً قائلاً: يا ربي يسوع المسيح، اقبل روحي إليك، ولا تحسب هذه الخطية على هؤلاء الناس.\n\nلأنهم لا يدرون، ماذا يصنعون، من أجل عمى قلوبهم، يا رب لا تبكتهم.\n\nأكمل سعيه، ومات على الحق، ولبس إكليل الشهادة، غير المضمحل.\n\nالسلام لك أيها المجاهد، الذي لربنا يسوع المسيح، القديس إسطفانوس، الذي تأويله الإكليل.\n\nأطلب من الرب عنا، يا رئيس الشمامسة المبارك، إسطفانوس الشهيد الأول، ليغفر لنا خطايانا.",
+                de: "Der gerühmte Märtyrer – unseres Herrn Jesus Christus, – der heilige Stephanus, – dessen Name Krone bedeutet.\n\nDer, dem Gott – große Geheimnisse offenbarte. – Sein Gesicht leuchtete – wie das Gesicht eines Engels.\n\nEr, der die Himmel offen sah – und unseren Herrn Jesus zur Rechten seines Vaters. – Er betete für die Erlösung derjenigen, – die ihn gesteinigt haben.\n\nIndem er rief und sprach: – „Mein Herr Jesus Christus, – nimm meinen Geist zu dir – und rechne diese Sünde diesen Menschen nicht an“.\n\nDenn sie wissen nicht – was sie tun, – wegen ihrer verschlossenen Herzen. – Herr tadele sie nicht.\n\nEr hat seinen Lauf des Lebens vollendet – und starb in Gerechtigkeit – und erlangte die unvergängliche – Krone des Martyriums.\n\nGegrüßt seist du, Strebsamer – unseres Herrn Jesus Christus, – der heilige Stephanus, – dessen Name Krone heißt.\n\nBitte beim Herrn für uns, – gesegneter Archidiakon – Stephanus, der erste Märtyrer, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "في إتطايوت إمارتيروس: إنتى بينشويس إيسوس بخرستوس: في إثؤاب إستيفانو: إيتى بيف أوؤهيم بي بي أكلوم.\n\nفي إيطا إفنوتى تشورب إيروف: إن هان نيشتى إمميستيريون: أفتشيييق أوينى إنجى بيفهو: إم إفريتى إم إبهو إنؤ أنجيلوس.\n\nفي إيطاف ناف إي نيفياؤى إفؤين: أووه باشويس إيسوس سا أوينام إمبيف يوت: ني إيطاف هيونى إيجوف: ناف طوفه إنسا بوؤجاى.\n\nإفؤش إيفول إفجو إمموس: جي باشويس إيسوس بخرستوس: شيب با إبنفما إيروك: إمبيريب باى نوفى ايناى رومى.\n\nجي إنسيسوؤن إن إهلى آن: خين ني إيتو إيرى إمموف: إثفى بى ثوم انتى بوهيت: إبشويس إمبير سوهى إمموف.\n\nبيف إذورموس أفجو كف إيفول: أووه أفمو ايجين تي ميثمى: أفنيرفورين امبى إكلوم إن آتلوم: انتى تى ميتمارتيروس.\n\nشيرى ناك أوبى أثليتيس: إنتى بينشويس إيسوس بخرستوس: في إثؤاب إستيفانوس: إيتى بيف أوؤهيم بى بى إكلوم.\n\nطوفه إمبشويس إى إهرى إيجون: أوبى أرشى ذياكون إت إسماروؤت: إستيفانوس بى شورب إمارتيروس: إنتيف كانين نوفى نان إيفول.",
+                cop_cop: "Ⲫⲏⲉⲧⲧⲁⲓⲏⲟⲩⲧ ⲙ̀ⲙⲏⲓ : ⲛ̀ⲧⲉ Ⲡⲉⲛϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ⲫⲏⲉⲑⲟⲩⲁⲃ Ⲥⲧⲉⲫⲁⲛⲟⲥ : ⲉ̀ⲧⲉ ⲡⲉϥⲟⲩⲱϩⲉⲙ ⲡⲉ ⲡⲓⲭ̀ⲗⲟⲙ.\n\nⲪⲏⲉⲧⲁ Ⲫ̀ⲛⲟⲩϯ ⲟⲩⲱⲛϩ ⲉ̀ⲣⲟϥ : ⲛ̀ϩⲁⲛⲛⲓϣϯ ⲙ̀ⲙⲩⲥⲧⲏⲣⲓⲟⲛ : ⲁ ⲡⲉϥϩⲟ ⲉⲣⲟⲩⲱⲓⲛⲓ : ⲙ̀ⲫ̀ⲣⲏϯ ⲙ̀ⲡ̀ϩⲟ ⲛ̀ⲟⲩⲁⲅⲅⲉⲗⲟⲥ.\n\nⲪⲏⲉⲧⲁϥⲛⲁⲩ ⲉ̀ⲛⲓⲫⲏⲟⲩⲓ̀ ⲉⲩⲟⲩⲏⲛ : ⲟⲩⲟϩ Ⲡⲉⲛϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ ⲥⲁⲟⲩⲓⲛⲁⲙ ⲙ̀Ⲡⲉϥⲓⲱⲧ : ⲛⲏⲉⲧϩⲓⲱ̀ⲛⲓ ⲉ̀ϫⲱϥ : ⲛⲁϥⲧⲱⲃϩ ⲛ̀ⲥⲁ ⲡⲟⲩⲟⲩϫⲁⲓ.\n\nⲈϥⲱϣ ⲉ̀ⲃⲟⲗ ⲉϥϫⲱ ⲙ̀ⲙⲟⲥ : ϫⲉ Ⲡⲁϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ϣⲱⲡ ⲡⲁⲡ̀ⲛⲉⲩⲙⲁ ⲉ̀ⲣⲟⲕ : ⲙ̀ⲡⲉⲣⲉⲡ ⲡⲁⲓⲛⲟⲃⲓ ⲉ̀ⲛⲁⲓⲣⲱⲙⲓ.\n\nϪⲉ ⲛ̀ⲥⲉⲥⲱⲟⲩⲛ ⲅⲁⲣ ⲁⲛ : ⲙ̀ⲡⲉⲧⲟⲩⲓ̀ⲣⲓ ⲙ̀ⲙⲟϥ : ⲉⲑⲃⲉ ⲡ̀ⲑⲱⲙ ⲛ̀ⲧⲉ ⲡⲟⲩϩⲏⲧ : Ⲡ̀ϭⲟⲓⲥ ⲙ̀ⲡⲉⲣⲥⲟϩⲓ ⲙ̀ⲙⲱⲟⲩ.\n\nⲠⲉϥⲇⲣⲟⲙⲟⲥ ⲁϥϫⲟⲕϥ ⲉ̀ⲃⲟⲗ : ⲟⲩⲟϩ ⲁϥⲙⲟⲩ ϧⲉⲛ ϯⲙⲉⲑⲙⲏⲓ : ⲁϥⲉⲣⲫⲟⲣⲓⲛ ⲙ̀ⲡⲓⲭ̀ⲗⲟⲙ ⲛ̀ⲁⲧⲗⲱⲙ : ⲛ̀ⲧⲉ ϯⲙⲉⲧⲙⲁⲣⲧⲩⲣⲟⲥ.\n\nⲬⲉⲣⲉ ⲛⲁⲕ ⲱ̀ ⲡⲓⲁ̀ⲑⲗⲏⲧⲏⲥ : ⲛ̀ⲧⲉ Ⲡⲉⲛϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ⲫⲏⲉⲑⲟⲩⲁⲃ Ⲥⲧⲉⲫⲁⲛⲟⲥ : ⲉ̀ⲧⲉ ⲡⲉϥⲟⲩⲱϩⲉⲙ ⲡⲉ ⲡⲓⲭ̀ⲗⲟⲙ.\n\nⲦⲱⲃϩ ⲙ̀Ⲡ̀ϭⲟⲓⲥ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲱ̀ ⲡⲓⲁⲣⲭⲏⲇⲓⲁⲕⲱⲛ ⲉⲧⲥ̀ⲙⲁⲣⲱⲟⲩⲧ : Ⲥⲧⲉⲫⲁⲛⲟⲥ ⲡⲓϣⲟⲣⲡ ⲙ̀ⲙⲁⲣⲧⲩⲣⲟⲥ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "El shahid el mokaram, allazi le rabina Yasou' el Masih, el qadis Estefanos, allazi ta'wiloho el eklil.\n\nAllazi kashafa laho Allah, asraran 'azima, wastanara wagh-ho, methla wagh malak.\n\nAllazi ra'a el samawat maftouha, wa rabina Yasou' 'an yamin abih, wallazina yargomonaho, kana yatlob 'an khalasihim.\n\nSarekhan qa'ilan: ya rabbi Yasou' el Masih, eqbal rouhi elayk, wa la tahseb hazihi el khatiya 'ala ha'ola' el nas.\n\nLe annahom la yadroun, maza yasna'oun, men agl 'ama qoloubihim, ya rab la toba-kethom.\n\nAkmal sa'yaho, wa mata 'ala el haq, wa labesa eklil el shahada, ghayr el modmahel.\n\nEl salam laka ayoha el mgahed, allazi le rabina Yasou' el Masih, el qadis Estefanos, allazi ta'wiloho el eklil.\n\nOtlob men el Rab 'anna, ya ra'is el shamamsa el mobarak, Estefanos el shahid el awal, li yaghfer lana khatayana.",
+                cop_de: "Phi-et-ta-i-out em-martyros: ente Penchois Isos Pi-Khristos: fi-ethowab Stefanos: ete pef-ouohem pe pi-khlom.\n\nFi-eta Efnouti o-onh erof: en-han-nishti em-mistirion: a pef-ho er-ouoini: em-phriti em-pho en-ou-angelos.\n\nFi-etaf-nav e-ni-fi-oui ev-ouin: ouoh Penchois Isos sa-ouinam em-Pefiot: ni-et-hi-oni ejof: naf-tovh en-sa pou-oujai.\n\nEv-osh evol ev-jo emmos: je Pa-Chois Isos Pi-Khristos: shop pa-pnevma erok: emper-ep pai-novi e-nai-romi.\n\nJe en-se-so-oun gar an: m-pet-ou-iri mmof: ethve ep-thom nte pou-hit: Epchois emper-sohi emmo-ou.\n\nPef-dromos af-jokf evol: ouoh af-mou khen t-methmi: af-er-phorin em-pi-khlom en-at-lom: ente t-met-martyros.\n\nShere nak o pi-athlitits: ente Penchois Isos Pi-Khristos: fi-ethowab Stefanos: ete pef-ouohem pe pi-khlom.\n\nTovh em-Pchois e-hri ejon: o pi-arkhi-diakon et-smarout: Stefanos pi-shorp em-martyros: entef-ka nen-novi nan evol."
+            },
+
+            // Georg
+            {
+                id: "48.2",
+                speaker: "Volk",
+                ar: "سبع سنين أكملها، القديس جيورجيوس، السبعون ملكاً المنافقون، يحكمون عليه كُلّ يوم.\n\nولم يقدروا أن يميلوا أفكاره، ولا إيمانه المستقيم، ولا عظم محبته، في الملك المسيح.\n\nوكان يُرتّل مع داود قائلاً: أحاطت بي جميع الأمم، لكن بإسم يَسُوع إلهي، انتقمتُ منهم.\n\nعظيمة هي كرامتك، يا سيدي الملك جيورجيوس، المسيح يفرح معك، في أورشليم السمائية.\n\nالسلام لك أيها الشهيد، السلام للشجاع المجاهد، السلام للابس الجهاد، سيدي الملك جيورجيوس.\n\nأطلب من الرب عنا، أيها الشهيد المجاهد، سيدي الملك جيورجيوس، ليغفر لنا خطايانا.",
+                de: "Sieben volle Jahre lang, – wurde der heilige Georg – von siebzig ungerechten Königen – täglich gerichtet.\n\nSie konnten seine Gedanken nicht ändern, – noch seinen rechten Glauben beugen, – noch seine grosse Liebe – für Christus, den König.\n\nEr sang wie David: – „Alle Völkerschaften umringten mich, – im Namen Jesu, meines Herrn – wehrte ich sie ab.“\n\nGross ist dein Ruhm, – o mein Herr König Georg, – Christus freut sich an dir – im himmlischen Jerusalem.\n\nGegrüßt seist du, o Märtyrer, – gegrüßt sei der mutige Held, – gegrüßt sei der Strebsame, – mein Herr, der König Georg.\n\nBitte beim Herrn für uns, – Strebsamer und Märtyrer – mein Herr, König Georg, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "شاشف إنرومبى أفجو كو إيفول: إنجى فى إثؤاب جيؤرجيوس: إيرى بى إشفى إنؤرو إن آنوموس: إفتيها ب إيروف إممينى.\n\nإمبو إشفونه امبيف لوجيسموس: أوذى بيف ناهتى إتسوتون: أوذى تيف نيشتى إن أغابى: إيخون إبؤرو بى إخرستوس.\n\nناف إيربسالين نيم دافيد: جى أف كوتى إيروى إنجى نى إثنوس تيرو: اللا خين إفران إن إيسوس بانوتى: آيتشى إمباتشى إم ابشش نيموؤ.\n\nأونيشتى غار بى بيك طايو: أوباشويس إبؤرو جيؤرجيوس: إيرى بخرستوس راشى نيماك: خين ييروساليم إنتى إتفى.\n\nشيرى ناك أو بى مارتيروس: شيرى بى تشويج إن جينؤس: شيرى بى أثلوفوروس: باشويس إبؤرو جيؤرجيوس.\n\nطوفه إمبشويس إى إهرى إيجون: وبى أثلوفوروس إمارتيروس: باشويس إبؤرو جيؤرجيوس: إنتيف كانين نوفى نان إيفول.",
+                cop_cop: "Ϣⲁϣϥ ⲛ̀ⲣⲟⲙⲡⲓ ⲁϥϫⲟⲕⲟⲩ ⲉ̀ⲃⲟⲗ : ⲛ̀ϫⲉ ⲫⲏⲉⲑⲟⲩⲁⲃ Ⲅⲉⲱⲣⲅⲓⲟⲥ : ⲉ̀ⲣⲉ ⲡⲓϣ̀ⲃⲉ ⲛ̀ⲟⲩⲣⲟ ⲛ̀ⲁ̀ⲛⲟⲙⲟⲥ : ⲉⲩϯϩⲁⲡ ⲉ̀ⲣⲟϥ ⲙ̀ⲙⲏⲛⲓ.\n\nⲘ̀ⲡⲟⲩϣ̀ⲫⲱⲛϩ ⲙ̀ⲡⲉϥⲗⲟⲅⲓⲥⲙⲟⲥ : ⲟⲩⲇⲉ ⲡⲉϥⲛⲁϩϯ ⲉⲧⲥⲟⲩⲧⲱⲛ : ⲟⲩⲇⲉ ⲧⲉϥⲛⲓϣϯ ⲛ̀ⲁ̀ⲅⲁⲡⲏ : ⲉ̀ϧⲟⲩⲛ ⲉ̀ⲡ̀ⲟⲩⲣⲟ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ.\n\nⲚⲁϥⲉⲣⲯⲁⲗⲓⲛ ⲛⲉⲙ Ⲇⲁⲩⲓⲇ : ϫⲉ ⲁⲩⲕⲱϯ ⲉ̀ⲣⲟⲓ ⲛ̀ϫⲉ ⲛⲓⲉⲑⲛⲟⲥ ⲧⲏⲣⲟⲩ : ⲁⲗⲗⲁ ϧⲉⲛ ⲫ̀ⲣⲁⲛ ⲙ̀Ⲡⲁϭⲟⲓⲥ Ⲡⲁⲛⲟⲩϯ : ⲁⲓϭⲓ ⲙ̀ⲡⲁϭⲓ ⲙ̀ⲡⲟⲩⲙ̀ϣⲓϣ.\n\nⲞⲩⲛⲓϣϯ ⲅⲁⲣ ⲡⲉ ⲡⲉⲕⲧⲁⲓⲟ̀ : ⲱ̀ ⲡⲁϭⲟⲓⲥ ⲡ̀ⲟⲩⲣⲟ Ⲅⲉⲱⲣⲅⲓⲟⲥ : ⲉ̀ⲣⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ ⲣⲁϣⲓ ⲛⲉⲙⲁⲕ : ϧⲉⲛ Ⲓⲉⲣⲟⲩⲥⲁⲗⲏⲙ ⲛ̀ⲧⲉ ⲧ̀ⲫⲉ.\n\nⲬⲉⲣⲉ ⲛⲁⲕ ⲱ̀ ⲡⲓⲙⲁⲣⲧⲩⲣⲟⲥ : ⲭⲉⲣⲉ ⲡⲓϣⲱϫ ⲛ̀ⲅⲉⲛⲛⲉⲟⲥ : ⲭⲉⲣⲉ ⲡⲓⲁ̀ⲑⲗⲟⲫⲟⲣⲟⲥ : ⲡⲁϭⲟⲓⲥ ⲡ̀ⲟⲩⲣⲟ Ⲅⲉⲱⲣⲅⲓⲟⲥ.\n\nⲦⲱⲃϩ ⲙ̀Ⲡ̀ϭⲟⲓⲥ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲱ̀ ⲡⲓⲁ̀ⲑⲗⲟⲫⲟⲣⲟⲥ ⲙ̀ⲙⲁⲣⲧⲩⲣⲟⲥ : ⲡⲁϭⲟⲓⲥ ⲡ̀ⲟⲩⲣⲟ Ⲅⲉⲱⲣⲅⲓⲟⲥ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Sab'a senin akmalaha, el qadis Georgios, el sab'oun malikan el monafiqoun, yahkomoun 'alayhi kol yawm.\n\nWa lam yaqderou an yomilou afkaraho, wa la imanaho el mostaqim, wa la 'ozm mahabatihi, fi el malek el Masih.\n\nWa kana yorattel ma'a Dawoud qa'ilan: ahatat bi jami' el omam, laken be esm Yasou' ilahi, entaqamto menhom.\n\n'Azima hiya karamatoka, ya sayedi el malek Georgios, el Masih yafrah ma'ak, fi Orashalim el sama'iya.\n\nEl salam laka ayoha el shahid, el salam lel shoga' el mogahed, el salam le labes el jihad, sayedi el malek Georgios.\n\nOtlob men el Rab 'anna, ayoha el shahid el mogahed, sayedi el malek Georgios, li yaghfer lana khatayana.",
+                cop_de: "Shashf en-rompi af-jok-ou evol: enje fi-ethowab Georgios: ere pi-shve en-ouro en-anomos: ev-ti-hap erof mmini.\n\nEmpou-sh-phonh em-pef-logismos: oude pef-nahti et-souton: oude tef-nishti en-aghapi: e-khoun e-pouro Pi-Khristos.\n\nNaf-er-psalin nem David: je av-koti eroi enje ni-ethnos tirou: alla khen fran em-Pa-chois Panouti: a-i-chi em-pa-chi em-pou-mishish.\n\nOu-nishti gar pe pek-taio: o pa-chois ep-ouro Georgios: ere Pi-Khristos rashi nemak: khen Ierousalim ente et-fe.\n\nShere nak o pi-martyros: Shere pi-shouja en-genneos: Shere pi-athlo-phoros: pa-chois ep-ouro Georgios.\n\nTovh em-Pchois e-hri ejon: o pi-athlo-phoros em-martyros: pa-chois ep-ouro Georgios: entef-ka nen-novi nan evol."
+            },
+            {
+                id: "48.3",
+                speaker: "Volk",
+                ar: "محب الآب مرقوريوس، القوي بالمسيح، لبس الخوذة، وكُلّ سلاح الإيمان.\n\nوأخذ بيده، السيف ذا الحدين، الذي ثبته ملاك الرب، في يده اليمنى.\n\nمضى إلي الحرب، بقوة المسيح، وقتل البربر، بجراحات عظيمة.\n\nترفع عن الأرضيات، وطلب السمائيات، وجاهد، في ميدان الشهادة.\n\nأخزى داكيوس، الملك المنافق، بصبره العظيم، وتعب العذابات.\n\nوبهذا لبس إكليل، الشهادة غير المضمحل، وعيد مع جميع القديسين، في كورة الأحياء.\n\nالسلام لك أيها الشهيد، السلام للشجاع البطل، السلام للمجاهد، محب الآب مرقوريوس.\n\nأطلب من الربّ عنا، أيها الشهيد المجاهد، محب الآب مرقوريوس، ليغفر لنا خطايانا.",
+                de: "Philopater Merkourius, – der der Starke in Christus ist, – er trug den Helm – und die ganze Waffenrüstung des Glaubens.\n\nEr nahm ein zweischneidiges Schwert zur Hand, – das ihm der Engel Gottes – in seine Rechte gegeben hatte.\n\nEr zog in den Kampf – mit der Kraft Christi – und setzte den Barbaren – tödliche Wunden zu.\n\nEr erhob sich über alles Irdische – und trachtete nach dem Himmlischen. – Er begab sich an den Ort – des Martyriums.\n\nEr stellte den heuchlerischen Kaiser Decius bloß, – durch seine große Geduld – und inmitten seiner qualvollen Schmerzen.\n\nSo erlangte er die unvergängliche Krone – des Martyriums – und feierte mit allen Heiligen – im Land der Lebendigen.\n\nGegrüßt seist du, o Märtyrer; – gegrüßt sei der mutige Held, – gegrüßt sei der Strebsame, – Philopater Merkourius.\n\nBitte beim Herrn für uns, – o Strebsamer und Märtyrer – Philopater Merkourius, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "فيلوباتير ميركوريوس: بى ريم إنجوم انتى بخرستوس: أفتى هيوتف إنتى بانوبوليا: نيم بى خوك تيرف انتى بى ناهتى.\n\nأووه أفتشى خين تيف جيج: إن تسى سيفى إنرو إسناف: ثى إيطابى أنجيلوس: انتى إبشويس طاجروس: خين تيف جيج إنؤينام.\n\nأفشناف إى بى بوليموس: خين تى جوم إنتى بخرستوس: افشارى إينيبارباروس: خين أونيشتى إن إرخوت.\n\nأفير نيمفين إيفول هانا إبكاهى: أووه إفكوتى إينا نى فيؤيى: أفتشوجى خين بى إسطاذى أون: انتى تى ميت مارتيروس.\n\nأفتى شيبى إن ديكيوس: بى أورو إن آسيفيس: هيتين تيف نيشتى إنهيبومونى: نيم إبخيسى انتى نى فاسانوس.\n\nخين ناى أفئيرفورين إمبى إكلوم إتآتلوم: إنتى تى ميت مارتيروس: أفئيرشاى نيم نى إثؤاب تيرو: خين إتخورا إنتى نى إتؤنخ.\n\nشيرى ناك أوبى مارتيروس: شيرى بى تشويج إنجين نيؤس: شيرى بى أتلوفوروس: فيلوباتير ميركوريوس.\n\nطوبه إم إبتشويس إ إهرى إيجون : أو بي أثلوفوروس إممارتيروس : فيلوباتير ميركوريوس : إنتيف كا نين نوفي نان إفول.",
+                cop_cop: "Ⲫⲓⲗⲟⲡⲁⲧⲏⲣ Ⲙⲉⲣⲕⲟⲩⲣⲓⲟⲥ : ⲡⲓⲣⲉⲙⲛ̀ϫⲟⲙ ⲛ̀ⲧⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ⲁϥϯϩⲓⲱⲧϥ ⲛ̀ϯⲡⲉⲣⲓⲕⲉⲫⲁⲗⲉⲁ̀ : ⲛⲉⲙ ⲡⲓⲥⲱⲕ ⲧⲏⲣϥ ⲛ̀ⲧⲉ ⲡⲓⲛⲁϩϯ.\n\nⲞⲩⲟϩ ⲁϥϭⲓ ϧⲉⲛ ⲧⲉϥϫⲓϫ : ⲛ̀ϯⲥⲏϥⲓ ⲛ̀ⲣⲟⲥⲛⲁⲩ : ⲑⲏⲉ̀ⲧⲁ ⲡⲓⲁⲅⲅⲉⲗⲟⲥ ⲛ̀ⲧⲉ Ⲡ̀ϭⲟⲓⲥ ⲧⲁϫⲣⲟⲥ : ϧⲉⲛ ⲧⲉϥϫⲓϫ ⲛ̀ⲟⲩⲓⲛⲁⲙ.\n\nⲀϥϣⲉⲛⲁϥ ⲉ̀ⲡⲡⲟⲗⲉⲙⲟⲥ : ϧⲉⲛ ϯϫⲟⲙ ⲛ̀ⲧⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ⲁϥϣⲁⲣⲓ ⲉ̀ⲛⲓⲂⲁⲣⲃⲁⲣⲟⲥ : ϧⲉⲛ ⲟⲩⲛⲓϣϯ ⲛ̀ⲉⲣϧⲟⲧ.\n\nⲀϥⲉⲣϩⲩⲯⲓⲛ ⲉ̀ⲃⲟⲗϩⲁ ⲛⲁ ⲡ̀ⲕⲁϩⲓ : ⲟⲩⲟϩ ⲁϥⲕⲱϯ ⲛ̀ⲥⲁ ⲛⲁ ⲛⲓⲫⲏⲟⲩⲓ̀ : ⲁϥⲃⲱⲕ ϧⲉⲛ ⲡⲓⲥⲧⲁⲇⲓⲟⲛ : ⲛ̀ⲧⲉ ϯⲙⲉⲧⲙⲁⲣⲧⲩⲣⲟⲥ.\n\nⲀϥϯϣⲓⲡⲓ ⲛ̀Ⲇⲉⲕⲓⲟⲥ : ⲡⲓⲟⲩⲣⲟ ⲛ̀ⲁ̀ⲥⲉⲃⲏⲥ : ϩⲓⲧⲉⲛ ⲧⲉϥⲛⲓϣϯ ⲛ̀ϩⲩⲡⲟⲙⲟⲛⲏ : ⲛⲉⲙ ⲡⲓϩⲓⲥⲓ ⲛ̀ⲧⲉ ⲛⲓⲃⲁⲥⲁⲛⲟⲥ.\n\nϦⲉⲛ ⲛⲁⲓ ⲁϥⲉⲣⲫⲟⲣⲓⲛ : ⲙ̀ⲡⲓⲭ̀ⲗⲟⲙ ⲛ̀ⲁⲧⲗⲱⲙ : ⲛ̀ⲧⲉ ϯⲙⲉⲧⲙⲁⲣⲧⲩⲣⲟⲥ : ⲁϥⲉⲣϣⲁⲓ ⲛⲉⲙ ⲛⲏⲉⲑⲟⲩⲁⲃ ⲧⲏⲣⲟⲩ : ϧⲉⲛ ⲧ̀ⲭⲱⲣⲁ ⲛ̀ⲧⲉ ⲛⲏⲉⲧⲟⲛϧ.\n\nⲬⲉⲣⲉ ⲛⲁⲕ ⲱ̀ ⲡⲓⲙⲁⲣⲧⲩⲣⲟⲥ : ⲭⲉⲣⲉ ⲡⲓϣⲱϫ ⲛ̀ⲅⲉⲛⲛⲉⲟⲥ : ⲭⲉⲣⲉ ⲡⲓⲁ̀ⲑⲗⲟⲫⲟⲣⲟⲥ : Ⲫⲓⲗⲟⲡⲁⲧⲏⲣ Ⲙⲉⲣⲕⲟⲩⲣⲓⲟⲥ.\n\nⲦⲱⲃϩ ⲙ̀Ⲡ̀ϭⲟⲓⲥ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲱ̀ ⲡⲓⲁ̀ⲑⲗⲟⲫⲟⲣⲟⲥ ⲙ̀ⲙⲁⲣⲧⲩⲣⲟⲥ : Ⲫⲓⲗⲟⲡⲁⲧⲏⲣ Ⲙⲉⲣⲕⲟⲩⲣⲓⲟⲥ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Moheb el Ab Merkourios, el qawi bel Masih, labes el khouza, wa kol selah el iman.\n\nWa akhaza be yadehi, el sayf za el haddayn, allazi thabbataho malak el rab, fi yadehi el yomna.\n\nMada ila el harb, be qowat el Masih, wa qatal el barbar, be garahat 'azima.\n\nTaraffa' 'an el ardiyat, wa talab el sama'iyat, wa gahad, fi maydan el shahada.\n\nAkhza Dekios, el malek el monafeq, be sabrihi el 'azim, wa ta'ab el 'azabat.\n\nWa behaza labesa eklil, el shahada ghayr el modmahel, wa 'ayad ma'a jami' el qadisin, fi korat el ahya'.\n\nEl salam laka ayoha el shahid, el salam lel shoga' el batal, el salam lel mogahed, moheb el ab Merkourios.\n\nOtlob men el Rab 'anna, ayoha el shahid el mogahed, moheb el ab Merkourios, li yaghfer lana khatayana.",
+                cop_de: "Philopatir Merkourios: pi-rem-en-jom ente Pi-Khristos: af-ti-hiotf en-t-perikefalea: nem pi-sok tirf ente pi-nahti.\n\nOuoh af-chi khen tef-jij: en-t-sifi en-ro-snav: thi-eta pi-angelos ente Pchois tajros: khen tef-jij en-ouinam.\n\nAf-shenaf ep-polemos: khen t-jom ente Pi-Khristos: af-shari e-ni-varvaros: khen ou-nishti en-erphot.\n\nAf-er-hufin evol-ha na pi-kahi: ouoh af-koti ensa na ni-fi-oui: af-voki khen pi-stadion: ente t-met-martyros.\n\nAf-ti-shipi en-Dekios: pi-ouro en-asevis: hiten tef-nishti en-hypomoni: nem pi-hisi ente ni-vasanos.\n\nKhen nai af-er-phorin: em-pi-khlom en-at-lom: ente t-met-martyros: af-er-shai nem ni-ethowab tirou: khen t-chora ente ni-et-onkh.\n\nShere nak o pi-martyros: Shere pi-shouja en-genneos: Shere pi-athlo-phoros: Philopatir Merkourios.\n\nTovh em-Pchois e-hri ejon: o pi-athlo-phoros em-martyros: Philopatir Merkourios: entef-ka nen-novi nan evol."
+            },
+            {
+                id: "48.4",
+                speaker: "Volk",
+                ar: "إذا ربح الإنسان العالم كُلَّهُ، وخسرَ نفسهُ، فما هي هذه الحياة الباطلة.\n\nالقديس أبا مينا، سمع الصوت الإلهي، وترك عنه العالم كله، ومجده الفاسد.\n\nوبذل نفسه للموت، وجسده للنار، وقبل عذابات عظيمة، لأجل ابن الله الحي.\n\nفلهذا رفعهُ مُخلّصنا، إلي ملكوته، وأعطاه الخيرات، التي لم ترها عين.\n\nالسلام لك أيها الشهيد، السلام للشجاع البطل، السلام للمجاهد، القديس أبا مينا.\n\nأطلب من الربّ عنّا، أيها الشهيد المجاهد، القديس أبا مينا، ليغفر لنا خطايانا.",
+                de: "Was nützt es einem Menschen, – wenn er die ganze Welt gewinnt – und seine Seele dabei verliert. – Dies würde ein nichtiges Leben sein.\n\nDer heilige Apa Mina – hörte die göttliche Stimme – und verließ die ganze Welt – und ihre nichtige Ehre.\n\nEr gab seine Seele zum Tode – und seinen Leib zum Feuer, – und er litt große Qualen – für den Sohn des lebendigen Gottes.\n\nDeshalb erhob unser Erlöser – ihn zu seinem Königreich – und versprach ihm die Güte – die kein Auge je gesehen hat.\n\nGegrüßt seist du, o Märtyrer, – gegrüßt sei der mutige Held, – gegrüßt sei der Strebsame, – der heilige Apa Mina.\n\nBitte beim Herrn für uns – strebsamer Märtyrer, – der heilige Apa Mina, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "إيشوب أون إنتى بى رومى: جيم هيو إمبى كوزموس تيرف: إنتيف تى أوسى إنتيف إبسيشى: أوبى باى أونخ إن إفليو.\n\nبى آجيوس آفا مينا: أفسوتيم إنسا تى إسمى إن نوتى: أفك و إمبى كوزموس تيرف إنسوف: نيم بيف أوأوو إثنا طاكو.\n\nأفتى إنتيف إبسيشى اى إفمو: نيم بيف سوما إيبى إكروم: أفشيب هان نيشتى إمفاسانوس: إثفى إبشيرى إم إفنوتى إتؤنخ.\n\nإثفيه فاى آ بين سوتير: أولف إيخون إيه تيف ميت أوورو: أفتى ناف إننى أغاثون: نى إيتيه إمبى فال ناف إيروؤو.\n\nشيرى ناك أو بى مارتيروس: شيرى بى تشويج ان جينيئوس: شيرى بى أثلوفوروس: بى آجيوس آفا مينا.\n\nطوبه إم إبتشويس إ إهرى إيجون: أو بى أثلوفوروس إممارتيروس: بى آجيوس آفا مينا: إنتيف كانين نوفى نان إيفول.",
+                cop_cop: "Ⲉⲩⲟϣ ⲟⲩⲛ ⲛ̀ⲧⲉ ⲡⲓⲣⲱⲙⲓ : ϫⲉⲙϩⲏⲟⲩ ⲙ̀ⲡⲓⲕⲟⲥⲙⲟⲥ ⲧⲏⲣϥ : ⲛ̀ⲧⲉϥϯⲟⲥⲓ ⲛ̀ⲧⲉϥⲯⲩⲭⲏ : ⲟⲩ ⲡⲉ ⲡⲁⲓⲱⲛϧ ⲉϥϣⲟⲩ.\n\nⲠⲓⲁ̀ⲅⲓⲟⲥ ⲁⲡⲁ Ⲙⲏⲛⲁ : ⲁϥⲥⲱⲧⲉⲙ ⲛ̀ⲥⲁ ϯⲥ̀ⲙⲏ ⲛ̀ⲛⲟⲩϯ : ⲁϥⲭⲱ ⲙ̀ⲡⲓⲕⲟⲥⲙⲟⲥ ⲧⲏⲣϥ ⲛ̀ⲥⲱϥ : ⲛⲉⲙ ⲡⲉϥⲱ̀ⲟⲩ ⲉⲑⲛⲁⲧⲁⲕⲟ.\n\nⲀϥϯ ⲛ̀ⲧⲉϥⲯⲩⲭⲏ ⲉ̀ⲫ̀ⲙⲟⲩ : ⲛⲉⲙ ⲡⲉϥⲥⲱⲙⲁ ⲉ̀ⲡⲓⲭ̀ⲣⲱⲙ : ⲁϥϣⲉⲡ ϩⲁⲛⲛⲓϣϯ ⲛ̀ⲃⲁⲥⲁⲛⲟⲥ : ⲉⲑⲃⲉ Ⲡ̀ϣⲏⲣⲓ ⲙ̀Ⲫ̀ⲛⲟⲩϯ ⲉⲧⲟⲛϧ.\n\nⲈⲑⲃⲉ ⲫⲁⲓ ⲁ̀ Ⲡⲉⲛⲥⲱⲧⲏⲣ : ⲟⲗϥ ⲉ̀ϧⲟⲩⲛ ⲉ̀ⲧⲉϥⲙⲉⲧⲟⲩⲣⲟ : ⲁϥϯ ⲛⲁϥ ⲛ̀ⲛⲓⲁ̀ⲅⲁⲑⲟⲛ : ⲛⲏⲉⲧⲉ ⲙ̀ⲡⲉⲃⲁⲗ ⲛⲁⲩ ⲉ̀ⲣⲱⲟⲩ.\n\nⲬⲉⲣⲉ ⲛⲁⲕ ⲱ̀ ⲡⲓⲙⲁⲣⲧⲩⲣⲟⲥ : ⲭⲉⲣⲉ ⲡⲓϣⲱϫ ⲛ̀ⲅⲉⲛⲛⲉⲟⲥ : ⲭⲉⲣⲉ ⲡⲓⲁ̀ⲑⲗⲟⲫⲟⲣⲟⲥ : ⲡⲓⲁ̀ⲅⲓⲟⲥ ⲁⲡⲁ Ⲙⲏⲛⲁ.\n\nⲦⲱⲃϩ ⲙ̀Ⲡ̀ϭⲟⲓⲥ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲱ̀ ⲡⲓⲁ̀ⲑⲗⲟⲫⲟⲣⲟⲥ ⲙ̀ⲙⲁⲣⲧⲩⲣⲟⲥ : ⲡⲓⲁ̀ⲅⲓⲟⲥ ⲁⲡⲁ Ⲙⲏⲛⲁ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Iza rabeha el insan el 'alam kolaho, wa khasara nafsaho, fama hiya hazihi el hayah el batela.\n\nEl qadis Apa Mina, sami'a el sawt el ilahi, wa taraka 'anho el 'alam kolaho, wa magdaho el fased.\n\nWa bazala nafsaho lel mawt, wa jasadaho lel nar, wa qabela 'azabat 'azima, le ajl Ebn Allah el hay.\n\nFalehaza rafa'aho mokhalisona, ila malakoutihi, wa a'taho el khayrat, allati lam taraha 'ayn.\n\nEl salam laka ayoha el shahid, el salam lel shoga' el batal, el salam lel mogahed, el qadis Apa Mina.\n\nOtlob men el Rab 'anna, ayoha el shahid el mogahed, el qadis Apa Mina, li yaghfer lana khatayana.",
+                cop_de: "Ev-osh oun ente pi-romi: jem-hiou em-pi-kosmos tirf: entef-ti-osi en-tef-psichi: ou pe pai-onh ef-shou.\n\nPi-agios apa Mina: af-sotem en-sa t-smi en-nouti: af-ko em-pi-kosmos tirf nsof: nem pef-o-ou eth-na-tako.\n\nAf-ti en-tef-psichi e-f-mou: nem pef-soma e-pi-khrom: af-shep han-nishti en-vasanos: ethve P-shiri em-Phnouti et-onkh.\n\nEthve fai a Pen-sotir: olf e-houn e-tef-met-ouro: af-ti naf en-ni-agathon: ni-ete em-pe-val nav e-ro-ou.\n\nShere nak o pi-martyros: Shere pi-shouja en-genneos: Shere pi-athlo-phoros: pi-agios apa Mina.\n\nTovh em-Pchois e-hri ejon: o pi-athlo-phoros em-martyros: pi-agios apa Mina: entef-ka nen-novi nan evol."
+            },
+            {
+                id: "48.5",
+                speaker: "Volk",
+                ar: "انزعوا من قلوبكم، الشر، والظنون الخداعة، التي تظلم العقل.\n\n(ق) تفهموا بتأمل، إلى المعجزات العالية، التي لأبينا الطوباوي، سيدي العظيم أنبا انطونيوس.\n\nهذا الذي صار لنا، مرشداً وميناء خلاص، ودعانا بفرح، إلى الحياة الأبدية.\n\n(ق) بخور فضائله، أعطى الفرح لنفوسنا، مثل العنبر (الزهر)، في الفردوس.\n\nفلنثبت بالحقيقة، في الإيمان المستقيم، الذي للعظيم أنبا أنطونيوس، صارخين قائلين:\n\n(ق) طلبت فوجدت، سألت فأخذت، قرعت وأومن، أنه سيفتح لي.\n\nالسلام لأبينا أنبا أنطونيوس، مصباح الرهبنة، السلام لأبينا أنبا بولا، حبيب المسيح.\n\n(ق) أطلبا من الرب عنا، يا سيدي الأبوين محبي أولادهما، أنبا أنطونيوس وأنبا بولا، ليغفر لنا خطايانا.",
+                de: "Befreit eure Herzen, – von den Gedanken des Bösen, – und die anstachelnden Vorstellungen, – die den Verstand verdunkeln.\n\n(S) Denkt über die großen Wunder, – unseres seligen Vaters, – unseres großen Herrn – Abba Antonius nach.\n\nDas ist er, der unser Anführer, – und der Hafen der Rettung wurde, – er hat uns mit Freude – zum ewigen Leben eingeladen.\n\n(S) Der Weihrauch seiner Tugenden – gibt unseren Seelen Freude, – wie der Blütenduft, – der im Paradies verströmt.\n\nLasst uns wahrhaftig bestärkt, – im rechten Glauben – des großen Abba Antonius – rufen und sprechen:\n\n(S) „Ich suchte und ich fand, – ich fragte und ich erhielt, – ich klopfte an und ich glaubte, – dass mir geöffnet werden wird“.\n\nGegrüßt sei unser Vater Abba Antonius, – die Leuchte des Mönchtums. – Gegrüßt sei unser Vater Abba Paul, – der von Christus Geliebte.\n\n(S) Bittet beim Herrn für uns, – meine Herren und Väter, die ihre Kinder liebten, – Abba Antonius und Abba Paul, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "فول إيفول خين نينهيت: إن نى موك ميك إنتى تى كاكيا: نيم نى ميفئى إتشيف: شوب إتئيرى إمبى نوس إنكاكى.\n\nآرينؤين خين أوتى إهتيف: إن نى كاثار طوما إتتشوسى: انتى بين ماكاريوس إنيوت: باشويس بى نيشتى آفى أنطونى.\n\nفاى إيطاف شوبى نان إتتشافمويت: إنليمين انتى بى أوجاى: أفئو هيم إممون خين أو إرو أوت: إيخون إمبى أونخ إن إنيه.\n\nآبى إستوى نوفى إنتى نيف آريتى: تى إم ابؤنوف إن تين إبسيشى: إم افريتى إمبى آروماطا: إتريتى خين بى باراذيسوس.\n\nمارين طاجرون خين بى ناهتى: إتسوطون خين أو ميثمى: انتى بى نيشتى أنطونيوس: إنؤش إيفول إفجوس إمموس:\n\nجى آيكوتى أووه آيجيمى: آى إيريتين أووه آيتشى: آبكوله أووه تى ناهتي: جى سينا آ أوؤن نى.\n\nشيرى بين يوت أنطونيوس: بى خيفس إنتى تى ميت موناخوس: شيرى بين يوت آفا بافلى: بى منريت انتى بخرستوس.\n\nطوفه إمبشويس إى إهرى إيجون: أوناشويس إنيوتى إمماى نوشيرى: أنطونيوس نيم آفا بافلى: إنتيف كانين نوفى نان إيفول.",
+                cop_cop: "Ⲃⲱⲗ ⲉ̀ⲃⲟⲗ ϧⲉⲛ ⲛⲉⲧⲉⲛϩⲏⲧ : ⲛ̀ⲛⲓⲙⲟⲕⲙⲉⲕ ⲛ̀ⲧⲉ ϯⲕⲁⲕⲓⲁ̀ : ⲛⲉⲙ ⲛⲓⲙⲉⲩⲓ̀ ⲉⲧϫⲁϩⲙⲱⲙ : ⲉⲧⲓⲣⲓ ⲙ̀ⲡⲓⲕⲁϯ ⲛ̀ⲭⲁⲕⲓ.\n\nⲀⲣⲓⲡ̀ⲙⲉⲩⲓ̀ ϧⲉⲛ ⲟⲩϫⲟⲙϩ : ⲛ̀ⲛⲓϩ̀ⲃⲏⲟⲩⲓ̀ ⲉⲧϭⲟⲥⲓ : ⲛ̀ⲧⲉ ⲡⲉⲛⲙⲁⲕⲁⲣⲓⲟⲥ ⲛ̀ⲓⲱⲧ : ⲡⲁϭⲟⲓⲥ ⲡⲓⲛⲓϯ ⲁⲃⲃⲁ Ⲁⲛⲧⲱⲛⲓ.\n\nⲪⲁⲓ ⲉ̀ⲧⲁϥϣⲱⲡⲓ ⲛⲁⲛ : ⲛ̀ⲟⲩϭⲁⲓⲙⲓⲧ ⲛ̀ⲁ̀ⲗⲓⲙⲏⲛ ⲛ̀ⲧⲉ ⲡⲓⲟⲩϫⲁⲓ : ⲁϥⲱϩⲉⲙ ⲙ̀ⲙⲟⲛ ϧⲉⲛ ⲟⲩⲣⲁϣⲓ : ⲉ̀ϧⲟⲩⲛ ⲉ̀ⲡⲓⲱⲛϧ ⲛ̀ⲉ̀ⲛⲉϩ.\n\nⲠⲓⲥ̀ⲑⲟⲓⲛⲟⲩϥⲓ ⲛ̀ⲧⲉ ⲛⲉϥⲁ̀ⲣⲉⲧⲏ : ϯ ⲙ̀ⲡ̀ⲟⲩⲛⲟϥ ⲛ̀ⲛⲉⲛⲯⲩⲭⲏ : ⲙ̀ⲫ̀ⲣⲏϯ ⲙ̀ⲡⲓⲁ̀ⲣⲱⲙⲁⲧⲁ : ⲉⲧⲣⲏⲧ ϧⲉⲛ ⲡⲓⲡⲁⲣⲁⲇⲓⲥⲟⲥ.\n\nⲘⲁⲣⲉⲛⲧⲁϫⲣⲟⲛ ϧⲉⲛ ⲡⲓⲛⲁϩϯ : ⲉⲧⲥⲟⲩⲧⲱⲛ ϧⲉⲛ ⲟⲩⲙⲉⲑⲙⲏⲓ : ⲛ̀ⲧⲉ ⲡⲓⲛⲓϯ ⲁⲃⲃⲁ Ⲁⲛⲧⲱⲛⲓⲟⲥ : ⲉⲛⲱϣ ⲉ̀ⲃⲟⲗ ⲉⲛϫⲱ ⲙ̀ⲙⲟⲥ.\n\nϪⲉ ⲁⲓⲕⲱϯ ⲟⲩⲟϩ ⲁⲓϫⲓⲙⲓ : ⲁⲓⲉⲣⲉⲧⲓⲛ ⲟⲩⲟϩ ⲁⲓϭⲓ : ⲁⲓⲕⲱⲗϩ ⲟⲩⲟϩ ϯⲛⲁϩϯ : ϫⲉ ⲥⲉⲛⲁⲟⲩⲱⲛ ⲛⲏⲓ.\n\nⲬⲉⲣⲉ ⲡⲉⲛⲓⲱⲧ ⲁⲃⲃⲁ Ⲁⲛⲧⲱⲛⲓⲟⲥ : ⲡⲓϧⲏⲃⲥ ⲛ̀ⲧⲉ ϯⲙⲉⲧⲙⲟⲛⲁⲭⲟⲥ : ⲭⲉⲣⲉ ⲡⲉⲛⲓⲱⲧ ⲁⲃⲃⲁ Ⲡⲁⲩⲗⲉ : ⲡⲓⲙⲉⲛⲣⲓⲧ ⲛ̀ⲧⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ.\n\nⲦⲱⲃϩ ⲙ̀Ⲡ̀ϭⲟⲓⲥ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲱ̀ ⲛⲁϭⲟⲓⲥ ⲛ̀ⲓⲟϯ ⲙ̀ⲙⲁⲓⲛⲟⲩϣⲏⲣⲓ : ⲁⲃⲃⲁ Ⲁⲛⲧⲱⲛⲓⲟⲥ ⲛⲉⲙ ⲁⲃⲃⲁ Ⲡⲁⲩⲗⲉ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Enza'ou men qoloubikom, el sharr, wal zonoun el khadda'a, allati tozlim el 'aql.\n\nTafahhamou be ta'ammol, ila el mo'jezat el 'aliya, allati le abina el tobawy, sayedi el 'azim Anba Antonios.\n\nHaza allazi sara lana, morshedan wa mina' khalas, wa da'ana be farah, ila el hayah el abadiya.\n\nBokhour fada'elihi, a'ta el farah le nofousina, methl el 'anbar (el zahr), fi el ferdous.\n\nFal nathbot bel haqiqa, fi el iman el mostaqim, allazi lel 'azim Anba Antonios, sarekhin qa'ilin:\n\nTalabto fa wagadto, sa'alto fa akhazto, qara'to wa o'men, annaho sayoftah li.\n\nEl salam le abina Anba Antonios, mosbah el rahbana, el salam le abina Anba Bola, habib el Masih.\n\nOtloba men el Rab 'anna, ya sayedaya el abawayn mohibbay awladehema, Anba Antonios wa Anba Bola, li yaghfer lana khatayana.",
+                cop_de: "Bol evol khen neten-hit: en-ni-mokmek ente ti-kakia: nem ni-mevi et-jahmom: et-iri em-pi-kati en-khaki.\n\nAri-ep-mevi khen ou-jomh: en-ni-hvi-oui et-chosi: ente pen-makarios en-iot: pa-chois pi-nishti abba Antoni.\n\nFai eta-f-shopi nan: en-ou-chaimit en-alimin ente pi-oujai: af-ohem emmon khen ou-rashi: e-khoun e-pi-onkh en-eneh.\n\nPi-stoi-noufi ente nef-areti: ti em-ep-ounof en-nen-psichi: em-phriti em-pi-aromata: et-rit khen pi-paradisos.\n\nMaren-tajron khen pi-nahti: et-souton khen ou-methmi: ente pi-nishti abba Antonios: en-osh evol en-jo emmos.\n\nJe ai-koti ouoh ai-jimi: ai-er-etin ouoh ai-chi: ai-kolh ouoh ti-nahti: je sena-ouon nhi.\n\nShere pen-iot abba Antonios: pi-hibs ente ti-met-monakhos: Shere pen-iot abba Pavle: pi-menrit ente Pi-Khristos.\n\nTovh em-Pchois e-hri ejon: o na-chois en-ioti em-mai-no-shiri: abba Antonios nem abba Pavle: entef-ka nen-novi nan evol."
+            },
+            {
+                id: "48.7",
+                speaker: "Volk",
+                ar: "البابا كيرلس السادس، الطوباوي بالحقيقة، الذي ثبتنا في الإيمان، الأرثوذكسي الحقيقي.\n\n(ق) اسم فخر هو اسمك، أيها الراهب الطاهر، والمتوحد القوي، صديق السواح.\n\nمن أجل هذا صرت لنا، قدوة في الكلام، في المحبة في التصرف، في الطهارة في الإيمان.\n\n(ق) السلام لمحب أولاده، الذي شفى المرضى، وتنبأ بالعظائم، وأخرج الشياطين.\n\nمبارك هو عهدك، يا أبانا الطوباوي، أعدت لنا جسد مارمرقس، وعملت الميرون المقدس.\n\n(ق) مريم والدة الإله، ظهرت بأعجوبة عظيمة، مع حمام وبخور، في كنيستها بالزيتون.\n\nبنيت كاتدرائية جديدة، والدير العظيم لمارمينا، وكنائس كثيرة، أما قلبك لم يستكبر مطلقاً.\n\n(ق) تعوّدت القيام وقت السحر، في قوتك وفي أمراضك، لتسبح مع الملائكة، ومع القديسين أحبائك.\n\nوالآن اذكرنا، أمام إلهنا، ليكملنا مثلك، في المحبة وفي الإيمان.\n\n(ق) أطلب من الرب عنا، يا أبانا القديس الصديق، البابا أنبا كيرلس السادس، ليغفر لنا خطايانا.",
+                de: "Papst Kyrillus der Sechste, – der uns im wahren – orthodoxen Glauben bestärkt hat, – ist in Wahrheit selig.\n\n(S) Ein Name des Stolzes ist dein Name, – du reiner Mönch – und starker Einsiedler, – du Freund der Anachoreten!\n\nDu wurdest uns – Vorbild in Worten, – in der Liebe, in deinem Lebenswandel, – in Lauterkeit und im Glauben.\n\n(S) Gegrüßt seist du, der seine Kinder liebte, – der die Kranken heilte, – Großes vorhersagte – und Dämonen austrieb.\n\nGesegnet sei die Zeit deines Lebens, – unser seliger Vater! – Du hast uns die Reliquien des Abba Markus zurückgebracht – und das heilige Salböl bereitet.\n\n(S) Maria die Mutter Gottes – erschien begleitet – von Tauben und Weihrauch – über ihrer Kirche in Zeitoun.\n\nEine neue Kathedrale hast du errichtet – und das große Kloster des Abba Mina – und viele andere Kirchen erbaut, – aber dein Herz war nie hochmütig.\n\n(S) Du warst gewohnt, in der Frühe des Morgens aufzustehen – an gesunden und an kranken Tagen, – damit du mit den Engeln – und deinen geliebten Heiligen den Lobpreis singst.\n\nGedenke unser vor unserem Gott, – dass er uns vollende – in der Liebe und im Glauben, – wie du es bist.\n\n(S) Bitte beim Herrn für uns, – unser heiliger und gerechter Vater, – Papst Abba Kyrillus, der Sechste, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "بابا آفا كيريللوس بي ماه سوؤو: بي ماكاريوس خين أو ميثمي: في إيطاف تاجُرون خين بي ناهتي: إن أورثوذوكسوس إن طافمي.\n\nأو ران إن شوشو بي بيك ران: أو بي موناخوس إت توفيوت: بي أناخوريتيس إت تاجريوت: إب إشفير إن ني أناخوريتيس.\n\nإثفي فاي أك شوبي نان: إن تيبوس خين بي ساجي: خين تي أغابي خين بي جين موشي: خين بي توفو خين بي ناهتي.\n\nشيري بي ماي نو شيري: في إيطاف تالتشو إن ني إت شوني: أف إر بروفيتيفين إن هان نيشتي: أووه أف هيوي إن ني ديمون.\n\nإزمارو أوت بي بيك سيو: أو بين يوت إم ماكاريوس: أك طاستهو نان إن ني كاس: إنتي آفا ماركوس: أووه أك إيري إم بي ميرون إثؤواف.\n\nماريا تي ثيؤطوكوس: أس أو أونه خين أو نيشتي إن إشفيري: نيم هان تشرومبي نيم بي إستوي نوفي: خين تيس إككليسيا خين إي زيتون.\n\nأك كوت إن أو كاثيدرا إم فيري: نيم بي نيشتي إم موناستيريون إنتي آفا مينا: نيم هان ميش إن إككليسيا: إم بي بيك هيت تشيسي إيفول إينيه.\n\nأك تاماك إي إفناف إن شورب: خين تيك جوم نيم بيك شوني: إي إر هيم نوس نيم ني أنجيلوس: نيم ني إثؤواف إتيك مينريتو.\n\nتينو أري بين ميفئي: ناهرين بين نوتي: إثريف جوك نان إيفول: خين تي أغابي نيم بي ناهتي: كاطا بيك ريتي.\n\nتوفه إم إبشويس إي إهري إيجون: بين يوت إثؤواف إن ذيكيؤس: بابا آفا كيريللوس بي ماه سوؤو: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ⲡⲁⲡⲁ ⲁⲃⲃⲁ Ⲕⲩⲣⲓⲗⲗⲟⲥ ⲡⲓⲙⲁϩ ⲥⲟⲟⲩ : ⲡⲓⲙⲁⲕⲁⲣⲓⲟⲥ ϧⲉⲛ ⲟⲩⲙⲉⲑⲙⲏⲓ : ⲫⲏⲉⲧⲁϥⲧⲁϫⲣⲟⲛ ϧⲉⲛ ⲡⲓⲛⲁϩϯ : ⲛ̀ⲟⲣⲑⲟⲇⲟⲝⲟⲥ ⲛ̀ⲧⲁⲫⲙⲏⲓ.\n\nⲞⲩⲣⲁⲛ ⲛ̀ϣⲟⲩϣⲟⲩ ⲡⲉ ⲡⲉⲕⲣⲁⲛ : ⲱ̀ ⲡⲓⲙⲟⲛⲁⲭⲟⲥ ⲉⲧⲧⲟⲩⲃⲏⲟⲩⲧ : ⲡⲓⲁⲛⲁⲭⲱⲣⲓⲧⲏⲥ ⲉⲧⲧⲁϫⲣⲏⲟⲩⲧ : ⲡ̀ϣ̀ⲫⲏⲣ ⲛ̀ⲛⲓⲁ̀ⲛⲁⲭⲱⲣⲓⲧⲏⲥ.\n\nⲈⲑⲃⲉ ⲫⲁⲓ ⲁⲕϣⲱⲡⲓ ⲛⲁⲛ : ⲛ̀ⲧⲩⲡⲟⲥ ϧⲉⲛ ⲡⲓⲥⲁϫⲓ : ϧⲉⲛ ϯⲁ̀ⲅⲁⲡⲏ ϧⲉⲛ ⲡⲓϫⲓⲛⲙⲟϣⲓ : ϧⲉⲛ ⲡⲓⲧⲟⲩⲃⲟ ϧⲉⲛ ⲡⲓⲛⲁϩϯ.\n\nⲬⲉⲣⲉ ⲡⲓⲙⲁⲓⲛⲟⲩϣⲏⲣⲓ : ⲫⲏⲉⲧⲁϥⲧⲁⲗϭⲟ ⲛ̀ⲛⲏⲉⲧϣⲱⲛⲓ : ⲁϥⲉⲣⲡⲣⲟⲫⲏⲧⲉⲩⲓⲛ ⲛ̀ϩⲁⲛⲛⲓϣϯ : ⲟⲩⲟϩ ⲁϥϩⲓⲱⲓ ⲛ̀ⲛⲓⲇⲉⲙⲱⲛ.\n\nⲤⲙⲁⲣⲱⲟⲩⲧ ⲡⲉ ⲡⲉⲕⲥⲏⲟⲩ : ⲱ̀ ⲡⲉⲛⲓⲱⲧ ⲙ̀ⲙⲁⲕⲁⲣⲓⲟⲥ : ⲁⲕⲧⲁⲥⲑⲟ ⲛⲁⲛ ⲛ̀ⲛⲓⲕⲁⲥ : ⲛ̀ⲧⲉ ⲁⲃⲃⲁ Ⲙⲁⲣⲕⲟⲥ : ⲟⲩⲟϩ ⲁⲕⲓ̀ⲣⲓ ⲙ̀ⲡⲓⲙⲩⲣⲟⲛ ⲉⲑⲟⲩⲁⲃ.\n\nⲘⲁⲣⲓⲁ̀ ϯⲑⲉⲟⲧⲟⲕⲟⲥ : ⲁⲥⲟⲩⲱⲛϩ ϧⲉⲛ ⲟⲩⲛⲓϣϯ ⲛ̀ϣⲫⲏⲣⲓ : ⲛⲉⲙ ϩⲁⲛϭⲣⲟⲙⲡⲓ ⲛⲉⲙ ⲡⲓⲥ̀ⲑⲟⲓⲛⲟⲩϥⲓ : ϧⲉⲛ ⲧⲉⲥⲉⲕⲕⲗⲏⲥⲓⲁ̀ ϧⲉⲛ ⲁⲓⲍⲩⲧⲟⲩⲛ.\n\nⲀⲕⲕⲱⲧ ⲛ̀ⲟⲩⲙⲁϩⲕⲁⲑⲉⲇⲣⲁ ⲙ̀ⲃⲉⲣⲓ : ⲛⲉⲙ ⲡⲓⲛⲓϯ ⲙ̀ⲙⲟⲛⲁⲥⲧⲏⲣⲓⲟⲛ ⲛ̀ⲧⲉ ⲁⲃⲃⲁ Ⲙⲏⲛⲁ : ⲛⲉⲙ ϩⲁⲛⲙⲏϣ ⲛ̀ⲉⲕⲕⲗⲏⲥⲓⲁ̀ : ⲙ̀ⲡⲉ ⲡⲉⲕϩⲏⲧ ϭⲓⲥⲓ ⲉ̀ⲃⲟⲗ ⲉⲛⲉϩ.\n\nⲀⲕⲧⲁⲙⲁⲕ ⲉ̀ⲫ̀ⲛⲁⲩ ⲛ̀ϣⲱⲣⲡ : ϧⲉⲛ ⲧⲉⲕϫⲟⲙ ⲛⲉⲙ ⲡⲉⲕϣⲱⲛⲓ : ⲉ̀ⲉⲣϩⲩⲙⲛⲟⲥ ⲛⲉⲙ ⲛⲓⲁⲅⲅⲉⲗⲟⲥ : ⲛⲉⲙ ⲛⲏⲉⲑⲟⲩⲁⲃ ⲉⲧⲉⲕⲙⲉⲛⲣⲓⲧⲟⲩ.\n\nϮⲛⲟⲩ ⲁⲣⲓⲡⲉⲛⲙⲉⲩⲓ̀ : ⲛⲁϩⲣⲉⲛ Ⲡⲉⲛⲛⲟⲩϯ : ⲉⲑⲣⲉϥϫⲟⲕ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ : ϧⲉⲛ ϯⲁ̀ⲅⲁⲡⲏ ⲛⲉⲙ ⲡⲓⲛⲁϩϯ : ⲕⲁⲧⲁ ⲡⲉⲕⲣⲏϯ.\n\nⲦⲱⲃϩ ⲙ̀Ⲡ̀ϭⲟⲓⲥ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲡⲉⲛⲓⲱⲧ ⲉⲑⲟⲩⲁⲃ ⲛ̀ⲇⲓⲕⲉⲟⲥ : ⲡⲁⲡⲁ ⲁⲃⲃⲁ Ⲕⲩⲣⲓⲗⲗⲟⲥ ⲡⲓⲙⲁϩ ⲥⲟⲟⲩ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "El Baba Kyrollos el sades, el tobawy bel haqiqa, allazi thabbatana fi el iman, el orthodoxi el haqiqi.\n\nEsm fakhr howa esmok, ayoha el raheb el taher, wal motawahed el qawi, sadiq el sowwah.\n\nMen agl haza sorta lana, qodwa fi el kalam, fi el mahaba fi el tasarrof, fi el tahara fi el iman.\n\nEl salam le moheb awlado, allazi shafa el marda, wa tanabba bel 'aza'em, wa akhrag el shayatin.\n\nMobarak howa 'ahdok, ya abana el tobawy, a'adta lana jasad Mar Markos, wa 'amalta el myroun el moqaddas.\n\nMariam walidat el ilah, zaharat be o'gouba 'azima, ma'a hamam wa bokhour, fi kanisatiha bel Zeitoun.\n\nBanayta katidra'iya jadida, wal dayr el 'azim le Mar Mina, wa kana'es kathira, amma qalbok lam yastakber motlaqan.\n\nTa'awwadta el qiyam waqt el sahar, fi qowwatika wa fi amradek, le tosabbih ma'a el mala'ika, wa ma'a el qadisin ahibba'ek.\n\nWal aan ozkorna, amama ilahina, le yokammilana methlak, fi el mahaba wa fi el iman.\n\nOtlob men el Rab 'anna, ya abana el qadis el seddiq, el Baba Abba Kyrollos el sades, li yaghfer lana khatayana.",
+                cop_de: "Papa abba Kyrillos pi-mah so-ou: pi-makarios khen ou-methmi: fi-etaf-tajron khen pi-nahti: en-orthodoxos en-taphmi.\n\nOu-ran en-shoushou pe pek-ran: o pi-monakhos et-touviout: pi-anachoritis et-tajriout: ep-shphir en-ni-anachoritis.\n\nEthve fai ak-shopi nan: en-typos khen pi-saji: khen ti-agapi khen pi-jin-moshi: khen pi-touvo khen pi-nahti.\n\nShere pi-mai-no-shiri: fi-etaf-talcho en-ni-et-shoni: af-er-prophitevin en-han-nishti: ouoh af-hioui en-ni-demon.\n\nSmarout pe pek-sio: o pen-iot em-makarios: ak-tastho nan en-ni-kas: ente abba Markos: ouoh ak-iri em-pi-myron ethowab.\n\nMaria ti-theotokos: as-ouonh khen ou-nishti en-shphiri: nem han-chrompi nem pi-stoi-noufi: khen tes-ekklisia khen e-Zeitoun.\n\nAk-kot en-ou-mah-cathedra em-veri: nem pi-nishti em-monastirion ente abba Mina: nem han-mish en-ekklisia: em-pe pek-hit chisi evol eneh.\n\nAk-tamak e-ph-nav en-shorp: khen tek-jom nem pek-shoni: e-er-hymnos nem ni-angelos: nem ni-ethowab etek-menritou.\n\nTinou ari-pen-mevi: nahren Pen-nouti: ethref-jok nan evol: khen ti-agapi nem pi-nahti: kata pek-riti.\n\nTovh em-Pchois e-hri ejon: pen-iot ethowab en-dikeos: Papa abba Kyrillos pi-mah so-ou: entef-ka nen-novi nan evol."
+            },
+            {
+                id: "48.8",
+                speaker: "Volk",
+                ar: "لم يقم في مواليد النساء، من يشبهك، أنت عظيم في جميع القديسين، يا يوحنا المعمدان.\n\n(ق) أنت أفضل من نبي، تعاليت في البر، أنت هو صديق العريس، حمل الله.\n\nشهدت للنور الحقيقي، الذي أتى إلى العالم، والذين يؤمنون باسمه، صاروا أبناء النور.\n\n(ق) اشفع فينا، أيها السابق الصابغ، يوحنا المعمدان، ليغفر لنا خطايانا.",
+                de: "Unter allen von einer Frau Geborenen – hat es keinen gegeben, der dir ähnlich ist. – Groß bist du unter allen Heiligen, – du Johannes der Täufer.\n\n(S) Du überragst jeden Propheten, – hoch erhaben in Gerechtigkeit – du bist der Freund des Bräutigams, – des Lammes Gottes.\n\nDu hast Zeugnis vom wahren Licht abgelegt, – das zur Welt kam, – und alle, die an seinen Namen glauben, – sind Kinder des Lichts geworden.\n\n(S) Sei unser Fürsprecher, – Vorläufer und Färber, – Johannes, der Täufer, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "إمبيه أوأون طونف خين ني جين ميسي: إنتيه ني هيومي إف أوني إممو ك: إنثوك أوو ني شتي خين ني إثؤواب تيروو: يوأنيس بي ريف تي أومس.\n\nإنثوك أوو هوؤو إمبروفيتيس: أكتشيسي خين تي ميثمي: إنثوك بيه إب إشفير إمبي بات شيليت: بي هييب إنتيه إفنوتي.\n\nأك إر ميثريه خا بي أوأوأويني: إنطا إفمي إطاف إي إ بي كوزموس: ني إثناهتي إ بيف ران: أف شوبي إنشيري إنتيه بي أوأوأويني.\n\nأري بريسفيفين إ إهري إجون: أو بي بروذورموس إمفا بتيس تيس يوأنيس بي ريف تي أومس: إتيف كا نين نوفي نان إفول.",
+                cop_cop: "Ⲙ̀ⲡⲉ ⲟⲩⲟⲛ ⲧⲱⲛϥ ϧⲉⲛ ⲛⲓϫⲓⲛⲙⲓⲥⲓ : ⲛ̀ⲧⲉ ⲛⲓϩⲓⲟ̀ⲙⲓ ⲉϥⲟ̀ⲛⲓ ⲙ̀ⲙⲟⲕ : ⲛ̀ⲑⲟⲕ ⲟⲩⲛⲓϣϯ ϧⲉⲛ ⲛⲏⲉⲑⲟⲩⲁⲃ ⲧⲏⲣⲟⲩ : Ⲓⲱⲁⲛⲛⲏⲥ ⲡⲓⲣⲉϥϯⲱⲙⲥ.\n\nⲚ̀ⲑⲟⲕ ⲟⲩϩⲟⲩⲟ̀ ⲉ̀ⲛⲓⲡ̀ⲣⲟⲫⲏⲧⲏⲥ : ⲁⲕϭⲓⲥⲓ ϧⲉⲛ ϯⲙⲉⲑⲙⲏⲓ : ⲛ̀ⲑⲟⲕ ⲡⲉ ⲡⲓϣ̀ⲫⲏⲣ ⲙ̀ⲡⲁⲧϣⲉⲗⲉⲧ : ⲡⲓϩⲓⲏⲃ ⲛ̀ⲧⲉ Ⲫ̀ⲛⲟⲩϯ.\n\nⲀⲕⲉⲣⲙⲉⲑⲣⲉ ϧⲁ ⲡⲓⲟⲩⲱⲓⲛⲓ : ⲛ̀ⲧⲁⲫⲙⲏⲓ ⲉ̀ⲧⲁϥⲓ̀ ⲉ̀ⲡⲓⲕⲟⲥⲙⲟⲥ : ⲛⲏⲉⲑⲛⲁϩϯ ⲉ̀ⲡⲉϥⲣⲁⲛ : ⲁⲩϣⲱⲡⲓ ⲛ̀ϣⲏⲣⲓ ⲛ̀ⲧⲉ ⲡⲓⲟⲩⲱⲓⲛⲓ.\n\nⲀ̀ⲣⲓⲡ̀ⲣⲉⲥⲃⲉⲩⲓⲛ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲱ̀ ⲡⲓⲡ̀ⲣⲟⲇⲣⲟⲙⲟⲥ ⲙ̀ⲃⲁⲡⲧⲓⲥⲧⲏⲥ : Ⲓⲱⲁⲛⲛⲏⲥ ⲡⲓⲣⲉϥϯⲱⲙⲥ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Lam yaqom fi mawaleed el nisa', man yoshbihok, anta 'azim fi jami' el qadisin, ya Youhanna el ma'madan.\n\nAnta afdal men nabi, ta'alayta fi el berr, anta howa sadiq el 'aris, hamal Allah.\n\nShahidta lel nour el haqiqi, allazi ata ila el 'alam, wallazina yo'minoun be ismihi, sarou abna' el nour.\n\nEshfa' fina, ayoha el sabeq el sabigh, Youhanna el ma'madan, li yaghfer lana khatayana.",
+                cop_de: "Mpe ouon tonq khen ni-jin-misi: ente ni-hiomi ef-oni mmok: nthok ou-nishti khen ni-ethowab tirou: Ioannis pi-ref-ti-oms.\n\nNthok ou-houo e-ni-prophitis: ak-chisi khen ti-methmi: nthok pe pi-shphir em-pat-shelet: pi-hiib ente Efnouti.\n\nAk-er-methre kha pi-ouoini: en-taphmi etaf-i e-pi-kosmos: ni-eth-nahti e-pef-ran: av-shopi en-shiri ente pi-ouoini.\n\nAri-presvevin e-hri ejon: o pi-prodromos em-vaptistis: Ioannis pi-ref-ti-oms: entef-ka nen-novi nan evol."
+            },
+            {
+                id: "48.9",
+                speaker: "Volk",
+                ar: "شهد يوحنا، في الأناجيل الأربعة، أني عمدتُ مُخلصي، في مياه الاردن.\n\n(ق) ونظرتُ الروح القُدُس، عندما نزل من السَّماء، وسمعتُ صوت الآب، صارخاً قائلاً:\n\nهذا هو ابني حبيبي، الَّذي سُرَّت بِهِ نفسي، وصنعَ مشيئتي، اسمعوا لهُ لأنَّه هو المُحيي.\n\n(ق) اشفع فينا، أيها السابق الصابغ، يوحنا المعمدان، ليغفر لنا خطايانا.",
+                de: "Johannes legte Zeugnis ab, – in den vier Evangelien: – „Ich habe meinen Erlöser – im Jordanwasser getauft.\n\n(S) Ich sah den Heiligen Geist, – als er vom Himmel herabkam, – und hörte die Stimme des Vaters, – sie rief und sprach:\n\nDas ist mein geliebter Sohn, – an dem ich Gefallen gefunden habe, – er erfüllte meinen Willen, auf ihn sollt ihr hören, – denn er ist, der lebendig macht“.\n\n(S) Sei unser Fürsprecher, – Vorläufer und Färber, – Johannes der Täufer, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "أفئر ميثري إنجى يوأنس : خين بى إفتو إن إيف أنجيليون : جى أيتى أومس إمبا سوتير : خين نى مواوو إنتى بى يورذانيس .\n\nأيناف اى بى بنيڤما إثؤاب : إيطاف اى إيبيسيت إيڤول خين إتفى: أيسوتيم اى إت إسمى إنتى إفيوت : إسؤش إيڤول إسجو إموس .\n\nجى فاى بى با شيرى با مينريت : إيطا طا إبسيشى تى ماتى إنخيتف : أفئر با أواوش سوتيم إنسوف : جى إنثوف بى بى ريف تانخو .\n\nأرى بريس ڤيڤين اى إهرى إيجون : أو بى برودروموس إمڤاب تيس تيس : يوأنس بى ريفتى أومس :إنتيف كا نين نوڤى نان إيڤول .",
+                cop_cop: "Ⲁϥⲉⲣⲙⲉⲑⲣⲉ ⲛ̀ϫⲉ Ⲓⲱⲁⲛⲛⲏⲥ : ϧⲉⲛ ⲡⲓϥ̀ⲧⲟⲩ ⲛ̀ⲉⲩⲁⲅⲅⲉⲗⲓⲟⲛ : ϫⲉ ⲁⲓϯⲱⲙⲥ ⲙ̀Ⲡⲁⲥⲱⲧⲏⲣ : ϧⲉⲛ ⲛⲓⲙⲱⲟⲩ ⲛ̀ⲧⲉ ⲡⲓⲒⲟⲣⲇⲁⲛⲏⲥ.\n\nⲀⲓⲛⲁⲩ ⲉ̀Ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ : ⲉ̀ⲧⲁϥⲓ̀ ⲉ̀ⲡⲉⲥⲏⲧ ⲉ̀ⲃⲟⲗϧⲉⲛ ⲧ̀ⲫⲉ : ⲁⲓⲥⲱⲧⲉⲙ ⲉ̀ⲧ̀ⲥⲙⲏ ⲛ̀ⲧⲉ Ⲫ̀ⲓⲱⲧ : ⲉⲥⲱϣ ⲉ̀ⲃⲟⲗ ⲉⲥϫⲱ ⲙ̀ⲙⲟⲥ.\n\nϪⲉ ⲫⲁⲓ ⲡⲉ Ⲡⲁϣⲏⲣⲓ ⲡⲁⲙⲉⲛⲣⲓⲧ : ⲉⲧⲁ ⲧⲁⲯⲩⲭⲏ ϯⲙⲁϯ ⲛ̀ϧⲏⲧϥ : ⲁϥⲉⲣ ⲡⲁⲟⲩⲱϣ ⲥⲱⲧⲉⲙ ⲛ̀ⲥⲱϥ : ϫⲉ ⲛ̀ⲑⲟϥ ⲡⲉ ⲡⲓⲣⲉϥⲧⲁⲛϧⲟ.\n\nⲀ̀ⲣⲓⲡ̀ⲣⲉⲥⲃⲉⲩⲓⲛ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲱ̀ ⲡⲓⲡ̀ⲣⲟⲇⲣⲟⲙⲟⲥ ⲙ̀ⲃⲁⲡⲧⲓⲥⲧⲏⲥ : Ⲓⲱⲁⲛⲛⲏⲥ ⲡⲓⲣⲉϥϯⲱⲙⲥ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Shahida Youhanna, fi el anageel el arba'a, anni 'ammadto mokhalisi, fi meyah el Ordon.\n\nWa nazarto el Rouh el Qodos, 'endama nazala men el sama', wa sami'to sawt el Ab, sarekhan qa'ilan:\n\nHaza howa ebni habibi, allazi sorrat bihi nafsi, wa sana'a mashia'ati, esma'ou laho le anno howa el mohyi.\n\nEshfa' fina, ayoha el sabeq el sabigh, Youhanna el ma'madan, li yaghfer lana khatayana.",
+                cop_de: "Af-er-methre enje Ioannis: khen pi-ftou en-evangelion: je ai-ti-oms em-Pa-sotir: khen ni-mo-ou ente pi-Iordanis.\n\nAi-nav e-Pi-pnevma ethowab: etaf-i e-pesit evol-khen et-fe: ai-sotem e-t-smi ente Ef-iot: es-osh evol es-jo emmos.\n\nJe fai pe Pa-shiri pa-menrit: eta ta-psichi ti-mati en-khetf: af-er pa-ouosh sotem en-sof: je enthof pe pi-ref-tankho.\n\nAri-presvevin e-hri ejon: o pi-prodromos em-vaptistis: Ioannis pi-ref-ti-oms: entef-ka nen-novi nan evol."
+            },
+            {
+                id: "48.10",
+                speaker: "Volk",
+                ar: "ميخائيل رئيس السمائيين، هو الأول، في الطقوس الملائكية، يخدم أمام الرب.\n\n(ق) إن الله يُرسل لنا، مراحمهُ ورأفاته، بسؤالات ميخائيل، رئيس الملائكة العظيم.\n\nوتكمل الأثمار، بطلبات ميخائيل، لأنه قريب إلى الله، يسأل عنَّا.\n\n(ق) كُل عطية صالحة، وكل موهبة تامة، إنما تهبط لنا من فوق، من عند أبى الأنوار.\n\nفلنُسبّح ونُمجّد، ونسجد للثالوث، القُدُوس المُساوي، الدائم إلى الأبد.\n\n(ق) اشفع فينا، يا رئيس الملائكة الطاهر، ميخائيل رئيس السمائيين، ليغفر لنا خطايانا.",
+                de: "Michael, der Oberste der Himmlischen, – er ist der Erste – unter den Engelheerscharen – und dient vor dem Herrn.\n\n(S) Gott möge uns sein Erbarmen – und seine Barmherzigkeit senden, – durch die Fürbitte Michaels, – des großen Erzengels.\n\nDie Ernte wird vollkommen – durch die Gebete von Michael, – denn er ist Gott nahe – und er bittet ihn für uns.\n\n(S) Jede gute Gabe – und jedes vollkommene Geschenk – kommt von oben, – vom Vater der Gestirne.\n\nLasst uns die Heilige, wesensgleiche – Dreifaltigkeit lobpreisen, – verherrlichen und anbeten, – die in Ewigkeit lebt.\n\n(S) Sei unser Fürsprecher, – du, reiner Erzengel Michael, – der Oberste der Himmlischen, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "ميخائيل إب أرخون إنا نى فيؤوى: إنثوف إت أوى إنشورب: خين نى تاكسيس إن أنجيليكون إف شيمشى أم بى إمثو أم ابشويس .\n\nشارى إفنوتى أو أورب نان: إن نيف ناى نيم نيف ميت شينهيت: هيتين نى تيهو إنتى ميخائيل: بينشتى إن أرشى أنجيلوس .\n\nشاف جوك إيفول إنجى نى كاربوس: هيتين نى تيهو انتى ميخائيل: جى إنثوف إت خين إيخون إإفنوتى: إف تى هوا إهرى إيجون .\n\nطايو نيفين إثنانيف: نيم ذورون نيفين إتجيك إيفول: إيفنيو نان إيفول إم إبشوى: هيتين إفيوت إنتى نى أو أوى .\n\nمارن هوس إنتين تى أو أو: إنتين أو أوشت إن تى إترياس إثؤاب : إت أوى إن أوموسيوس : إثمين إيفول شا إينيه .\n\nأرى إبريسفيفين إ إهرى إيجون: أوبى أرشى أنجيلوس إثؤاب : ميخائيل إب أرخون إنا نى فيؤوى: إنتيف نين نوفى نان إيفول .",
+                cop_cop: "Ⲙⲓⲭⲁⲏⲗ ⲡⲓⲁⲣⲭⲱⲛ ⲛ̀ⲛⲁ ⲛⲓⲫⲏⲟⲩⲓ̀ : ⲛ̀ⲑⲟϥ ⲉⲧⲟⲓ ⲛ̀ϣⲟⲣⲡ : ϧⲉⲛ ⲛⲓⲧⲁⲝⲓⲥ ⲛ̀ⲁⲅⲅⲉⲗⲓⲕⲟⲛ : ⲉϥϣⲉⲙϣⲓ ⲙ̀ⲡⲉⲙⲑⲟ ⲙ̀Ⲡ̀ϭⲟⲓⲥ.\n\nϢⲁⲣⲉ Ⲫ̀ⲛⲟⲩϯ ⲟⲩⲱⲣⲡ ⲛⲁⲛ : ⲛ̀ⲛⲉϥⲛⲁⲓ ⲛⲉⲙ ⲛⲉϥⲙⲉⲧϣⲉⲛϩⲏⲧ : ϩⲓⲧⲉⲛ ⲛⲓⲧⲱⲃϩ ⲛ̀ⲧⲉ Ⲙⲓⲭⲁⲏⲗ : ⲡⲓⲛⲓϯ ⲛ̀ⲁⲣⲭⲏⲁⲅⲅⲉⲗⲟⲥ.\n\nϢⲁⲩϫⲱⲕ ⲉ̀ⲃⲟⲗ ⲛ̀ϫⲉ ⲛⲓⲕⲁⲣⲡⲟⲥ : ϩⲓⲧⲉⲛ ⲛⲉⲛⲧⲱⲃϩ ⲙ̀Ⲙⲓⲭⲁⲏⲗ : ϫⲉ ⲛ̀ⲑⲟϥ ⲉⲧϧⲉⲛⲧ ⲉ̀ϧⲟⲩⲛ ⲉ̀Ⲫ̀ⲛⲟⲩϯ : ⲉϥⲧⲱⲃϩ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ.\n\nⲦⲁⲓⲟ̀ ⲛⲓⲃⲉⲛ ⲉⲑⲛⲁⲛⲉⲩ : ⲛⲉⲙ ⲇⲱⲣⲟⲛ ⲛⲓⲃⲉⲛ ⲉⲧϫⲏⲕ ⲉ̀ⲃⲟⲗ : ⲉⲩⲛⲏⲟⲩ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ ⲙ̀ⲡ̀ϣⲱⲓ : ϩⲓⲧⲉⲛ Ⲫ̀ⲓⲱⲧ ⲛ̀ⲧⲉ ⲛⲓⲟⲩⲱⲓⲛⲓ.\n\nⲘⲁⲣⲉⲛϩⲱⲥ ⲛ̀ⲧⲉⲛϯⲱ̀ⲟⲩ : ⲛ̀ⲧⲉⲛⲟⲩⲱϣⲧ ⲛ̀ϯⲦ̀ⲣⲓⲁⲥ ⲉⲑⲟⲩⲁⲃ : ⲉⲧⲟⲓ ⲛ̀ⲟ̀ⲙⲟⲟⲩⲥⲓⲟⲥ : ⲉⲑⲙⲏⲛ ⲉ̀ⲃⲟⲗ ϣⲁ ⲉ̀ⲛⲉϩ.\n\nⲀ̀ⲣⲓⲡ̀ⲣⲉⲥⲃⲉⲩⲓⲛ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ⲱ̀ ⲡⲓⲁⲣⲭⲏⲁⲅⲅⲉⲗⲟⲥ ⲉⲑⲟⲩⲁⲃ : Ⲙⲓⲭⲁⲏⲗ ⲡ̀ⲁⲣⲭⲱⲛ ⲛ̀ⲛⲁ ⲛⲓⲫⲏⲟⲩⲓ̀ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Mikhaïl ra'is el sama'iyin, howa el awal, fi el toqous el mala'ikiya, yakhdom amam el Rab.\n\nInna Allah yorsel lana, marahemaho wa ra'afataho, be so'alat Mikhaïl, ra'is el mala'ika el 'azim.\n\nWa tokammal el athmar, be talabat Mikhaïl, le anno qarib ila Allah, yas'al 'anna.\n\nKol 'atiya saliha, wa kol mawhiba tamma, innama tahbet lana men fawq, men 'end Abi el anwar.\n\nFal nosabbih wa nomaggid, wa nasgod lel thalouth, el qodos el mosawi, el da'em ila el abad.\n\nEshfa' fina, ya ra'is el mala'ika el taher, Mikhaïl ra'is el sama'iyin, li yaghfer lana khatayana.",
+                cop_de: "Michael pi-archon en-na ni-fi-oui: enthof et-oi en-shorp: khen ni-taxis en-angelikon: ef-shemshi em-pemtho em-Pchois.\n\nShare Efnouti ouorp nan: en-nef-nai nem nef-met-shenhit: hiten ni-tovh ente Michael: pi-nishti en-archi-angelos.\n\nShav-jok evol enje ni-karpos: hiten nen-tovh em-Michael: je enthof et-khent e-khoun e-Phnouti: ef-tovh e-hri ejon.\n\nTaio niven eth-nanev: nem doron niven et-jik evol: ev-niou nan evol em-ep-shoi: hiten Ef-iot ente ni-ouoini.\n\nMaren-hos enten-ti-o-ou: enten-ouosht en-ti-trias ethowab: et-oi en-omo-ousios: eth-min evol sha eneh.\n\nAri-presvevin e-hri ejon: o pi-archi-angelos ethowab: Michael ep-archon en-na ni-fi-oui: entef-ka nen-novi nan evol."
+            },
+            {
+                id: "50",
+                sectionTitle: {
+                    de: "Abschluss der Doxologien",
+                    ar: "ختام الذكصولوجيات"
+                },
+                speaker: "Volk",
+                ar: "كوني أنتِ ناظرة علينا، في المواضع العالية التي أنتِ كائنة فيها، يا سيدتنا كُلَّنا والدة الإله، العذراء كُلَّ حين.\n\n(ق) إسألي الَّذي ولدته، مُخلِّصنا الصالح، أن يرفع عنَّا هذه الأتعاب، ويُقرّر لنا سلامه.\n\nالسَّلام لك أيتها العَذراء، الملكة الحقيقيَّة الحقَّانية، السَّلام لفخر جنسنا، وَلَدتِ لنا عِمَّانوئيل.\n\n(ق) نَسألك أذكرينا، أيَّتها الشَّفيعة المُؤتَمَنة، أمام رَبَّنا يَسوع المسيح، ليغفر لنا خَطايانا.",
+                de: "Schau auf uns herab aus der Höhe, – wo du wohnst, – du unser aller Herrin Mutter Gottes – und immerwährende Jungfrau.\n\n(S) Bitte den, den du gebarst – unseren guten Erlöser, – er möge uns die Unruhe fernhalten – und uns seinen Frieden gewähren.\n\nGegrüßt seist du! Jungfrau, die wahre Königin in Wahrheit. – Gegrüßt seist du! Stolz unseres Geschlechts, – du hast uns den Emmanuel geboren.\n\n(S) Wir bitten dich, gedenke unser, – du treue Fürsprecherin, – vor unserem Herrn Jesus Christus, – damit er uns unsere Sünden vergibt.",
+                cop_ar: "شوبي إنثو إيرى سومس إيجون: خين ني ما إتتشوسي  إيطار خي إنخيتو: أو تين تشويس إن نيب تيرن تي ثيؤطوكوس: إت أوي إم بارثينوس إن سيو نيفين.\n\nمات هو إم في إيتا ري ماسف: بين سوتير إن أغاثوس: إنتيف أولي إن ناي خيسي إفول هارون: إنتيف سيمني نان إنتيف هيريني.\n\nشيري ني أو تي بارثينوس: تي أورو إم مي إن أليثيني: شيري بي شوشو إنتي بين جينوس: أري إجفو نان إن إممانوئيل.\n\nتين تي هو أري بين ميفئي: أو تي بروستاتيس إت إنهوت: ناهرين بين تشويس إيسوس بي إخرستوس: إنتيف كا نين نوفي نان إيفول.",
+                cop_cop: "Ϣⲱⲡⲓ ⲛ̀ⲑⲟ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ : ϧⲉⲛ ⲛⲓⲙⲁ ⲉⲧϭⲟⲥⲓ ⲉⲧⲉⲣⲉⲭⲏ ⲛ̀ϧⲏⲧⲟⲩ : ⲱ̀ ⲧⲉⲛϭⲟⲓⲥ ⲛ̀ⲛⲏⲃ ⲧⲏⲣⲉⲛ ϯⲑⲉⲟ̀ⲧⲟⲕⲟⲥ : ⲉⲧⲟⲓ ⲙ̀ⲡⲁⲣⲑⲉⲛⲟⲥ ⲛ̀ⲥⲏⲟⲩ ⲛⲓⲃⲉⲛ.\n\nⲘⲁⲧϩⲟ ⲙ̀ⲫⲏⲉⲧⲁⲣⲉⲙⲁⲥϥ : Ⲡⲉⲛⲥⲱⲧⲏⲣ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ : ⲛ̀ⲧⲉϥⲱ̀ⲗⲓ ⲛ̀ⲛⲁⲓϩⲓⲥⲓ ⲉ̀ⲃⲟⲗϩⲁⲣⲟⲛ : ⲛ̀ⲧⲉϥⲥⲉⲙⲛⲓ ⲛⲁⲛ ⲛ̀ⲧⲉϥϩⲓⲣⲏⲛⲏ.\n\nⲬⲉⲣⲉ ⲛⲉ ⲱ̀ ϯⲡⲁⲣⲑⲉⲛⲟⲥ : ϯⲟⲩⲣⲱ ⲙ̀ⲙⲏⲓ ⲛ̀ⲁ̀ⲗⲏⲑⲓⲛⲏ : ⲭⲉⲣⲉ ⲡ̀ϣⲟⲩϣⲟⲩ ⲛ̀ⲧⲉ ⲡⲉⲛⲅⲉⲛⲟⲥ : ⲁⲣⲉϫ̀ⲫⲟ ⲛⲁⲛ ⲛ̀Ⲉⲙⲙⲁⲛⲟⲩⲏⲗ.\n\nⲦⲉⲛϯϩⲟ ⲁ̀ⲣⲓⲡⲉⲛⲙⲉⲩⲓ̀ : ⲱ̀ ϯⲡ̀ⲣⲟⲥⲧⲁⲧⲏⲥ ⲉⲧⲉⲛϩⲟⲧ : ⲛⲁϩⲣⲉⲛ Ⲡⲉⲛϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Kouny anty nazira 'alayna, fi el mawade' el 'aliya allati anty ka'ina fiha, ya sayidatana kollana walidat el ilah, el 'azra' koll hin.\n\nEs'ali allazi waladtihi, mokhallisana el saleh, an yarfa' 'anna hazihi el at'ab, wa yoqarrer lana salamaho.\n\nEl salam laki ayatoih el 'azra', el malika el haqiqiya el haqqaniya, el salam le fakhr gensina, waladti lana Emmanuel.\n\nNas'aloki ozkorina, ayatoih el shafi'a el mo'tamana, amam rabbina Yasou' el Masih, li yaghfer lana khatayana.",
+                cop_de: "Shopi entho e-hri e-jon: khen ni-ma et-chosi etere-khi en-khetou: o ten-chois en-nib tiren ti-theotokos: et-oi em-parthenos en-siou niven.\n\nMat-ho em-fi-eta-re-masf: Pen-sotir en-agathos: entef-oli en-nai-hisi evol-haron: entef-semni nan en-tef-hirini.\n\nShere ne o ti-parthenos: ti-ouro em-mei en-alithini: shere pi-shou-shou ente pen-genos: are-jpho nan en-Emmanuel.\n\nTen-ti-ho ari-pen-mevi: o ti-prostatis et-en-hot: nahren Pen-chois Isos Pi-Khristos: entef-ka nen-novi nan evol."
+            },
+            {
+                id: "51",
+                speaker: "Volk",
+                ar: "نُعَظِّمُكِ يا أُمَّ النورِ الحَقيقي، ونُمَجِّدُكِ أيَّتُها العَذراءُ القِدِّيسَةُ والِدَةُ الإِله، لأَنَّكِ وَلَدتِ لنا مُخَلِّصَ العالم (كُلَّه)، أَتى وخَلَّصَ نُفوسَنا.\n\nالمَجدُ لكَ يا سَيِّدَنا ومَلِكَنا المَسيح، فَخرُ الرُّسُل، إكليلُ الشُّهداء، تَهليلُ الصِّدِّيقين، ثَباتُ الكَنائِس، غُفرانُ الخَطايا.\n\nنُبَشِّرُ بالثالوثِ القُدُّوس، لاهوتٌ واحِدٌ، نَسجُدُ له ونُمَجِّدُهُ.\n\nيا رَبُّ ارْحَمْ، يا رَبُّ ارْحَمْ، يا رَبُّ بارِك، آمين.",
+                de: "Wir rühmen dich, du Mutter des wahren Lichtes; wir verherrlichen dich, heilige Jungfrau, Mutter Gottes, denn du gebarst uns den Erlöser der Welt. Er kam und erlöste unsere Seelen.\n\nVerherrlichung sei dir, unser Herr und König Christus: Du Ruhm der Apostel, du Krone der Märtyrer, du Jubel der Gerechten, du Stärke der Gemeinden, du Vergebung der Sünden!\n\nWir verkünden die Heilige Dreifaltigkeit, den einen Gott: Wir beten ihn an, wir verherrlichen ihn.\n\nHerr, erbarme dich, Herr, erbarme dich, Herr, segne uns. Amen.",
+                cop_ar: "تين تشيسي إممو إثماف إمبي أوأويني إن طافمي: تين تي أوأو ني أو ثي إثؤواف أووه إمماس نوتي: جي أري ميسي نان إم بين سوتير إمبي كوسموس تيرف: أف إي أووه أف سوتي إن نين بسيشي.\n\nأو أو ناك بين نيب بين أورو بي إخرستوس: بي شوشو إنتي ني أبوستولوس: بي كلوم إنتي ني مارتيروس: إب ثيليل إنتي ني ذيكيؤس: إب طاجرو إنتي ني إككليسيا: إب كو إيفول إنتي ني نوفي.\n\nتين هي أويش إن تي ترياس إثؤواف: إس خين أو ميث نوتي إن أو أوت: تين أو أوشت إمموس تين تي أوأو ناس.\n\nكيريي إليسون، كيريي إليسون، كيريي إفلوجيسون آمين.",
+                cop_cop: "Ⲧⲉⲛϭⲓⲥⲓ ⲙ̀ⲙⲟ ⲑ̀ⲙⲁⲩ ⲙ̀ⲡⲓⲟⲩⲱⲓⲛⲓ ⲛ̀ⲧⲁⲫⲙⲏⲓ : ⲧⲉⲛϯⲱ̀ⲟⲩ ⲛⲉ ⲱ̀ ⲑⲏⲉⲑⲟⲩⲁⲃ ⲟⲩⲟϩ ⲙ̀ⲙⲁⲥⲛⲟⲩϯ : ϫⲉ ⲁ̀ⲣⲉⲙⲓⲥⲓ ⲛⲁⲛ ⲙ̀Ⲡⲥⲱⲧⲏⲣ ⲙ̀ⲡⲓⲕⲟⲥⲙⲟⲥ ⲧⲏⲣϥ : ⲁϥⲓ̀ ⲟⲩⲟϩ ⲁϥⲥⲱϯ ⲛ̀ⲛⲉⲛⲯⲩⲭⲏ.\n\nⲞⲩⲱ̀ⲟⲩ ⲛⲁⲕ Ⲡⲉⲛⲛⲏⲃ Ⲡⲉⲛⲟⲩⲣⲟ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ : ⲡ̀ϣⲟⲩϣⲟⲩ ⲛ̀ⲛⲓⲁ̀ⲡⲟⲥⲧⲟⲗⲟⲥ : ⲡⲓⲭ̀ⲗⲟⲙ ⲛ̀ⲧⲉ ⲛⲓⲙⲁⲣⲧⲩⲣⲟⲥ : ⲡ̀ⲑⲉⲗⲏⲗ ⲛ̀ⲛⲓⲇⲓⲕⲉⲟⲥ : ⲡ̀ⲧⲁϫⲣⲟ ⲛ̀ⲛⲓⲉⲕⲕⲗⲏⲥⲓⲁ̀ : ⲡ̀ⲭⲱ ⲉ̀ⲃⲟⲗ ⲛ̀ⲧⲉ ⲛⲓⲛⲟⲃⲓ.\n\nⲦⲉⲛϩⲓⲱⲓϣ ⲛ̀ϯⲦ̀ⲣⲓⲁⲥ ⲉⲑⲟⲩⲁⲃ : ⲉⲥ ϧⲉⲛ ⲟⲩⲙⲉⲑⲛⲟⲩϯ ⲛ̀ⲟⲩⲱⲧ : ⲧⲉⲛⲟⲩⲱϣⲧ ⲙ̀ⲙⲟⲥ ⲧⲉⲛϯⲱ̀ⲟⲩ ⲛⲁⲥ.\n\nⲔⲩⲣⲓⲉ̀ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ : Ⲕⲩⲣⲓⲉ̀ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ : Ⲕⲩⲣⲓⲉ̀ ⲉⲩⲗⲟⲅⲏⲥⲟⲛ ⲁ̀ⲙⲏⲛ.",
+                ar_de: "No'azzimoki ya omm el nour el haqiqi, wa nomaggidoki ayatoih el 'azra' el qadisa walidat el ilah, le annaki waladti lana mokhallis el 'alam (kollah), ata wa khallasa nofousana.\n\nEl magd laka ya sayedana wa malikana el Masih, fakhr el rosol, eklil el shohada', tahlil el seddiqin, thabat el kana'es, ghofran el khataya.\n\nNobashir bel thalouth el qoddous, lahout wahed, nasgod laho wa nomaggidoh.\n\nYa Rab erham, Ya Rab erham, Ya Rab barek, Amin.",
+                cop_de: "Ten-chisi emmo eth-mav em-pi-ouoini en-ta-phmei: ten-ti-o-ou ne o thi-ethowab ouoh em-mas-nouti: je a-re-misi nan em-Pen-sotir em-pi-kosmos tirf: af-i ouoh af-soti en-nen-psichi.\n\nOu-o-ou nak Pen-nib Pen-ouro Pi-Khristos: pi-shou-shou ente ni-apostolos: pi-khlom ente ni-martyros: ep-thelil ente ni-dikeos: ep-tajro ente ni-ekklesia: ep-ko evol ente ni-novi.\n\nTen-hi-oish en-ti-trias ethowab: es-khen ou-meth-nouti en-ouot: ten-ouosht emmos ten-ti-o-ou nas.\n\nKyrie eleison, Kyrie eleison, Kyrie evlogison amin."
+            },
+            {
+                id: 52,
+                speaker: "Volk",
+                de: "Wir glauben an den einen Gott: Gott den Vater , den Allmächtigen, Schöpfer des Himmels und der Erde, alles Sichtbaren und Unsichtbaren.Wir glauben an den einen Herrn Jesus Christus , Gottes einzigen Sohn, geboren aus dem Vater vor aller Zeit Licht vom Lichte , wahrer Gott vom wahren Gott, gezeugt, nicht geschaffen, eines Wesens mit dem Vater; durch ihn ist alles geworden. , nicht geschaffen, eines Wesens mit dem Vater; durch ihn ist alles geworden.  Für uns Menschen und um unseres Heils willen ist er vom Himmel herabgestiegen. Er hat Fleisch angenommen durch den Heiligen Geist, von der Jungfrau Maria und ist Mensch geworden. Er wurde gekreuzigt unter Pontius Pilatus an unserer Statt,hat gelitten und ist begraben worden.Am dritten Tag auferstanden von den Toten gemäß der Schrift,aufgefahren in den Himmel, sitzt er zur Rechten seines Vaters Und so wird er wiederkommen in seiner Herrlichkeit, zu richten die Lebenden und die Toten, und seiner Herrschaft wird kein Ende sein.Ja, wir glauben an den Heiligen Geist, der Herr ist und lebendig macht, der aus dem Vater hervorgeht , der mit dem Vater und dem Sohn angebetet und verherrlicht wird. Er hat gesprochen durch die Propheten Wir glauben an die eine heilige, universale und apostolische Kirche. Wir bekennen die eine Taufe zur Vergebung der Sünden. Wir erwarten die Auferstehung der Toten und das Leben der kommenden Welt. Amen.",
+                ar: "بالحقيقة نؤمن بإله واحد الله الآب ضابط الكل خالق السماء والأرض ما يُرى وما لا يُرى نؤمن برب واحد يسوع المسيح ابن الله الوحيد المولود من الآب قبل كل الدهور نور من نور إله حق من إله حق مولود غير مخلوق ، مساوٍ للآب فى الجوهـر الذى به كان كل شيء هذا الذى من أجلنا نحن البشر ومن أجل خلاصنا نزل من السماء وتجسد من الروح القدس ومن مريم العذراء وتأنس وصلب عنا على عهد بيلاطس البنطي تألم وقبر وقام من بين الاموات فى اليوم الثالث كما فى الكتب وصعد الى السموات وجلس عن يمين أبيه وأيضاً يأتى فى مجده ليدين الاحياء والاموات الذى ليس لملكه انقضاء نعم نؤمن بالروح القدس الرب المحيي المنبثق من الآب. نسجد له ونمجده مع الآب والابن الناطق فى الأنبياء وبكنيسة واحدة مقدسة جامعة رسولية ونعترف بمعمودية واحدة لمغفرة الخطايا وننتظر قيامة الأموات وحياة الدهر الآتى .آمين",
+                ar_de: "Bel 7aqiqa no2men be elah wa7ed, Allah el Ab dabet el kol, 5aleq el sama wal ard, ma yora wa ma la yora. No2men be rab wa7ed Yassou3 el Massi7, Ebn Allah el wa7id, el mawloud men el Ab qabl kol el dohour. Nour men Nour, Elah 7aq men Elah 7aq, mawloud gheir ma5louq, mosawen lel Ab fel gawhar, allazy bihi kan kol shay2. Haza allazy men aglina na7n el bashar, wa men agl 5alasna, nazal men el sama, wa tagassad men el Ro7 el Qodos wa men Mariam el 3azra2 wa ta2anas. Wa soleb 3anna 3ala 3ahd Bilatos el Bonti, ta2alam wa qober wa qam men bein el amwat fel yom el thaleth kama fel kotob. Wa sa3ad ela el samawat, wa galas 3an yamin abih. Wa aydan ya2ti fi magdehi le yadin el a7ya2 wal amwat, allazy laysa le molkehi enqida2. Na3am no2men bel Ro7 el Qodos, el Rab el mo7yi, el monbathiq men el Ab. Nasgod lahu wa nomagedohu ma3 el Ab wal Ebn, el nateq fel anbya2. Wa be kanisa wa7da moqadasa game3a rasoulya. Wa na3taref be ma3moudia wa7da le maghferet el 5ataya. Wa nantazer qiyamat el amwat, wa 7ayat el dahr el aaty. Amin.",
+
+            },
+            {
+                id: "19.1",
+                speaker: "Priester",
+                ar: "اللَّهُمَّ ارحمْنَا، قَرِر لنَا رحمةً، تراءَفْ علينَا.",
+                de: "Gott erbarme dich unser, hab Erbarmen mit uns, begnade uns!",
+                cop_ar: "إفنوتي ناي نان: شوب أو ناي إيرون: شينهيت خارون.",
+                cop_cop: "Ⲫⲛⲟⲩϯ ⲛⲁⲓ ⲛⲁⲛ : ϣⲱⲡ ⲟⲩⲛⲁⲓ ⲉ̀ⲣⲟⲛ : ϣⲉⲛϩⲏⲧ ϧⲁⲣⲟⲛ.",
+                ar_de: "Allahomma erhamna, qarer lana rahmatan, tara'af 'alayna.",
+                cop_de: "Efnouti nai nan: shop ou-nai eron: shenhit kharon."
+            },
+            {
+                id: "19.2",
+                speaker: "Volk",
+                ar: "آمين.",
+                de: "Amen.",
+                cop_ar: "آمين.",
+                cop_cop: "Ⲁ̀ⲙⲏⲛ.",
+                ar_de: "Amin.",
+                cop_de: "Amin."
+            },
+            {
+                id: "19.3",
+                speaker: "Priester",
+                ar: "واسمَعْنَا.",
+                de: "Erhöre uns!",
+                cop_ar: "سوتيم إيرون.",
+                cop_cop: "Ⲥⲱⲧⲉⲙ ⲉ̀ⲣⲟⲛ.",
+                ar_de: "Wasma'na.",
+                cop_de: "Sotem eron."
+            },
+            {
+                id: "19.4",
+                speaker: "Volk",
+                ar: "آمين.",
+                de: "Amen.",
+                cop_ar: "آمين.",
+                cop_cop: "Ⲁ̀ⲙⲏⲛ.",
+                ar_de: "Amin.",
+                cop_de: "Amin."
+            },
+            {
+                id: "19.5",
+                speaker: "Priester",
+                ar: "وبارِكْنَا، واحفظْنَا، وأعِنَّا.",
+                de: "Segne uns, bewahre uns, hilf uns!",
+                cop_ar: "إزمو إيرون: أري إيرون: أري فو إيثين إيرون.",
+                cop_cop: "Ⲥⲙⲟⲩ ⲉ̀ⲣⲟⲛ : ⲁ̀ⲣⲉϩ ⲉ̀ⲣⲟⲛ : ⲁ̀ⲣⲓⲃⲟⲏ̀ⲑⲓⲛ ⲉ̀ⲣⲟⲛ.",
+                ar_de: "Wa barikna, wahfazna, wa a'inna.",
+                cop_de: "Smou eron: areh eron: ari-voithin eron."
+            },
+            {
+                id: "19.6",
+                speaker: "Volk",
+                ar: "آمين.",
+                de: "Amen.",
+                cop_ar: "آمين.",
+                cop_cop: "Ⲁ̀ⲙⲏⲛ.",
+                ar_de: "Amin.",
+                cop_de: "Amin."
+            },
+            {
+                id: "19.7",
+                speaker: "Priester",
+                ar: "وارفَعْ غضبَكَ عنَّا، وافتقِدْنَا بخلاصِكَ، واغفِرْ لنَا خطايانَا.",
+                de: "Nimm deinen Zorn von uns, kehre gnädig mit deiner Erlösung bei uns ein und vergib uns unsere Sünden.",
+                cop_ar: "أولي إم بيك جونت إيفول خارون: جيم بين شيني خين بيك أوجاي: أووه كا نين نوفي نان إيفول.",
+                cop_cop: "Ⲱⲗⲓ ⲙ̀ⲡⲉⲕϫⲱⲛⲧ ⲉ̀ⲃⲟⲗ ϩⲁⲣⲟⲛ : ϫⲉⲙⲡⲉⲛϣⲓⲛⲓ ϧⲉⲛ ⲡⲉⲕⲟⲩϫⲁⲓ : ⲟⲩⲟϩ ⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
+                ar_de: "Warfa' ghadabaka 'anna, waftaqidna bi-khalasika, waghfir lana khatayana.",
+                cop_de: "Oli em-pek-jont evol haron: jem-pen-shini khen pek-oujai: ouoh ka nen-novi nan evol."
+            },
+            {
+                id: "19.8",
+                speaker: "Volk",
+                ar: "آمين. (يا رَبُّ ارْحَمْ) ٣ مرات.",
+                de: "Amen. (Herr erbarme dich) 3x.",
+                cop_ar: "آمين. (كيريين إليسون) ٣.",
+                cop_cop: "Ⲁ̀ⲙⲏⲛ. (Ⲕⲩⲣⲓⲉ̀ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ) ⲅ̅",
+                ar_de: "Amin. (Ya Rab Erham) 3.",
+                cop_de: "Amin. (Kyrie eleison) 3."
+            },
+            {
+                id: 44,
+                sectionTitle: {
+                    de: "Das Evangeliumsgebe",
+                    ar: "اوشيه الانجيل",
+                },
+                speaker: "Priester",
+                cop_ar: "إشليل.",
+                de: "Betet.",
+                ar: "صل.",
+                cop_cop: "Ϣⲗⲏⲗ",
+                ar_de: "Salli.",
+                cop_de: "Eshlil.",
+            },
+            {
+                id: 45,
+                speaker: "Diakon",
+                cop_ar: "إيه بى إبروس إفشى إسطاثى تيه.",
+                de: "Erhebt euch zum Gebet.",
+                ar: "للصلاة قفوا.",
+                cop_cop: "Ⲉⲡⲓ ⲡⲣⲟⲥⲉⲩⲭⲏ ⲥⲧⲁⲑⲏⲧⲉ",
+                ar_de: "Lel salat qefou.",
+                cop_de: "E pi pros evshi estathi te.",
+            },
+            {
+                id: 46,
+                speaker: "Priester",
+                cop_ar: "إيريني باسي.",
+                de: "Der Friede sei mit allen.",
+                ar: "السلام لجميعكم.",
+                cop_cop: "Ⲉⲓⲣⲏⲛⲏ ⲡⲁⲥⲓ",
+                ar_de: "El salam le gami3ikom.",
+                cop_de: "Irini pasi.",
+            },
+            {
+                id: 47,
+                speaker: "Volk",
+                cop_ar: "كيه طو إبنفماتي سو.",
+                de: "Und mit deinem Geiste",
+                ar: "ولروحك أيضاً.",
+                cop_cop: "Ⲕⲉ ⲧⲱ ⲡⲛⲉⲩⲙⲁⲧⲓ ⲥⲟⲩ",
+                ar_de: "Wa le ro7ika aydan.",
+                cop_de: "Ke to pnevmati sou.",
+            },
+            {
+                id: 48,
+                speaker: "Priester",
+                cop_ar: "إفنيب إبشويس إيسوس بى إخرستوس بيننوتى فيئيطاف جوس إننيف أجيوس إتطايوت إم ماثيتيس أووه إن أبو سطولوس إثؤواب.\nجى هان ميش إم إبروفيتيس نيم هان إثمى أفيئر ابيثيمين إيناف إينى إتيتين ناف إيروؤو أووه إمبو ناف. أووه إيسوتيم إينى إتيتين سوتيم إيروؤو أووه إمبو سوتيم.\nإنثوتين ذى أوو نياتو إننيتين فال جى سيناف نيم نيتين ماشج جي سيسوتيم. مارين إيراب إم إبشا إن سوتيم أووه إى إيرى إن نيك إف أنجيليون إثؤواب خين طفه إنتى نى إثؤواب إنتاك.",
+                de: "Meister, Herr Jesus Christus, unser Gott, der zu seinen heiligen Jüngern und ehrwürdigen Aposteln gesprochen hat:\nViele Propheten und Gerechte sehnten sich zu sehen, was ihr seht, und haben es nicht gesehen, und zu hören, was ihr hört, und haben es nicht gehört.\nSelig aber sind eure Augen, dass die sehen, und eure Ohren, dass sie hören. Mache uns würdig, Deine heiligen Evangelien zu hören und danach zu handeln durch die Gebete Deiner Heiligen.",
+                ar: "أيها السيد الرب يسوع المسيح إلهنا، الذى خاطب تلاميذه القديسين ورسله الأطهار المكرمين. قائلاً:\nإن أنبياء وأبراراً كثيرين اشتهوا أن يروا ما أنتم ترون ولم يروا وأن يسمعوا ما أنتم تسمعون ولم يسمعوا.\nأما أنتم فطوبى لأعينكم لأنها تبصر ولآذانكم لأنها تسمع فلنستحق أن نسمع ونعمل بأوامر أناجيلك المقدسة بطلبات قديسيك.",
+                cop_cop: "Ⲡⲛⲏⲃ Ⲡϭⲟⲓⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲓⲭⲣⲓⲥⲧⲟⲥ Ⲡⲉⲛⲛⲟⲩϯ: ⲫⲏⲉ̀ⲧⲁϥϫⲟⲥ ⲛ̀ⲛⲉϥⲁ̀ⲅⲓⲟⲥ ⲉⲧⲧⲁⲓⲏⲟⲩⲧ ⲙ̀ⲙⲁⲑⲏⲧⲏⲥ: ⲟⲩⲟϩ ⲛ̀ⲁ̀ⲡⲟⲥⲧⲟⲗⲟⲥ ⲉ̀ⲑⲟⲩⲁⲃ.\nϪⲉ ϩⲁⲛⲙⲏϣ ⲙ̀ⲡⲣⲟⲫⲏⲧⲏⲥ ⲛⲉⲙ ϩⲁⲛⲑⲙⲏⲓ: ⲁⲩⲉⲣⲉ̀ⲡⲓⲑⲩⲙⲓⲛ ⲉ̀ⲛⲁⲩ ⲉ̀ⲛⲏⲉ̀ⲧⲉⲧⲉⲛⲛⲁⲩ ⲉ̀ⲣⲱⲟⲩ ⲟⲩⲟϩ ⲙ̀ⲡⲟⲩⲛⲁⲩ: ⲟⲩⲟϩ ⲉ̀ⲥⲱⲧⲉⲙ ⲉ̀ⲛⲏⲉ̀ⲧⲉⲧⲉⲛⲥⲱⲧⲉⲙ ⲉ̀ⲣⲱⲟⲩ ⲟⲩⲟϩ ⲙ̀ⲡⲟⲩⲥⲱⲧⲉⲙ.\nⲚ̀ⲑⲱⲧⲉⲛ ⲇⲉ ⲱ̀ⲟⲩⲛⲓⲁⲧⲟⲩ ⲛ̀ⲛⲉⲧⲉⲛⲃⲁⲗ ϫⲉ ⲥⲉⲛⲁⲩ: ⲛⲉⲙ ⲛⲉⲧⲉⲛⲙⲁϣϫ ϫⲉ ⲥⲉⲥⲱⲧⲉⲙ. Ⲙⲁⲣⲉⲛⲉⲣⲡⲉⲙⲡϣⲁ ⲛ̀ⲥⲱⲧⲉⲙ ⲟⲩⲟϩ ⲉ̀ⲓ̀ⲣⲓ ⲛ̀ⲛⲉⲕⲉⲩⲁⲅⲅⲉⲗⲓⲟⲛ ⲉ̀ⲑⲟⲩⲁⲃ: ϧⲉⲛ ⲛⲓⲧⲱⲃϩ ⲛ̀ⲧⲉ ⲛⲏⲉ̀ⲑⲟⲩⲁⲃ ⲛ̀ⲧⲁⲕ.",
+                ar_de: "Ayuha el sayed el Rab Yassou3 el Massi7 elahina, allazy khataba talamizahu el qadisin wa rosolohu el athar el mokaramim qa2elan:\nEnna anbia2 wa abrar kathirin eshtahaw an yaraw ma antom tarawn walam yaraw wa an yasma3ou ma antom tasma3oun walam yasma3ou.\nAmma antom fa touba le a3yonikom le annaha tobsir wa le azanikum le annaha tasma3 falnasta7iq an nasma3 wa na3mal be awamer anagilak el moqadasa be talabat qadisik.",
+                cop_de: "Efnib epchois Isos Pkhristos pennouti fi-etaf-gos en-nef agios et-tayout em-mathitis owoh en-apostolos ethowab.\nJe han mish em-profitis nem han ethmi av-er epithymin enav eni eteten nav ero-oo owoh empou nav. Owoh esotem eni eteten sotem ero-oo owoh empou sotem.\nEnthoten de oo niatou en-neten val je senav nem neten mashj je se-sotem. Maren er-ep em-epsha en-sotem owoh e-iri en-nek evangelion ethowab khen tovh ente ni ethowab entak.",
+            },
+            {
+                id: 49,
+                speaker: "Diakon",
+                cop_ar: "إبروس إف إكساستى إيبرتو أجيو إف أنجيليو",
+                de: "Betet um des heiligen Evangeliums Willen.",
+                ar: "صلوا من أجل الإنجيل المقدس.",
+                cop_cop: "Ⲡⲣⲟⲥⲉⲩⲝⲁⲥⲑⲉ ⲩⲡⲉⲣ ⲧⲟⲩ ⲁⲅⲓⲟⲩ ⲉⲩⲁⲅⲅⲉⲗⲓⲟⲩ",
+                ar_de: "Sallou men agl el engil el moqadas.",
+                cop_de: "Pros evxasthe yper tou agiou evangeliou.",
+            },
+            {
+                id: 50,
+                speaker: "Volk",
+                cop_ar: "كيريه ليسون",
+                de: "Herr erbarme Dich",
+                ar: "يا رب ارحم",
+                cop_cop: "Ⲕⲩⲣⲓⲉ ⲉⲗⲉⲏⲥⲟⲛ",
+                ar_de: "Ya Rab er7am.",
+                cop_de: "Kyrie eleison.",
+            },
+            {
+                id: 51,
+                speaker: "Priester",
+                cop_ar: "أرى إفمفيئى ذى اون بين نيب ان أؤون نيفين إيتاف هو نهين نان ائر بوميفئى خين نين تيهو نيم نين طوبه. إيتين ايرى إمموؤو إى إبشوى هازوك إبشويس بيننوتى.\nنيئتاف إير شورب إن إنكوت ما إمطون نؤو. نى إتشونى ما تالتشوؤ. جى إنثوك غار بى بين أونخ تيرو نيم بين أوجاى تيرو نيم تين هلبيس تيرو نيم بين تالتشو تيرو نيم تين أناستاسيس تيرين",
+                de: "Gedenke auch, Herr, aller, die uns gebeten haben, ihrer in unseren Gebeten und Bitten zu gedenken, die wir Dir darbringen, Herr, unser Gott.\nDen Seelen deren, die uns vorausgegangen und entschlafen sind, gib Ruhe. Heile die Kranken. Denn Du bist unser aller Leben, unsere aller Erlösung, unsere aller Hoffnung, unser aller Heil, unsere aller Auferstehung.",
+                ar: "أذكر أيضاً يا سيدنا كل الذين أوصونا أن نذكرهم في سؤالاتنا وطلباتنا التي نرفعها إليك أيها الرب إلهنا.\nالذين سبقوا فرقدوا، يارب نيحهم. المرضى اشفهم. لأنك أنت حياتنا كلنا، وخلاصنا كلنا، ورجاؤنا كلنا، وشفاؤنا كلنا، وقيامتنا كلنا.",
+                cop_cop: "Ⲁ̀ⲣⲓⲫ̀ⲙⲉⲩⲓ̀ ⲇⲉ ⲱⲛ Ⲡⲉⲛⲛⲏⲃ ⲛ̀ⲟⲩⲟⲛ ⲛⲓⲃⲉⲛ ⲉ̀ⲧⲁϥϩⲟⲛϩⲉⲛ ⲛⲁⲛ ⲉ̀ⲣ̀ⲡⲟⲩⲙⲉⲩⲓ̀ ϧⲉⲛ ⲛⲉⲛϯϩⲟ ⲛⲉⲙ ⲛⲉⲛⲧⲱⲃϩ: ⲉ̀ⲧⲉⲛⲓ̀ⲣⲓ ⲙ̀ⲙⲱⲟⲩ ⲉ̀ⲡ̀ϣⲱⲓ ϩⲁⲣⲟⲕ Ⲡ̀ϭⲟⲓⲥ Ⲡⲉⲛⲛⲟⲩϯ.\nⲚⲏⲉ̀ⲧⲁⲩⲉⲣϣⲟⲣⲡ ⲛ̀ⲉⲛⲕⲟⲧ ⲙⲁⲙ̀ⲧⲟⲛ ⲛⲱⲟⲩ. Ⲛⲏⲉⲧϣⲱⲛⲓ ⲙⲁⲧⲁⲗϭⲱⲟⲩ. Ϫⲉ ⲛ̀ⲑⲟⲕ ⲅⲁⲣ ⲡⲉ ⲡⲉⲛⲱⲛϧ ⲧⲏⲣⲟⲩ ⲛⲉⲙ ⲡⲉⲛⲟⲩϫⲁⲓ ⲧⲏⲣⲟⲩ ⲛⲉⲙ ⲧⲉⲛϩⲉⲗⲡⲓⲥ ⲧⲏⲣⲟⲩ ⲛⲉⲙ ⲡⲉⲛⲧⲁⲗϭⲟ ⲧⲏⲣⲟⲩ ⲛⲉⲙ ⲧⲉⲛⲁ̀ⲛⲁⲥⲧⲁⲥⲓⲥ ⲧⲏⲣⲉⲛ",
+                ar_de: "Ozkur aydan ya sayedana kol allazina awsauna an nazkorohom fi so'alatina wa talabatina allati narfa3oha elayka ayuha el Rab elahina.\nAllazina sabaqo fa raqado, ya Rab nayeh-hom. El marda eshfehom. Le annaka anta 7ayatona kolina, wa khalasuna kolina, wa raga'ona kolina, wa shifa'ona kolina, wa qiyamatona kolina.",
+                cop_de: "Ari-efmevi de on pen nib en ou-on niven etaf honhen nan er pou-mevi khen nen tiho nem nen tovh. Eten iri emmo-oo e ep-shoi harok Epchois Pennouti.\nNi-etaf er shorp en enkot ma emton no-ou. Ni etshoni ma tal-cho-oo. Je enthok gar pe pen onkh tiro nem pen ougai tiro nem ten hel-pis tiro nem pen tal-tcho tiro nem ten anastasis tiren",
+            },
+            {
+                id: 52,
+                speaker: "Volk",
+                cop_ar: "الليلويا",
+                de: "Halleluja",
+                ar: "هلليلويا",
+                cop_cop: "Ⲁⲗⲗⲏⲗⲟⲩⲓⲁ",
+                ar_de: "Alleluia",
+                cop_de: "Alleluia",
+            },
+            {
+                id: 53,
+                speaker: "Diakon",
+                cop_ar: "أسطاثي تيه ميطا فوفو ثيو أكوسومين طو أجيو إف أنجيليو",
+                de: "Steht auf in Ehrfurcht vor Gott, um das hl. Evangelium zu hören.",
+                ar: "قفوا بخوف الله لسماع الانجيل المقدس",
+                cop_cop: "Ⲥⲧⲁⲑⲏⲧⲉ ⲙⲉⲧⲁ ⲫⲟⲃⲟⲩ Ⲑⲉⲟⲩ ⲁⲕⲟⲩⲥⲱⲙⲉⲛ ⲧⲟⲩ ⲁⲅⲓⲟⲩ ⲉⲩⲁⲅⲅⲉⲗⲓⲟⲩ",
+                ar_de: "Qefou bekhouf Allah le sama3 el engil el moqadas.",
+                cop_de: "Estathi te meta fovou theou akousomen tou agiou evangeliou.",
+            },
+            {
+                id: 54,
+                speaker: "Priester",
+                cop_ar: "إفسماروؤوت إنجيه فى إثنيو خين إفران إمبشويس إنتيه نى جوم كيريب إيفلوجيصون إك طو كاطا (...) أجيو إيف أنجيليون طو أنا غنوزما",
+                de: "Gesegnet sei er, der kommt im Namen des Herrn der Heerscharen. Segne, o Herr, die Lesung des heiligen Evangelium nach [Matthäus / Markus / Lukas / Johannes].",
+                ar: "مبارك الآتى بإسم الرب القوات يا رب بارك فصل الإنجيل المقدس من (...)",
+                cop_cop: "Ϥ̀ⲥⲙⲁⲣⲱⲟⲩⲧ ⲛ̀ϫⲉ ⲫⲏⲉⲑⲛⲏⲟⲩ ϧⲉⲛ ⲫ̀ⲣⲁⲛ ⲙ̀Ⲡ̀ϭⲟⲓⲥ ⲛ̀ⲧⲉ ⲛⲓϫⲟⲙ. Ⲕⲩⲣⲓⲉ ⲉⲩⲗⲟⲅⲏⲥⲟⲛ ⲉⲕ ⲧⲟⲩ ⲕⲁⲧⲁ (...) ⲁⲅⲓⲟⲩ ⲉⲩⲁⲅⲅⲉⲗⲓⲟⲩ ⲧⲟ ⲁⲛⲁⲅⲛⲱⲥⲙⲁ",
+                ar_de: "Mobarak el aty be ism el Rab el qowat. Ya Rab barek fasl el engil el moqadas men (...)",
+                cop_de: "Ef-esmaro-out enje fi-eth-nyo khen efran em-epchois ente ni-gom. Kyrie ev-logison ek tou kata (...) agiou evangeliou to ana-gnozma.",
+            },
+            {
+                id: 55,
+                speaker: "Volk",
+                cop_ar: "ذوكصاصي كيريي",
+                de: "Ehre sei Dir, o Herr",
+                ar: "المجد لك يا رب",
+                cop_cop: "Ⲇⲟⲝⲁ ⲥⲟⲓ Ⲕⲩⲣⲓⲉ",
+                ar_de: "El magd laka ya Rab.",
+                cop_de: "zoxa si Kyrie.",
+            },
+
+            {
+                id: 56,
+                speaker: "Diakon",
+
+                de: "Erhebt euch und steht in Gottesfurcht, seid aufmerksam in Weisheit, um das heilige Evangelium zu hören. Ein Abschnitt aus dem heiligen Evangelium nach ........., dem Evangelisten und reinen Apostel. Sein Segen",
+                ar: "قفوا بخوف أمام الله وانصتوا لسماع الإنجيل المقدس فصل من بشارة مار معلمنا .... البشير والتلميذ الطاهر بركاته",
+
+                ar_de: "Qefou bekhouf amam Allah wa onsetou le sama3 el engil el moqadas fasl men beshart mar mo3alemna .... el bashir wal telmiz el taher barakatohu.",
+
+            },
+            {
+                id: 57,
+                speaker: "Volk",
+                cop_ar: "آمين",
+                de: "sei mit uns. Amen.",
+                ar: "على جميعنا. آمين.",
+                cop_cop: "Ⲁⲙⲏⲛ",
+                ar_de: "3ala gami3ina. Amin.",
+                cop_de: "Amin.",
+            },
+            {
+                id: 58,
+                speaker: "Diakon",
+                de: "Aus den Psalmen unseres Lehrers David des Propheten und Königs. Sein Segen sei mit uns.\nEin Psalm Davids.",
+                ar: "من مزامير تراتيل أبينا داود النبي والملك الطاهر بركاته على جميعنا",
+                ar_de: "Men mazamir tratil abina Dawoud el nabi wal malek el taher barakatohu 3ala gami3ina.",
+
+            },
+            {
+                id: 59,
+                sectionTitle: {
+                    de: "Der Psalm ",
+                    ar: "المزمور",
+                },
+                speaker: "Diakon",
+                de: "Der Psalm des Tages wird nun gelesen",
+                ar: "ُيُقرأ المزمور"
+
+            },
+            {
+                id: 60,
+                speaker: "Volk",
+
+                de: "Gesegnet sei der, der kommt im Namen des Herrn. Unser Herr, unser Gott, unser Erlöser und unser aller König, Jesus Christus, der Sohn des lebendigen Gottes, ihm gebührt Ehre in Ewigkeit. Amen.",
+                ar: "مبارك الآتى باسم الرب إله القوات ربنا و الهنا ملكنا ومخلص نفوسنا ربنا يسوع المسيح ابن الله الحى الذى له المجد الدائم. الى الأبد آمين",
+
+                ar_de: "Mobarak el aty be ism el Rab elah el qowat, rabona wa elahona malekona wa mokhales nofousena rabona Yassou3 el Massi7 ebn Allah el 7ay allazy lahu el magd el da2em. Ela el abad amin.",
+
+            },
+            {
+                id: 61,
+                sectionTitle: {
+                    de: "Das Evangelium",
+                    ar: "الانجيل",
+                },
+                speaker: "Diakon",
+                de: "Das Evangeliums des Tages wird nun gelesen",
+                ar: "ُيُقرأ الانجيل"
+
+            },
+            {
+                id: 62,
+                speaker: "Volk",
+
+                de: "Ehre sei unserem Herrn in Ewigkeit",
+                ar: "والمجد لله دائماً",
+
+                ar_de: "Wal magd lillah da'iman.",
+
+            },
+
+            {
+                id: 63,
+                sectionTitle: {
+                    de: "Die Evangeliumsantwort ",
+                    ar: "مرد الانجيل",
+                },
+                speaker: "Volk",
+                cop_ar: "أوؤ نياتو خين أو ميثمي ني اثؤواب انتي باي ايهوؤو بي اواي بي اواي كا طا بيف ران ني مين راتي انتي بي اخريستوس.\nاري ابريسفافين اي ايهري ايجون اوتين تشويس تيرن تي ثيؤطوكوس ماريا اثماف امبين سوتير انتيف كانين نوفي نان إيڤول.\nچيه إف إسمارؤوت إنچيه إفيوت نيم إبشيري نيم بي إبنيڤما إثؤواب تي إترياس إتجيك إيڤول تين أوأوشت إمموس تين تي أوأوناس.",
+                de: "Gesegnet sind sie, in Wahrheit, die Heiligen des heutigen Tages, jeder mit seinem Namen, die von Christus Geliebten.\nSei unsere Fürsprecherin, unser aller Herrin, Mutter Gottes, Maria, Mutter unseres Erlösers, damit er uns unsere Sünden vergibt!\nGepriesen sei der Vater und der Sohn und der Heilige Geist, die vollkommene Dreifaltigkeit. Wir beten sie an und verherrlichen sie.",
+                ar: "طوباهم بالحقيقة قديسي هذا اليوم كل واحد وواحد باسمه أحباء المسيح.\nاشفعي فينا يا سيدتنا كلنا السيدة مريم والدة الإله أم يسوع المسيح ليغفر لنا خطايانا.\nلأنه مبارك الآب والابن، والروح القدس، الثالوث الكامل، نسجد له ونمجده.",
+                cop_cop: "Ⲱⲟⲩⲛⲓⲁⲧⲟⲩ ϧⲉⲛ ⲟⲩⲙⲉⲑⲙⲏⲓ ⲛⲏⲉⲑⲟⲩⲁⲃ ⲛ̀ⲧⲉ ⲡⲁⲓⲉ̀ϩⲟⲟⲩ ⲡⲓⲟⲩⲁⲓ ⲡⲓⲟⲩⲁⲓ ⲕⲁⲧⲁ ⲡⲉϥⲣⲁⲛ ⲛⲓⲙⲉⲛⲣⲁϯ ⲛ̀ⲧⲉ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ.\nⲀ̀ⲣⲓⲡ̀ⲣⲉⲥⲃⲉⲩⲓⲛ ⲉ̀ϩ̀ⲣⲏⲓ ⲉ̀ϫⲱⲛ ⲱ ⲧⲉⲛϭⲟⲓⲥ ⲛ̀ⲛⲏⲃ ⲧⲏⲣⲉⲛ ϯⲑⲉⲟⲇⲟⲕⲟⲥ Ⲙⲁⲣⲓⲁ ⲑ̀ⲙⲁⲩ ⲙ̀ⲡⲉⲛⲥⲱⲧⲏⲣ ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.\nϪⲉ ϥ̀ⲥ̀ⲙⲁⲣⲱⲟⲩⲧ ⲛ̀ϫⲉ Ⲫⲓⲱⲧ ⲛⲉⲙ Ⲡ̀ϣⲏⲣⲓ ⲛⲉⲙ Ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ Ϯⲧ̀ⲣⲓⲁⲥ ⲉⲧϫⲏⲕ ⲉ̀ⲃⲟⲗ ⲧⲉⲛⲟⲩⲱϣⲧ ⲙ̀ⲙⲟⲥ ⲧⲉⲛϯⲱⲟⲩ ⲛⲁⲥ.",
+                ar_de: "Toubahom belhaqiqa qadisi haza el youm kol wahed wa wahed be esmo a7eba2 el massi7.\nEshfa3y fina ya sayidatina kolina el sayida Mariam walidat el ilah om Yassou3 el Massi7 layaghfir lana khatayana.\nLe annahu mobarak el Ab wal Ebn wal Ro7 el Qodos, el thalouth el kamel, nasgod lahu wa nomagedoh.",
+                cop_de: "Ou niatou khen ou methmi ni ethowab ente pai eho-oo pi owai pi owai kata pef ran ni men rati ente Pi-khristos.\nAri presvevin e-ehri egon o ten chois tiren ti theotokos Maria ethmav empen sotir entef ka nen novi nan evol.\nJe ef esmaro-out enje Efioat nem Ep-shiri nem Pi-pnevma ethowab Ti-trias et-jik evol ten o-osht emmos ten ti o-ou nas.",
+            },
+            {
+                id: 101,
+                speaker: "Volk",
+                ar: "بالمسيح يسوع ربنا.",
+                de: "Durch Christus Jesus, unsern Herrn.",
+                cop_ar: "خين بي إخرستوس إيسوس بين تشويس.",
+                cop_cop: "Ϧⲉⲛ Ⲡⲓⲭ̀ⲣⲓⲥⲧⲟⲥ Ⲓⲏⲥⲟⲩⲥ Ⲡⲉⲛϭⲟⲓⲥ.",
+                cop_de: "Khen Pi-Khristos Isous Pen-chois.",
+                ar_de: "Bel-Masih Yasou3 Rabbina."
+            },
+            {
+                id: 102,
+                speaker: "Diakon",
+                ar: "احنوا رؤوسكم للرب.",
+                de: "Neigt euer Haupt vor dem Herrn!",
+                cop_ar: "طاس كيفالاس إيمون طو كيريو كليناتيه.",
+                cop_cop: "Ⲧⲁⲥ ⲕⲉⲫⲁⲗⲁⲥ ⲩ̀ⲙⲱⲛ ⲧⲱ Ⲕⲩⲣⲓⲱ ⲕⲗⲓⲛⲁⲧⲉ.",
+                cop_de: "Tas kefalas ymon to kyrio klinate.",
+                ar_de: "E7nou ro2ousakom lel-Rabb."
+            },
+            {
+                id: 103,
+                speaker: "Volk",
+                ar: "أمامك يا رب (خاضعين وساجدين).",
+                de: "Vor Dir, o Herr. (Wir sind dir ergeben und knien)",
+                cop_ar: "إينوبيون صو كيريه.",
+                cop_cop: "Ⲉⲛⲱⲡⲓⲟⲛ ⲥⲟⲩ Ⲕⲩⲣⲓⲉ.",
+                cop_de: "Enopion so Kyrie.",
+                ar_de: "Amamaka ya Rabb."
+            },
+            {
+                id: 104,
+                speaker: "Diakon",
+                ar: "ننصت بخوف الله آمين.",
+                de: "Wir hören in Gottesfurcht zu. Amen.",
+                cop_ar: "إبروس خومين ثيه أوميه طافوفو: آمين.",
+                cop_cop: "Ⲡⲣⲟⲥⲭⲱⲙⲉⲛ Ⲑⲉⲱ ⲙⲉⲧⲁ ⲫⲟⲃⲟⲩ: Ⲁⲙⲏⲛ.",
+                cop_de: "Epros khomin thie omieh tafovo: Amen.",
+                ar_de: "Nonsit be-khawf Allah. Amen."
+            },
+            {
+                id: 105,
+                speaker: "Priester",
+                ar: "السلام لجميعكم.",
+                de: "Friede sei mit allen.",
+                cop_ar: "إيريني باسي.",
+                cop_cop: "Ⲓⲣⲏⲛⲏ ⲡⲁⲥⲓ.",
+                cop_de: "Ireni pasi.",
+                ar_de: "El-salam le-gami3okom."
+            },
+            {
+                id: 106,
+                speaker: "Volk",
+                ar: "ولروحك أيضاً.",
+                de: "und mit deinem Geiste.",
+                cop_ar: "كيه طو إبنيفماتي سو.",
+                cop_cop: "Ⲕⲉ ⲧⲱ ⲡⲛⲉⲩⲙⲁⲧⲓ ⲥⲟⲩ.",
+                cop_de: "Ke to pnevmati sou.",
+                ar_de: "Wa-le-rouheka aydan.",
+                next_action: "show_reconciliation_menu",
+                type: "menu_selection", // Optional: Damit die App weiß, dass jetzt Buttons kommen
+                reconciliation_menu: [
+                    { label_ar: "الحمل", label_de: "Auswahl des Lammbrotes", action: "goto_offering_id_1" },
+                ],
+
+            },
+
+
+        ]
+    },
 
     offering: {
         title: {
@@ -72,8 +1128,6 @@ export const liturgies = {
                 ar_de: "Bel 7aqiqa no2men be elah wa7ed, Allah el Ab dabet el kol, 5aleq el sama wal ard, ma yora wa ma la yora. No2men be rab wa7ed Yassou3 el Massi7, Ebn Allah el wa7id, el mawloud men el Ab qabl kol el dohour. Nour men Nour, Elah 7aq men Elah 7aq, mawloud gheir ma5louq, mosawen lel Ab fel gawhar, allazy bihi kan kol shay2. Haza allazy men aglina na7n el bashar, wa men agl 5alasna, nazal men el sama, wa tagassad men el Ro7 el Qodos wa men Mariam el 3azra2 wa ta2anas. Wa soleb 3anna 3ala 3ahd Bilatos el Bonti, ta2alam wa qober wa qam men bein el amwat fel yom el thaleth kama fel kotob. Wa sa3ad ela el samawat, wa galas 3an yamin abih. Wa aydan ya2ti fi magdehi le yadin el a7ya2 wal amwat, allazy laysa le molkehi enqida2. Na3am no2men bel Ro7 el Qodos, el Rab el mo7yi, el monbathiq men el Ab. Nasgod lahu wa nomagedohu ma3 el Ab wal Ebn, el nateq fel anbya2. Wa be kanisa wa7da moqadasa game3a rasoulya. Wa na3taref be ma3moudia wa7da le maghferet el 5ataya. Wa nantazer qiyamat el amwat, wa 7ayat el dahr el aaty. Amin.",
 
             },
-
-            // 2. KYRIE (MIT ÜBERSCHRIFT)
             {
                 id: 2,
                 // Hier ist der Titel für den neuen Abschnitt
@@ -85,9 +1139,12 @@ export const liturgies = {
                 // Das \n sorgt für neue Zeilen im Arabischen
                 ar: "كيريه ليسون كيريه ليسون يارب ارحم\nكيريه ليسون كيريه ليسون ارحمنا يا الله\nكيريه ليسون كيريه ليسون اسمعنا و ارحمنا",
                 cop_cop: "Kurie `ele`ycon.",
-                counter: 41
 
 
+            },
+            {
+                id: 2.5, // Neue ID für den Zähler
+                counter: 41 // Der Zähler steht alleine in einem eigenen Block
             },
             {
                 id: 3,
@@ -4126,7 +5183,7 @@ export const liturgies = {
                 ar_de: "aba2ona wa ekhwatona el-lazina raqadou, ellazina akhazta nofosahom nayye7-hom. zakiran ayzan gami3 el-qiddisina el-lazina ardoka monzo el-bad2. aba2ana el-athara ro2asa2 el-aba2, wal-anbeya2, wal-rosol, wal-mobashshirina, wal-ingiliyyina, wal-shohada2, wal-mo3tarifina, wa kolla arwa7 el-seddiqina el-lazina kamalou fil-iman. Wa bel-akthar el-qiddisa el-mamlou2a magdan, el-3azra2 kol 7in, walidat el-elah el-tahira el-qiddisa Maria. Wal-qiddis Youhanna el-sabiq el-ma3madan wal-shaheed. Wal-qiddis Estefanos awwal el-shamamisa wa awwal el-shohada2. Wal-qiddis Morqos el-rasoul el-tahir el-ingili wal-shaheed. Wel batriarka el qiddis Saweeros, wel qiddis Kyrillos, wel qiddis Basilios, wel qiddis Eghrighorios. Wa abana el seddiq el 3azim anba Antonios, wel barr anba Boula, wal salalata anba Maqarat el qiddisin. Wa abana anba Yo7annes, wa abouna anba Pishoy, el qiddisayn el romiyayn Maximos wa Domadios, wal tes3a wal arba3in shaheedan, wal qawi anba Moussa. Wa abana anba Pakhom aba el sherika, wa abana anba Shenouda ra2is el motawa7idin, wa abana anba Nofer el sa2e7, wa abana anba Samouel el mo3tarif. Wa kol masaff qiddisik. Ennana ya sayyedana lasna ahlan an natashaffa3a fi toubaweyyat ola2ik. Bal hom qeyam amam minbari ebnika el-wahid. Li-yakonou 3ewazan 3anna, yatashaffa3ouna fi maskanatina wa za3fina. Kon ghafiran li-athamina, min agli telbatihom el-moqaddasa, wa min agli esmeka el-mobarak ellathi do3eya 3alayna.",
                 cop_ar: "نين يوتي نيم نين إسنِي إيتاف إنكوت إي آك شي إن نو بـسيشي ما إمتون نو أو. إيك إيري أون إم إف ميفي إن ني إثؤواب تيرو إيتاف راناك إسجين بينيه. نين يوتي إثؤواب ني باتري آرخيس ني بروفيتيس ني أبوستولوس ني ريف هيويش ني إيفانجيليستيس ني مارتيروس ني أومولوجيتيس نيم بـنيفما نيفين إن ديكايوس إيتاف جوك إيفول خين إفنا هـتي. ماليستا دي إثؤواب إث ميه إن أو أو: إت أوي إم بارثينوس إن سيو نيفين: تي ثيؤطوكوس إثؤوابت آجيا ماريا. نيم بي آجيوس يوانيس بي برودروموس إم بابتستيس أوفوه إم مارتيروس. نيم بي آجيوس ستيفانوس بي آرشي دياكون أوفوه إم بروتو مارتيروس. نيم بي آجيوس ماركوس بي أبوسطولوس إثؤواب أوفوه إم مارتيروس. نيم بي باتري أرشيس إثؤواب سيفيروس : نيم بي آجيوس كيريللوس : نيم بي آجيوس فاسيليوس : نيم بي آجيوس غريغوريوس. نيم بين يوت إن ديكايوس بي نيشتي أببا أنطونيوس : نيم بي إثمي أببا بافلي : نيم بي شومت إثؤواب أببا ماكاري. نيم بين يوت أببا يوحنس : نيم بين يوت أببا بيشوي : نيم نين يوتي إثؤواب إن روميوس ماكسيموس نيم دوميتيوس : نيم بي همي بسيت إن مارتيروس : نيم بي جوري إثؤواب أببا موسى. نيم بين يوت أببا باخوم فا تي كوينونيا : نيم بين يوت أببا شنودي بي أرشي ماندريتيس : نيم بين يوت أببا نوفر بي أنا خوريتيس : نيم بين يوت أببا صموئيل بي أومولوجيتيس. نيم إبخوروس تيرف إنتيه ني إثؤواب إنتاك. أوخ أوتي جيه أنون إف ميب إيتيم إبشا إن إر بريس فيفين إهريي إيجين إث ميت ماكاريوس إن ني إيتيه إمماف.أللا جيه إنثو أو إت أوهي إيرات أو ناهرين بي فيما إنتيه بيك مونوجينيس إن شيري. إنتو شوبي إم فيفي أو إن إر بريس فيفين : إهريي إيجين تين ميت هيكِي نيم تين ميت خوب. شوبي إن ريف كو إيفول إن نين أنوميا : إثفي نو تي هو إثؤواب : نيم إثفي بيك ران إت سمارو أوت : إيتاف موتي إمموف إهريي إيجون.",
 
-               
+
             },
             {
                 id: 17.34,
@@ -4137,7 +5194,7 @@ export const liturgies = {
                 cop_cop: "Ⲛⲏⲉⲧⲱϣ ⲙⲁⲣⲟⲩⲧⲁⲟⲩⲟ ⲛ̀ⲛⲓⲣⲁⲛ ⲛ̀ⲧⲉ ⲛⲉⲛⲓⲟϯ ⲉⲑⲟⲩⲁⲃ ⲛ̀ⲡⲁⲧⲣⲓⲁⲣⲭⲏⲥ ⲉ̀ⲧⲁⲩⲉⲛⲕⲟⲧ : Ⲡ̀ϭⲟⲓⲥ ⲙⲁⲙ̀ⲧⲟⲛ ⲛ̀ⲛⲟⲩⲯⲩⲭⲏ ⲧⲏⲣⲟⲩ ⲟⲩⲟϩ ⲛ̀ⲧⲉϥⲭⲁ ⲛⲉⲛⲛⲟⲃⲓ ⲛⲁⲛ ⲉ̀ⲃⲟⲗ.",
                 ar_de: "El qare2oun falyoqolou asma2 aba2ena el qiddisin el batarka ellazina raqadou, el rabb yunayye7 nofosahom agma3in, wa yaghfer lana khatayana.",
                 cop_ar: "ني إيت أوش مارو طاؤو إن ني ران إنتيه نين يوتي إثؤواب إم باتري أرشيس إيتاف إنكوت : إبشويس ما إمتون إن نو بـسيشي تيرو أوفوه إنتيف كا نين نوفي نان إيفول.",
-                 navigationButtons: [
+                navigationButtons: [
                     {
                         label_ar: "بي نشتي", // The Waters
                         label_de: "Bi nishti",
@@ -6851,6 +7908,44 @@ export const liturgyHints = {
             }
         }
     },
+    "morning_incense_id_30": {
+        roles: {
+            priester: {
+                de: "Das Gebet für die Reisenden wird im ganzen Jahr nach dem Gebet für die Kranken im Morgenweihrauchgebet an jedem Tag gebetet, ausgenommen samstags, sonntags und an Tagen, an denen ein Herrenfest gefeiert wird.",
+                ar: "تُقال أوشية المسافرين طوال السنة بعد أوشية المرضى في رفع بخور باكر في كل يوم، ما عدا أيام السبوت والآحاد والأعياد السيديه",
+            },
+            diakon: {
+                de: "Das Gebet für die Reisenden wird im ganzen Jahr nach dem Gebet für die Kranken im Morgenweihrauchgebet an jedem Tag gebetet, ausgenommen samstags, sonntags und an Tagen, an denen ein Herrenfest gefeiert wird.",
+                ar: "تُقال أوشية المسافرين طوال السنة بعد أوشية المرضى في رفع بخور باكر في كل يوم، ما عدا أيام السبوت والآحاد والأعياد السيديه",
+
+            },
+            Volk: {
+                de: "Das Gebet für die Reisenden wird im ganzen Jahr nach dem Gebet für die Kranken im Morgenweihrauchgebet an jedem Tag gebetet, ausgenommen samstags, sonntags und an Tagen, an denen ein Herrenfest gefeiert wird.",
+                ar: "تُقال أوشية المسافرين طوال السنة بعد أوشية المرضى في رفع بخور باكر في كل يوم، ما عدا أيام السبوت والآحاد والأعياد السيديه",
+
+            },
+        }
+
+    },
+    "morning_incense_id_36": {
+        roles: {
+            priester: {
+                ar: "تُقال أوشية القرابين في رفع بخور باكر في أيام الآحاد والأعياد السيدية بدلاً من أوشية المسافرين، وكذلك في أيام الأسبوع إذا كانت القرابين موجودة، وإذا كان القداس الإلهي سيُقام عقب رفع البخور مباشرة. أما إذا لم تُقل في رفع بخور باكر لعدم وجود القرابين، فيصليها الكاهن سراً قبل قراءة الإبركسيس.",
+                de: "Das Gebet für die Opfergaben (und die Opfernden) wird im Morgenweihrauchgebet an jedem Sonntag und an Herrenfesten anstelle des Gebets für die Reisenden gebetet, ebenso im Morgenweihrauchgebet an Wochentagen, wenn die Gaben schon vorhanden sind, und wenn direkt nach dem Morgenweihrauchgebet die Liturgie gefeiert wird. Wenn es nicht im Morgenweihrauchgebet gesprochen wird wegen nicht vorhandener Gaben, dann betet man es still vor der Lesung aus der Apostelgeschichte.",
+            },
+            diakon: {
+                ar: "تُقال أوشية القرابين في رفع بخور باكر في أيام الآحاد والأعياد السيدية بدلاً من أوشية المسافرين، وكذلك في أيام الأسبوع إذا كانت القرابين موجودة، وإذا كان القداس الإلهي سيُقام عقب رفع البخور مباشرة. أما إذا لم تُقل في رفع بخور باكر لعدم وجود القرابين، فيصليها الكاهن سراً قبل قراءة الإبركسيس.",
+                de: "Das Gebet für die Opfergaben (und die Opfernden) wird im Morgenweihrauchgebet an jedem Sonntag und an Herrenfesten anstelle des Gebets für die Reisenden gebetet, ebenso im Morgenweihrauchgebet an Wochentagen, wenn die Gaben schon vorhanden sind, und wenn direkt nach dem Morgenweihrauchgebet die Liturgie gefeiert wird. Wenn es nicht im Morgenweihrauchgebet gesprochen wird wegen nicht vorhandener Gaben, dann betet man es still vor der Lesung aus der Apostelgeschichte.",
+
+            },
+            Volk: {
+                ar: "تُقال أوشية القرابين في رفع بخور باكر في أيام الآحاد والأعياد السيدية بدلاً من أوشية المسافرين، وكذلك في أيام الأسبوع إذا كانت القرابين موجودة، وإذا كان القداس الإلهي سيُقام عقب رفع البخور مباشرة. أما إذا لم تُقل في رفع بخور باكر لعدم وجود القرابين، فيصليها الكاهن سراً قبل قراءة الإبركسيس.",
+                de: "Das Gebet für die Opfergaben (und die Opfernden) wird im Morgenweihrauchgebet an jedem Sonntag und an Herrenfesten anstelle des Gebets für die Reisenden gebetet, ebenso im Morgenweihrauchgebet an Wochentagen, wenn die Gaben schon vorhanden sind, und wenn direkt nach dem Morgenweihrauchgebet die Liturgie gefeiert wird. Wenn es nicht im Morgenweihrauchgebet gesprochen wird wegen nicht vorhandener Gaben, dann betet man es still vor der Lesung aus der Apostelgeschichte.",
+
+            },
+        }
+
+    },
 
     "basily_id_222": {
         roles: {
@@ -6865,6 +7960,7 @@ export const liturgyHints = {
         }
     },
 
+
     // --- GREGORIOS ---
     "gregorios_id_5": {
         roles: {
@@ -6875,3 +7971,4 @@ export const liturgyHints = {
         }
     }
 };
+
