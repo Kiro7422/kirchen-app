@@ -274,6 +274,21 @@ export default function App() {
   const [appTheme, setAppTheme] = useState('dark');
   const [activeHintData, setActiveHintData] = useState(null);
   const [selectedIDs, setSelectedIDs] = useState([]);
+  // --- NEUE LOGIK: Automatisch erkennen, welche IDs optional sind ---
+  // Scannt alle 'selection_menu' Einträge und sammelt die IDs der Heiligen/Feste
+  const optionalIDs = React.useMemo(() => {
+    if (!selectedLiturgy || !liturgies[selectedLiturgy]) return new Set();
+
+    const ids = new Set();
+    liturgies[selectedLiturgy].content.forEach(row => {
+      // Wenn die Zeile ein Auswahlmenü ist, sammeln wir die IDs darin
+      if (row.type === 'selection_menu') {
+        if (row.feasts) row.feasts.forEach(item => ids.add(String(item.id)));
+        if (row.saints) row.saints.forEach(item => ids.add(String(item.id)));
+      }
+    });
+    return ids;
+  }, [selectedLiturgy]);
 
   const toggleSelection = (id) => {
     setSelectedIDs(prev =>
@@ -498,11 +513,19 @@ export default function App() {
                       );
                     }
 
-                    // 2. Check: Ist es eine Doxologie (ID hat einen Punkt, z.B. "45.1")?
-                    // Wenn ja, zeige sie NUR, wenn sie ausgewählt wurde.
-                    if (row.id && row.id.toString().includes('.')) {
-                      if (!selectedIDs.includes(row.id)) {
-                        return null; // Ausblenden
+                    // 2. NEUE LOGIK: Ist diese Zeile Teil eines Auswahlmenüs?
+                    // Wir wandeln IDs in Strings um, um sicherzugehen (z.B. "45.1" vs 45.1)
+                    const currentRowID = String(row.id);
+
+                    // Prüfen: Ist diese ID in der Liste der optionalen Dinge (optionalIDs)?
+                    if (optionalIDs.has(currentRowID)) {
+                      // Ja, sie ist optional. Wurde sie ausgewählt?
+                      // Wir vergleichen sicherheitshalber als String
+                      const isSelected = selectedIDs.some(id => String(id) === currentRowID);
+
+                      // Wenn NICHT ausgewählt -> Verstecken (null zurückgeben)
+                      if (!isSelected) {
+                        return null;
                       }
                     }
 

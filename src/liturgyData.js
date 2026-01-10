@@ -616,8 +616,7 @@ export const liturgies = {
                     { id: "48.2", de: "Hl. Georg", ar: "الشهيد مار جرجس" },
                     { id: "48.3", de: "Hl. Philopater Merkurius", ar: "الشهيد فيلوباتير مرقوريوس" },
                     { id: "48.4", de: "Hl. Mina", ar: "الشهيد مار مينا" },
-                    { id: "48.5", de: "Hl. Antonius", ar: "الأنبا أنطونيوس" },
-                    { id: "48.6", de: "Hl. Mose der Schwarze", ar: "الأنبا موسى الأسود" },
+                    { id: "48.5", ar: "الأنبا أنطونيوس والأنبا بولا", de: "Hl. Antonius & Hl. Paulus" }, { id: "48.6", de: "Hl. Mose der Schwarze", ar: "الأنبا موسى الأسود" },
                     { id: "48.7", de: "Hl. Papst Kyrillus VI.", ar: "البابا كيرلس السادس" },
                     { id: "48.8", de: "Hl. Johannes der Täufer (2)", ar: "السابق يوحنا المعمدان (2)" },
                     { id: "48.9", de: "Hl. Johannes der Täufer (1)", ar: "السابق يوحنا المعمدان (1)" },
@@ -6536,7 +6535,8 @@ export const liturgies = {
                 ar_de: "Likay wa bi-haza, kama ayzan fi kol shay2, yatamaggad wa yatabarak, wa yartafi3 esmoka el-3azim el-qoddous, fi kol shay2, karim wa mobarak, ma3a Yasou3 el-Masih ebneka el-habib, wal-Rouh el-Qodos.",
                 cop_de: "Hina nem khen phai kata phriti on khen hob niven : entef-chi-o-ou ovoh entef-chi-esmou ovoh entef-chi-si : enge pek-nishti en-ran ethouav : khen hob niven et-taio-out ovoh et-esmaro-out : nem Isous Pi-khristos pek-menrit en-shiri : nem Pi-pnevma ethouav.",
             },
-            {   id: 83,
+            {
+                id: 83,
                 speaker: "Priester",
                 ar: "السلام لجميعكم.",
                 de: "Friede sei mit euch allen.",
@@ -6585,7 +6585,7 @@ export const liturgies = {
                 ar_de: "El-gasad el-moqaddas, wal-dam el-karim, ellazan le-masi7ehi, el-dabet el-kol, el-rabb elahona.",
                 cop_de: "Pi-soma ethouav : nem pi-esnof et-taio-out : ente Pef-khristos : enge Pi-pantokrator Epchois Pennouti.",
             },
-             {
+            {
                 id: 88,
                 speaker: "Diakon",
                 cop_ar: "آمين. آمين بروسيف كساتي.",
@@ -6594,7 +6594,7 @@ export const liturgies = {
                 cop_cop: "Ⲁⲙⲏⲛ. Ⲁⲙⲏⲛ ⲡⲣⲟⲥⲉⲩⲝⲁⲥⲑⲉ.",
                 ar_de: "Amin, Amin, sallou.",
                 cop_de: "Amyn. Amyn prosevxasthe.",
-            }, 
+            },
             {
                 id: 89,
                 speaker: "Volk",
@@ -6605,7 +6605,8 @@ export const liturgies = {
                 ar_de: "Ya Rab er7am.",
                 cop_de: "Kyrie eleison.",
             },
-            {   id: 90,
+            {
+                id: 90,
                 speaker: "Priester",
                 ar: "السلام لجميعكم.",
                 de: "Friede sei mit euch allen.",
@@ -6634,7 +6635,7 @@ export const liturgies = {
                 cop_de: "Ari-ten en-empsha e-jos khen ou-shephmot: Je Peniot et-khen ni-phi-oui: Maref-touvo enje pek-ran. Mares-i enje tek-met-ouro. Pete-hnak maref-shopi: em-phriti khen et-phe nem hijen pi-kahi. Pen-oik ente rasti mif nan em-pho-ou. Owoh ka ni-et-eron nan evol: em-phriti hon enten-ko evol en-ni-ete ouon entan ero-ou. Owoh emper-enten e-khoun e-pirasmos: alla nahmen evol ha pi-pet-ho-ou. Khen Pi-Khristos Isous Pen-chois. Je thok te ti-met-ouro nem ti-jom nem pi-o-ou sha eneh. Amen.",
                 ar_de: "Allahomma eg3alna mostaheqqin an naqoul be-shokr: Abana allazi fi al-samawat, le-yataqaddas esmoka, le-ya2ti malakoutoka, le-takon mashi2atoka, kama fi al-sama2 kazalika 3ala al-ard. Khobzana kafafana a3tina al-yawm, wa aghfir lana zonoubana, kama naghfir nahno aydan lil-moznebin elayna. Wa la todkhilna fi tagriba, laken naggena min al-sherrir. Bel-Masih Yasou3 Rabbina, le-anna laka al-molk wal-qowwa wal-magd ela al-abad. Amen."
             },
-              {
+            {
                 id: 101,
                 sectionTitle: {
                     de: "Das Bekenntnis",
