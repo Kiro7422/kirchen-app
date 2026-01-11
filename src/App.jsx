@@ -259,6 +259,7 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
 });
 
 // --- HAUPT APP KOMPONENTE ---
+// --- HAUPT APP KOMPONENTE ---
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState(null);
@@ -268,20 +269,78 @@ export default function App() {
   const [activeLangs, setActiveLangs] = useState(['de', 'ar', 'cop_ar']);
   const [showSettings, setShowSettings] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
-  const [showSupport, setShowSupport] = useState(false); // Die Variable für das Popup
+  const [showSupport, setShowSupport] = useState(false);
   const [targetScrollId, setTargetScrollId] = useState(null);
   const [fontSize, setFontSize] = useState(1);
   const [appTheme, setAppTheme] = useState('dark');
   const [activeHintData, setActiveHintData] = useState(null);
   const [selectedIDs, setSelectedIDs] = useState([]);
-  // --- NEUE LOGIK: Automatisch erkennen, welche IDs optional sind ---
-  // Scannt alle 'selection_menu' Einträge und sammelt die IDs der Heiligen/Feste
+
+  // 1. Refs definieren
+  const scrollContainerRef = useRef(null);
+  const scrollAnchorRef = useRef(null); // Für die Position-Merk-Logik
+
+  // 2. WICHTIG: Diese Funktion muss HIER oben stehen, bevor sie benutzt wird!
+  const scrollToElementById = (id) => {
+    if (!scrollContainerRef.current) return;
+    // Suche nach dem Element anhand des data-id Attributs
+    const element = scrollContainerRef.current.querySelector(`[data-id="${id}"]`);
+    if (element) element.scrollIntoView({ block: 'center', behavior: 'auto' }); // 'auto' ist schneller als 'smooth' beim Wiederherstellen
+  };
+
+  // 3. Helper: Findet das aktuell sichtbare Gebet (für den Anker)
+  const getVisibleRowId = () => {
+    if (!scrollContainerRef.current) return null;
+    const container = scrollContainerRef.current;
+    const containerRect = container.getBoundingClientRect();
+    const rows = container.querySelectorAll('.prayer-row');
+
+    // Ziel: Wir suchen das Element in der oberen Bildschirmhälfte
+    const targetY = containerRect.top + (containerRect.height / 3);
+
+    let bestId = null;
+    let minDistance = Infinity;
+
+    rows.forEach(row => {
+      const rect = row.getBoundingClientRect();
+      const dist = Math.abs(rect.top - targetY);
+      if (dist < minDistance) {
+        minDistance = dist;
+        bestId = row.getAttribute('data-id');
+      }
+    });
+    return bestId;
+  };
+
+  // 4. Handler: Sprache umschalten + Position merken
+  const handleLanguageToggle = (langKey) => {
+    // A. Position merken
+    const currentId = getVisibleRowId();
+    if (currentId) scrollAnchorRef.current = currentId;
+
+    // B. Sprache ändern
+    setActiveLangs(prev =>
+      prev.includes(langKey)
+        ? (prev.length > 1 ? prev.filter(x => x !== langKey) : prev)
+        : (prev.length < 3 ? [...prev, langKey] : prev)
+    );
+  };
+
+  // 5. Effekt: Position wiederherstellen NACHDEM die Sprache geändert wurde
+  useLayoutEffect(() => {
+    if (scrollAnchorRef.current && view === 'prayer') {
+      scrollToElementById(scrollAnchorRef.current);
+      scrollAnchorRef.current = null; // Reset
+    }
+  }, [activeLangs, view]); // Reagiert auf Sprachänderung
+
+  // --- Ab hier dein bestehender Code für Logik ---
+
+  // Optional IDs Logic
   const optionalIDs = React.useMemo(() => {
     if (!selectedLiturgy || !liturgies[selectedLiturgy]) return new Set();
-
     const ids = new Set();
     liturgies[selectedLiturgy].content.forEach(row => {
-      // Wenn die Zeile ein Auswahlmenü ist, sammeln wir die IDs darin
       if (row.type === 'selection_menu') {
         if (row.feasts) row.feasts.forEach(item => ids.add(String(item.id)));
         if (row.saints) row.saints.forEach(item => ids.add(String(item.id)));
@@ -296,15 +355,15 @@ export default function App() {
     );
   };
 
-  const scrollContainerRef = useRef(null);
-
   useEffect(() => { setTimeout(() => setLoading(false), 2000); }, []);
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', appTheme);
     document.documentElement.style.setProperty('--font-scale', fontSize);
   }, [appTheme, fontSize]);
 
   const closeHintPopup = () => setActiveHintData(null);
+
   const openHint = useCallback((id) => {
     const hint = liturgyHints[id];
     if (!hint || !hint.roles) return;
@@ -313,18 +372,15 @@ export default function App() {
     setActiveHintData({ id, ...roleHint });
   }, [userRole]);
 
-  const scrollToElementById = (id) => {
-    if (!scrollContainerRef.current) return;
-    const element = scrollContainerRef.current.querySelector(`[data-id="${id}"]`);
-    if (element) element.scrollIntoView({ block: 'center', behavior: 'smooth' });
-  };
-
+  // Dein alter useLayoutEffect für Navigation (bleibt)
   useLayoutEffect(() => {
     if (view === 'prayer' && targetScrollId) {
       scrollToElementById(targetScrollId);
       setTargetScrollId(null);
     }
   }, [selectedLiturgy, targetScrollId, view]);
+
+  // ... (Ab hier kommt const handleBack, handleMenuAction usw. - das kannst du lassen wie es war)
 
   const handleBack = () => {
     setShowTOC(false);
@@ -404,10 +460,21 @@ export default function App() {
 
         {showSettings && (
           <SettingsPopup
-            appLang={appLang} setAppLang={setAppLang} activeLangs={activeLangs}
-            toggleLanguage={l => setActiveLangs(prev => prev.includes(l) ? (prev.length > 1 ? prev.filter(x => x !== l) : prev) : (prev.length < 3 ? [...prev, l] : prev))}
-            fontSize={fontSize} changeFontSize={setFontSize} appTheme={appTheme} setAppTheme={setAppTheme}
-            setRole={setUserRole} userRole={userRole} close={() => setShowSettings(false)} t={t}
+            appLang={appLang}
+            setAppLang={setAppLang}
+            activeLangs={activeLangs}
+
+            // HIER MUSS JETZT DIE NEUE FUNKTION STEHEN:
+            toggleLanguage={handleLanguageToggle}
+
+            fontSize={fontSize}
+            changeFontSize={setFontSize}
+            appTheme={appTheme}
+            setAppTheme={setAppTheme}
+            setRole={setUserRole}
+            userRole={userRole}
+            close={() => setShowSettings(false)}
+            t={t}
           />
         )}
 
