@@ -24,8 +24,8 @@ export const uiTranslations = {
             ar: "لغات الصلاة (بحد أقصى 3)"
         },
         loading: {
-            de: "Wird geladen...",
-            ar: "جار التحميل..."
+            de: "Unter der Aufsicht von S.E. Bischof Dioscorus\nBischof der Diözese Süddeutschland",
+            ar: "تحت اشراف سيدنا الانبا ديسقورس\nاسقف ايبراشيه جنوب المانيا"
         },
         done: {
             de: "Fertig",
@@ -2136,13 +2136,9 @@ export const liturgies = {
                         label_ar: "افرحي يا مريم",
                         label_de: "Freu dich Maria",
                         targetLiturgy: "rejoice_mary",   // Wohin? Zur Basilius Liturgie
-                        // Zu welcher ID? ID 1
+                        targetId: 1// Zu welcher ID? ID 1
                     },
-                    {
-                        label_ar: "اسبسمس ادام",
-                        label_de: "Unsere Väter (Aspasmos Adam)",
-                        action: "goto_aspasmos_adam" // Führt zur neuen Seite 2
-                    }
+
                 ]
             },
 
@@ -2234,8 +2230,18 @@ export const liturgies = {
                 ar_de: "Axion ke dikeon.",
                 cop_de: "Axion ke dikeon.",
                 reconciliation_menu: [
-                    { label_ar: "(غ) الغريغوري", label_de: "(G) Gregorios", action: "goto_gregorios_id_5" },
-                    { label_ar: "(ك) الكيرلسي", label_de: "(K) Cyrillus", action: "goto_cyrillus_id_16" }
+                    {
+                        label_ar: "(غ) الغريغوري",
+                        label_de: "(G) Gregorios",
+                        targetLiturgy: "gregorios",
+                        targetId: 17
+                    },
+                    {
+                        label_ar: "(ك) الكيرلسي",
+                        label_de: "(K) Cyrillus",
+                        targetLiturgy: "kerollosy",
+                        targetId: 17
+                    }
                 ]
             },
             {
@@ -2289,9 +2295,24 @@ export const liturgies = {
                 ar_de: "Anta howa allazy yaqef 7awlaka el Cherubim el momtale2oun a3yonan, wal Seraphim zawoo el setat agne7a yosabe7oun da2eman beghayr sokout qa2elin:",
                 cop_de: "Enthok gar pe et-ohi eratou em-pek-koti enje ni-cherubim eth-meh en-val: nem ni-seraphim na pi-so-ou en-tenh. Ev-er-hymnos khen ou-moun evol en-at-karo-ou ev-jo emmos.",
                 reconciliation_menu: [
-                    { label_ar: "أيها الرب إله القوات", label_de: "O Herr, Gott der Heerscharen", action: "goto_lord_of_hosts" },
-                    { label_ar: "اسبسمس واطس 1", label_de: "Aspasmos Watos 1", action: "goto_aspasmos_watos_1" },
-                    { label_ar: "اسبسمس واطس 2", label_de: "Aspasmos Watos 2", action: "goto_aspasmos_watos_2" }
+                    {
+                        label_ar: "أيها الرب إله القوات",
+                        label_de: "O Herr, Gott der Heerscharen",
+                        targetLiturgy: "lord_of_hosts",
+                        targetId: 1
+                    },
+
+                    {
+                        label_ar: "اسبسمس واطس 1",
+                        label_de: "Aspasmos Watos 1",
+                        targetLiturgy: "aspasmos_watos_1",
+                        targetId: 1
+                    },
+                    {
+                        label_ar: "اسبسمس واطس 2",
+                        label_de: "Aspasmos Watos 2",
+                        action: "goto_aspasmos_watos_2"
+                    }
                 ]
             },
             {
@@ -2309,8 +2330,8 @@ export const liturgies = {
 
                 ar_de: "El Cherubim yasgodoun lak, wal Seraphim yomagedounak, sarekhin qa2elin:\nJe Agios Agios Agios, Kyrios Sabaot. El sama wal ard mamlou2atan men magdek el aqdas.",
                 reconciliation_menu: [
-                    { label_ar: "(غ) الغريغوري", label_de: "(G) Gregorios", action: "goto_gregorios_start" },
-                    { label_ar: "(ك) الكيرلسي", label_de: "(K) Cyrillus", action: "goto_cyrillus_id_23" } // Führt zu ID 21
+                    { label_ar: "(غ) الغريغوري", label_de: "(G) Gregorios", targetLiturgy: "gregorios", targetId: 24 },
+                    { label_ar: "(ك) الكيرلسي", label_de: "(K) Cyrillus", targetLiturgy: "kerollosy", targetId: 23 } // Führt zu ID 21
                 ]
             },
 
@@ -3040,26 +3061,28 @@ export const liturgies = {
                     {
                         label_ar: "المياه", // The Waters
                         label_de: "Die Gewässer",
-                        action: "navigatePage",      // ÄNDERUNG: Neue Seite
-                        targetPage: "litany_waters"  // Name der neuen Seite
+                        targetLiturgy: "litany_waters",
+                        targetId: 800 // Name der neuen Seite
                     },
                     {
                         label_ar: "الزروع", // The Plants
                         label_de: "Die Saat",
-                        action: "navigatePage",
-                        targetPage: "litany_plants"
+                        targetId: 900,
+                        targetLiturgy: "litany_plants"
                     },
                     {
                         label_ar: "الأهوية", // The Airs
                         label_de: "Die Lüfte",
-                        action: "navigatePage",
-                        targetPage: "litany_airs"
+
+                        targetLiturgy: "litany_airs",
+                        targetId: 903
                     },
                     {
                         label_ar: "شامله", // Combined
                         label_de: "Zusammenfassung",
-                        action: "navigatePage",
-                        targetPage: "litany_combined"
+
+                        targetLiturgy: "litany_combined",
+                        targetId: 905
                     },
 
                 ]
@@ -3146,8 +3169,9 @@ export const liturgies = {
                     {
                         label_ar: "بي نيشتي", // The Waters
                         label_de: "Die großen Väter",
-                        action: "navigatePage",      // ÄNDERUNG: Neue Seite
-                        targetPage: "bi_nishti"  // Name der neuen Seite
+                        // ÄNDERUNG: Neue Seite
+                        targetLiturgy: "bi_nishti",
+                        targetId: 909,   // Name der neuen Seite
                     },
                 ]
             },
@@ -6266,8 +6290,9 @@ export const liturgies = {
                     {
                         label_ar: "بي نشتي", // The Waters
                         label_de: "Bi nishti",
-                        action: "navigatePage",      // ÄNDERUNG: Neue Seite
-                        targetPage: "Bi_nishti_content"  // Name der neuen Seite
+                        targetLiturgy: "Bi_nishti_content",
+                        targetId: 2000,      // ÄNDERUNG: Neue Seite
+                        // Name der neuen Seite
                     },
 
                 ]
@@ -8212,9 +8237,24 @@ export const liturgies = {
 
                 // HIER SIND DIE NEUEN KNÖPFE:
                 reconciliation_menu: [
-                    { label_ar: "(ب) الباسيلي", label_de: "(B) Basilius", action: "goto_basily_id_5" },
-                    { label_ar: "(غ) الغريغوري", label_de: "(G) Gregorios", action: "goto_gregorios_start" },
-                    { label_ar: "(ك) الكيرلسي", label_de: "(K) Cyrillus", action: "goto_cyrillus_id_23" } // Führt zu ID 23
+                    {
+                        label_ar: "(ب) الباسيلي",
+                        label_de: "(B) Basilius",
+                        targetLiturgy: "basily",
+                        targetId: 222
+                    },
+                    {
+                        label_ar: "(غ) الغريغوري",
+                        label_de: "(G) Gregorios",
+                        targetLiturgy: "gregorios",
+                        targetId: 24
+                    },
+                    {
+                        label_ar: "(ك) الكيرلسي",
+                        label_de: "(K) Cyrillus",
+                        targetLiturgy: "kerollosy",
+                        targetId: 23
+                    } // Führt zu ID 23
                 ]
             }
         ]
@@ -8257,9 +8297,24 @@ export const liturgies = {
 
                 // HIER SIND DIE NEUEN KNÖPFE:
                 reconciliation_menu: [
-                    { label_ar: "(ب) الباسيلي", label_de: "(B) Basilius", action: "goto_basily_id_222" },
-                    { label_ar: "(غ) الغريغوري", label_de: "(G) Gregorios", action: "goto_gregorios_id_22" },
-                    { label_ar: "(ك) الكيرلسي", label_de: "(K) Cyrillus", action: "goto_cyrillus_id_23" } // Führt zu ID 21
+                    {
+                        label_ar: "(ب) الباسيلي",
+                        label_de: "(B) Basilius",
+                        targetLiturgy: "basily",
+                        targetId: 18
+                    },
+                    {
+                        label_ar: "(غ) الغريغوري",
+                        label_de: "(G) Gregorios",
+                        targetLiturgy: "gregorios",
+                        targetId: 23
+                    },
+                    {
+                        label_ar: "(ك) الكيرلسي",
+                        label_de: "(K) Cyrillus",
+                        targetLiturgy: "kerollosy",
+                        targetId: 22
+                    } // Führt zu ID 21
                 ]
 
             }
