@@ -242,7 +242,7 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
         {(hasMenu || hasNav) && (
           <div className="inline-menu-container">
             {hasMenu && row.reconciliation_menu.map((btn, idx) => (
-              <button key={`menu-${idx}`} className="inline-menu-btn" onClick={() => handleMenuAction(btn.action)}>
+              <button key={`menu-${idx}`} className="inline-menu-btn" onClick={() => handleMenuAction(btn)}>
                 <span className="btn-label-ar">{btn.label_ar}</span><span className="btn-label-de">{btn.label_de}</span>
               </button>
             ))}
@@ -280,14 +280,14 @@ export default function App() {
   const scrollContainerRef = useRef(null);
   const scrollAnchorRef = useRef(null); // Für die Position-Merk-Logik
 
-  // 2. WICHTIG: Diese Funktion muss HIER oben stehen, bevor sie benutzt wird!
   const scrollToElementById = (id) => {
     if (!scrollContainerRef.current) return;
-    // Suche nach dem Element anhand des data-id Attributs
     const element = scrollContainerRef.current.querySelector(`[data-id="${id}"]`);
-    if (element) element.scrollIntoView({ block: 'center', behavior: 'auto' }); // 'auto' ist schneller als 'smooth' beim Wiederherstellen
+    if (element) {
+      // ÄNDERUNG: 'start' statt 'center', damit der Text oben beginnt
+      element.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
   };
-
   // 3. Helper: Findet das aktuell sichtbare Gebet (für den Anker)
   const getVisibleRowId = () => {
     if (!scrollContainerRef.current) return null;
@@ -381,41 +381,52 @@ export default function App() {
   }, [selectedLiturgy, targetScrollId, view]);
 
   // ... (Ab hier kommt const handleBack, handleMenuAction usw. - das kannst du lassen wie es war)
-
   const handleBack = () => {
     setShowTOC(false);
-    if (view === 'prayer') setView('liturgyMenu');
-    else setView('home');
+
+    if (view === 'prayer') {
+      // Wenn wir in einer Agpeya-Stunde sind, zurück zum Agpeya-Menü
+      if (selectedLiturgy && selectedLiturgy.startsWith('agpeya')) {
+        setView('agpeyaMenu');
+      } else {
+        // Sonst zurück zum Liturgie-Menü
+        setView('liturgyMenu');
+      }
+    } else if (view === 'agpeyaMenu') {
+      // Vom Agpeya Menü zurück nach Hause
+      setView('home');
+    } else {
+      // Von überall sonst nach Hause
+      setView('home');
+    }
   };
 
-  const handleMenuAction = useCallback((action) => {
-    if (!action) return;
-    const litMap = {
-      goto_basily_start: ['basily', null], goto_basily_id_5: ['basily', 5], goto_basily_id_222: ['basily', 222],
-      goto_cyrillus_start: ['kerollosy', null], goto_cyrillus_id_9: ['kerollosy', 9], goto_cyrillus_id_16: ['kerollosy', 16], goto_cyrillus_id_23: ['kerollosy', 23],
-      goto_gregorios_id_22: ['gregorios', 22], goto_gregorios_id_5: ['gregorios', 5], goto_gregorios_start: ['gregorios', null],
-      goto_rejoice_mary: ['rejoice_mary', null], goto_aspasmos_adam: ['aspasmos_adam', null],
-      goto_lord_of_hosts: ['lord_of_hosts', null], goto_aspasmos_watos_1: ['aspasmos_watos_1', null],
-      goto_offering_id_1: ['offering', 1],
-    };
-    if (litMap[action]) {
-      setSelectedLiturgy(litMap[action][0]);
-      setTargetScrollId(litMap[action][1]);
-      setView('prayer');
-    }
-  }, []);
+  const handleMenuAction = useCallback((btn) => {
+    // Falls der Button nur ein String war (altes Format), ignorieren wir ihn oder fangen ihn ab
+    if (typeof btn === 'string') return;
 
-  const handleNavAction = useCallback((btn) => {
-    if (!btn || !btn.action) return;
-    if (btn.action === 'jumpToId') {
-      if (btn.targetLiturgy) setSelectedLiturgy(btn.targetLiturgy);
-      if (btn.targetId) setTargetScrollId(btn.targetId);
-      setView('prayer');
-    } else if (btn.action === 'navigatePage') {
-      setSelectedLiturgy(btn.targetPage);
-      setView('prayer');
+    // Neue Logik: Direkte Zuweisung aus den Daten
+    if (btn.targetLiturgy) {
+      setSelectedLiturgy(btn.targetLiturgy);
     }
-  }, []);
+
+    if (btn.targetId) {
+      setTargetScrollId(btn.targetId);
+    }
+
+    // Wenn wir schon im Gebet sind, scrollen wir direkt, ansonsten wechseln wir die View
+    if (view !== 'prayer') {
+      setView('prayer');
+    } else if (btn.targetId) {
+      // Wenn wir schon in der View sind, triggern wir das Scrollen manuell
+      scrollToElementById(btn.targetId);
+    }
+  }, [view]);
+
+  // handleNavAction kann jetzt einfach handleMenuAction aufrufen, da die Logik identisch ist
+  const handleNavAction = useCallback((btn) => {
+    handleMenuAction(btn);
+  }, [handleMenuAction]);
 
   const t = (key, subKey) => subKey ? uiTranslations[key][subKey][appLang] : uiTranslations.titles[key][appLang];
   const getSpeakerClass = useCallback((speaker) => {
@@ -516,41 +527,62 @@ export default function App() {
           </motion.button>
         </div>
       </header>
-
       <main className="content">
         <AnimatePresence mode='wait'>
+
+          {/* 1. HOME VIEW (Update für den Agpeya Button) */}
           {view === 'home' && (
             <motion.div key="home" className="center-view" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <div className="center-content-wrapper">
                 <motion.img src="/logo.png" className="main-logo" animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 5 }} />
                 <h1 className="church-title">{t('homeSubtitle')}</h1>
                 <div className="btn-group">
-                  <MenuButton onClick={() => setView('agpeya')} text={t('buttons', 'agpeya')} icon={<BookOpen size={20} />} />
-                  <MenuButton onClick={() => setView('liturgyMenu')} text={t('buttons', 'liturgy')} highlight />
+                  {/* ÄNDERUNG: Button führt jetzt zu agpeyaMenu */}
+                  <MenuButton onClick={() => setView('agpeyaMenu')} text={t('buttons', 'agpeya')} icon={<BookOpen size={20} />} highlight />
+                  <MenuButton onClick={() => setView('liturgyMenu')} text={t('buttons', 'liturgy')} />
                   <MenuButton onClick={() => setView('bible')} text={t('buttons', 'bible')} />
                 </div>
               </div>
             </motion.div>
           )}
 
+          {/* 2. NEU: AGPEYA MENU VIEW */}
+          {/* 2. NEU: AGPEYA MENU VIEW */}
+          {/* 2. AGPEYA MENU VIEW */}
+          {view === 'agpeyaMenu' && (
+            <motion.div key="agpeyaMenu" className="center-view" initial={{ x: 100 }} animate={{ x: 0 }} exit={{ x: -100 }}>
+              <div className="center-content-wrapper">
+                {/* Titel ohne zweiten Parameter, um den Absturz zu verhindern */}
+                <h2 className="page-title">{t('chooseHour')}</h2>
+
+                <div className="btn-group">
+                  <MenuButton onClick={() => { setSelectedLiturgy('agpeya_prime'); setView('prayer'); }} text={t('buttons', 'agpeya_prime')} />
+                  <MenuButton onClick={() => { setSelectedLiturgy('agpeya_terce'); setView('prayer'); }} text={t('buttons', 'agpeya_terce')} />
+                  <MenuButton onClick={() => { setSelectedLiturgy('agpeya_sext'); setView('prayer'); }} text={t('buttons', 'agpeya_sext')} />
+
+                  {/* --- NEUE KNÖPFE HIER EINGEFÜGT --- */}
+                  <MenuButton onClick={() => { setSelectedLiturgy('agpeya_none'); setView('prayer'); }} text={t('buttons', 'agpeya_none')} />
+                  <MenuButton onClick={() => { setSelectedLiturgy('agpeya_vespers'); setView('prayer'); }} text={t('buttons', 'agpeya_vespers')} />
+                  <MenuButton onClick={() => { setSelectedLiturgy('agpeya_compline'); setView('prayer'); }} text={t('buttons', 'agpeya_compline')} />
+                  <MenuButton onClick={() => { setSelectedLiturgy('agpeya_midnight'); setView('prayer'); }} text={t('buttons', 'agpeya_midnight')} />
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* 3. LITURGY MENU (Bleibt fast gleich) */}
           {view === 'liturgyMenu' && (
             <motion.div key="menu" className="center-view" initial={{ x: 100 }} animate={{ x: 0 }} exit={{ x: -100 }}>
               <div className="center-content-wrapper">
                 <h2 className="page-title">{t('chooseLiturgy')}</h2>
                 <div className="btn-group">
-
-                  {/* --- NEUER KNOPF: Morgenweihrauchopfer --- */}
                   <MenuButton
                     onClick={() => { setSelectedLiturgy('morning_incense'); setView('prayer'); }}
                     text={t('buttons', 'morning_incense')}
                     icon={<Sun size={20} />}
                     highlight={true}
                   />
-
-
-
-                  {/* --- Standard Liste --- */}
-                  {['offering', 'basily', 'kerollosy', 'gregorios', 'habashy'].map(type => (
+                  {['offering', 'basily', 'kerollosy', 'gregorios'].map(type => (
                     <MenuButton key={type} onClick={() => { setSelectedLiturgy(type); setView('prayer'); }} text={t('buttons', type)} />
                   ))}
                 </div>
@@ -561,67 +593,77 @@ export default function App() {
           {view === 'prayer' && selectedLiturgy && (
             <div className={prayerModeClass}>
               <div className="scroll-area" ref={scrollContainerRef}>
-                <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                  <h3 className="liturgy-header">{liturgies[selectedLiturgy].title[appLang]}</h3>
-                </div>
-                <div className="prayer-content">
-                  {liturgies[selectedLiturgy].content.map((row, index) => {
 
-                    // 1. Check: Ist es das Auswahl-Menü?
-                    if (row.type === 'selection_menu') {
-                      return (
-                        <SelectionMenu
-                          key={index}
-                          data={row}
-                          selectedIDs={selectedIDs}
-                          toggle={toggleSelection}
-                          appLang={appLang}
-                        />
-                      );
-                    }
+                {/* --- SICHERHEITS-CHECK START --- */}
+                {/* Wenn die Liturgie nicht in der Datenbank gefunden wird, zeige Fehler statt Absturz */}
+                {!liturgies[selectedLiturgy] ? (
+                  <div style={{ padding: 20, textAlign: 'center', color: 'red' }}>
+                    <h2>Fehler: Daten nicht gefunden!</h2>
+                    <p>Key: {selectedLiturgy}</p>
+                    <button className="hint-btn" onClick={() => setView('home')}>Zurück</button>
+                  </div>
+                ) : (
+                  <>
+                    {/* HIER BEGINNT DER NORMALE INHALT */}
+                    <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                      {/* Das ? nach title verhindert Absturz, falls title fehlt */}
+                      <h3 className="liturgy-header">{liturgies[selectedLiturgy]?.title?.[appLang]}</h3>
+                    </div>
 
-                    // 2. NEUE LOGIK: Ist diese Zeile Teil eines Auswahlmenüs?
-                    // Wir wandeln IDs in Strings um, um sicherzugehen (z.B. "45.1" vs 45.1)
-                    const currentRowID = String(row.id);
+                    <div className="prayer-content">
+                      {/* Das ? vor .map ist wichtig! */}
+                      {liturgies[selectedLiturgy]?.content?.map((row, index) => {
+                        // ... (deine existierende map Funktion)
+                        // Kopiere hier exakt deinen bestehenden Code rein, der die PrayerRowWithLogic rendert
+                        if (row.type === 'selection_menu') {
+                          return <SelectionMenu key={index} data={row} selectedIDs={selectedIDs} toggle={toggleSelection} appLang={appLang} />;
+                        }
 
-                    // Prüfen: Ist diese ID in der Liste der optionalen Dinge (optionalIDs)?
-                    if (optionalIDs.has(currentRowID)) {
-                      // Ja, sie ist optional. Wurde sie ausgewählt?
-                      // Wir vergleichen sicherheitshalber als String
-                      const isSelected = selectedIDs.some(id => String(id) === currentRowID);
+                        const currentRowID = String(row.id);
+                        if (optionalIDs.has(currentRowID)) {
+                          const isSelected = selectedIDs.some(id => String(id) === currentRowID);
+                          if (!isSelected) return null;
+                        }
 
-                      // Wenn NICHT ausgewählt -> Verstecken (null zurückgeben)
-                      if (!isSelected) {
-                        return null;
-                      }
-                    }
+                        const dynamicLangs = activeLangs.filter(l => row[l]?.trim());
+                        if (row.counter) return <KyrieCounter key={index} initialCount={row.counter} />;
 
-                    // 3. Normaler Inhalt (Kyrie oder Textzeile)
-                    const dynamicLangs = activeLangs.filter(l => row[l]?.trim());
-                    if (row.counter) return <KyrieCounter key={index} initialCount={row.counter} />;
+                        return (
+                          <PrayerRowWithLogic
+                            key={index}
+                            row={row}
+                            rowID={row.id || index}
+                            appLang={appLang}
+                            dynamicLangs={dynamicLangs}
+                            hasMenu={!!row.reconciliation_menu?.length}
+                            handleMenuAction={handleMenuAction}
+                            hasNav={!!row.navigationButtons?.length}
+                            handleNavAction={handleNavAction}
+                            getSpeakerClass={getSpeakerClass}
+                            hints={liturgyHints}
+                            openHint={openHint}
+                            selectedLiturgy={selectedLiturgy}
+                            userRole={userRole}
+                          />
+                        );
+                      })}
+                    </div>
+                  </>
+                )}
+                {/* --- SICHERHEITS-CHECK ENDE --- */}
 
-                    return (
-                      <PrayerRowWithLogic
-                        key={index} row={row} rowID={row.id || index} appLang={appLang} dynamicLangs={dynamicLangs}
-                        hasMenu={!!row.reconciliation_menu?.length} handleMenuAction={handleMenuAction}
-                        hasNav={!!row.navigationButtons?.length} handleNavAction={handleNavAction}
-                        getSpeakerClass={getSpeakerClass} hints={liturgyHints} openHint={openHint}
-                        selectedLiturgy={selectedLiturgy} userRole={userRole}
-                      />
-                    );
-                  })}
-                </div>
                 <div style={{ height: '100px' }}></div>
               </div>
             </div>
           )}
-
-          {(view === 'agpeya' || view === 'bible') && (
+          {/* 5. NUR NOCH BIBEL IST COMING SOON */}
+          {view === 'bible' && (
             <div className="center-view">
               <h2 style={{ color: 'var(--gold)' }}>Coming Soon...</h2>
               <button onClick={() => setView('home')} className="hint-btn">Zurück</button>
             </div>
           )}
+
         </AnimatePresence>
       </main>
     </div>

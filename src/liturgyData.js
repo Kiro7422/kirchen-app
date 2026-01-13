@@ -1,6 +1,5 @@
 // src/liturgyData.js
 
-import { title } from "framer-motion/client";
 // NEU: Übersetzungen für die Benutzeroberfläche (UI)
 export const uiTranslations = {
     titles: {
@@ -31,6 +30,10 @@ export const uiTranslations = {
         done: {
             de: "Fertig",
             ar: "تم"
+        },
+        chooseHour: {
+            de: "Wähle die Stunde",
+            ar: "اختر الساعة"
         }
     },
     buttons: {
@@ -42,8 +45,17 @@ export const uiTranslations = {
         basily: { de: "Basilius", ar: "القداس الباسيلي" },
         kerollosy: { de: "Cyrillus", ar: "القداس الكيرلسي" },
         gregorios: { de: "Gregorios", ar: "القداس الغريغوري" },
-        habashy: { de: "Äthiopisch", ar: "القداس الحبشي" }
+        habashy: { de: "Äthiopisch", ar: "القداس الحبشي" },
+        agpeya_intro: { de: "Einleitende Gebete", ar: "مقدمة الصلوات" },
+        agpeya_prime: { de: "Morgengebet", ar: "صلاة باكر" },
+        agpeya_terce: { de: "3. Stunde", ar: "صلاة الساعة الثالثة" },
+        agpeya_sext: { de: "6. Stunde", ar: "صلاة الساعة السادسة" },
+        agpeya_none: { de: "9. Stunde", ar: "صلاة الساعة التاسعة" },
+        agpeya_vespers: { de: "Sonnenuntergangsgebet", ar: "صلاة الغروب" },
+        agpeya_compline: { de: "Nachtgebet", ar: "صلاة النوم" },
+        agpeya_midnight: { de: "Mitternachtsgebet", ar: "صلاة نصف الليل" }
     }
+
 };
 export const languages = {
     de: { label: " Deutsch", default: true },
@@ -1098,6 +1110,164 @@ export const liturgies = {
 
         ]
     },
+    agpeya_prime: {
+        title: { ar: "صلاة باكر", de: "Das Morgengebet" },
+        content: [
+            {
+                id: 1,
+                speaker: "Beter",
+                ar: "باسم الآب والابن والروح القدس الإله الواحد، آمين.\nيا رب ارحم. يا رب ارحم. يا رب بارك. آمين.",
+                de: "Im Namen des Vaters und des Sohnes und des Heiligen Geistes, des einen Gottes. Amen.\nHerr erbarme dich. Herr erbarme dich. Herr segne uns. Amen.",
+                cop_ar: "خين إفران إم إفيوت ..."
+            },
+            {
+                id: 2,
+                speaker: "Beter",
+                ar: "المجد للآب والابن والروح القدس، الآن وكل أوان وإلى دهر الدهور. آمين.",
+                de: "Ehre sei dem Vater und dem Sohn und dem Heiligen Geist, jetzt und allezeit und in die Ewigkeit der Ewigkeiten. Amen.",
+                cop_ar: "ذوكصا باتري ..."
+            },
+            {
+                id: 3,
+                sectionTitle: { de: "Das Gebet des Herrn", ar: "الصلاة الربانية" },
+                speaker: "Beter",
+                ar: "اللهم اجعلنا مستحقين أن نقول بشكر: أبانا الذي في السموات...",
+                de: "Mache uns würdig, in Dankbarkeit zu sprechen: Vater unser im Himmel...",
+                cop_ar: "أري تين إن إمبشا..."
+            },
+            {
+                id: 4,
+                sectionTitle: { de: "Das Dankgebet", ar: "صلاة الشكر" },
+                speaker: "Beter",
+                ar: "فلنشكر صانع الخيرات الرحوم الله، أبا ربنا وإلهنا ومخلصنا يسوع المسيح...",
+                de: "Lasst uns Dank sagen dem Wohltaten spendenden und barmherzigen Gott...",
+                cop_ar: "مارين شيب إهموت..."
+            },
+            {
+                id: 5,
+                sectionTitle: { de: "Psalm 50", ar: "المزمور الخمسون" },
+                speaker: "Beter",
+                ar: "ارحمني يا الله كعظيم رحمتك، ومثل كثرة رأفتك تمحو إثمي...",
+                de: "Erbarme dich meiner, o Gott, nach deiner großen Barmherzigkeit..."
+            },
+            // ... Hier folgen die weiteren Psalmen und das Evangelium für das Morgengebet ...
+            {
+                id: 6,
+                sectionTitle: { de: "Abschluss", ar: "الختام" },
+                speaker: "Beter",
+                ar: "قدوس قدوس قدوس رب الصباؤوت...",
+                de: "Heilig, Heilig, Heilig, Herr der Heerscharen..."
+            }
+        ]
+    },
+
+    // --- In src/liturgyData.js ---
+
+    // 3. Stunde (Terz)
+    agpeya_terce: {
+        title: { ar: "صلاة الساعة الثالثة", de: "Die Terz (3. Stunde)" },
+        content: [
+            {
+                id: 1, speaker: "Beter",
+                ar: "باسم الآب...", de:
+                    "Im Namen des Vaters..."
+            },
+            {
+                id: 2, sectionTitle: {
+                    ar: "مزمور ٢٠",
+                    de: "Psalm 20"
+                },
+                speaker: "Beter",
+                ar: "يستجيب لك الرب...",
+                de: "Der Herr erhöre dich..."
+            }
+        ]
+    }, // <--- WICHTIG: Dieses Komma darf nicht fehlen!
+
+    // 6. Stunde (Sext)
+    agpeya_sext: {
+        title: { ar: "صلاة الساعة السادسة", de: "Die Sext (6. Stunde)" },
+        content: [
+            {
+                id: 1,
+                speaker: "Beter",
+                ar: "باسم الآب والابن والروح القدس...",
+                de: "Im Namen des Vaters und des Sohnes...",
+                cop_ar: "خين إفران...",
+                cop_de: "Khen efran..."
+            },
+            {
+                id: 2,
+                speaker: "Beter",
+                ar: "يا رب ارحم. يا رب ارحم. يا رب بارك. آمين.",
+                de: "Herr erbarme dich. Herr erbarme dich. Herr segne uns. Amen."
+            }
+        ]
+    }, // <--- Komma!
+
+    // 9. Stunde (Non)
+    agpeya_none: {
+        title: { ar: "صلاة الساعة التاسعة", de: "Die None (9. Stunde)" },
+        content: [
+            {
+                id: 1,
+                speaker: "Beter",
+                ar: "يا رب ارحم...",
+                de: "Herr erbarme dich..."
+            }
+        ]
+    }, // <--- Komma!
+
+    // 11. Stunde (Vesper)
+    agpeya_vespers: {
+        title: { ar: "صلاة الغروب", de: "Die Vesper (11. Stunde)" },
+        content: [
+            {
+                id: 1,
+                speaker: "Beter",
+                ar: "يا رب ارحم...",
+                de: "Herr erbarme dich..."
+            }
+        ]
+    }, // <--- Komma!
+
+    // 12. Stunde (Komplet)
+    agpeya_compline: {
+        title: { ar: "صلاة النوم", de: "Die Komplet (12. Stunde)" },
+        content: [
+            {
+                id: 1,
+                speaker: "Beter",
+                ar: "يا رب ارحم...",
+                de: "Herr erbarme dich..."
+            }
+        ]
+    }, // <--- Komma!
+
+    // Mitternachtsgebet
+    agpeya_midnight: {
+        title: { ar: "صلاة نصف الليل", de: "Das Mitternachtsgebet" },
+        content: [
+            {
+                id: 1,
+                speaker: "Beter",
+                ar: "قوموا يا بني النور...",
+                de: "Steht auf, o Kinder des Lichts..."
+            }
+        ]
+    }, // <--- Komma!
+
+    // --- Hier geht es weiter mit den anderen Liturgien (falls vorhanden) ---
+    offering: {
+        title: {
+            de: "Auswahl des Lammbrotes",
+            ar: "تقديم الحمل"
+        },
+        content: [
+            // ... Inhalt von offering ...
+        ]
+    },
+
 
     offering: {
         title: {
@@ -1862,24 +2032,28 @@ export const liturgies = {
                 type: "menu_selection", // Optional: Damit die App weiß, dass jetzt Buttons kommen
                 reconciliation_menu: [
                     {
-                        label_ar: "يا الله العظيم الابدي (ب)",
-                        label_de: "Großer und ewiger Gott (B)",
-                        action: "goto_basily_start"
+                        label_ar: "يا الله العظيم (ب)",
+                        label_de: "Großer Gott (B)",
+                        targetLiturgy: "basily",   // Wohin? Zur Basilius Liturgie
+                        targetId: 1                // Zu welcher ID? ID 1
                     },
                     {
                         label_ar: "صلاه الصلح 2 (عال فوق )(ب)",
                         label_de: "Hoch über 2 (B)",
-                        action: null
+                        targetLiturgy: "basily",
+                        targetId: 3
                     },
                     {
                         label_ar: "يا رئيس الحياه (ك)",
-                        label_de: "O Urheber des Lebens (K)",
-                        action: "goto_cyrillus_start"
+                        label_de: "O Urheber (K)",
+                        targetLiturgy: "kerollosy", // Wohin? Zur Cyrillus Liturgie
+                        targetId: 1            // Zu welcher ID? (Prüfe die ID in kerollosy)
                     },
                     {
                         label_ar: "ايها الكائن (غ)",
-                        label_de: "der du bist,der (G)",
-                        action: "goto_gregorios_start"
+                        label_de: "Der du bist (G)",
+                        targetLiturgy: "gregorios",
+                        targetId: 1
                     },
                     {
                         label_ar: "يا اله المحبه (ك)",
@@ -1901,17 +2075,7 @@ export const liturgies = {
 
 
 
-            {
-                id: 6,
-                speaker: "P",
-                cop_ar: "",
-                de: "",
-                ar: "",
-                cop_cop: "",
-                ar_de: "",
-                cop_de: "",
 
-            },
         ]
     },
     // --- BASILIUS LITURGIE ---
@@ -1971,7 +2135,8 @@ export const liturgies = {
                     {
                         label_ar: "افرحي يا مريم",
                         label_de: "Freu dich Maria",
-                        action: "goto_rejoice_mary" // Führt zur neuen Seite 1
+                        targetLiturgy: "rejoice_mary",   // Wohin? Zur Basilius Liturgie
+                        // Zu welcher ID? ID 1
                     },
                     {
                         label_ar: "اسبسمس ادام",
@@ -2679,15 +2844,14 @@ export const liturgies = {
                     {
                         label_ar: "الاواشي (ك)",
                         label_de: "Die Gebete für.. (k)",
-                        action: "jumpToId",
                         targetId: 17.02,       // Stelle sicher, dass diese ID in der Kyrillos-Datei existiert!
                         targetLiturgy: "kerollosy" // KORRIGIERT: Muss exakt so heißen wie in App.js
                     },
                     {
                         label_ar: "الاواشي السبعه الصغار",
-                        label_de: "Die kleinen 7 Gebete",
-                        action: "navigatePage",
-                        targetPage: "seven_small_litanies"
+                        label_de: "Die kle  inen 7 Gebete",
+                        targetLiturgy: "seven_small_litanies",
+                        targetId: 700
                     }
                 ]
             },
@@ -8103,6 +8267,7 @@ export const liturgies = {
         ]
 
     },
+
 
     seven_small_litanies: {
         title: {
