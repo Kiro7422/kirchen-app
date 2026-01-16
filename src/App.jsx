@@ -338,8 +338,8 @@ function LoadingScreen({ appLang }) {
           marginTop: '20px'
         }}>
           {appLang === 'ar'
-            ? "تحت اشراف سيدنا الانبا ديسقورس\nاسقف ايبراشيه جنوب المانيا"
-            : "Unter der Aufsicht von S.E. Bischof Dioscorus\nBischof der Diözese Süddeutschland"}
+            ? "تحت اشراف سيدنا الانبا ديسقوروس \nاسقف ايبراشيه جنوب المانيا و رئيس دير الانبا انطونيوس كرفلباخ"
+            : "Mit den Gebeten S.H. Papst Tawadros II und Unter der Aufsicht von S.E. Bischof Dioscorus\nBischof der Diözese Süddeutschland und Abt des Klosters St.Antonius in Kröffelbach"}
         </h2>
       </div>
     </div>
