@@ -1,13 +1,19 @@
-/* src/App.js */
 import React, { useState, useEffect, useRef, useLayoutEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// Icons
-import { Settings, ArrowLeft, BookOpen, User, Sun, Moon, Coffee, Check, ChevronDown, Globe, HelpCircle, X, Instagram } from 'lucide-react';
-import { liturgies, languages, uiTranslations, liturgyHints } from './liturgyData';
 
-// WICHTIG: Stelle sicher, dass das Bild in src/assets/ liegt!
+// Supabase - Nur ein einziges Mal!
+import { supabase } from './supabaseClient';
+
+// Icons
+// Ändere diese Zeile:
+import { Settings, ArrowLeft, BookOpen, Globe, Lock as LockIcon, Unlock as UnlockIcon, Instagram, HelpCircle, Sun, ChevronDown, X, User, Moon, Coffee, Check } from 'lucide-react';
+// Lokale Daten
+import { liturgies as localLiturgies, languages, uiTranslations, liturgyHints } from './liturgyData';
+
+// Assets & CSS
 import ibrashiaLogo from './assets/ibrashia.png';
 import './App.css';
+
 
 // --- HELPER: Koptisches Datum ---
 const getCopticDate = (appLang) => {
@@ -174,21 +180,42 @@ const TableOfContents = ({ content, appLang, onJump, isOpen, toggleOpen }) => {
 };
 
 // --- GEBETSZEILE ---
-const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, hasNav, handleNavAction, getSpeakerClass, hints, openHint, selectedLiturgy, userRole }) => {
+// --- GEBETSZEILE (MIT ADMIN KONTROLLEN) ---
+const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, handleMenuAction, hasNav, handleNavAction, getSpeakerClass, hints, openHint, selectedLiturgy, userRole, isAdmin, onEdit, onDelete }) => {
   const uniqueHintKey = selectedLiturgy ? `${selectedLiturgy}_id_${rowID}` : `generic_id_${rowID}`;
-  const hasHintData = hints && hints[uniqueHintKey] && hints[uniqueHintKey].roles && hints[uniqueHintKey].roles[userRole];
-  const showIcon = !!hasHintData;
+  const hintObj = row.hints || (hints && hints[uniqueHintKey]);
+  const roleHint = hintObj && hintObj.roles && hintObj.roles[userRole];
+  const showIcon = !!roleHint;
+
+  if (row.type === 'title') {
+    return (
+      <div style={{ position: 'relative', textAlign: 'center', marginTop: '40px', marginBottom: '20px' }} data-id={rowID}>
+        {isAdmin && (
+          <div style={{ position: 'absolute', top: '-10px', right: '10px', display: 'flex', gap: '5px', zIndex: 10 }}>
+            <button onClick={() => onEdit(row)} style={{ background: 'rgba(0,0,0,0.8)', border: '1px solid var(--gold)', borderRadius: '5px', padding: '3px 8px', cursor: 'pointer' }}>✏️</button>
+            <button onClick={() => onDelete(row.id)} style={{ background: 'rgba(255,0,0,0.2)', border: '1px solid red', borderRadius: '5px', padding: '3px 8px', cursor: 'pointer' }}>🗑️</button>
+          </div>
+        )}
+        <div style={{ background: '#0a0a0a', border: '1px solid var(--gold)', borderRadius: '8px', padding: '10px 20px', display: 'inline-block' }}>
+          <h4 className="section-title" style={{ margin: 0, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+            {row.sectionTitle?.[appLang] || row.sectionTitle?.de}
+          </h4>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
-      {row.sectionTitle && (
-        <div style={{ textAlign: 'center', marginTop: '30px', marginBottom: '10px' }}>
-          <h4 className="section-title">{row.sectionTitle[appLang]}</h4>
-        </div>
-      )}
       <div className={`prayer-row ${getSpeakerClass(row.speaker)}`} data-id={rowID} style={{ position: 'relative' }}>
+        {isAdmin && (
+          <div style={{ position: 'absolute', top: '-10px', right: '10px', display: 'flex', gap: '5px', zIndex: 10 }}>
+            <button onClick={() => onEdit(row)} style={{ background: 'rgba(0,0,0,0.8)', border: '1px solid var(--gold)', borderRadius: '5px', padding: '3px 8px', cursor: 'pointer' }}>✏️</button>
+            <button onClick={() => onDelete(row.id)} style={{ background: 'rgba(255,0,0,0.2)', border: '1px solid red', borderRadius: '5px', padding: '3px 8px', cursor: 'pointer' }}>🗑️</button>
+          </div>
+        )}
         {showIcon && (
-          <motion.div className="hint-trigger-icon" onClick={() => openHint(uniqueHintKey)} initial={{ scale: 0 }} animate={{ scale: 1 }} whileTap={{ scale: 0.9 }}>!</motion.div>
+          <motion.div className="hint-trigger-icon" onClick={() => openHint(roleHint)} initial={{ scale: 0 }} animate={{ scale: 1 }} whileTap={{ scale: 0.9 }}>!</motion.div>
         )}
         {row.speaker && <span className="speaker">{row.speaker}</span>}
         <div className="text-grid" style={{ gridTemplateColumns: `repeat(${dynamicLangs.length || 1}, 1fr)` }}>
@@ -212,7 +239,6 @@ const PrayerRowWithLogic = memo(({ row, rowID, appLang, dynamicLangs, hasMenu, h
     </>
   );
 });
-
 // --- SPRACHAUSWAHL SCREEN (NEU) ---
 // --- SPRACHAUSWAHL SCREEN MIT ENTWICKLER-KARTEN ---
 // --- SPRACHAUSWAHL SCREEN (NEUES LAYOUT) ---
@@ -377,11 +403,25 @@ function RoleCard({ labelDe, labelAr, onClick }) {
 }
 
 // --- MENU BUTTON ---
-function MenuButton({ text, onClick, highlight, icon }) {
+// --- MENU BUTTON (Mit Lösch-Funktion) ---
+function MenuButton({ text, onClick, highlight, icon, onDelete }) {
   return (
-    <motion.button whileTap={{ scale: 0.96 }} onClick={onClick} className={`menu-btn ${highlight ? 'highlight' : ''}`}>
-      {icon && <span style={{ marginRight: '8px' }}>{icon}</span>} {text}
-    </motion.button>
+    <div style={{ display: 'flex', gap: '10px', width: '100%', marginBottom: '10px' }}>
+      <motion.button whileTap={{ scale: 0.96 }} onClick={onClick} className={`menu-btn ${highlight ? 'highlight' : ''}`} style={{ flex: 1, margin: 0 }}>
+        {icon && <span style={{ marginRight: '8px' }}>{icon}</span>} {text}
+      </motion.button>
+
+      {onDelete && (
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={(e) => { e.stopPropagation(); onDelete(); }}
+          className="menu-btn"
+          style={{ width: '60px', margin: 0, background: 'rgba(255,50,50,0.2)', border: '1px solid #ff4444', color: '#ff4444', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        >
+          🗑️
+        </motion.button>
+      )}
+    </div>
   );
 }
 
@@ -428,6 +468,43 @@ export default function App() {
   const [appLang, setAppLang] = useState('de');
   const [activeLangs, setActiveLangs] = useState(['de', 'ar', 'cop_ar']);
   const [showSettings, setShowSettings] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showAddMenu, setShowAddMenu] = useState(false);
+  const [addMenuType, setAddMenuType] = useState('select'); // Steuert, ob die Auswahl oder ein Formular gezeigt wird
+  const [newTitleDe, setNewTitleDe] = useState('');
+  const [currentFolder, setCurrentFolder] = useState(null); // Speichert die ID des geöffneten Ordners
+  const [newTitleAr, setNewTitleAr] = useState('');
+  const [newId, setNewId] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
+  const [showAddBlock, setShowAddBlock] = useState(false);
+  const [insertIndex, setInsertIndex] = useState(0);
+  const [blockFormType, setBlockFormType] = useState('select');
+  const [newSectionTitleDe, setNewSectionTitleDe] = useState('');
+  const [newSectionTitleAr, setNewSectionTitleAr] = useState('');
+
+  const [newBlockDe, setNewBlockDe] = useState('');
+  const [newBlockAr, setNewBlockAr] = useState('');
+  const [newBlockCopAr, setNewBlockCopAr] = useState('');
+  const [newBlockCopCop, setNewBlockCopCop] = useState('');
+  const [newBlockArDe, setNewBlockArDe] = useState('');
+  const [newBlockCopDe, setNewBlockCopDe] = useState('');
+  const [newBlockSpeaker, setNewBlockSpeaker] = useState('');
+
+  // --- HINWEISE FÜR ALLE 3 ROLLEN ---
+  const [hintPriesterDe, setHintPriesterDe] = useState('');
+  const [hintPriesterAr, setHintPriesterAr] = useState('');
+  const [hintDiakonDe, setHintDiakonDe] = useState('');
+  const [hintDiakonAr, setHintDiakonAr] = useState('');
+  const [hintVolkDe, setHintVolkDe] = useState(''); // NEU: Volk
+  const [hintVolkAr, setHintVolkAr] = useState(''); // NEU: Volk
+
+  // --- NEU: FÜR DEN BEARBEITUNGS-MODUS ---
+  const [editingBlockId, setEditingBlockId] = useState(null);
+
+  const [isSavingBlock, setIsSavingBlock] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
   const [targetScrollId, setTargetScrollId] = useState(null);
@@ -435,7 +512,142 @@ export default function App() {
   const [appTheme, setAppTheme] = useState('dark');
   const [activeHintData, setActiveHintData] = useState(null);
   const [selectedIDs, setSelectedIDs] = useState([]);
+  const [allLiturgies, setAllLiturgies] = useState(localLiturgies);
+  // --- ADMIN: BLOCK LÖSCHEN ---
+  const deleteBlock = async (blockId) => {
+    if (!window.confirm("Achtung: Willst du diesen Block wirklich löschen?")) return;
+    const { error } = await supabase.from('liturgy_content').delete().eq('id', blockId);
+    if (error) return alert("Fehler beim Löschen: " + error.message);
 
+    setAllLiturgies(prev => {
+      const copy = prev[selectedLiturgy].content.filter(b => b.id !== blockId);
+      return { ...prev, [selectedLiturgy]: { ...prev[selectedLiturgy], content: copy } };
+    });
+  };
+
+  // --- ADMIN: BLOCK BEARBEITEN (Popup öffnen & Felder füllen) ---
+  const editBlock = (block) => {
+    setEditingBlockId(block.id);
+    if (block.type === 'title') {
+      setBlockFormType('title');
+      setNewSectionTitleDe(block.sectionTitle?.de || '');
+      setNewSectionTitleAr(block.sectionTitle?.ar || '');
+    } else {
+      setBlockFormType('text');
+      setNewBlockSpeaker(block.speaker || '');
+      setNewBlockDe(block.de || '');
+      setNewBlockAr(block.ar || '');
+      setNewBlockCopCop(block.cop_cop || '');
+      setNewBlockCopAr(block.cop_ar || '');
+      setNewBlockArDe(block.ar_de || '');
+      setNewBlockCopDe(block.cop_de || '');
+      setHintPriesterDe(block.hints?.roles?.priester?.de || '');
+      setHintPriesterAr(block.hints?.roles?.priester?.ar || '');
+      setHintDiakonDe(block.hints?.roles?.diakon?.de || '');
+      setHintDiakonAr(block.hints?.roles?.diakon?.ar || '');
+      setHintVolkDe(block.hints?.roles?.volk?.de || '');
+      setHintVolkAr(block.hints?.roles?.volk?.ar || '');
+    }
+    setShowAddBlock(true);
+  };
+  useEffect(() => {
+    const fetchCloudLiturgies = async () => {
+      const { data, error } = await supabase
+        .from('liturgies')
+        .select('*');
+
+      if (error) {
+        console.error("Fehler beim Laden der Cloud-Liturgien:", error);
+        return;
+      }
+
+      if (data) {
+        const cloudLiturgies = {};
+        data.forEach(item => {
+          cloudLiturgies[item.id] = {
+            title: {
+              de: item.title_de,
+              ar: item.title_ar
+            },
+            // HIER SIND DIE WICHTIGEN 3 NEUEN ZEILEN:
+            is_folder: item.is_folder,
+            parent_id: item.parent_id,
+            is_deleted: item.is_deleted,
+            content: []
+          };
+        });
+
+        setAllLiturgies(prev => ({ ...prev, ...cloudLiturgies }));
+      }
+    };
+
+    fetchCloudLiturgies();
+  }, []);
+
+
+  // NEU: Lädt die Texte einer Cloud-Liturgie herunter, sobald sie angeklickt wird
+  useEffect(() => {
+    const fetchCloudContent = async () => {
+      // 1. Nichts tun, wenn gerade keine Liturgie ausgewählt ist
+      if (!selectedLiturgy) return;
+
+      // 2. Prüfen, ob der Inhalt leer ist (das ist unser Signal, dass es eine Cloud-Liturgie ist, die noch geladen werden muss)
+      if (allLiturgies[selectedLiturgy] && allLiturgies[selectedLiturgy].content.length === 0) {
+
+        const { data, error } = await supabase
+          .from('liturgy_content')
+          .select('*')
+          .eq('liturgy_id', selectedLiturgy)
+          .order('sequence_number', { ascending: true }); // Sortiert nach unserer sequence_number!
+
+        if (error) {
+          console.error("Fehler beim Laden der Texte: ", error.message, error.hint, error.details); return;
+        }
+
+        if (data) {
+          // 3. Den Supabase-Inhalt in das Format deiner App umwandeln
+          // 3. Den Supabase-Inhalt in das Format deiner App umwandeln
+          const formattedContent = data.map(row => {
+            // Wenn es ein Titel ist, formatieren wir ihn so, dass das Inhaltsverzeichnis ihn erkennt
+            if (row.type === 'title') {
+              return {
+                id: row.id,
+                sequence_number: row.sequence_number,
+                type: 'title',
+                sectionTitle: { de: row.text_de, ar: row.text_ar }
+              };
+            }
+            // Ansonsten ist es ein normaler Textblock
+            // Ansonsten ist es ein normaler Textblock
+            return {
+              id: row.id,
+              sequence_number: row.sequence_number,
+              type: row.type || "text",
+              de: row.text_de,
+              ar: row.text_ar,
+              cop_ar: row.text_cop_ar,
+              cop_cop: row.text_cop_cop,
+              ar_de: row.text_ar_de,
+              cop_de: row.text_cop_de,
+              speaker: row.speaker || "",
+              hints: row.hints || null // <--- NEU: Zieht die Hinweise aus der Cloud
+            };
+          });
+
+          // 4. Den heruntergeladenen Text in unseren State einfügen, damit React ihn anzeigt
+          setAllLiturgies(prev => ({
+            ...prev,
+            [selectedLiturgy]: {
+              ...prev[selectedLiturgy],
+              content: formattedContent
+            }
+          }));
+        }
+      }
+    };
+
+    fetchCloudContent();
+  }, [selectedLiturgy]); // Dieser Effekt wird immer ausgelöst, wenn sich 'selectedLiturgy' ändert
   const scrollContainerRef = useRef(null);
   const scrollAnchorRef = useRef(null);
 
@@ -472,17 +684,21 @@ export default function App() {
   }, [activeLangs, view]);
 
   const optionalIDs = React.useMemo(() => {
-    if (!selectedLiturgy || !liturgies[selectedLiturgy]) return new Set();
+    // 'allLiturgies' statt 'liturgies' verwenden
+    if (!selectedLiturgy || !allLiturgies[selectedLiturgy]) return new Set();
+
     const ids = new Set();
-    liturgies[selectedLiturgy].content.forEach(row => {
+
+    // Auch hier 'allLiturgies' verwenden
+    allLiturgies[selectedLiturgy].content.forEach(row => {
       if (row.type === 'selection_menu') {
         if (row.feasts) row.feasts.forEach(item => ids.add(String(item.id)));
         if (row.saints) row.saints.forEach(item => ids.add(String(item.id)));
       }
     });
-    return ids;
-  }, [selectedLiturgy]);
 
+    return ids;
+  }, [selectedLiturgy, allLiturgies]); // Wichtig: allLiturgies in die eckigen Klammern am Ende aufnehmen!
   const toggleSelection = (id) => { setSelectedIDs(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]); };
 
   useEffect(() => {
@@ -494,9 +710,96 @@ export default function App() {
   useEffect(() => {
     if (loading) {
       const timer = setTimeout(() => setLoading(false), 3000);
+      // NEU: Prüfen, ob eine Admin-Sitzung existiert
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        setIsAdmin(!!session);
+      });
+
+      // NEU: Auf Login/Logout reagieren
+      supabase.auth.onAuthStateChange((_event, session) => {
+        setIsAdmin(!!session);
+      });
+
       return () => clearTimeout(timer);
     }
   }, [loading]);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      alert("Fehler: " + error.message);
+    } else {
+      setShowLogin(false);
+      setEmail('');
+      setPassword('');
+    }
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+  };
+
+  const moveToTrash = async (id) => {
+    // 1. Suche alle Unter-Gebete, die zu diesem Ordner gehören
+    const childrenIds = Object.keys(allLiturgies).filter(key => allLiturgies[key].parent_id === id);
+
+    // 2. Packe die Ordner-ID und alle Kinder-IDs in eine gemeinsame Liste
+    const idsToUpdate = [id, ...childrenIds];
+
+    // 3. Schiebe alle gleichzeitig in Supabase in den Papierkorb (.in statt .eq)
+    const { error } = await supabase.from('liturgies').update({ is_deleted: true }).in('id', idsToUpdate);
+
+    if (error) return alert("Fehler beim Löschen: " + error.message);
+
+    // 4. Lokal in der App verstecken
+    setAllLiturgies(prev => {
+      const newState = { ...prev };
+      idsToUpdate.forEach(itemId => {
+        if (newState[itemId]) newState[itemId].is_deleted = true;
+      });
+      return newState;
+    });
+  };
+
+  const restoreFromTrash = async (id) => {
+    // 1. Suche alle Unter-Gebete, die zu diesem Ordner gehören
+    const childrenIds = Object.keys(allLiturgies).filter(key => allLiturgies[key].parent_id === id);
+    const idsToUpdate = [id, ...childrenIds];
+
+    // 2. Alle gleichzeitig in Supabase wiederherstellen
+    const { error } = await supabase.from('liturgies').update({ is_deleted: false }).in('id', idsToUpdate);
+
+    if (error) return alert("Fehler beim Wiederherstellen: " + error.message);
+
+    // 3. Lokal in der App wieder anzeigen
+    setAllLiturgies(prev => {
+      const newState = { ...prev };
+      idsToUpdate.forEach(itemId => {
+        if (newState[itemId]) newState[itemId].is_deleted = false;
+      });
+      return newState;
+    });
+  };
+
+  const emptyTrash = async () => {
+    if (!window.confirm("Achtung: Willst du den Papierkorb wirklich endgültig leeren? Dies löscht die Daten unwiderruflich aus der Cloud!")) return;
+
+    // Löscht endgültig alle Reihen, die als gelöscht markiert sind
+    const { error } = await supabase.from('liturgies').delete().eq('is_deleted', true);
+    if (error) return alert("Fehler: " + error.message);
+
+    // Lokal aufräumen
+    setAllLiturgies(prev => {
+      const newState = { ...prev };
+      Object.keys(newState).forEach(key => { if (newState[key].is_deleted) delete newState[key]; });
+      return newState;
+    });
+  };
+
 
   const handleInitialLangSelect = (lang) => {
     setAppLang(lang);
@@ -505,13 +808,10 @@ export default function App() {
   };
 
   const closeHintPopup = () => setActiveHintData(null);
-  const openHint = useCallback((id) => {
-    const hint = liturgyHints[id];
-    if (!hint || !hint.roles) return;
-    const roleHint = hint.roles[userRole];
+  const openHint = useCallback((roleHint) => {
     if (!roleHint) return;
-    setActiveHintData({ id, ...roleHint });
-  }, [userRole]);
+    setActiveHintData(roleHint);
+  }, []);
 
   useLayoutEffect(() => {
     if (view === 'prayer' && targetScrollId) { scrollToElementById(targetScrollId); setTargetScrollId(null); }
@@ -586,22 +886,336 @@ export default function App() {
             </div>
           </motion.div>
         )}
+
         {showSettings && (
           <SettingsPopup appLang={appLang} setAppLang={setAppLang} activeLangs={activeLangs} toggleLanguage={handleLanguageToggle} fontSize={fontSize} changeFontSize={setFontSize} appTheme={appTheme} setAppTheme={setAppTheme} setRole={setUserRole} userRole={userRole} close={() => setShowSettings(false)} t={t} />
         )}
+
         {showSupport && (
           <SupportPopup onClose={() => setShowSupport(false)} />
+        )}
+
+        {/* --- HIER IST ES JETZT BEFREIT: POPUP FÜR NEUEN TEXTBLOCK --- */}
+        {/* --- POPUP FÜR NEUES ELEMENT (TITEL ODER TEXT) --- */}
+        {showAddBlock && (
+          <motion.div className="hint-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowAddBlock(false)} style={{ zIndex: 2000 }}>
+            <motion.div className="settings-popup" onClick={e => e.stopPropagation()} initial={{ scale: 0.9 }} animate={{ scale: 1 }} style={{ width: '90%', maxWidth: '800px', maxHeight: '90vh', overflowY: 'auto' }}>
+
+              <div className="support-header" style={{ marginBottom: '20px' }}>
+                <span className="support-title" style={{ color: 'var(--gold)', fontWeight: 'bold', fontSize: '1.2rem', fontFamily: 'Cairo' }}>
+                  {blockFormType === 'select' ? 'Neues Element hinzufügen' : blockFormType === 'title' ? 'Neue Überschrift' : 'Neuer Textblock'}
+                </span>
+                <button onClick={() => setShowAddBlock(false)} style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer' }}>
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* 1. AUSWAHL-MENÜ */}
+              {blockFormType === 'select' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <button className="menu-btn highlight" onClick={() => setBlockFormType('title')}>📝 Titel / Überschrift (Für Inhaltsverzeichnis)</button>
+                  <button className="menu-btn highlight" onClick={() => setBlockFormType('text')}>📖 Gebets-Textblock</button>
+                </div>
+              )}
+              {/* 2. FORMULAR FÜR TITEL */}
+              {blockFormType === 'title' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <input type="text" placeholder="Titel (Deutsch)" value={newSectionTitleDe} onChange={e => setNewSectionTitleDe(e.target.value)} className="form-input" style={{ width: '100%', boxSizing: 'border-box' }} />
+                  <input type="text" placeholder="Titel (Arabisch)" value={newSectionTitleAr} onChange={e => setNewSectionTitleAr(e.target.value)} className="form-input" style={{ width: '100%', boxSizing: 'border-box', textAlign: 'right', fontFamily: 'Cairo' }} />
+
+                  <div style={{ display: 'flex', gap: '10px' }}>
+                    <button className="menu-btn" onClick={() => { setShowAddBlock(false); setEditingBlockId(null); }} style={{ flex: 1 }}>Abbrechen</button>
+                    <button className="menu-btn highlight" disabled={isSavingBlock} style={{ flex: 2 }} onClick={async () => {
+                      if (!newSectionTitleDe && !newSectionTitleAr) return alert("Bitte Titel eingeben!");
+                      setIsSavingBlock(true);
+
+                      const rowData = { text_de: newSectionTitleDe, text_ar: newSectionTitleAr, type: 'title' };
+
+                      if (editingBlockId) {
+                        // --- UPDATE ---
+                        const { error } = await supabase.from('liturgy_content').update(rowData).eq('id', editingBlockId);
+                        if (error) { alert("Fehler: " + error.message); setIsSavingBlock(false); return; }
+
+                        setAllLiturgies(prev => {
+                          const copy = [...prev[selectedLiturgy].content];
+                          const index = copy.findIndex(b => b.id === editingBlockId);
+                          if (index > -1) copy[index] = { ...copy[index], sectionTitle: { de: newSectionTitleDe, ar: newSectionTitleAr } };
+                          return { ...prev, [selectedLiturgy]: { ...prev[selectedLiturgy], content: copy } };
+                        });
+                      } else {
+                        // --- NEU ERSTELLEN ---
+                        const currentContent = allLiturgies[selectedLiturgy]?.content || [];
+                        const itemsToShift = currentContent.filter(item => item.sequence_number > insertIndex);
+                        const newSeq = insertIndex + 1;
+
+                        const { data, error } = await supabase.from('liturgy_content').insert([{ ...rowData, liturgy_id: selectedLiturgy, sequence_number: newSeq, order_index: newSeq }]).select();
+                        if (error) { alert("Fehler: " + error.message); setIsSavingBlock(false); return; }
+
+                        for (let item of itemsToShift) {
+                          await supabase.from('liturgy_content').update({ sequence_number: item.sequence_number + 1, order_index: item.sequence_number + 1 }).eq('id', item.id);
+                        }
+
+                        setAllLiturgies(prev => {
+                          const copy = [...prev[selectedLiturgy].content];
+                          copy.forEach(item => { if (item.sequence_number > insertIndex) item.sequence_number++; });
+                          copy.push({ id: data[0].id, sequence_number: newSeq, type: 'title', sectionTitle: { de: newSectionTitleDe, ar: newSectionTitleAr } });
+                          copy.sort((a, b) => a.sequence_number - b.sequence_number);
+                          return { ...prev, [selectedLiturgy]: { ...prev[selectedLiturgy], content: copy } };
+                        });
+                      }
+
+                      setShowAddBlock(false); setNewSectionTitleDe(''); setNewSectionTitleAr(''); setEditingBlockId(null); setIsSavingBlock(false);
+                    }}>
+                      {isSavingBlock ? "Speichert..." : (editingBlockId ? "Änderungen Speichern" : "Titel Einfügen")}
+                    </button>
+                  </div>
+                </div>
+              )}
+              {/* 3. FORMULAR FÜR TEXTBLOCK */}
+              {blockFormType === 'text' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <select value={newBlockSpeaker} onChange={e => setNewBlockSpeaker(e.target.value)} className="form-input" style={{ width: '100%', boxSizing: 'border-box', background: 'rgba(0,0,0,0.5)', color: 'white' }}>
+                    <option value="">Wer spricht? (Optional, z.B. normaler Text)</option>
+                    <option value="Priester">Priester / كاهن</option>
+                    <option value="Diakon">Diakon / شماس</option>
+                    <option value="Volk">Volk / شعب</option>
+                  </select>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                    <textarea placeholder="Deutsch (de)" value={newBlockDe} onChange={e => setNewBlockDe(e.target.value)} className="form-textarea" style={{ width: '100%', boxSizing: 'border-box', minHeight: '60px' }} />
+                    <textarea placeholder="Arabisch (ar)" value={newBlockAr} onChange={e => setNewBlockAr(e.target.value)} className="form-textarea" style={{ width: '100%', boxSizing: 'border-box', textAlign: 'right', fontFamily: 'Cairo', minHeight: '60px' }} />
+                    <textarea placeholder="Koptisch (cop_cop)" value={newBlockCopCop} onChange={e => setNewBlockCopCop(e.target.value)} className="form-textarea" style={{ width: '100%', boxSizing: 'border-box', minHeight: '60px' }} />
+                    <textarea placeholder="Koptisch-Arabisch (cop_ar)" value={newBlockCopAr} onChange={e => setNewBlockCopAr(e.target.value)} className="form-textarea" style={{ width: '100%', boxSizing: 'border-box', textAlign: 'right', fontFamily: 'Cairo', minHeight: '60px' }} />
+                    <textarea placeholder="Arabisch-Deutsch (ar_de)" value={newBlockArDe} onChange={e => setNewBlockArDe(e.target.value)} className="form-textarea" style={{ width: '100%', boxSizing: 'border-box', minHeight: '60px' }} />
+                    <textarea placeholder="Koptisch-Deutsch (cop_de)" value={newBlockCopDe} onChange={e => setNewBlockCopDe(e.target.value)} className="form-textarea" style={{ width: '100%', boxSizing: 'border-box', minHeight: '60px' }} />
+                  </div>
+
+                  {/* --- HINWEISE (OPTIONAL) --- */}
+                  <div style={{ marginTop: '5px', padding: '15px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid #444' }}>
+                    <h4 style={{ color: 'var(--gold)', margin: '0 0 10px 0', fontSize: '0.9rem', textTransform: 'uppercase' }}>💡 Hinweise (Optional)</h4>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                      <input type="text" placeholder="Priester (Deutsch)" value={hintPriesterDe} onChange={e => setHintPriesterDe(e.target.value)} className="form-input" />
+                      <input type="text" placeholder="Priester (Arabisch)" value={hintPriesterAr} onChange={e => setHintPriesterAr(e.target.value)} className="form-input" style={{ textAlign: 'right', fontFamily: 'Cairo' }} />
+                      <input type="text" placeholder="Diakon (Deutsch)" value={hintDiakonDe} onChange={e => setHintDiakonDe(e.target.value)} className="form-input" />
+                      <input type="text" placeholder="Diakon (Arabisch)" value={hintDiakonAr} onChange={e => setHintDiakonAr(e.target.value)} className="form-input" style={{ textAlign: 'right', fontFamily: 'Cairo' }} />
+                      <input type="text" placeholder="Volk (Deutsch)" value={hintVolkDe} onChange={e => setHintVolkDe(e.target.value)} className="form-input" />
+                      <input type="text" placeholder="Volk (Arabisch)" value={hintVolkAr} onChange={e => setHintVolkAr(e.target.value)} className="form-input" style={{ textAlign: 'right', fontFamily: 'Cairo' }} />
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '10px' }}>
+                    <button className="menu-btn" onClick={() => { setShowAddBlock(false); setEditingBlockId(null); }} style={{ flex: 1 }}>Abbrechen</button>
+                    <button className="menu-btn highlight" disabled={isSavingBlock} style={{ flex: 2 }} onClick={async () => {
+                      if (!newBlockDe && !newBlockAr && !newBlockCopCop && !newBlockCopAr && !newBlockArDe && !newBlockCopDe) return alert("Bitte mindestens ein Textfeld ausfüllen!");
+                      setIsSavingBlock(true);
+
+                      // JSON für Hinweise bauen
+                      let builtHints = null;
+                      if (hintPriesterDe || hintPriesterAr || hintDiakonDe || hintDiakonAr || hintVolkDe || hintVolkAr) {
+                        builtHints = { roles: {} };
+                        if (hintPriesterDe || hintPriesterAr) builtHints.roles.priester = { de: hintPriesterDe || "", ar: hintPriesterAr || "" };
+                        if (hintDiakonDe || hintDiakonAr) builtHints.roles.diakon = { de: hintDiakonDe || "", ar: hintDiakonAr || "" };
+                        if (hintVolkDe || hintVolkAr) builtHints.roles.volk = { de: hintVolkDe || "", ar: hintVolkAr || "" };
+                      }
+
+                      const rowData = { text_de: newBlockDe, text_ar: newBlockAr, text_cop_ar: newBlockCopAr, text_cop_cop: newBlockCopCop, text_ar_de: newBlockArDe, text_cop_de: newBlockCopDe, speaker: newBlockSpeaker, type: 'text', hints: builtHints };
+
+                      if (editingBlockId) {
+                        // --- UPDATE EXISTING BLOCK ---
+                        const { error } = await supabase.from('liturgy_content').update(rowData).eq('id', editingBlockId);
+                        if (error) { alert("Fehler: " + error.message); setIsSavingBlock(false); return; }
+
+                        setAllLiturgies(prev => {
+                          const copy = [...prev[selectedLiturgy].content];
+                          const index = copy.findIndex(b => b.id === editingBlockId);
+                          if (index > -1) copy[index] = { ...copy[index], ...rowData, de: newBlockDe, ar: newBlockAr, cop_ar: newBlockCopAr, cop_cop: newBlockCopCop, ar_de: newBlockArDe, cop_de: newBlockCopDe };
+                          return { ...prev, [selectedLiturgy]: { ...prev[selectedLiturgy], content: copy } };
+                        });
+                      } else {
+                        // --- INSERT NEW BLOCK ---
+                        const currentContent = allLiturgies[selectedLiturgy]?.content || [];
+                        const itemsToShift = currentContent.filter(item => item.sequence_number > insertIndex);
+                        const newSeq = insertIndex + 1;
+
+                        const { data, error } = await supabase.from('liturgy_content').insert([{ ...rowData, liturgy_id: selectedLiturgy, sequence_number: newSeq, order_index: newSeq }]).select();
+                        if (error) { alert("Fehler: " + error.message); setIsSavingBlock(false); return; }
+
+                        for (let item of itemsToShift) {
+                          await supabase.from('liturgy_content').update({ sequence_number: item.sequence_number + 1, order_index: item.sequence_number + 1 }).eq('id', item.id);
+                        }
+
+                        setAllLiturgies(prev => {
+                          const copy = [...prev[selectedLiturgy].content];
+                          copy.forEach(item => { if (item.sequence_number > insertIndex) item.sequence_number++; });
+                          copy.push({ id: data[0].id, type: 'text', de: newBlockDe, ar: newBlockAr, cop_ar: newBlockCopAr, cop_cop: newBlockCopCop, ar_de: newBlockArDe, cop_de: newBlockCopDe, speaker: newBlockSpeaker, sequence_number: newSeq, hints: builtHints });
+                          copy.sort((a, b) => a.sequence_number - b.sequence_number);
+                          return { ...prev, [selectedLiturgy]: { ...prev[selectedLiturgy], content: copy } };
+                        });
+                      }
+
+                      setShowAddBlock(false); setNewBlockDe(''); setNewBlockAr(''); setNewBlockSpeaker(''); setNewBlockCopAr(''); setNewBlockCopCop(''); setNewBlockArDe(''); setNewBlockCopDe('');
+                      setHintPriesterDe(''); setHintPriesterAr(''); setHintDiakonDe(''); setHintDiakonAr(''); setHintVolkDe(''); setHintVolkAr(''); setEditingBlockId(null);
+                      setIsSavingBlock(false);
+                    }}>
+                      {isSavingBlock ? "Speichert..." : (editingBlockId ? "Änderungen Speichern" : "Textblock Einfügen")}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+            </motion.div>
+          </motion.div>
+        )}
+
+        {/* --- HAUPTMENÜ POPUP FÜR NEUE SEITEN UND ORDNER --- */}
+        {showAddMenu && (
+          <motion.div className="hint-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowAddMenu(false); setAddMenuType('select'); }} style={{ zIndex: 2000 }}>
+            <motion.div className="settings-popup" onClick={e => e.stopPropagation()} initial={{ scale: 0.9 }} animate={{ scale: 1 }}>
+
+              <div className="support-header" style={{ marginBottom: '20px' }}>
+                <span className="support-title" style={{ color: 'var(--gold)', fontWeight: 'bold', fontSize: '1.2rem', fontFamily: 'Cairo' }}>
+                  {addMenuType === 'select' ? 'Hinzufügen' : addMenuType === 'page' ? 'Neue Gebetsseite' : 'Neuer Ordner'}
+                </span>
+                <button onClick={() => { setShowAddMenu(false); setAddMenuType('select'); }} style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer' }}>
+                  <X size={24} />
+                </button>
+              </div>
+
+              {addMenuType === 'select' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <button className="menu-btn highlight" onClick={() => setAddMenuType('page')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                    <BookOpen size={20} /> Neue Gebetsseite
+                  </button>
+                  <button className="menu-btn" onClick={() => setAddMenuType('folder')} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '1.2rem' }}></span> Neuer Ordner (Menü)
+                  </button>
+                </div>
+              )}
+
+              {addMenuType === 'page' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <input type="text" placeholder="Titel (Deutsch) z.B. Taufe" value={newTitleDe} onChange={e => setNewTitleDe(e.target.value)} className="form-input" style={{ width: '100%', boxSizing: 'border-box' }} />
+                  <input type="text" placeholder="Titel (Arabisch) z.B. المعمودية" value={newTitleAr} onChange={e => setNewTitleAr(e.target.value)} className="form-input" style={{ width: '100%', boxSizing: 'border-box', textAlign: 'right', fontFamily: 'Cairo' }} />
+
+                  <button
+                    className="menu-btn highlight"
+                    disabled={isSaving}
+                    onClick={async () => {
+                      if (!newTitleDe) return alert("Bitte zumindest den deutschen Titel ausfüllen!");
+                      setIsSaving(true);
+
+                      const cleanString = newTitleDe.toLowerCase().replace(/[^a-z0-9]/g, '_');
+                      // WICHTIG: Prüft, ob wir im Agpeya-Menü sind, um den Prefix zu setzen
+                      const prefix = view === 'agpeyaMenu' ? 'agpeya_custom_' : 'page_';
+                      const autoGeneratedId = `${prefix}${cleanString}_${Math.floor(1000 + Math.random() * 9000)}`;
+                      const parentId = view === 'folderView' ? currentFolder : null;
+
+                      const { error } = await supabase.from('liturgies').insert([
+                        { id: autoGeneratedId, title_de: newTitleDe, title_ar: newTitleAr, is_folder: false, parent_id: parentId }
+                      ]);
+
+                      if (error) {
+                        alert("Fehler beim Speichern: " + error.message);
+                      } else {
+                        setAllLiturgies(prev => ({
+                          ...prev,
+                          [autoGeneratedId]: { title: { de: newTitleDe, ar: newTitleAr }, is_folder: false, parent_id: parentId, content: [] }
+                        }));
+                        setShowAddMenu(false);
+                        setAddMenuType('select');
+                        setNewTitleDe(''); setNewTitleAr('');
+                      }
+                      setIsSaving(false);
+                    }}
+                  >
+                    {isSaving ? "Erstellt Seite..." : "Seite anlegen"}
+                  </button>
+                  <button className="menu-btn" onClick={() => setAddMenuType('select')}>Zurück</button>
+                </div>
+              )}
+
+              {addMenuType === 'folder' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <input type="text" placeholder="Ordner-Name (Deutsch) z.B. Feiertage" value={newTitleDe} onChange={e => setNewTitleDe(e.target.value)} className="form-input" style={{ width: '100%', boxSizing: 'border-box' }} />
+                  <input type="text" placeholder="Ordner-Name (Arabisch) z.B. الأعياد" value={newTitleAr} onChange={e => setNewTitleAr(e.target.value)} className="form-input" style={{ width: '100%', boxSizing: 'border-box', textAlign: 'right', fontFamily: 'Cairo' }} />
+
+                  <button
+                    className="menu-btn highlight"
+                    disabled={isSaving}
+                    onClick={async () => {
+                      if (!newTitleDe) return alert("Bitte mindestens den deutschen Ordner-Namen ausfüllen!");
+                      setIsSaving(true);
+
+                      const cleanString = newTitleDe.toLowerCase().replace(/[^a-z0-9]/g, '_');
+                      const autoGeneratedId = `folder_${cleanString}_${Math.floor(1000 + Math.random() * 9000)}`;
+                      const parentId = view === 'folderView' ? currentFolder : null;
+
+                      const { error } = await supabase.from('liturgies').insert([
+                        { id: autoGeneratedId, title_de: newTitleDe, title_ar: newTitleAr, is_folder: true, parent_id: parentId }
+                      ]);
+
+                      if (error) {
+                        alert("Fehler beim Speichern: " + error.message);
+                      } else {
+                        setAllLiturgies(prev => ({
+                          ...prev,
+                          [autoGeneratedId]: { title: { de: newTitleDe, ar: newTitleAr }, is_folder: true, parent_id: parentId, content: [] }
+                        }));
+                        setShowAddMenu(false);
+                        setAddMenuType('select');
+                        setNewTitleDe(''); setNewTitleAr('');
+                      }
+                      setIsSaving(false);
+                    }}
+                  >
+                    {isSaving ? "Erstellt Ordner..." : "Ordner anlegen"}
+                  </button>
+                  <button className="menu-btn" onClick={() => setAddMenuType('select')}>Zurück</button>
+                </div>
+              )}
+
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
 
       <header className="header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           {view !== 'home' ? (
-            <motion.button whileTap={{ scale: 0.9 }} onClick={handleBack} className="icon-btn"><ArrowLeft size={24} /></motion.button>
-          ) : <div style={{ width: 24 }}></div>}
+            <button onClick={() => setView(view === 'prayer' ? 'liturgyMenu' : 'home')} className="icon-btn">
+              <ArrowLeft color="#D4AF37" size={32} />
+            </button>
+          ) : (
+            <div style={{ display: 'flex', gap: '10px', marginLeft: 'auto', alignItems: 'center' }}>
+
+              {/* NEU: Admin Login/Logout Button */}
+              <button
+                onClick={() => isAdmin ? handleLogout() : setShowLogin(true)}
+                className="icon-btn"
+                style={{ marginRight: '10px' }}
+              >
+                {/* Hier jetzt LockIcon und UnlockIcon verwenden */}
+                {isAdmin ? <UnlockIcon color="#D4AF37" size={24} /> : <LockIcon color="rgba(212, 175, 55, 0.3)" size={24} />}
+              </button>
+              {/* ------------------------------- */}
+
+              <button
+                onClick={() => setAppLang('de')}
+                style={{ opacity: appLang === 'de' ? 1 : 0.5, cursor: 'pointer', background: 'none', border: 'none', fontSize: '1.5rem' }}
+              >
+                🇩🇪
+              </button>
+              <button
+                onClick={() => setAppLang('ar')}
+                style={{ opacity: appLang === 'ar' ? 1 : 0.5, cursor: 'pointer', background: 'none', border: 'none', fontSize: '1.5rem' }}
+              >
+                🇪🇬
+              </button>
+            </div>
+          )}
           <motion.button className="icon-btn" onClick={() => setShowSupport(true)} whileTap={{ scale: 0.9 }}><HelpCircle size={22} /></motion.button>
           {view === 'prayer' && selectedLiturgy && (
-            <TableOfContents content={liturgies[selectedLiturgy].content} appLang={appLang} isOpen={showTOC} toggleOpen={() => setShowTOC(!showTOC)} onJump={scrollToElementById} />
+            <TableOfContents content={allLiturgies[selectedLiturgy].content} appLang={appLang} isOpen={showTOC} toggleOpen={() => setShowTOC(!showTOC)} onJump={scrollToElementById} />
           )}
         </div>
         <div className="header-right-group">
@@ -612,6 +1226,8 @@ export default function App() {
 
       <main className="content">
         <AnimatePresence mode='wait'>
+
+          {/* --- STARTSEITE (Wieder komplett sauber, ohne Admin-Button) --- */}
           {view === 'home' && (
             <motion.div key="home" className="center-view" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <div className="center-content-wrapper">
@@ -620,15 +1236,76 @@ export default function App() {
                   <motion.img src={ibrashiaLogo} className="main-logo dual-logo" animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 5 }} />
                 </div>
                 <h1 className="church-title">{t('homeSubtitle')}</h1>
+
                 <div className="btn-group">
                   <MenuButton onClick={() => setView('agpeyaMenu')} text={t('buttons', 'agpeya')} icon={<BookOpen size={20} />} highlight />
                   <MenuButton onClick={() => setView('liturgyMenu')} text={t('buttons', 'liturgy')} />
                   <MenuButton onClick={() => setView('bible')} text={t('buttons', 'bible')} />
+                  {/* --- ADMIN BEREICH IM HAUPTMENÜ --- */}
+                  {isAdmin && (
+                    <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginTop: '30px', width: '100%', maxWidth: '400px', margin: '30px auto 0' }}>
+
+                      {/* + HINZUFÜGEN BUTTON */}
+                      <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          // Hier kommt später die Logik rein
+                          console.log("Admin Hinzufügen geklickt");
+                        }}
+                        style={{
+                          flex: 1,
+                          background: 'rgba(0,0,0,0.3)',
+                          border: '2px dashed var(--gold)',
+                          color: 'var(--gold)',
+                          padding: '15px 20px',
+                          borderRadius: '10px',
+                          cursor: 'pointer',
+                          fontFamily: 'Cairo',
+                          fontSize: '1rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '8px'
+                        }}
+                      >
+                        <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>+</span> Hinzufügen
+                      </motion.button>
+
+                      {/* LOGS BUTTON */}
+                      <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          // Hier kommt später die Logik für Logs rein
+                          console.log("Admin Logs geklickt");
+                        }}
+                        style={{
+                          background: 'rgba(0,0,0,0.5)',
+                          border: '1px solid var(--gold)',
+                          color: 'white',
+                          padding: '15px 20px',
+                          borderRadius: '10px',
+                          cursor: 'pointer',
+                          fontFamily: 'Cairo',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '8px'
+                        }}
+                      >
+                        ⚙️ Logs
+                      </motion.button>
+
+                    </div>
+                  )}
                 </div>
+
               </div>
             </motion.div>
           )}
 
+
+
+          {/* --- AGPEYA MENÜ --- */}
           {view === 'agpeyaMenu' && (
             <motion.div key="agpeyaMenu" className="center-view" initial={{ x: 100 }} animate={{ x: 0 }} exit={{ x: -100 }}>
               <div className="center-content-wrapper">
@@ -641,11 +1318,52 @@ export default function App() {
                   <MenuButton onClick={() => { setSelectedLiturgy('agpeya_vespers'); setView('prayer'); }} text={t('buttons', 'agpeya_vespers')} />
                   <MenuButton onClick={() => { setSelectedLiturgy('agpeya_compline'); setView('prayer'); }} text={t('buttons', 'agpeya_compline')} />
                   <MenuButton onClick={() => { setSelectedLiturgy('agpeya_midnight'); setView('prayer'); }} text={t('buttons', 'agpeya_midnight')} />
+
+                  {/* NEU: Supabase Agpeya Gebete dynamisch laden (gleiche Logik wie bei der Liturgie) */}
+                  {Object.keys(allLiturgies)
+                    .filter(key => key.startsWith('agpeya_custom_') && !allLiturgies[key].is_deleted)
+                    .map(cloudKey => {
+                      const item = allLiturgies[cloudKey];
+                      return (
+                        <MenuButton
+                          key={cloudKey}
+                          onClick={() => { setSelectedLiturgy(cloudKey); setView('prayer'); }}
+                          text={item.title?.[appLang] || item.title_de || cloudKey}
+                          onDelete={isAdmin ? () => moveToTrash(cloudKey) : undefined}
+                        />
+                      );
+                    })
+                  }
+
+                  {/* --- ADMIN BEREICH FÜR AGPEYA --- */}
+                  {isAdmin && (
+                    <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+                      <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          // Öffnet das gleiche Menü wie bei der Liturgie!
+                          setShowAddMenu(true);
+                        }}
+                        style={{ flex: 1, background: 'rgba(0,0,0,0.3)', border: '2px dashed var(--gold)', color: 'var(--gold)', padding: '15px', borderRadius: '10px', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', fontFamily: 'Cairo' }}
+                      >
+                        <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>+</span> Hinzufügen
+                      </motion.button>
+
+                      <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setView('admin')}
+                        style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid var(--gold)', color: 'var(--text-main)', padding: '15px', borderRadius: '10px', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                      >
+                        ⚙️ Logs
+                      </motion.button>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
           )}
 
+          {/* --- 1. DAS HAUPTMENÜ --- */}
           {view === 'liturgyMenu' && (
             <motion.div key="menu" className="center-view" initial={{ x: 100 }} animate={{ x: 0 }} exit={{ x: -100 }}>
               <div className="center-content-wrapper">
@@ -655,15 +1373,144 @@ export default function App() {
                   {['offering', 'basily', 'kerollosy', 'gregorios'].map(type => (
                     <MenuButton key={type} onClick={() => { setSelectedLiturgy(type); setView('prayer'); }} text={t('buttons', type)} />
                   ))}
+
+                  {/* Supabase Liturgien / Ordner */}
+                  {Object.keys(allLiturgies)
+                    // HIER GEÄNDERT: Versteckt gelöschte Dateien (!is_deleted)
+                    .filter(key => !localLiturgies[key] && !allLiturgies[key].parent_id && !allLiturgies[key].is_deleted)
+                    .map(cloudKey => {
+                      const item = allLiturgies[cloudKey];
+                      return (
+                        <MenuButton
+                          key={cloudKey}
+                          onClick={() => {
+                            if (item.is_folder) {
+                              setCurrentFolder(cloudKey);
+                              setView('folderView');
+                            } else {
+                              setSelectedLiturgy(cloudKey);
+                              setView('prayer');
+                            }
+                          }}
+                          text={item.title?.[appLang] || item.title_de || cloudKey}
+                          icon={item.is_folder ? <span>📁 </span> : null}
+                          // HIER GEÄNDERT: Lösch-Button für Admins
+                          onDelete={isAdmin ? () => moveToTrash(cloudKey) : undefined}
+                        />
+                      );
+                    })
+                  }
+
+                  {isAdmin && (
+                    <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+                      <motion.button whileTap={{ scale: 0.95 }} onClick={() => setShowAddMenu(true)} style={{ flex: 1, background: 'rgba(0,0,0,0.3)', border: '2px dashed var(--gold)', color: 'var(--gold)', padding: '15px', borderRadius: '10px', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', fontFamily: 'Cairo' }}>
+                        <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>+</span> Hinzufügen
+                      </motion.button>
+                      <motion.button whileTap={{ scale: 0.95 }} onClick={() => setView('admin')} style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid var(--gold)', color: 'var(--text-main)', padding: '15px', borderRadius: '10px', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        ⚙️ Logs
+                      </motion.button>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
           )}
 
+          {/* --- 2. DIE ORDNER-ANSICHT (UNTERMENÜ) --- */}
+          {view === 'folderView' && currentFolder && (
+            <motion.div key="folderView" className="center-view" initial={{ x: 100 }} animate={{ x: 0 }} exit={{ x: -100 }}>
+              <div className="center-content-wrapper">
+                <h2 className="page-title">
+                  {allLiturgies[currentFolder]?.title?.[appLang] || allLiturgies[currentFolder]?.title_de}
+                </h2>
+                <div className="btn-group">
+                  {Object.keys(allLiturgies)
+                    // HIER GEÄNDERT: Versteckt gelöschte Unter-Dateien
+                    .filter(key => allLiturgies[key].parent_id === currentFolder && !allLiturgies[key].is_deleted)
+                    .map(subKey => (
+                      <MenuButton
+                        key={subKey}
+                        onClick={() => {
+                          if (allLiturgies[subKey].is_folder) {
+                            setCurrentFolder(subKey);
+                          } else {
+                            setSelectedLiturgy(subKey);
+                            setView('prayer');
+                          }
+                        }}
+                        text={allLiturgies[subKey].title?.[appLang] || allLiturgies[subKey].title_de}
+                        icon={allLiturgies[subKey].is_folder ? <span>📁 </span> : null}
+                        onDelete={isAdmin ? () => moveToTrash(subKey) : undefined}
+                      />
+                    ))
+                  }
+
+                  {Object.keys(allLiturgies).filter(key => allLiturgies[key].parent_id === currentFolder && !allLiturgies[key].is_deleted).length === 0 && !isAdmin && (
+                    <p style={{ color: '#888', textAlign: 'center' }}>Dieser Ordner ist noch leer.</p>
+                  )}
+
+                  {isAdmin && (
+                    <motion.button whileTap={{ scale: 0.95 }} onClick={() => setShowAddMenu(true)} style={{ background: 'rgba(0,0,0,0.3)', border: '2px dashed var(--gold)', color: 'var(--gold)', padding: '15px', borderRadius: '10px', cursor: 'pointer', marginTop: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', fontFamily: 'Cairo' }}>
+                      <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>+</span> Hinzufügen
+                    </motion.button>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* --- ADMIN DASHBOARD (PAPIERKORB) --- */}
+          {view === 'admin' && (
+            <motion.div key="admin" className="center-view" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}>
+              <div className="center-content-wrapper" style={{ width: '90%', maxWidth: '600px' }}>
+                <h2 className="page-title" style={{ color: 'var(--gold)' }}>Admin Logs</h2>
+
+                <div style={{ background: 'rgba(0,0,0,0.6)', padding: '20px', borderRadius: '15px', border: '1px solid var(--gold)' }}>
+
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                    <h3 style={{ color: 'white', margin: 0 }}>Papierkorb</h3>
+                    <button onClick={emptyTrash} style={{ background: 'rgba(255,0,0,0.2)', color: '#ff4444', border: '1px solid #ff4444', padding: '8px 15px', borderRadius: '8px', cursor: 'pointer', display: 'flex', gap: '5px', alignItems: 'center' }}>
+                      🗑️ Leeren
+                    </button>
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '300px', overflowY: 'auto' }}>
+                    {Object.keys(allLiturgies).filter(key => allLiturgies[key].is_deleted).length === 0 ? (
+                      <p style={{ color: '#ccc', textAlign: 'center' }}>Keine gelöschten Elemente.</p>
+                    ) : (
+                      Object.keys(allLiturgies).filter(key => allLiturgies[key].is_deleted).map(key => {
+                        const item = allLiturgies[key];
+                        return (
+                          <div key={key} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.05)', padding: '10px', borderRadius: '8px' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                              <span style={{ color: 'white', fontWeight: 'bold' }}>{item.title?.de || item.title_de || key}</span>
+                              <span style={{ color: '#888', fontSize: '0.8rem' }}>{item.is_folder ? 'Ordner' : 'Gebetsseite'}</span>
+                            </div>
+                            <button onClick={() => restoreFromTrash(key)} style={{ background: 'none', border: '1px solid var(--gold)', color: 'var(--gold)', padding: '5px 10px', borderRadius: '5px', cursor: 'pointer' }}>
+                              ♻️ Wiederherstellen
+                            </button>
+                          </div>
+                        );
+                      })
+                    )}
+                  </div>
+
+                  <button className="menu-btn highlight" onClick={() => setView('liturgyMenu')} style={{ width: '100%', marginTop: '30px' }}>
+                    Zurück zum Menü
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+
+
+
+
           {view === 'prayer' && selectedLiturgy && (
             <div className={prayerModeClass}>
               <div className="scroll-area" ref={scrollContainerRef}>
-                {!liturgies[selectedLiturgy] ? (
+                {!allLiturgies[selectedLiturgy] ? (
                   <div style={{ padding: 20, textAlign: 'center', color: 'red' }}>
                     <h2>Fehler: Daten nicht gefunden!</h2>
                     <p>Key: {selectedLiturgy}</p>
@@ -672,24 +1519,49 @@ export default function App() {
                 ) : (
                   <>
                     <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                      <h3 className="liturgy-header">{liturgies[selectedLiturgy]?.title?.[appLang]}</h3>
+                      <h3 className="liturgy-header">{allLiturgies[selectedLiturgy]?.title?.[appLang]}</h3>
                     </div>
                     <div className="prayer-content">
-                      {liturgies[selectedLiturgy]?.content?.map((row, index) => {
-                        if (row.type === 'selection_menu') {
-                          return <SelectionMenu key={index} data={row} selectedIDs={selectedIDs} toggle={toggleSelection} appLang={appLang} />;
-                        }
+                      {/* + BUTTON GANZ AM ANFANG */}
+                      {isAdmin && (
+                        <div style={{ textAlign: 'center', margin: '20px 0' }}>
+                          <motion.button whileTap={{ scale: 0.9 }} onClick={() => { setInsertIndex(0); setBlockFormType('select'); setShowAddBlock(true); }} style={{ background: 'transparent', border: '1px dashed var(--gold)', color: 'var(--gold)', borderRadius: '50%', width: '40px', height: '40px', fontSize: '1.5rem', cursor: 'pointer', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}>+</motion.button>
+                        </div>
+                      )}
+
+                      {allLiturgies[selectedLiturgy]?.content?.map((row, index) => {
+                        const isMenu = row.type === 'selection_menu';
                         const currentRowID = String(row.id);
-                        if (optionalIDs.has(currentRowID)) {
-                          const isSelected = selectedIDs.some(id => String(id) === currentRowID);
-                          if (!isSelected) return null;
-                        }
+
+                        // Optionale IDs filtern
+                        if (!isMenu && optionalIDs.has(currentRowID) && !selectedIDs.some(id => String(id) === currentRowID)) return null;
+
                         const dynamicLangs = activeLangs.filter(l => row[l]?.trim());
-                        if (row.counter) return <KyrieCounter key={index} initialCount={row.counter} />;
+
                         return (
-                          <PrayerRowWithLogic key={index} row={row} rowID={row.id || index} appLang={appLang} dynamicLangs={dynamicLangs} hasMenu={!!row.reconciliation_menu?.length} handleMenuAction={handleMenuAction} hasNav={!!row.navigationButtons?.length} handleNavAction={handleNavAction} getSpeakerClass={getSpeakerClass} hints={liturgyHints} openHint={openHint} selectedLiturgy={selectedLiturgy} userRole={userRole} />
+                          <React.Fragment key={index}>
+
+                            {isMenu ? (
+                              <SelectionMenu data={row} selectedIDs={selectedIDs} toggle={toggleSelection} appLang={appLang} />
+                            ) : row.counter ? (
+                              <KyrieCounter initialCount={row.counter} />
+                            ) : (
+                              <PrayerRowWithLogic isAdmin={isAdmin} onEdit={editBlock} onDelete={deleteBlock} row={row} rowID={row.id || index} appLang={appLang} dynamicLangs={dynamicLangs} hasMenu={!!row.reconciliation_menu?.length} handleMenuAction={handleMenuAction} hasNav={!!row.navigationButtons?.length} handleNavAction={handleNavAction} getSpeakerClass={getSpeakerClass} hints={liturgyHints} openHint={openHint} selectedLiturgy={selectedLiturgy} userRole={userRole} />
+                            )}
+
+                            {/* + BUTTON NACH JEDEM GEBET */}
+                            {isAdmin && (
+                              <div style={{ textAlign: 'center', margin: '20px 0' }}>
+                                <motion.button whileTap={{ scale: 0.9 }} onClick={() => { setInsertIndex(row.sequence_number); setBlockFormType('select'); setShowAddBlock(true); }} style={{ background: 'transparent', border: '1px dashed var(--gold)', color: 'var(--gold)', borderRadius: '50%', width: '40px', height: '40px', fontSize: '1.5rem', cursor: 'pointer', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}>+</motion.button>
+                              </div>
+                            )}
+
+                          </React.Fragment>
                         );
                       })}
+
+
+
                     </div>
                   </>
                 )}
@@ -697,15 +1569,43 @@ export default function App() {
               </div>
             </div>
           )}
-
+          {/* NEU: LOGIN POPUP */}
+          {showLogin && (
+            <div className="settings-popup" style={{ top: '70px', right: '20px' }}>
+              <h3>Admin Login</h3>
+              <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <input
+                  type="email"
+                  placeholder="E-Mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  style={{ padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+                />
+                <input
+                  type="password"
+                  placeholder="Passwort"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  style={{ padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+                />
+                <button type="submit" className="menu-btn highlight" style={{ padding: '10px' }}>
+                  Einloggen
+                </button>
+                <button type="button" className="close-btn" onClick={() => setShowLogin(false)}>
+                  Abbrechen
+                </button>
+              </form>
+            </div>
+          )}
           {view === 'bible' && (
             <div className="center-view">
               <h2 style={{ color: 'var(--gold)' }}>Coming Soon...</h2>
               <button onClick={() => setView('home')} className="hint-btn">Zurück</button>
             </div>
           )}
+
         </AnimatePresence>
       </main>
-    </div>
+    </div >
   );
 }
